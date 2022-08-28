@@ -23,6 +23,6 @@ build-test:
 	$(DOCKER) build --build-arg MIN_RUST_VERSION=$(MIN_RUST_VERSION) -t $(REPO)/test:${TAG} --target test .
 
 test: build-test
-	$(DOCKER) run --rm -it \
+	$(DOCKER) run --rm \
 		$(REPO)/test:$(TAG)
 		
