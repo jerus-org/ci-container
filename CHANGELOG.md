@@ -27,6 +27,8 @@ All notable changes to this project will be documented in this file.
 - Add Makefile for building, publishing and debugging
 - Add renovate.json
 - Update cimg/rust docker tag to v1.63
+- Default init for git cliff
+- Initial change log
 
 ### Refactor
 
