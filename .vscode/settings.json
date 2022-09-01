@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "Dockerfile",
         "build",
-        "test"
+        "test",
+        "ci"
     ]
 }
