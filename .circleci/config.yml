@@ -8,7 +8,10 @@ parameters:
 executors:
   ubuntu:
     docker:
-      - image: cimg/base
+      - image: cimg/base:2022.08
+        auth:
+          username: jerusdp
+          password: $DOCKER_PASSWORD
 
 commands:
   make-test:
@@ -18,7 +21,7 @@ commands:
         type: string
     steps:
       - run:
-          name: make test for minimium version <<parameters.rust-version>>
+          name: make test for minimium version <<parameters.rust-min-version>>
           command: |
             RUST_MIN_VERSION=<<parameters.rust-min-version>> make test
   
@@ -29,7 +32,7 @@ commands:
         type: string
     steps:
       - run:
-          name: Publish for minimium version <<parameters.rust-version>>
+          name: Publish for minimium version <<parameters.rust-min-version>>
           command: |
             RUST_MIN_VERSION=<<parameters.rust-min-version>> make publish-tag
 
@@ -41,6 +44,8 @@ jobs:
     executor: ubuntu
     steps:
       - checkout
+      - setup_remote_docker:
+          version: 20.10.14
       - make-test:
           rust-min-version: << parameters.min-rust-version >>
   
@@ -51,6 +56,8 @@ jobs:
     executor: ubuntu
     steps:
       - checkout
+      - setup_remote_docker:
+          version: 20.10.14
       - make-publish:
           rust-min-version: << parameters.min-rust-version >>
 
@@ -63,37 +70,26 @@ workflows:
           filters:
             branches:
               ignore: main
-          matrix:
+          matrix: &matrix
             parameters:
               min-rust-version:
                 [
-                  1.50,
-                  1.60,
+                  "1.56",
+                  "1.60",
                 ]
     
-  test-publish
+  test-publish:
     jobs:
       - test:
           filters: &filters-publish
             branches:
               only: main
-          matrix:
-            parameters:
-              min-rust-version:
-                [
-                  1.50,
-                  1.60,
-                ]
+          matrix: 
+            <<: *matrix
       - publish:
           requires:
             - test
           filters:
-           <<: *filters-publish
+            <<: *filters-publish
           matrix:
-            parameters:
-              min-rust-version:
-                [
-                  1.50,
-                  1.60,
-                ]
-    
+            <<: *matrix
