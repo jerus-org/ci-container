@@ -18,7 +18,7 @@ commands:
         type: string
     steps:
       - run:
-          name: make test for minimium version <<parameters.rust-version>>
+          name: make test for minimium version <<parameters.rust-min-version>>
           command: |
             RUST_MIN_VERSION=<<parameters.rust-min-version>> make test
   
@@ -29,7 +29,7 @@ commands:
         type: string
     steps:
       - run:
-          name: Publish for minimium version <<parameters.rust-version>>
+          name: Publish for minimium version <<parameters.rust-min-version>>
           command: |
             RUST_MIN_VERSION=<<parameters.rust-min-version>> make publish-tag
 
