@@ -5,14 +5,14 @@ REPO ?= jerusdp/ci-rust
 TAG ?= $(MIN_RUST_VERSION)
 
 publish: build
-	$(DOCKER) push $(REPO):${TAG}
+	$(DOCKER) push $(REPO):${TAG} 
 
 publish-tag: build publish
 	$(DOCKER) tag $(REPO):${TAG} "$(REPO):$(INPUT_RELEASE_VERSION)-min-rust-$(MIN_RUST_VERSION)"
 	$(DOCKER) push "$(REPO):$(INPUT_RELEASE_VERSION)-min-rust-$(MIN_RUST_VERSION)"
 
 build:
-	$(DOCKER) build --build-arg MIN_RUST_VERSION=$(MIN_RUST_VERSION) -t $(REPO):${TAG} .
+	$(DOCKER) build --build-arg MIN_RUST_VERSION=$(MIN_RUST_VERSION) -t $(REPO):${TAG} --target final .
 
 debug: build
 	$(DOCKER) run --rm -it \
