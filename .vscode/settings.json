@@ -4,5 +4,6 @@
         "build",
         "test",
         "ci"
-    ]
+    ],
+    "circleci-vscode.apiToken": "6026fc8a42e69fef9cba67624778d11d37e4957f"
 }

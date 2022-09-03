@@ -56,6 +56,8 @@ jobs:
     executor: ubuntu
     steps:
       - checkout
+      - setup_remote_docker:
+          version: 20.10.14
       - make-publish:
           rust-min-version: << parameters.min-rust-version >>
 
@@ -68,7 +70,7 @@ workflows:
           filters:
             branches:
               ignore: main
-          matrix:
+          matrix: &matrix
             parameters:
               min-rust-version:
                 [
@@ -82,23 +84,12 @@ workflows:
           filters: &filters-publish
             branches:
               only: main
-          matrix:
-            parameters:
-              min-rust-version:
-                [
-                  "1.50",
-                  "1.60",
-                ]
+          matrix: 
+            <<: *matrix
       - publish:
           requires:
             - test
           filters:
-           <<: *filters-publish
+            <<: *filters-publish
           matrix:
-            parameters:
-              min-rust-version:
-                [
-                  "1.50",
-                  "1.60",
-                ]
-    
+            <<: *matrix
