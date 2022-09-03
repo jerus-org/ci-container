@@ -71,7 +71,7 @@ workflows:
                   1.60,
                 ]
     
-  test-publish
+  test-publish:
     jobs:
       - test:
           filters: &filters-publish
