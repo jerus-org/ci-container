@@ -25,8 +25,8 @@ commands:
           command: |
             REPO=jerusdp/ci-rust
             TAG=<<parameters.rust-min-version>>
-            docker build --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> -t $(REPO):${TAG} --target final .
-            run --rm $(REPO)/test:$(TAG)
+            docker build --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> -t ${REPO}:${TAG} --target final .
+            run --rm ${REPO}/test:${TAG}
   
   make-publish:
     parameters:
@@ -41,9 +41,9 @@ commands:
             TAG=<<parameters.rust-min-version>>
             INPUT_RELEASE_VERSION=0.1.0
             docker build --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> -t $(REPO):${TAG} --target final .
-            docker push $(REPO):${TAG}
-            docker tag $(REPO):${TAG} "$(REPO):$(INPUT_RELEASE_VERSION)-min-rust-$(MIN_RUST_VERSION)"
-            docker push "$(REPO):$(INPUT_RELEASE_VERSION)-min-rust-$(MIN_RUST_VERSION)"
+            docker push ${REPO}:${TAG}
+            docker tag ${REPO}:${TAG} "${REPO}:${INPUT_RELEASE_VERSION}-min-rust-${MIN_RUST_VERSION}"
+            docker push "${REPO}:${INPUT_RELEASE_VERSION}-min-rust-${MIN_RUST_VERSION}"
 
             RUST_MIN_VERSION=<<parameters.rust-min-version>> make publish-tag
 
