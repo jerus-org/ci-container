@@ -67,8 +67,8 @@ workflows:
             parameters:
               min-rust-version:
                 [
-                  1.50,
-                  1.60,
+                  "1.56",
+                  "1.60",
                 ]
     
   test-publish:
@@ -81,8 +81,8 @@ workflows:
             parameters:
               min-rust-version:
                 [
-                  1.50,
-                  1.60,
+                  "1.50",
+                  "1.60",
                 ]
       - publish:
           requires:
@@ -93,7 +93,7 @@ workflows:
             parameters:
               min-rust-version:
                 [
-                  1.50,
-                  1.60,
+                  "1.50",
+                  "1.60",
                 ]
     
