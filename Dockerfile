@@ -1,8 +1,8 @@
-FROM cimg/rust:1.64 as binaries
+FROM cimg/rust:1.65 as binaries
 RUN cargo install cargo-release
 RUN cargo install nextsv
 
-FROM cimg/rust:1.64 as final
+FROM cimg/rust:1.65 as final
 COPY --from=binaries /home/circleci/.cargo/bin/cargo-release /home/circleci/.cargo/bin/
 COPY --from=binaries /home/circleci/.cargo/bin/nextsv /home/circleci/.cargo/bin/
 ARG MIN_RUST_VERSION=1.56
