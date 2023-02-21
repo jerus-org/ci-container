@@ -27,7 +27,7 @@ commands:
             TAG=<<parameters.rust-min-version>>
             docker build --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> -t ${REPO}/test:${TAG} --target test .
             docker run --rm ${REPO}/test:${TAG}
-  
+
   make-publish:
     parameters:
       rust-min-version:
@@ -61,7 +61,7 @@ jobs:
           version: 20.10.14
       - make-test:
           rust-min-version: << parameters.min-rust-version >>
-  
+
   publish:
     parameters:
       min-rust-version:
@@ -92,15 +92,16 @@ workflows:
                   "1.56",
                   "1.60",
                   "1.61",
+                  "1.62"
                 ]
-    
+
   test-publish:
     jobs:
       - test:
           filters: &filters-publish
             branches:
               only: main
-          matrix: 
+          matrix:
             <<: *matrix
       - publish:
           requires:
