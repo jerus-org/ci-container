@@ -8,7 +8,7 @@ parameters:
 executors:
   ubuntu:
     docker:
-      - image: cimg/base:2022.09
+      - image: cimg/base:2023.02
         auth:
           username: jerusdp
           password: $DOCKER_PASSWORD
@@ -86,7 +86,14 @@ workflows:
               ignore: main
           matrix: &matrix
             parameters:
-              min-rust-version: ["1.48", "1.56", "1.60", "1.62"]
+              min-rust-version:
+                [
+                  "1.48",
+                  "1.56",
+                  "1.60",
+                  "1.61",
+                  "1.62"
+                ]
 
   test-publish:
     jobs:
