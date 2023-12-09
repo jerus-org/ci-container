@@ -5,6 +5,7 @@ RUN cargo install nextsv
 FROM rust:latest as final
 COPY --from=binaries $CARGO_HOME/bin/cargo-release $CARGO_HOME/bin/
 COPY --from=binaries $CARGO_HOME/bin/nextsv $CARGO_HOME/bin/
+
 ARG MIN_RUST_VERSION=1.56
 RUN rustup update stable
 RUN rustup update nightly
