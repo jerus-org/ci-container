@@ -11,6 +11,7 @@ RUN rustup update stable
 RUN rustup update nightly
 RUN rustup update beta
 RUN rustup update $MIN_RUST_VERSION
+RUN rustup component add clippy
 
 FROM final AS test
 WORKDIR /project
