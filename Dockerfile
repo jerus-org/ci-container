@@ -7,11 +7,10 @@ COPY --from=binaries $CARGO_HOME/bin/cargo-release $CARGO_HOME/bin/
 COPY --from=binaries $CARGO_HOME/bin/nextsv $CARGO_HOME/bin/
 
 ARG MIN_RUST_VERSION=1.56
-RUN rustup update stable
-RUN rustup update nightly
-RUN rustup update beta
-RUN rustup update $MIN_RUST_VERSION
-RUN rustup component add clippy
+RUN rustup toolchain install stable --component clippy rustfmt
+RUN rustup toolchain install nightly --component clippy rustfmt
+RUN rustup toolchain install beta --component clippy rustfmt
+RUN rustup toolchain install $MIN_RUST_VERSION --component clippy rustfmt
 
 FROM final AS test
 WORKDIR /project
