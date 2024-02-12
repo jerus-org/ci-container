@@ -86,7 +86,7 @@ workflows:
               ignore: main
           matrix: &matrix
             parameters:
-              min-rust-version: ["1.61", "1.71", "1.72"]
+              min-rust-version: ["1.61", "1.71", "1.72", "1.74"]
 
   test-publish:
     jobs:
