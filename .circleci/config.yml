@@ -10,8 +10,8 @@ executors:
     docker:
       - image: cimg/base:2024.01
         auth:
-          username: jerusdp
-          password: $DOCKER_PASSWORD
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
 
 commands:
   make-test:
@@ -41,7 +41,7 @@ commands:
             TAG=<<parameters.rust-min-version>>
             INPUT_RELEASE_VERSION=0.1.0
             docker build --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> -t ${REPO}:${TAG} --target final .
-            docker login -u jerusdp -p $DOCKER_PASSWORD
+            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push ${REPO}:${TAG}
             docker tag ${REPO}:${TAG} "${REPO}:${INPUT_RELEASE_VERSION}-min-rust-${MIN_RUST_VERSION}"
             docker push "${REPO}:${INPUT_RELEASE_VERSION}-min-rust-${MIN_RUST_VERSION}"
