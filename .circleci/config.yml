@@ -43,10 +43,6 @@ commands:
             docker build --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> -t ${REPO}:${TAG} --target final .
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push ${REPO}:${TAG}
-            docker tag ${REPO}:${TAG} "${REPO}:${INPUT_RELEASE_VERSION}-min-rust-${MIN_RUST_VERSION}"
-            docker push "${REPO}:${INPUT_RELEASE_VERSION}-min-rust-${MIN_RUST_VERSION}"
-
-            RUST_MIN_VERSION=<<parameters.rust-min-version>> make publish-tag
 
 jobs:
   test:
