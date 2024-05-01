@@ -5,5 +5,12 @@
         "test",
         "ci"
     ],
-    "circleci-vscode.apiToken": "6026fc8a42e69fef9cba67624778d11d37e4957f"
+    "circleci-vscode.apiToken": "6026fc8a42e69fef9cba67624778d11d37e4957f",
+    "circleci.filters.branchFilter": "allBranches",
+    "circleci.persistedProjectSelection": [
+        "gh/jerus-org/ci-container"
+    ],
+    "cSpell.words": [
+        "DOCKERHUB"
+    ]
 }
