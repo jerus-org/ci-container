@@ -12,9 +12,17 @@ publish-tag: build publish
 	$(DOCKER) push "$(REPO):$(INPUT_RELEASE_VERSION)-min-rust-$(MIN_RUST_VERSION)"
 
 build:
-	$(DOCKER) build --build-arg MIN_RUST_VERSION=$(MIN_RUST_VERSION) -t $(REPO):${TAG} --target final .
+	$(DOCKER) build --no-cache --build-arg MIN_RUST_VERSION=$(MIN_RUST_VERSION) -t $(REPO):${TAG} --target final .
+
+build-binaries:
+	$(DOCKER) build --no-cache --build-arg MIN_RUST_VERSION=$(MIN_RUST_VERSION) -t $(REPO):${TAG} --target binaries .
 
 debug: build
+	$(DOCKER) run --rm -it \
+		--entrypoint=/bin/bash \
+		$(REPO):$(TAG)
+
+debug-binaries : build-binaries
 	$(DOCKER) run --rm -it \
 		--entrypoint=/bin/bash \
 		$(REPO):$(TAG)
