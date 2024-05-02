@@ -2,17 +2,24 @@ FROM rust:1.77.2-slim as binaries
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
-    git \
     pkg-config \
     libssl-dev \
     build-essential \
-    openssh-client=1:9.2p1-2+deb12u2 \
     ; \
     rm -rf /var/lib/apt/lists/*;
 RUN cargo install cargo-release; \
     cargo install nextsv;
 
 FROM rust:1.77.2-slim as final
+RUN set -eux; \
+    apt-get update; \
+    apt-get install -y --no-install-recommends \
+    git \
+    pkg-config \
+    libssl-dev \
+    build-essential \
+    ; \
+    rm -rf /var/lib/apt/lists/*;
 COPY --from=binaries $CARGO_HOME/bin/cargo-release $CARGO_HOME/bin/
 COPY --from=binaries $CARGO_HOME/bin/nextsv $CARGO_HOME/bin/
 
