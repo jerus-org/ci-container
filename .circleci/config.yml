@@ -84,18 +84,11 @@ workflows:
             parameters:
               min-rust-version: ["1.61", "1.65", "1.71", "1.72", "1.73", "1.74", "1.75"]
 
-  test-publish:
+  publish-only:
     jobs:
-      - test:
-          filters: &filters-publish
+      - publish:
+          filters:
             branches:
               only: main
-          matrix:
-            <<: *matrix
-      - publish:
-          requires:
-            - test
-          filters:
-            <<: *filters-publish
           matrix:
             <<: *matrix
