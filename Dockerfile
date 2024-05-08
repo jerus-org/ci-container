@@ -20,7 +20,7 @@ RUN set -eux; \
     build-essential \
     gpg \
     gpg-agent \
-    oppenssh-client \
+    openssh-client \
     ; \
     rm -rf /var/lib/apt/lists/*;
 COPY --from=binaries $CARGO_HOME/bin/cargo-release $CARGO_HOME/bin/
