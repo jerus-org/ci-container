@@ -18,6 +18,7 @@ RUN set -eux; \
     pkg-config \
     libssl-dev \
     build-essential \
+    gpg \
     ; \
     rm -rf /var/lib/apt/lists/*;
 COPY --from=binaries $CARGO_HOME/bin/cargo-release $CARGO_HOME/bin/
