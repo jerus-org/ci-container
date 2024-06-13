@@ -8,7 +8,8 @@ RUN set -eux; \
     ; \
     rm -rf /var/lib/apt/lists/*;
 RUN cargo install cargo-release; \
-    cargo install nextsv;
+    cargo install nextsv; \
+    cargo install pcu;
 
 FROM rust:1.78.0-slim as final
 RUN set -eux; \
@@ -25,6 +26,7 @@ RUN set -eux; \
     rm -rf /var/lib/apt/lists/*;
 COPY --from=binaries $CARGO_HOME/bin/cargo-release $CARGO_HOME/bin/
 COPY --from=binaries $CARGO_HOME/bin/nextsv $CARGO_HOME/bin/
+COPY --from=binaries $CARGO_HOME/bin/pcu $CARGO_HOME/bin/
 
 ARG MIN_RUST_VERSION=1.56
 RUN rustup component add clippy rustfmt; \
