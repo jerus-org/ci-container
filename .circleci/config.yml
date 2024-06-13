@@ -44,6 +44,29 @@ commands:
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push ${REPO}:${TAG}
 
+  gpg-key:
+    steps:    
+      - run:
+          name: import GPG key
+          command: |
+            echo -e $BOT_GPG_KEY \
+              | base64 --decode --ignore-garbage \
+              | gpg --batch --allow-secret-key-import --import 
+            gpg --fingerprint
+            echo $BOT_TRUST | gpg --import-ownertrust
+            gpg --fingerprint
+
+  git-config:
+    steps:
+      - run:
+          name: Configure git for user and signing
+          command: |
+            git config --global user.email "$BOT_USER_EMAIL"
+            git config --global user.name "$BOT_USER_NAME"
+            git config --global gpg.program gpg
+            git config --global user.signingkey "$BOT_SIGN_KEY"
+            git config --global commit.gpgsign true
+
 jobs:
   test:
     parameters:
@@ -71,6 +94,31 @@ jobs:
       - make-publish:
           rust-min-version: << parameters.min-rust-version >>
 
+  pr-changelog-update:
+    executor: ubuntu
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints: 
+            - SHA256:60dCfVZPD+o5zhG697wFQzG7KwR6PXip8kqM3Cn7Arc
+      - run:
+          name: Remove original SSH key from agent 
+          command: |
+            ssh-add -l
+            ssh-add -d ~/.ssh/id_rsa.pub
+            ssh-add -l
+      - gpg-key
+      - git-config
+      - run:
+          name: Install pcu
+          command: |
+            wget https://github.com/jerus-org/pcu/releases/download/v0.1.2/pcu
+            chmod +x pcu
+      - run:
+          name: Update changelog
+          command: |
+            ./pcu -vv
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
@@ -83,7 +131,10 @@ workflows:
           matrix: &matrix
             parameters:
               min-rust-version: ["1.61", "1.65", "1.71", "1.72", "1.73", "1.74", "1.75"]
-
+      - pr-changelog-update:
+          requires:
+            - test
+            
   publish-only:
     jobs:
       - publish:
