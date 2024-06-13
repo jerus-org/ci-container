@@ -100,7 +100,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints: 
-            - SHA256:60dCfVZPD+o5zhG697wFQzG7KwR6PXip8kqM3Cn7Arc
+            - SHA256:OkxsH8Z6Iim6WDJBaII9eTT9aaO1f3eDc6IpsgYYPVg
       - run:
           name: Remove original SSH key from agent 
           command: |
@@ -134,7 +134,8 @@ workflows:
       - pr-changelog-update:
           requires:
             - test
-            
+          context:
+            - release  
   publish-only:
     jobs:
       - publish:
