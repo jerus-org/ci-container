@@ -1,4 +1,4 @@
-FROM rust:1.78.0-slim as binaries
+FROM rust:1.79.0-slim as binaries
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
@@ -11,7 +11,7 @@ RUN cargo install cargo-release; \
     cargo install nextsv; \
     cargo install pcu;
 
-FROM rust:1.78.0-slim as final
+FROM rust:1.79.0-slim as final
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
