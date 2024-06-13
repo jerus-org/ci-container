@@ -2,11 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
-
-### Fixed
-
-- It not required for test container run
+## [Unreleased]
 
 ### Added
 
@@ -15,11 +11,11 @@ All notable changes to this project will be documented in this file.
 - Test script
 - Test builds and testing
 - Add test target that includes the test script
+- add pcu tool to ci container(pr [#56](https://github.com/jerus-org/ci-container/pull/56))
 
 ### Changed
 
 - Update README to describe files and usage
-
 - Add .gitignore
 - Delete build.sh as adopting Makefile
 - Add Makefile for building, publishing and debugging
@@ -28,3 +24,7 @@ All notable changes to this project will be documented in this file.
 - Default init for git cliff
 - Initial change log
 - Change MIN_RUST to MIN_RUST_VERSION
+
+### Fixed
+
+- It not required for test container run
