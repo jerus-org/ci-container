@@ -139,7 +139,7 @@ workflows:
       
       - pr-changelog-update:
           requires:
-            - test
+            - tests
           context:
             - release  
   publish-only:
