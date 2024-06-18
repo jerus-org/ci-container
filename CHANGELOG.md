@@ -28,3 +28,4 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - It not required for test container run
+- update pcu cargo package version to 0.1.5(pr [#59](https://github.com/jerus-org/ci-container/pull/59))
