@@ -7,9 +7,9 @@ RUN set -eux; \
     build-essential \
     ; \
     rm -rf /var/lib/apt/lists/*;
-RUN cargo install cargo-release; \
-    cargo install nextsv; \
-    cargo install pcu;
+RUN cargo binstall cargo-release --version 0.25.8 --no-confirm; \
+    cargo binstall nextsv --version 0.8.5 --no-confirm; \
+    cargo binstall pcu --version 0.1.4 --no-confirm;
 
 FROM rust:1.79.0-slim as final
 RUN set -eux; \
