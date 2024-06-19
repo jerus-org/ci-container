@@ -34,3 +34,4 @@ All notable changes to this project will be documented in this file.
 ### Security
 
 - Security: update pcu cargo package version to 0.1.6(pr [#60](https://github.com/jerus-org/ci-container/pull/60))
+- Security: update pcu cargo package version to 0.1.8(pr [#62](https://github.com/jerus-org/ci-container/pull/62))
