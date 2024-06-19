@@ -24,6 +24,7 @@ All notable changes to this project will be documented in this file.
 - Default init for git cliff
 - Initial change log
 - Change MIN_RUST to MIN_RUST_VERSION
+- fix(pr [#61](https://github.com/jerus-org/ci-container/pull/61))
 
 ### Fixed
 
