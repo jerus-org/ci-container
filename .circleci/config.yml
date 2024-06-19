@@ -132,14 +132,10 @@ workflows:
           matrix: &matrix
             parameters:
               min-rust-version: ["1.61", "1.65", "1.71", "1.72", "1.73", "1.74", "1.75"]
-      - tests:
-          requires: 
-            - test
-          type: approval
       
       - pr-changelog-update:
           requires:
-            - tests
+            - test
           context:
             - release  
   publish-only:
