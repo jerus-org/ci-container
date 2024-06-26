@@ -25,6 +25,7 @@ All notable changes to this project will be documented in this file.
 - Initial change log
 - Change MIN_RUST to MIN_RUST_VERSION
 - fix(pr [#61](https://github.com/jerus-org/ci-container/pull/61))
+- chore-Use un-published version of pcu(pr [#63](https://github.com/jerus-org/ci-container/pull/63))
 
 ### Fixed
 
