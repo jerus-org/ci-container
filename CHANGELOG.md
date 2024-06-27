@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 - Test builds and testing
 - Add test target that includes the test script
 - add pcu tool to ci container(pr [#56](https://github.com/jerus-org/ci-container/pull/56))
+- add curl package to the list of installed packages for final container(pr [#64](https://github.com/jerus-org/ci-container/pull/64))
 
 ### Changed
 
