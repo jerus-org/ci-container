@@ -27,6 +27,7 @@ RUN set -eux; \
     gpg \
     gpg-agent \
     openssh-client \
+    curl \
     ; \
     rm -rf /var/lib/apt/lists/*;
 COPY --from=binaries $CARGO_HOME/bin/cargo-release $CARGO_HOME/bin/
