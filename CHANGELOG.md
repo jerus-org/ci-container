@@ -13,6 +13,7 @@ All notable changes to this project will be documented in this file.
 - Add test target that includes the test script
 - add pcu tool to ci container(pr [#56](https://github.com/jerus-org/ci-container/pull/56))
 - add curl package to the list of installed packages for final container(pr [#64](https://github.com/jerus-org/ci-container/pull/64))
+- add jq package to the list of installed packages in the Dockerfile(pr [#65](https://github.com/jerus-org/ci-container/pull/65))
 
 ### Changed
 
