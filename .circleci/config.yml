@@ -45,7 +45,7 @@ commands:
             docker push ${REPO}:${TAG}
 
   gpg-key:
-    steps:    
+    steps:
       - run:
           name: import GPG key
           command: |
@@ -81,7 +81,6 @@ jobs:
       - make-test:
           rust-min-version: << parameters.min-rust-version >>
 
-
   publish:
     parameters:
       min-rust-version:
@@ -100,10 +99,10 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: 
+          fingerprints:
             - SHA256:OkxsH8Z6Iim6WDJBaII9eTT9aaO1f3eDc6IpsgYYPVg
       - run:
-          name: Remove original SSH key from agent 
+          name: Remove original SSH key from agent
           command: |
             ssh-add -l
             ssh-add -d ~/.ssh/id_rsa.pub
@@ -131,13 +130,14 @@ workflows:
               ignore: main
           matrix: &matrix
             parameters:
-              min-rust-version: ["1.61", "1.65", "1.71", "1.72", "1.73", "1.74", "1.75"]
-      
+              min-rust-version:
+                ["1.61", "1.65", "1.71", "1.72", "1.73", "1.74", "1.75", "1.76"]
+
       - pr-changelog-update:
           requires:
             - test
           context:
-            - release  
+            - release
   publish-only:
     jobs:
       - publish:

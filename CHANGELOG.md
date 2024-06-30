@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 - add pcu tool to ci container(pr [#56](https://github.com/jerus-org/ci-container/pull/56))
 - add curl package to the list of installed packages for final container(pr [#64](https://github.com/jerus-org/ci-container/pull/64))
 - add jq package to the list of installed packages in the Dockerfile(pr [#65](https://github.com/jerus-org/ci-container/pull/65))
+- add rust version 1.76(pr [#66](https://github.com/jerus-org/ci-container/pull/66))
 
 ### Changed
 
