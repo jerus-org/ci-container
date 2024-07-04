@@ -30,6 +30,7 @@ All notable changes to this project will be documented in this file.
 - Change MIN_RUST to MIN_RUST_VERSION
 - fix(pr [#61](https://github.com/jerus-org/ci-container/pull/61))
 - chore-Use un-published version of pcu(pr [#63](https://github.com/jerus-org/ci-container/pull/63))
+- fix remove rust-min-version parameter and change docker build tag to base(pr [#69](https://github.com/jerus-org/ci-container/pull/69))
 
 ### Fixed
 
