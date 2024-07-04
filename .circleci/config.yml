@@ -45,18 +45,13 @@ commands:
             docker push ${REPO}:${TAG}
 
   publish_base_cmd:
-    parameters:
-      rust-min-version:
-        default: "1.56"
-        type: string
     steps:
       - run:
-          name: Publish for minimum version <<parameters.rust-min-version>>
+          name: Publish for minimum version base
           command: |
             REPO=jerusdp/ci-rust
-            TAG=<<parameters.rust-min-version>>
             INPUT_RELEASE_VERSION=0.1.0
-            docker build --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> -t ${REPO}:${TAG} --target final .
+            docker build --build-arg  -t ${REPO}:base --target final .
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push ${REPO}:${TAG}
 
