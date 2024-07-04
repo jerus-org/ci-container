@@ -11,6 +11,7 @@
         "gh/jerus-org/ci-container"
     ],
     "cSpell.words": [
-        "DOCKERHUB"
+        "DOCKERHUB",
+        "rustcs"
     ]
 }
