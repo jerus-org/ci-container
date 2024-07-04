@@ -51,9 +51,9 @@ commands:
           command: |
             REPO=jerusdp/ci-rust
             INPUT_RELEASE_VERSION=0.1.0
-            docker build --build-arg  -t ${REPO}:base --target final .
+            docker build -t ${REPO}:base --target final .
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
-            docker push ${REPO}:${TAG}
+            docker push ${REPO}:base
 
   gpg-key:
     steps:
