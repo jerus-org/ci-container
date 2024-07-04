@@ -28,7 +28,23 @@ commands:
             docker build --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> -t ${REPO}/test:${TAG} --target test .
             docker run --rm ${REPO}/test:${TAG}
 
-  make-publish:
+  publish_rust_env:
+    parameters:
+      rust-min-version:
+        default: "1.56"
+        type: string
+    steps:
+      - run:
+          name: Publish for minimum version <<parameters.rust-min-version>>
+          command: |
+            REPO=jerusdp/ci-rust
+            TAG=<<parameters.rust-min-version>>
+            INPUT_RELEASE_VERSION=0.1.0
+            docker build --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> -t ${REPO}:${TAG} --target final .
+            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+            docker push ${REPO}:${TAG}
+
+  publish_base_cmd:
     parameters:
       rust-min-version:
         default: "1.56"
@@ -81,7 +97,7 @@ jobs:
       - make-test:
           rust-min-version: << parameters.min-rust-version >>
 
-  publish:
+  publish_rustcs:
     parameters:
       min-rust-version:
         type: string
@@ -91,8 +107,17 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
           version: 20.10.14
-      - make-publish:
+      - publish_rust_env:
           rust-min-version: << parameters.min-rust-version >>
+
+  publish_base:
+    executor: ubuntu
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+          version: 20.10.14
+      - publish_base_cmd
 
   pr-changelog-update:
     executor: ubuntu
@@ -140,9 +165,14 @@ workflows:
             - release
   publish-only:
     jobs:
-      - publish:
+      - publish_rustcs:
           filters:
             branches:
               only: main
           matrix:
             <<: *matrix
+
+      - publish_base:
+          filters:
+            branches:
+              only: main

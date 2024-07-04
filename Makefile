@@ -3,6 +3,7 @@ INPUT_RELEASE_VERSION ?= 0.1.0
 MIN_RUST_VERSION ?= 1.56.0
 REPO ?= jerusdp/ci-rust
 TAG ?= $(MIN_RUST_VERSION)
+BASE_TAG ?= base
 
 publish: build
 	$(DOCKER) push $(REPO):${TAG} 
@@ -16,6 +17,9 @@ build:
 
 build-binaries:
 	$(DOCKER) build --no-cache --build-arg MIN_RUST_VERSION=$(MIN_RUST_VERSION) -t $(REPO):${TAG} --target binaries .
+
+build-base:
+	$(DOCKER) build --no-cache  -t $(REPO):${BASE_TAG} --target base .
 
 debug: build
 	$(DOCKER) run --rm -it \
