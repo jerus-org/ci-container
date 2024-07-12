@@ -152,6 +152,7 @@ workflows:
             parameters:
               min-rust-version:
                 [
+                  "1.33",
                   "1.61",
                   "1.65",
                   "1.67",
