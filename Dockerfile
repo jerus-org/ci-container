@@ -15,9 +15,9 @@ RUN \
     --tlsv1.2 \
     -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 RUN cargo binstall cargo-release --version 0.25.8 --no-confirm; \
+    cargo binstall cargo-audit --version 0.20.0 --no-confirm; \
     cargo binstall nextsv --version 0.8.5 --no-confirm; \
-    # cargo binstall pcu --version 0.1.8 --no-confirm;
-    cargo install --force --git https://github.com/jerus-org/pcu.git
+    cargo binstall pcu --version 0.1.10 --no-confirm; 
 
 FROM rust:1.79.0-slim as base
 RUN set -eux; \
@@ -45,6 +45,7 @@ RUN set -eux; \
     ; \
     rm -rf /var/lib/apt/lists/*;
 COPY --from=binaries $CARGO_HOME/bin/cargo-release $CARGO_HOME/bin/
+COPY --from=binaries $CARGO_HOME/bin/cargo-audit $CARGO_HOME/bin/
 COPY --from=binaries $CARGO_HOME/bin/nextsv $CARGO_HOME/bin/
 COPY --from=binaries $CARGO_HOME/bin/pcu $CARGO_HOME/bin/
 
