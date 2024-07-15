@@ -16,6 +16,7 @@ All notable changes to this project will be documented in this file.
 - add jq package to the list of installed packages in the Dockerfile(pr [#65](https://github.com/jerus-org/ci-container/pull/65))
 - add rust version 1.76(pr [#66](https://github.com/jerus-org/ci-container/pull/66))
 - add new base stage with rust:1.79.0-slim(pr [#68](https://github.com/jerus-org/ci-container/pull/68))
+- add cargo-audit to the build(pr [#74](https://github.com/jerus-org/ci-container/pull/74))
 
 ### Changed
 
