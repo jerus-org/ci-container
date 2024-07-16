@@ -28,6 +28,8 @@ RUN set -eux; \
     jq \
     ; \
     rm -rf /var/lib/apt/lists/*;
+RUN useradd cicont
+USER cicont
 
 FROM rust:1.79.0-slim as final
 RUN set -eux; \
@@ -48,6 +50,8 @@ COPY --from=binaries $CARGO_HOME/bin/cargo-release $CARGO_HOME/bin/
 COPY --from=binaries $CARGO_HOME/bin/cargo-audit $CARGO_HOME/bin/
 COPY --from=binaries $CARGO_HOME/bin/nextsv $CARGO_HOME/bin/
 COPY --from=binaries $CARGO_HOME/bin/pcu $CARGO_HOME/bin/
+RUN useradd cicont
+USER cicont
 
 ARG MIN_RUST_VERSION=1.56
 RUN rustup component add clippy rustfmt; \
