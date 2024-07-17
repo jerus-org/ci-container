@@ -13,6 +13,10 @@ All notable changes to this project will be documented in this file.
 - docs-update unreleased version to 0.10 with release date 2024-7-17(pr [#76])
 - ci-add back in publish workflow(pr [#77])
 
+### Fixed
+
+- remove sudo from commands in .circleci/config.yml(pr [#79])
+
 ## [0.1.0] - 2024-07-17
 
 ### Added
@@ -62,5 +66,6 @@ All notable changes to this project will be documented in this file.
 [#76]: https://github.com/jerus-org/ci-container/pull/76
 [#77]: https://github.com/jerus-org/ci-container/pull/77
 [#78]: https://github.com/jerus-org/ci-container/pull/78
+[#79]: https://github.com/jerus-org/ci-container/pull/79
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/0.1.0...HEAD
 [0.1.0]: https://github.com/jerus-org/ci-container/releases/tag/0.1.0
