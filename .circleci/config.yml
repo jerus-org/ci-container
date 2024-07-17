@@ -166,7 +166,9 @@ workflows:
 
     jobs:
       - toolkit/choose_pipeline:
-          when: !Not in (<< pipeline.trigger_source >>)
+          filters:
+            branches:
+              ignore: main
           name: choose pipeline based on committer
           context: bot-check
 
