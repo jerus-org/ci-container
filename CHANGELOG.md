@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.1.0] - 2024-7-17
+## [Unreleased]
+
+### Changed
+
+- docs-update unreleased version to 0.10 with release date 2024-7-17(pr [#76])
+
+## [0.1.0] - 2024-07-17
 
 ### Added
 
@@ -47,3 +53,7 @@ All notable changes to this project will be documented in this file.
 - Security: update pcu cargo package version to 0.1.6(pr [#60](https://github.com/jerus-org/ci-container/pull/60))
 - Security: update pcu cargo package version to 0.1.8(pr [#62](https://github.com/jerus-org/ci-container/pull/62))
 - Dependencies: update cimg/base docker tag to v2024.07(pr [#67](https://github.com/jerus-org/ci-container/pull/67))
+
+[#76]: https://github.com/jerus-org/ci-container/pull/76
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/0.1.0...HEAD
+[0.1.0]: https://github.com/jerus-org/ci-container/releases/tag/0.1.0
