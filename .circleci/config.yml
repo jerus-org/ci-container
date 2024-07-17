@@ -166,6 +166,9 @@ workflows:
 
     jobs:
       - toolkit/choose_pipeline:
+          filters:
+            branches:
+              ignore: main
           name: choose pipeline based on committer
           context: bot-check
 
@@ -215,6 +218,20 @@ workflows:
 
     jobs:
       - toolkit/end_success
+
+  publish-only:
+    jobs:
+      - publish_rustcs:
+          filters:
+            branches:
+              only: main
+          matrix:
+            <<: *matrix
+
+      - publish_base:
+          filters:
+            branches:
+              only: main
 
   release:
     when:
