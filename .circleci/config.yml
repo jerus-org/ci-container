@@ -219,6 +219,9 @@ workflows:
       - toolkit/end_success
 
   publish-only:
+    when:
+      not:
+        equal: [scheduled_pipeline, << pipeline.trigger_source >>]
     jobs:
       - publish_rustcs:
           filters:
