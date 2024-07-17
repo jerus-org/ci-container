@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- make release to increment version number and update change log(pr [#78])
+
 ### Changed
 
 - docs-update unreleased version to 0.10 with release date 2024-7-17(pr [#76])
@@ -57,5 +61,6 @@ All notable changes to this project will be documented in this file.
 
 [#76]: https://github.com/jerus-org/ci-container/pull/76
 [#77]: https://github.com/jerus-org/ci-container/pull/77
+[#78]: https://github.com/jerus-org/ci-container/pull/78
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/0.1.0...HEAD
 [0.1.0]: https://github.com/jerus-org/ci-container/releases/tag/0.1.0
