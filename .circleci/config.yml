@@ -145,12 +145,14 @@ jobs:
       - run:
           name: Create Github release
           command: |
+            set -exo pipeline
             version=$(nextsv -bn calculate)
+            echo "version=${version}"
             pcu release --release ${version}
-            git add changelog.md
+            git add CHANGELOG.md
             git commit -m "chore(release): ${version}"  
-            git push
             gh release create v${version} -F CHANGELOG.md
+            git push --tags
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
