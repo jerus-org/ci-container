@@ -18,6 +18,7 @@ All notable changes to this project will be documented in this file.
 - remove sudo from commands in .circleci/config.yml(pr [#79])
 - remove sudo from wget command in CircleCI config(pr [#80])
 - change changelog.md to uppercase CHANGELOG.md in gh release command(pr [#81])
+- changelog to CHANGELOG and better debugging(pr [#82])
 
 ## [0.1.0] - 2024-07-17
 
@@ -71,5 +72,6 @@ All notable changes to this project will be documented in this file.
 [#79]: https://github.com/jerus-org/ci-container/pull/79
 [#80]: https://github.com/jerus-org/ci-container/pull/80
 [#81]: https://github.com/jerus-org/ci-container/pull/81
+[#82]: https://github.com/jerus-org/ci-container/pull/82
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/0.1.0...HEAD
 [0.1.0]: https://github.com/jerus-org/ci-container/releases/tag/0.1.0
