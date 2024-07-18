@@ -13,6 +13,7 @@ All notable changes to this project will be documented in this file.
 - docs-update unreleased version to 0.10 with release date 2024-7-17(pr [#76])
 - ci-add back in publish workflow(pr [#77])
 - ci-add pcu_verbosity parameter and update pcu release command(pr [#84])
+- ci-replace tree with ls(pr [#85])
 
 ### Fixed
 
@@ -77,5 +78,6 @@ All notable changes to this project will be documented in this file.
 [#82]: https://github.com/jerus-org/ci-container/pull/82
 [#83]: https://github.com/jerus-org/ci-container/pull/83
 [#84]: https://github.com/jerus-org/ci-container/pull/84
+[#85]: https://github.com/jerus-org/ci-container/pull/85
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/0.1.0...HEAD
 [0.1.0]: https://github.com/jerus-org/ci-container/releases/tag/0.1.0
