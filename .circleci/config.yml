@@ -152,14 +152,14 @@ jobs:
             set -exo pipefail
             version=$(nextsv -bn calculate)
             pcu <<parameters.pcu_verbosity>> release --release ${version}
-            tree
+            ls -l
             head -n 20 CHANGELOG.md
             git status
             git add CHANGELOG.md
             git status
             git commit -m "chore(release): ${version}"  
             git status
-            gh release create v${version} -F CHANGELOG.md
+            gh release create v${version} -F release_notes.md
             git push --tags
 
 # Invoke jobs via workflows
