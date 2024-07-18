@@ -145,7 +145,7 @@ jobs:
       - run:
           name: Create Github release
           command: |
-            set -exo pipeline
+            set -exo pipefail
             version=$(nextsv -bn calculate)
             echo "version=${version}"
             pcu release --release ${version}
