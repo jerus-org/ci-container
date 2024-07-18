@@ -150,7 +150,7 @@ jobs:
             git add changelog.md
             git commit -m "chore(release): ${version}"  
             git push
-            gh release create v${version} -F changelog.md
+            gh release create v${version} -F CHANGELOG.md
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
