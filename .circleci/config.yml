@@ -115,6 +115,10 @@ jobs:
         type: string
       min_rust_version:
         type: string
+      pcu_verbosity:
+        type: string
+        default: "-vv"
+        description: "The verbosity of the pcu command"
     steps:
       - checkout
       - add_ssh_keys:
@@ -147,10 +151,14 @@ jobs:
           command: |
             set -exo pipefail
             version=$(nextsv -bn calculate)
-            echo "version=${version}"
-            pcu release --release ${version}
+            pcu <<parameters.pcu_verbosity>> release --release ${version}
+            tree
+            head -n 20 CHANGELOG.md
+            git status
             git add CHANGELOG.md
+            git status
             git commit -m "chore(release): ${version}"  
+            git status
             gh release create v${version} -F CHANGELOG.md
             git push --tags
 
@@ -252,3 +260,4 @@ workflows:
             - bot-check
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min-rust-version >>
+          pcu_verbosity: "-vvvv"
