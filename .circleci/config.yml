@@ -147,6 +147,10 @@ jobs:
             && apt update \
             && apt install gh -y
       - run:
+          name: Check gh authentication
+          command: |
+            gh auth status
+      - run:
           name: Create Github release
           command: |
             set -exo pipefail
