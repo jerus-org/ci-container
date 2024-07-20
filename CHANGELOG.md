@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file.
 - ci-add pcu_verbosity parameter and update pcu release command(pr [#84])
 - ci-replace tree with ls(pr [#85])
 - ci-add step to check GitHub CLI authentication status(pr [#86])
+- ci-add commands to set git protocol and authenticate with GitHub token(pr [#87])
 
 ### Fixed
 
@@ -81,5 +82,6 @@ All notable changes to this project will be documented in this file.
 [#84]: https://github.com/jerus-org/ci-container/pull/84
 [#85]: https://github.com/jerus-org/ci-container/pull/85
 [#86]: https://github.com/jerus-org/ci-container/pull/86
+[#87]: https://github.com/jerus-org/ci-container/pull/87
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/0.1.0...HEAD
 [0.1.0]: https://github.com/jerus-org/ci-container/releases/tag/0.1.0
