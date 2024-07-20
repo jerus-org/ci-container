@@ -152,8 +152,8 @@ jobs:
             gh auth status
             gh config set git_protocol ssh --host github.com
             gh auth status
-            echo $GITHUB_TOKEN | gh auth login --with-token
-            gh auth status
+            # echo $GITHUB_TOKEN | gh auth login --with-token
+            # gh auth status
       - run:
           name: Create Github release
           command: |
