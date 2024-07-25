@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- add version 1.70 to workflows(pr [#90])
+
 ### Changed
 
 - docs-update version from Unreleased to 0.1.1 and update release link(pr [#89])
@@ -92,6 +96,7 @@ All notable changes to this project will be documented in this file.
 [#87]: https://github.com/jerus-org/ci-container/pull/87
 [#88]: https://github.com/jerus-org/ci-container/pull/88
 [#89]: https://github.com/jerus-org/ci-container/pull/89
+[#90]: https://github.com/jerus-org/ci-container/pull/90
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/0.1.1...HEAD
 [0.1.1]: https://github.com/jerus-org/ci-container/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/jerus-org/ci-container/releases/tag/0.1.0
