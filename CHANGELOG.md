@@ -13,6 +13,10 @@ All notable changes to this project will be documented in this file.
 - docs-update version from Unreleased to 0.1.1 and update release link(pr [#89])
 - chore-update versions of cargo-release, nextsv, and pcu in Dockerfile(pr [#91])
 
+### Security
+
+- Dependencies: update rust docker tag to v1.80.0(pr [#92])
+
 ## [0.1.1] - 2024-07-20
 
 ### Added
@@ -99,6 +103,7 @@ All notable changes to this project will be documented in this file.
 [#89]: https://github.com/jerus-org/ci-container/pull/89
 [#90]: https://github.com/jerus-org/ci-container/pull/90
 [#91]: https://github.com/jerus-org/ci-container/pull/91
+[#92]: https://github.com/jerus-org/ci-container/pull/92
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/0.1.1...HEAD
 [0.1.1]: https://github.com/jerus-org/ci-container/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/jerus-org/ci-container/releases/tag/0.1.0
