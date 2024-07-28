@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 
 - docs-update version from Unreleased to 0.1.1 and update release link(pr [#89])
 - chore-update versions of cargo-release, nextsv, and pcu in Dockerfile(pr [#91])
+- ci-remove make_release job and replace it with toolkit/make_release in workflows(pr [#93])
 
 ### Security
 
@@ -104,6 +105,7 @@ All notable changes to this project will be documented in this file.
 [#90]: https://github.com/jerus-org/ci-container/pull/90
 [#91]: https://github.com/jerus-org/ci-container/pull/91
 [#92]: https://github.com/jerus-org/ci-container/pull/92
+[#93]: https://github.com/jerus-org/ci-container/pull/93
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/0.1.1...HEAD
 [0.1.1]: https://github.com/jerus-org/ci-container/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/jerus-org/ci-container/releases/tag/0.1.0
