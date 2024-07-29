@@ -208,4 +208,4 @@ workflows:
           cargo_release: false
           tag_log: true
           pcu_verbosity: "-vvvv"
-          pcu_update: true
+          update_pcu: true
