@@ -207,3 +207,5 @@ workflows:
           min_rust_version: << pipeline.parameters.min-rust-version >>
           cargo_release: false
           tag_log: true
+          pcu_verbosity: "-vvvv"
+          update_pcu: true
