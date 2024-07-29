@@ -17,7 +17,7 @@ parameters:
     description: "If true, the success pipeline will be executed."
 
 orbs:
-  toolkit: jerus-org/circleci-toolkit@0.24.1
+  toolkit: jerus-org/circleci-toolkit@0.25.0
 
 executors:
   ubuntu:
@@ -206,3 +206,4 @@ workflows:
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min-rust-version >>
           cargo_release: false
+          tag_log: true
