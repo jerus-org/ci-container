@@ -1,4 +1,4 @@
-FROM rust:1.80.0-slim as binaries
+FROM rust:1.80.1-slim as binaries
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN set -eux; \
     apt-get update; \
@@ -19,7 +19,7 @@ RUN cargo binstall cargo-release --version 0.25.10 --no-confirm; \
     cargo binstall nextsv --version 0.8.7 --no-confirm; \
     cargo binstall pcu --version 0.1.24 --no-confirm; 
 
-FROM rust:1.80.0-slim as base
+FROM rust:1.80.1-slim as base
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
@@ -29,7 +29,7 @@ RUN set -eux; \
     ; \
     rm -rf /var/lib/apt/lists/*;
 
-FROM rust:1.80.0-slim as final
+FROM rust:1.80.1-slim as final
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
