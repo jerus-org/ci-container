@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - ci-upgrade toolkit version from 0.27.0 to 1.0.0(pr [#100])
+- chore-update nextsv and pcu versions in cargo binstall command(pr [#101])
 
 ## [0.1.3] - 2024-08-10
 
@@ -130,6 +131,7 @@ All notable changes to this project will be documented in this file.
 [#98]: https://github.com/jerus-org/ci-container/pull/98
 [#99]: https://github.com/jerus-org/ci-container/pull/99
 [#100]: https://github.com/jerus-org/ci-container/pull/100
+[#101]: https://github.com/jerus-org/ci-container/pull/101
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/0.1.3...HEAD
 [0.1.3]: https://github.com/jerus-org/ci-container/compare/0.1.2...0.1.3
 [0.1.2]: https://github.com/jerus-org/ci-container/compare/0.1.1...0.1.2
