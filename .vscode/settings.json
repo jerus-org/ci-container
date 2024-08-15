@@ -13,5 +13,6 @@
     "cSpell.words": [
         "DOCKERHUB",
         "rustcs"
-    ]
+    ],
+    "makefile.configureOnOpen": false
 }
