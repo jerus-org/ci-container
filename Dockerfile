@@ -15,9 +15,9 @@ RUN \
     --tlsv1.2 \
     -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 RUN cargo binstall cargo-release --version 0.25.10 --no-confirm; \
-    cargo binstall cargo-audit --version 0.20.0 --no-confirm; \
-    cargo binstall nextsv --version 0.8.12 --no-confirm; \
-    cargo binstall pcu --version 0.2.0 --no-confirm; 
+    cargo binstall cargo-audit --version 0.20.1 --no-confirm; \
+    cargo binstall nextsv --version 0.8.14 --no-confirm; \
+    cargo binstall pcu --version 0.4.1 --no-confirm; 
 
 FROM rust:1.80.1-slim as base
 RUN set -eux; \
