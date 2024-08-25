@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - chore-update versions of cargo-audit, nextsv, and pcu in cargo binstall commands(pr [#102])
+- ci-add version 1.78 to workflows(pr [#103])
 
 ## [0.1.4] - 2024-08-17
 
@@ -139,6 +140,7 @@ All notable changes to this project will be documented in this file.
 [#100]: https://github.com/jerus-org/ci-container/pull/100
 [#101]: https://github.com/jerus-org/ci-container/pull/101
 [#102]: https://github.com/jerus-org/ci-container/pull/102
+[#103]: https://github.com/jerus-org/ci-container/pull/103
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.4...HEAD
 [0.1.4]: https://github.com/jerus-org/ci-container/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/jerus-org/ci-container/compare/v0.1.2...v0.1.3
