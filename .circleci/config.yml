@@ -152,6 +152,7 @@ workflows:
                   "1.74",
                   "1.75",
                   "1.76",
+                  "1.78",
                 ]
 
       - toolkit/update_changelog:
