@@ -86,7 +86,7 @@ jobs:
       - make-test:
           rust-min-version: << parameters.min-rust-version >>
 
-  publish_rustcs:
+  publish_rustc_version:
     parameters:
       min-rust-version:
         type: string
@@ -153,6 +153,7 @@ workflows:
                   "1.75",
                   "1.76",
                   "1.78",
+                  "1.79",
                 ]
 
       - toolkit/update_changelog:
@@ -180,7 +181,7 @@ workflows:
       not:
         equal: [scheduled_pipeline, << pipeline.trigger_source >>]
     jobs:
-      - publish_rustcs:
+      - publish_rustc_version:
           filters:
             branches:
               only: main
