@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- add support for rustc version 1.79(pr [#104])
+
 ### Changed
 
 - chore-update versions of cargo-audit, nextsv, and pcu in cargo binstall commands(pr [#102])
@@ -141,6 +145,7 @@ All notable changes to this project will be documented in this file.
 [#101]: https://github.com/jerus-org/ci-container/pull/101
 [#102]: https://github.com/jerus-org/ci-container/pull/102
 [#103]: https://github.com/jerus-org/ci-container/pull/103
+[#104]: https://github.com/jerus-org/ci-container/pull/104
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.4...HEAD
 [0.1.4]: https://github.com/jerus-org/ci-container/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/jerus-org/ci-container/compare/v0.1.2...v0.1.3
