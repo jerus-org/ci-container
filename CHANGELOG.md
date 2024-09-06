@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 - add environment variables for cargo tools versions and update renovate config(pr [#108])
 
+### Changed
+
+- chore(Dockerfile)-update renovate config to include depName for cargo dependencies(pr [#109])
+
 ### Security
 
 - Dependencies: update cimg/base docker tag to v2024.09(pr [#106])
@@ -162,6 +166,7 @@ All notable changes to this project will be documented in this file.
 [#106]: https://github.com/jerus-org/ci-container/pull/106
 [#107]: https://github.com/jerus-org/ci-container/pull/107
 [#108]: https://github.com/jerus-org/ci-container/pull/108
+[#109]: https://github.com/jerus-org/ci-container/pull/109
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.5...HEAD
 [0.1.5]: https://github.com/jerus-org/ci-container/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/jerus-org/ci-container/compare/v0.1.3...v0.1.4
