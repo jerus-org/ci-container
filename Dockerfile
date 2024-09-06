@@ -1,4 +1,12 @@
 FROM rust:1.81.0-slim as binaries
+# renovate: datasource=cargo packageName=cargo-release 
+ENV CARGO_RELEASE_VERSION=0.25.10
+# renovate: datasource=cargo packageName=cargo-audit 
+ENV CARGO_AUDIT_VERSION=0.20.1
+# renovate: datasource=cargo packageName=nextsv 
+ENV NEXTSV_VERSION=0.8.14
+# renovate: datasource=cargo packageName=pcu 
+ENV PCU_VERSION=0.4.2
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN set -eux; \
     apt-get update; \
@@ -14,10 +22,10 @@ RUN \
     --proto '=https' \
     --tlsv1.2 \
     -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
-RUN cargo binstall cargo-release --version 0.25.10 --no-confirm; \
-    cargo binstall cargo-audit --version 0.20.1 --no-confirm; \
-    cargo binstall nextsv --version 0.8.14 --no-confirm; \
-    cargo binstall pcu --version 0.4.2 --no-confirm; 
+RUN cargo binstall cargo-release --version ${CARGO_RELEASE_VERSION} --no-confirm; \
+    cargo binstall cargo-audit --version ${CARGO_AUDIT_VERSION} --no-confirm; \
+    cargo binstall nextsv --version ${NEXTSV_VERSION} --no-confirm; \
+    cargo binstall pcu --version ${PCU_VERSION} --no-confirm; 
 
 FROM rust:1.81.0-slim as base
 RUN set -eux; \
