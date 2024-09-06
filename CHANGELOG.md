@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Security
 
 - Dependencies: update cimg/base docker tag to v2024.09(pr [#106])
+- Dependencies: update rust docker tag to v1.81.0(pr [#107])
 
 ## [0.1.5] - 2024-08-31
 
@@ -155,6 +156,7 @@ All notable changes to this project will be documented in this file.
 [#104]: https://github.com/jerus-org/ci-container/pull/104
 [#105]: https://github.com/jerus-org/ci-container/pull/105
 [#106]: https://github.com/jerus-org/ci-container/pull/106
+[#107]: https://github.com/jerus-org/ci-container/pull/107
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.5...HEAD
 [0.1.5]: https://github.com/jerus-org/ci-container/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/jerus-org/ci-container/compare/v0.1.3...v0.1.4
