@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - chore(Dockerfile)-update renovate config to include depName for cargo dependencies(pr [#109])
+- chore-update datasource from cargo to crate in Dockerfile(pr [#110])
 
 ### Security
 
@@ -167,6 +168,7 @@ All notable changes to this project will be documented in this file.
 [#107]: https://github.com/jerus-org/ci-container/pull/107
 [#108]: https://github.com/jerus-org/ci-container/pull/108
 [#109]: https://github.com/jerus-org/ci-container/pull/109
+[#110]: https://github.com/jerus-org/ci-container/pull/110
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.5...HEAD
 [0.1.5]: https://github.com/jerus-org/ci-container/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/jerus-org/ci-container/compare/v0.1.3...v0.1.4
