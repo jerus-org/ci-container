@@ -1,11 +1,11 @@
 FROM rust:1.81.0-slim as binaries
-# renovate: datasource=cargo packageName=cargo-release 
+# renovate: datasource=cargo depName=cargo-release packageName=cargo-release 
 ENV CARGO_RELEASE_VERSION=0.25.10
-# renovate: datasource=cargo packageName=cargo-audit 
+# renovate: datasource=cargo depName=cargo-audit packageName=cargo-audit 
 ENV CARGO_AUDIT_VERSION=0.20.1
-# renovate: datasource=cargo packageName=nextsv 
+# renovate: datasource=cargo depName=nextsv packageName=nextsv 
 ENV NEXTSV_VERSION=0.8.14
-# renovate: datasource=cargo packageName=pcu 
+# renovate: datasource=cargo depName=pcu packageName=pcu 
 ENV PCU_VERSION=0.4.2
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN set -eux; \
