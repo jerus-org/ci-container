@@ -10,7 +10,7 @@ All notable changes to this project will be documented in this file.
 - chore(circleci)-update Docker image to default in config(pr [#113])
 - ci(circleci)-update toolkit orb to v1.6.0 and modify workflows(pr [#114])
 
-## [0.1.5] - 2024-09-07
+## [0.1.6] - 2024-09-07
 
 ### Added
 
@@ -183,7 +183,7 @@ All notable changes to this project will be documented in this file.
 [#113]: https://github.com/jerus-org/ci-container/pull/113
 [#114]: https://github.com/jerus-org/ci-container/pull/114
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.5...HEAD
-[0.1.5]: https://github.com/jerus-org/ci-container/compare/v0.1.5...v0.1.5
+[0.1.6]: https://github.com/jerus-org/ci-container/compare/v0.1.5...v0.1.6
 [0.1.5]: https://github.com/jerus-org/ci-container/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/jerus-org/ci-container/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/jerus-org/ci-container/compare/v0.1.2...v0.1.3
