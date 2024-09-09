@@ -17,7 +17,7 @@ parameters:
     description: "If true, the success pipeline will be executed."
 
 orbs:
-  toolkit: jerus-org/circleci-toolkit@1.5.0
+  toolkit: jerus-org/circleci-toolkit@1.6.0
 
 executors:
   ubuntu:
@@ -175,22 +175,20 @@ workflows:
     jobs:
       - toolkit/end_success
 
-  publish-only:
+  check_rebase:
     when:
       not:
         equal: [scheduled_pipeline, << pipeline.trigger_source >>]
     jobs:
-      - publish_rustc_version:
+      - toolkit/label:
           filters:
             branches:
               only: main
-          matrix:
-            <<: *matrix
-
-      - publish_base:
-          filters:
-            branches:
-              only: main
+          ssh_fingerprint: << pipeline.parameters.fingerprint >>
+          min_rust_version: << pipeline.parameters.min-rust-version >>
+          context:
+            - bot-check
+            - release
 
   release:
     when:
@@ -210,3 +208,8 @@ workflows:
           pcu_update_changelog: true
           pcu_verbosity: "-vvvv"
           update_pcu: true
+      - publish_rustc_version:
+          matrix:
+            <<: *matrix
+
+      - publish_base
