@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- ci-add label_option to CircleCI config and rangeStrategy to Renovate config(pr [#112])
+
 ## [0.1.5] - 2024-09-07
 
 ### Added
@@ -171,6 +177,8 @@ All notable changes to this project will be documented in this file.
 [#109]: https://github.com/jerus-org/ci-container/pull/109
 [#110]: https://github.com/jerus-org/ci-container/pull/110
 [#111]: https://github.com/jerus-org/ci-container/pull/111
+[#112]: https://github.com/jerus-org/ci-container/pull/112
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.5...HEAD
 [0.1.5]: https://github.com/jerus-org/ci-container/compare/v0.1.5...v0.1.5
 [0.1.5]: https://github.com/jerus-org/ci-container/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/jerus-org/ci-container/compare/v0.1.3...v0.1.4
