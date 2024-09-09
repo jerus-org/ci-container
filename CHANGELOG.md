@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - ci-add label_option to CircleCI config and rangeStrategy to Renovate config(pr [#112])
 - chore(circleci)-update Docker image to default in config(pr [#113])
+- ci(circleci)-update toolkit orb to v1.6.0 and modify workflows(pr [#114])
 
 ## [0.1.5] - 2024-09-07
 
@@ -180,6 +181,7 @@ All notable changes to this project will be documented in this file.
 [#111]: https://github.com/jerus-org/ci-container/pull/111
 [#112]: https://github.com/jerus-org/ci-container/pull/112
 [#113]: https://github.com/jerus-org/ci-container/pull/113
+[#114]: https://github.com/jerus-org/ci-container/pull/114
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.5...HEAD
 [0.1.5]: https://github.com/jerus-org/ci-container/compare/v0.1.5...v0.1.5
 [0.1.5]: https://github.com/jerus-org/ci-container/compare/v0.1.4...v0.1.5
