@@ -22,7 +22,7 @@ orbs:
 executors:
   ubuntu:
     docker:
-      - image: cimg/base:default
+      - image: cimg/base:2024.09
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -82,7 +82,6 @@ jobs:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
-          version: default
       - make-test:
           rust-min-version: << parameters.min-rust-version >>
 
@@ -95,7 +94,6 @@ jobs:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
-          version: 20.10.14
       - publish_rust_env:
           rust-min-version: << parameters.min-rust-version >>
 
