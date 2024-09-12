@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- add support for publishing Rust WASI environment(pr [#116])
+
 ### Changed
 
 - ci-add label_option to CircleCI config and rangeStrategy to Renovate config(pr [#112])
@@ -184,6 +188,7 @@ All notable changes to this project will be documented in this file.
 [#113]: https://github.com/jerus-org/ci-container/pull/113
 [#114]: https://github.com/jerus-org/ci-container/pull/114
 [#115]: https://github.com/jerus-org/ci-container/pull/115
+[#116]: https://github.com/jerus-org/ci-container/pull/116
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.6...HEAD
 [0.1.6]: https://github.com/jerus-org/ci-container/compare/v0.1.5...v0.1.6
 [0.1.5]: https://github.com/jerus-org/ci-container/compare/v0.1.4...v0.1.5
