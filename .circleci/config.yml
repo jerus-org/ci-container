@@ -212,7 +212,6 @@ workflows:
           filters:
             branches:
               only: main
-          ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min-rust-version >>
           context:
             - bot-check
