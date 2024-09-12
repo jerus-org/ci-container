@@ -1,4 +1,6 @@
 FROM rust:1.81.0-slim as binaries
+# renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli
+ENV WASMTIME_VERSION=24.0.0
 # renovate: datasource=crate depName=cargo-release packageName=cargo-release
 ENV CARGO_RELEASE_VERSION=0.25.10
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit
@@ -22,7 +24,9 @@ RUN \
     --proto '=https' \
     --tlsv1.2 \
     -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
-RUN cargo binstall cargo-release --version ${CARGO_RELEASE_VERSION} --no-confirm; \
+RUN \
+    cargo binstall wasmtime-cli --version ${WASMTIME_VERSION} --no-confirm; \
+    cargo binstall cargo-release --version ${CARGO_RELEASE_VERSION} --no-confirm; \
     cargo binstall cargo-audit --version ${CARGO_AUDIT_VERSION} --no-confirm; \
     cargo binstall nextsv --version ${NEXTSV_VERSION} --no-confirm; \
     cargo binstall pcu --version ${PCU_VERSION} --no-confirm; 
@@ -56,13 +60,15 @@ COPY --from=binaries $CARGO_HOME/bin/cargo-release $CARGO_HOME/bin/
 COPY --from=binaries $CARGO_HOME/bin/cargo-audit $CARGO_HOME/bin/
 COPY --from=binaries $CARGO_HOME/bin/nextsv $CARGO_HOME/bin/
 COPY --from=binaries $CARGO_HOME/bin/pcu $CARGO_HOME/bin/
-
 ARG MIN_RUST_VERSION=1.56
 RUN rustup component add clippy rustfmt; \
     rustup toolchain install stable --component clippy rustfmt; \
     rustup toolchain install nightly --component clippy rustfmt; \
     rustup toolchain install beta --component clippy rustfmt; \
     rustup toolchain install $MIN_RUST_VERSION --component clippy rustfmt;  
+
+FROM final as wasi
+COPY --from=binaries $CARGO_HOME/bin/wasmtime $CARGO_HOME/bin/
 
 FROM final AS test
 WORKDIR /project
