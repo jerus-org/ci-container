@@ -15,6 +15,10 @@ All notable changes to this project will be documented in this file.
 - ci(circleci)-update toolkit orb to v1.6.0 and modify workflows(pr [#114])
 - chore-update changelog for version 0.1.6(pr [#115])
 
+### Fixed
+
+- Dockerfile: add wasm32-wasip1 target to rustup(pr [#117])
+
 ## [0.1.6] - 2024-09-07
 
 ### Added
@@ -189,6 +193,7 @@ All notable changes to this project will be documented in this file.
 [#114]: https://github.com/jerus-org/ci-container/pull/114
 [#115]: https://github.com/jerus-org/ci-container/pull/115
 [#116]: https://github.com/jerus-org/ci-container/pull/116
+[#117]: https://github.com/jerus-org/ci-container/pull/117
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.6...HEAD
 [0.1.6]: https://github.com/jerus-org/ci-container/compare/v0.1.5...v0.1.6
 [0.1.5]: https://github.com/jerus-org/ci-container/compare/v0.1.4...v0.1.5
