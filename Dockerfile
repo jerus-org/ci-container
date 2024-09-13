@@ -60,7 +60,7 @@ COPY --from=binaries $CARGO_HOME/bin/cargo-release $CARGO_HOME/bin/
 COPY --from=binaries $CARGO_HOME/bin/cargo-audit $CARGO_HOME/bin/
 COPY --from=binaries $CARGO_HOME/bin/nextsv $CARGO_HOME/bin/
 COPY --from=binaries $CARGO_HOME/bin/pcu $CARGO_HOME/bin/
-ARG MIN_RUST_VERSION=1.56
+ARG MIN_RUST_VERSION=1.65
 RUN rustup component add clippy rustfmt; \
     rustup toolchain install stable --component clippy rustfmt; \
     rustup toolchain install nightly --component clippy rustfmt; \
@@ -68,8 +68,15 @@ RUN rustup component add clippy rustfmt; \
     rustup toolchain install $MIN_RUST_VERSION --component clippy rustfmt;  
 
 FROM final as wasi
+ARG MIN_RUST_VERSION=1.65
+ARG MIN_RUST_WASI=wasm32-wasi
 COPY --from=binaries $CARGO_HOME/bin/wasmtime $CARGO_HOME/bin/
-RUN rustup target add wasm32-wasip1;
+RUN \
+    rustup target add wasm32-wasip1; \
+    rustup target add wasm32-wasip1 --toolchain stable; \
+    rustup target add wasm32-wasip1 --toolchain nightly; \
+    rustup target add wasm32-wasip1 --toolchain beta; \
+    rustup target add $MIN_RUST_WASI --toolchain $MIN_RUST_VERSION;
 
 FROM final AS test
 WORKDIR /project

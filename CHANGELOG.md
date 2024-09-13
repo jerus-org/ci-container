@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - add support for publishing Rust WASI environment(pr [#116])
+- add support for multiple Rust toolchains and WASI target(pr [#118])
 
 ### Changed
 
@@ -194,6 +195,7 @@ All notable changes to this project will be documented in this file.
 [#115]: https://github.com/jerus-org/ci-container/pull/115
 [#116]: https://github.com/jerus-org/ci-container/pull/116
 [#117]: https://github.com/jerus-org/ci-container/pull/117
+[#118]: https://github.com/jerus-org/ci-container/pull/118
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.6...HEAD
 [0.1.6]: https://github.com/jerus-org/ci-container/compare/v0.1.5...v0.1.6
 [0.1.5]: https://github.com/jerus-org/ci-container/compare/v0.1.4...v0.1.5
