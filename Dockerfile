@@ -69,6 +69,7 @@ RUN rustup component add clippy rustfmt; \
 
 FROM final as wasi
 COPY --from=binaries $CARGO_HOME/bin/wasmtime $CARGO_HOME/bin/
+RUN rustup target add wasm32-wasip1;
 
 FROM final AS test
 WORKDIR /project
