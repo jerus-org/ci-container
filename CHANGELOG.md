@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file.
 - chore(circleci)-update Docker image to default in config(pr [#113])
 - ci(circleci)-update toolkit orb to v1.6.0 and modify workflows(pr [#114])
 - chore-update changelog for version 0.1.6(pr [#115])
+- chore(ci)-remove unsupported Rust version from CircleCI config(pr [#119])
 
 ### Fixed
 
@@ -196,6 +197,7 @@ All notable changes to this project will be documented in this file.
 [#116]: https://github.com/jerus-org/ci-container/pull/116
 [#117]: https://github.com/jerus-org/ci-container/pull/117
 [#118]: https://github.com/jerus-org/ci-container/pull/118
+[#119]: https://github.com/jerus-org/ci-container/pull/119
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.6...HEAD
 [0.1.6]: https://github.com/jerus-org/ci-container/compare/v0.1.5...v0.1.6
 [0.1.5]: https://github.com/jerus-org/ci-container/compare/v0.1.4...v0.1.5
