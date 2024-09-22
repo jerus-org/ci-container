@@ -38,22 +38,20 @@ RUN set -eux; \
     git \
     curl \
     jq \
+    unzip \
     ; \
     rm -rf /var/lib/apt/lists/*;
 
-FROM rust:1.81.0-slim as final
+FROM base as final
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
-    git \
     pkg-config \
     libssl-dev \
     build-essential \
     gpg \
     gpg-agent \
     openssh-client \
-    curl \
-    jq \
     ; \
     rm -rf /var/lib/apt/lists/*;
 COPY --from=binaries $CARGO_HOME/bin/cargo-release $CARGO_HOME/bin/
