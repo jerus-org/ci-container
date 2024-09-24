@@ -17,7 +17,7 @@ parameters:
     description: "If true, the success pipeline will be executed."
 
 orbs:
-  toolkit: jerus-org/circleci-toolkit@1.6.1
+  toolkit: jerus-org/circleci-toolkit@1.9.2
 
 executors:
   ubuntu:
@@ -180,7 +180,10 @@ workflows:
                   "1.78",
                   "1.79",
                 ]
-
+      - toolkit/security:
+          no_cargo_audit: true
+          context:
+            - SonarCloud
       - toolkit/update_changelog:
           requires:
             - test
