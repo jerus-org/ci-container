@@ -95,14 +95,14 @@ commands:
   cargo_audit:
     parameters:
       ignore_advisories:
-        default: ""
-        description: List of advisories to ignore each prefixed with "--ignore "
         type: string
+        default: ""
+        description: "Additional parameters to list advisories that should be ignored"
     steps:
       - run:
-          name: cargo audit
+          name: Security audit against RUSTSEC
           command: |
-            cargo audit << ignore_advisories >>
+            cargo audit -D warnings << parameters.ignore_advisories >>
 
 jobs:
   test:
