@@ -18,6 +18,7 @@ parameters:
 
 orbs:
   toolkit: jerus-org/circleci-toolkit@1.9.2
+  sonarcloud: sonarsource/sonarcloud@2.0.0
 
 executors:
   ubuntu:
@@ -29,6 +30,9 @@ executors:
   rust-env:
     docker:
       - image: jerusdp/ci-rust:<<pipeline.parameters.min-rust-version>>
+  base_env:
+    docker:
+      - image: jerusdp/ci-rust:base
 
 commands:
   make-test:
@@ -88,6 +92,18 @@ commands:
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push ${REPO}:base
 
+  cargo_audit:
+    parameters:
+      ignore_advisories:
+        default: ""
+        description: List of advisories to ignore each prefixed with "--ignore "
+        type: string
+    steps:
+      - run:
+          name: cargo audit
+          command: |
+            cargo audit << ignore_advisories >>
+
 jobs:
   test:
     parameters:
@@ -134,6 +150,33 @@ jobs:
           version: 20.10.14
       - publish_base_cmd
 
+  security:
+    executor:
+      name: base_env
+    parameters:
+      ignore_advisories:
+        default: ""
+        description: List of advisories to ignore each prefixed with "--ignore "
+        type: string
+      no_cargo_audit:
+        default: false
+        description: Don't run the cargo audit scan
+        type: boolean
+      no_sonarcloud:
+        default: false
+        description: Don't run the sonarcloud scan
+        type: boolean
+    steps:
+      - checkout
+      - when:
+          condition: ! << parameters.no_cargo_audit >>
+          steps:
+            - cargo_audit:
+                ignore_advisories: << parameters.ignore_advisories >>
+      - when:
+          condition: ! << parameters.no_sonarcloud >>
+          steps:
+            - sonarcloud/scan
 workflows:
   check_last_commit:
     when:
@@ -180,13 +223,14 @@ workflows:
                   "1.78",
                   "1.79",
                 ]
-      - toolkit/security:
+      - security:
           no_cargo_audit: true
           context:
             - SonarCloud
       - toolkit/update_changelog:
           requires:
             - test
+            - security
           context:
             - release
             - bot-check
