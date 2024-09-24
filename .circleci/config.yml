@@ -158,23 +158,23 @@ jobs:
         default: ""
         description: List of advisories to ignore each prefixed with "--ignore "
         type: string
-      no_cargo_audit:
-        default: false
+      cargo_audit:
+        default: true
         description: Don't run the cargo audit scan
         type: boolean
-      no_sonarcloud:
-        default: false
+      sonarcloud:
+        default: true
         description: Don't run the sonarcloud scan
         type: boolean
     steps:
       - checkout
       - when:
-          condition: ! << parameters.no_cargo_audit >>
+          condition: << parameters.cargo_audit >>
           steps:
             - cargo_audit:
                 ignore_advisories: << parameters.ignore_advisories >>
       - when:
-          condition: ! << parameters.no_sonarcloud >>
+          condition: << parameters.sonarcloud >>
           steps:
             - sonarcloud/scan
 workflows:
@@ -224,7 +224,7 @@ workflows:
                   "1.79",
                 ]
       - security:
-          no_cargo_audit: true
+          cargo_audit: false
           context:
             - SonarCloud
       - toolkit/update_changelog:
