@@ -1,13 +1,13 @@
 FROM rust:1.81.0-slim as binaries
-# renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli
+# renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=cargo
 ENV WASMTIME_VERSION=25.0.0
-# renovate: datasource=crate depName=cargo-release packageName=cargo-release
+# renovate: datasource=crate depName=cargo-release packageName=cargo-release versioning=cargo
 ENV CARGO_RELEASE_VERSION=0.25.10
-# renovate: datasource=crate depName=cargo-audit packageName=cargo-audit
+# renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=cargo
 ENV CARGO_AUDIT_VERSION=0.20.1
-# renovate: datasource=crate depName=nextsv packageName=nextsv
+# renovate: datasource=crate depName=nextsv packageName=nextsv versioning=cargo
 ENV NEXTSV_VERSION=0.8.14
-# renovate: datasource=crate depName=pcu packageName=pcu
+# renovate: datasource=crate depName=pcu packageName=pcu versioning=cargo
 ENV PCU_VERSION=0.4.2
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN set -eux; \
