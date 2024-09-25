@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- update renovate regex manager to handle additional Dockerfile and Containerfile patterns(pr [#125])
+
 ### Changed
 
 - chore(Dockerfile)-update renovate configuration to include versioning for cargo dependencies(pr [#122])
@@ -226,6 +230,7 @@ All notable changes to this project will be documented in this file.
 [#122]: https://github.com/jerus-org/ci-container/pull/122
 [#123]: https://github.com/jerus-org/ci-container/pull/123
 [#124]: https://github.com/jerus-org/ci-container/pull/124
+[#125]: https://github.com/jerus-org/ci-container/pull/125
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.9...HEAD
 [0.1.9]: https://github.com/jerus-org/ci-container/compare/v0.1.8...v0.1.9
 [0.1.8]: https://github.com/jerus-org/ci-container/compare/v0.1.7...v0.1.8
