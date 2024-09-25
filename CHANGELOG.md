@@ -13,6 +13,7 @@ All notable changes to this project will be documented in this file.
 - chore(Dockerfile)-update renovate configuration to include versioning for cargo dependencies(pr [#122])
 - ci(circleci)-update toolkit orb version and add security context(pr [#124])
 - chore-update VSCode settings and simplify renovate custom managers(pr [#127])
+- chore-update versioning scheme for pcu package in Dockerfile(pr [#128])
 
 ### Fixed
 
@@ -233,6 +234,7 @@ All notable changes to this project will be documented in this file.
 [#124]: https://github.com/jerus-org/ci-container/pull/124
 [#125]: https://github.com/jerus-org/ci-container/pull/125
 [#127]: https://github.com/jerus-org/ci-container/pull/127
+[#128]: https://github.com/jerus-org/ci-container/pull/128
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.9...HEAD
 [0.1.9]: https://github.com/jerus-org/ci-container/compare/v0.1.8...v0.1.9
 [0.1.8]: https://github.com/jerus-org/ci-container/compare/v0.1.7...v0.1.8
