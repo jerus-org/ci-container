@@ -12,6 +12,7 @@
     ],
     "cSpell.words": [
         "DOCKERHUB",
+        "ontainer",
         "rustcs"
     ],
     "makefile.configureOnOpen": false
