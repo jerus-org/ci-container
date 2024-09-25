@@ -25,6 +25,7 @@ All notable changes to this project will be documented in this file.
 - Dependencies: update dependency pcu to v0.4.8(pr [#129])
 - Dependencies: update dependency cargo-release to v0.25.11(pr [#131])
 - Dependencies: update dependency nextsv to v0.8.18(pr [#132])
+- Dependencies: update dependency wasmtime-cli to v25.0.1(pr [#133])
 
 ## [0.1.9] - 2024-09-22
 
@@ -246,6 +247,7 @@ All notable changes to this project will be documented in this file.
 [#129]: https://github.com/jerus-org/ci-container/pull/129
 [#131]: https://github.com/jerus-org/ci-container/pull/131
 [#132]: https://github.com/jerus-org/ci-container/pull/132
+[#133]: https://github.com/jerus-org/ci-container/pull/133
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.9...HEAD
 [0.1.9]: https://github.com/jerus-org/ci-container/compare/v0.1.8...v0.1.9
 [0.1.8]: https://github.com/jerus-org/ci-container/compare/v0.1.7...v0.1.8
