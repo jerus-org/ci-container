@@ -7,7 +7,7 @@ ENV CARGO_RELEASE_VERSION=0.25.10
 ENV CARGO_AUDIT_VERSION=0.20.1
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=cargo
 ENV NEXTSV_VERSION=0.8.14
-# renovate: datasource=crate depName=pcu packageName=pcu versioning=cargo
+# renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
 ENV PCU_VERSION=0.4.2
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN set -eux; \
