@@ -17,7 +17,7 @@ parameters:
     description: "If true, the success pipeline will be executed."
 
 orbs:
-  toolkit: jerus-org/circleci-toolkit@1.9.2
+  toolkit: jerus-org/circleci-toolkit@1.11.0
   sonarcloud: sonarsource/sonarcloud@2.0.0
 
 executors:
@@ -202,6 +202,13 @@ workflows:
         - not: << pipeline.parameters.success-flag >>
         - << pipeline.parameters.validation-flag >>
     jobs:
+      - toolkit/label:
+          min_rust_version: << pipeline.parameters.min-rust-version >>
+          context: pcu-app
+          filters:
+            branches:
+              only:
+                - main
       - test:
           filters:
             branches:
@@ -236,7 +243,6 @@ workflows:
             - bot-check
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min-rust-version >>
-          label_option: true
 
   on_success:
     when:
