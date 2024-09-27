@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - update renovate regex manager to handle additional Dockerfile and Containerfile patterns(pr [#125])
+- update renovate.json to enable jerus-org/circleci-toolkit with source URL(pr [#134])
 
 ### Changed
 
@@ -248,6 +249,7 @@ All notable changes to this project will be documented in this file.
 [#131]: https://github.com/jerus-org/ci-container/pull/131
 [#132]: https://github.com/jerus-org/ci-container/pull/132
 [#133]: https://github.com/jerus-org/ci-container/pull/133
+[#134]: https://github.com/jerus-org/ci-container/pull/134
 [0.1.10]: https://github.com/jerus-org/ci-container/compare/v0.1.9...v0.1.10
 [0.1.9]: https://github.com/jerus-org/ci-container/compare/v0.1.8...v0.1.9
 [0.1.8]: https://github.com/jerus-org/ci-container/compare/v0.1.7...v0.1.8
