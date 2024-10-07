@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Security
+
+- Dependencies: update dependency nextsv to v0.8.20(pr [#138])
+
 ## [0.1.11] - 2024-10-05
 
 ### Security
@@ -261,6 +267,8 @@ All notable changes to this project will be documented in this file.
 [#135]: https://github.com/jerus-org/ci-container/pull/135
 [#136]: https://github.com/jerus-org/ci-container/pull/136
 [#137]: https://github.com/jerus-org/ci-container/pull/137
+[#138]: https://github.com/jerus-org/ci-container/pull/138
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.11...HEAD
 [0.1.11]: https://github.com/jerus-org/ci-container/compare/v0.1.10...v0.1.11
 [0.1.10]: https://github.com/jerus-org/ci-container/compare/v0.1.9...v0.1.10
 [0.1.9]: https://github.com/jerus-org/ci-container/compare/v0.1.8...v0.1.9
