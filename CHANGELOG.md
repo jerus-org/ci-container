@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Security
+
+- Dependencies: update rust docker tag to v1.82.0(pr [#144])
+
 ## [0.1.12] - 2024-10-12
 
 ### Security
@@ -278,6 +284,8 @@ All notable changes to this project will be documented in this file.
 [#141]: https://github.com/jerus-org/ci-container/pull/141
 [#142]: https://github.com/jerus-org/ci-container/pull/142
 [#143]: https://github.com/jerus-org/ci-container/pull/143
+[#144]: https://github.com/jerus-org/ci-container/pull/144
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.12...HEAD
 [0.1.12]: https://github.com/jerus-org/ci-container/compare/v0.1.11...v0.1.12
 [0.1.11]: https://github.com/jerus-org/ci-container/compare/v0.1.10...v0.1.11
 [0.1.10]: https://github.com/jerus-org/ci-container/compare/v0.1.9...v0.1.10

@@ -1,4 +1,4 @@
-FROM rust:1.81.0-slim as binaries
+FROM rust:1.82.0-slim as binaries
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
 ENV WASMTIME_VERSION=25.0.2
 # renovate: datasource=crate depName=cargo-release packageName=cargo-release versioning=semver-coerced
@@ -31,7 +31,7 @@ RUN \
     cargo binstall nextsv --version ${NEXTSV_VERSION} --no-confirm; \
     cargo binstall pcu --version ${PCU_VERSION} --no-confirm; 
 
-FROM rust:1.81.0-slim as base
+FROM rust:1.82.0-slim as base
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
