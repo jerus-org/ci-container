@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Security
 
 - Dependencies: update dependency wasmtime-cli to v26(pr [#147])
+- Dependencies: update dependency pcu to v0.4.13(pr [#148])
 
 ## [0.1.13] - 2024-10-19
 
@@ -296,6 +297,7 @@ All notable changes to this project will be documented in this file.
 [#146]: https://github.com/jerus-org/ci-container/pull/146
 [#145]: https://github.com/jerus-org/ci-container/pull/145
 [#147]: https://github.com/jerus-org/ci-container/pull/147
+[#148]: https://github.com/jerus-org/ci-container/pull/148
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.13...HEAD
 [0.1.13]: https://github.com/jerus-org/ci-container/compare/v0.1.12...v0.1.13
 [0.1.12]: https://github.com/jerus-org/ci-container/compare/v0.1.11...v0.1.12
