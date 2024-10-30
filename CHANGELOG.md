@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 - Dependencies: update dependency nextsv to v0.9.1(pr [#150])
 - Dependencies: update dependency cargo-audit to v0.21.0(pr [#151])
 - Dependencies: update dependency nextsv to v0.9.2(pr [#152])
+- Dependencies: update dependency toolkit to v1.15.0(pr [#154])
 
 ## [0.1.14] - 2024-10-26
 
@@ -311,6 +312,7 @@ All notable changes to this project will be documented in this file.
 [#150]: https://github.com/jerus-org/ci-container/pull/150
 [#151]: https://github.com/jerus-org/ci-container/pull/151
 [#152]: https://github.com/jerus-org/ci-container/pull/152
+[#154]: https://github.com/jerus-org/ci-container/pull/154
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.14...HEAD
 [0.1.14]: https://github.com/jerus-org/ci-container/compare/v0.1.13...v0.1.14
 [0.1.13]: https://github.com/jerus-org/ci-container/compare/v0.1.12...v0.1.13
