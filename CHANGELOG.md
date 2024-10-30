@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Security
 
 - Dependencies: update dependency toolkit to v1.14.0(pr [#149])
+- Dependencies: update dependency nextsv to v0.9.1(pr [#150])
 
 ## [0.1.14] - 2024-10-26
 
@@ -305,6 +306,7 @@ All notable changes to this project will be documented in this file.
 [#147]: https://github.com/jerus-org/ci-container/pull/147
 [#148]: https://github.com/jerus-org/ci-container/pull/148
 [#149]: https://github.com/jerus-org/ci-container/pull/149
+[#150]: https://github.com/jerus-org/ci-container/pull/150
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.14...HEAD
 [0.1.14]: https://github.com/jerus-org/ci-container/compare/v0.1.13...v0.1.14
 [0.1.13]: https://github.com/jerus-org/ci-container/compare/v0.1.12...v0.1.13
