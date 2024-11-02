@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 - Dependencies: update dependency nextsv to v0.9.2(pr [#152])
 - Dependencies: update dependency toolkit to v1.15.0(pr [#154])
 - Dependencies: update cimg/base docker tag to v2024.11(pr [#155])
+- Dependencies: update dependency pcu to v0.4.14(pr [#156])
 
 ## [0.1.14] - 2024-10-26
 
@@ -315,6 +316,7 @@ All notable changes to this project will be documented in this file.
 [#152]: https://github.com/jerus-org/ci-container/pull/152
 [#154]: https://github.com/jerus-org/ci-container/pull/154
 [#155]: https://github.com/jerus-org/ci-container/pull/155
+[#156]: https://github.com/jerus-org/ci-container/pull/156
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.14...HEAD
 [0.1.14]: https://github.com/jerus-org/ci-container/compare/v0.1.13...v0.1.14
 [0.1.13]: https://github.com/jerus-org/ci-container/compare/v0.1.12...v0.1.13

@@ -8,7 +8,7 @@ ENV CARGO_AUDIT_VERSION=0.21.0
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
 ENV NEXTSV_VERSION=0.9.2
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
-ENV PCU_VERSION=0.4.13
+ENV PCU_VERSION=0.4.14
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN set -eux; \
     apt-get update; \
