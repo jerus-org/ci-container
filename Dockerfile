@@ -6,7 +6,7 @@ ENV CARGO_RELEASE_VERSION=0.25.12
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.21.0
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
-ENV NEXTSV_VERSION=0.10.0
+ENV NEXTSV_VERSION=0.11.0
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
 ENV PCU_VERSION=0.4.14
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
