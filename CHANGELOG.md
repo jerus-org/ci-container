@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Security
 
 - Dependencies: update dependency nextsv to v0.11.0(pr [#158])
+- Dependencies: update dependency wasmtime-cli to v26.0.1(pr [#159])
 
 ## [0.1.15] - 2024-11-02
 
@@ -326,6 +327,7 @@ All notable changes to this project will be documented in this file.
 [#156]: https://github.com/jerus-org/ci-container/pull/156
 [#157]: https://github.com/jerus-org/ci-container/pull/157
 [#158]: https://github.com/jerus-org/ci-container/pull/158
+[#159]: https://github.com/jerus-org/ci-container/pull/159
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.15...HEAD
 [0.1.15]: https://github.com/jerus-org/ci-container/compare/v0.1.14...v0.1.15
 [0.1.14]: https://github.com/jerus-org/ci-container/compare/v0.1.13...v0.1.14
