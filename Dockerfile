@@ -5,6 +5,8 @@ ENV WASMTIME_VERSION=26.0.1
 ENV CARGO_RELEASE_VERSION=0.25.12
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.21.0
+# renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
+ENV CARGO_LLVM_COV_VERSION=0.6.14
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
 ENV NEXTSV_VERSION=0.11.0
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
@@ -28,6 +30,7 @@ RUN \
     cargo binstall wasmtime-cli --version ${WASMTIME_VERSION} --no-confirm; \
     cargo binstall cargo-release --version ${CARGO_RELEASE_VERSION} --no-confirm; \
     cargo binstall cargo-audit --version ${CARGO_AUDIT_VERSION} --no-confirm; \
+    cargo binstall cargo-llvm-cov --version ${CARGO_LLVM_COV_VERSION} --no-confirm; \
     cargo binstall nextsv --version ${NEXTSV_VERSION} --no-confirm; \
     cargo binstall pcu --version ${PCU_VERSION} --no-confirm; 
 
