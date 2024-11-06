@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- add cargo-llvm-cov to installed tools(pr [#161])
+
 ### Security
 
 - Dependencies: update dependency nextsv to v0.11.0(pr [#158])
@@ -328,6 +332,7 @@ All notable changes to this project will be documented in this file.
 [#157]: https://github.com/jerus-org/ci-container/pull/157
 [#158]: https://github.com/jerus-org/ci-container/pull/158
 [#159]: https://github.com/jerus-org/ci-container/pull/159
+[#161]: https://github.com/jerus-org/ci-container/pull/161
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.15...HEAD
 [0.1.15]: https://github.com/jerus-org/ci-container/compare/v0.1.14...v0.1.15
 [0.1.14]: https://github.com/jerus-org/ci-container/compare/v0.1.13...v0.1.14
