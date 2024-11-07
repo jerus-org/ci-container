@@ -59,6 +59,7 @@ RUN set -eux; \
     rm -rf /var/lib/apt/lists/*;
 COPY --from=binaries $CARGO_HOME/bin/cargo-release $CARGO_HOME/bin/
 COPY --from=binaries $CARGO_HOME/bin/cargo-audit $CARGO_HOME/bin/
+COPY --from=binaries $CARGO_HOME/bin/cargo-llvm-cov $CARGO_HOME/bin/
 COPY --from=binaries $CARGO_HOME/bin/nextsv $CARGO_HOME/bin/
 COPY --from=binaries $CARGO_HOME/bin/pcu $CARGO_HOME/bin/
 ARG MIN_RUST_VERSION=1.65

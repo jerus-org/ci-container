@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - chore-update CircleCI toolkit orb to version 1.17.0 and remove Docker version specification(pr [#163])
+- chore-add cargo-llvm-cov to Dockerfile build process(pr [#164])
 
 ## [0.1.16] - 2024-11-07
 
@@ -342,6 +343,7 @@ All notable changes to this project will be documented in this file.
 [#161]: https://github.com/jerus-org/ci-container/pull/161
 [#160]: https://github.com/jerus-org/ci-container/pull/160
 [#163]: https://github.com/jerus-org/ci-container/pull/163
+[#164]: https://github.com/jerus-org/ci-container/pull/164
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.16...HEAD
 [0.1.16]: https://github.com/jerus-org/ci-container/compare/v0.1.15...v0.1.16
 [0.1.15]: https://github.com/jerus-org/ci-container/compare/v0.1.14...v0.1.15
