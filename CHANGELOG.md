@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 ### Security
 
 - Dependencies: update dependency toolkit to v1.18.0(pr [#165])
+- Dependencies: update dependency toolkit to v1.19.0(pr [#166])
 
 ## [0.1.17] - 2024-11-07
 
@@ -356,6 +357,7 @@ All notable changes to this project will be documented in this file.
 [#164]: https://github.com/jerus-org/ci-container/pull/164
 [#165]: https://github.com/jerus-org/ci-container/pull/165
 [#167]: https://github.com/jerus-org/ci-container/pull/167
+[#166]: https://github.com/jerus-org/ci-container/pull/166
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.17...HEAD
 [0.1.17]: https://github.com/jerus-org/ci-container/compare/v0.1.16...v0.1.17
 [0.1.16]: https://github.com/jerus-org/ci-container/compare/v0.1.15...v0.1.16
