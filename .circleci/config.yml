@@ -228,6 +228,7 @@ workflows:
                   "1.76",
                   "1.78",
                   "1.79",
+                  "1.81",
                 ]
       - security:
           cargo_audit: false

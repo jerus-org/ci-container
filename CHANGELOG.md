@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- ci(circleci)-add Rust version 1.81 to test matrix(pr [#170])
+
 ## [0.1.19] - 2024-11-10
 
 ### Security
@@ -367,6 +373,8 @@ All notable changes to this project will be documented in this file.
 [#166]: https://github.com/jerus-org/ci-container/pull/166
 [#168]: https://github.com/jerus-org/ci-container/pull/168
 [#169]: https://github.com/jerus-org/ci-container/pull/169
+[#170]: https://github.com/jerus-org/ci-container/pull/170
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.19...HEAD
 [0.1.19]: https://github.com/jerus-org/ci-container/compare/v0.1.18...v0.1.19
 [0.1.18]: https://github.com/jerus-org/ci-container/compare/v0.1.17...v0.1.18
 [0.1.17]: https://github.com/jerus-org/ci-container/compare/v0.1.16...v0.1.17
