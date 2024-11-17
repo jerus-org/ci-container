@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [0.1.20] - 2024-11-17
 
 ### Changed
 
@@ -374,7 +374,7 @@ All notable changes to this project will be documented in this file.
 [#168]: https://github.com/jerus-org/ci-container/pull/168
 [#169]: https://github.com/jerus-org/ci-container/pull/169
 [#170]: https://github.com/jerus-org/ci-container/pull/170
-[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.19...HEAD
+[0.1.20]: https://github.com/jerus-org/ci-container/compare/v0.1.19...v0.1.20
 [0.1.19]: https://github.com/jerus-org/ci-container/compare/v0.1.18...v0.1.19
 [0.1.18]: https://github.com/jerus-org/ci-container/compare/v0.1.17...v0.1.18
 [0.1.17]: https://github.com/jerus-org/ci-container/compare/v0.1.16...v0.1.17
