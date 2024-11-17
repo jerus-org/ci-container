@@ -44,6 +44,8 @@ RUN set -eux; \
     unzip \
     ; \
     rm -rf /var/lib/apt/lists/*;
+USER circleci
+WORKDIR /home/circleci/project
 
 FROM base as final
 RUN set -eux; \
