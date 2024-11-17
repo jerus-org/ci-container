@@ -2,7 +2,7 @@ FROM rust:1.82.0-slim AS binaries
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
 ENV WASMTIME_VERSION=26.0.1
 # renovate: datasource=crate depName=cargo-release packageName=cargo-release versioning=semver-coerced
-ENV CARGO_RELEASE_VERSION=0.25.12
+ENV CARGO_RELEASE_VERSION=0.25.13
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.21.0
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
