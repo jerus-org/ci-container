@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- chore(Dockerfile)-set default user and work directory for circleci(pr [#174])
+
 ## [0.1.20] - 2024-11-17
 
 ### Changed
@@ -374,6 +380,8 @@ All notable changes to this project will be documented in this file.
 [#168]: https://github.com/jerus-org/ci-container/pull/168
 [#169]: https://github.com/jerus-org/ci-container/pull/169
 [#170]: https://github.com/jerus-org/ci-container/pull/170
+[#174]: https://github.com/jerus-org/ci-container/pull/174
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.20...HEAD
 [0.1.20]: https://github.com/jerus-org/ci-container/compare/v0.1.19...v0.1.20
 [0.1.19]: https://github.com/jerus-org/ci-container/compare/v0.1.18...v0.1.19
 [0.1.18]: https://github.com/jerus-org/ci-container/compare/v0.1.17...v0.1.18

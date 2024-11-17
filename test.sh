@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -e
 
 rustup show | grep stable
 rustup show | grep beta
