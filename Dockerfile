@@ -89,6 +89,7 @@ USER circleci
 WORKDIR /home/circleci/project
 
 FROM final AS test
+USER root
 WORKDIR /project
 COPY test.sh test.sh
 RUN chmod a+x test.sh
