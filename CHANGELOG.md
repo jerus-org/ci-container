@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Security
+
+- Dependencies: update dependency cargo-release to v0.25.13(pr [#171])
+
 ## [0.1.21] - 2024-11-17
 
 ### Changed
@@ -381,6 +387,8 @@ All notable changes to this project will be documented in this file.
 [#169]: https://github.com/jerus-org/ci-container/pull/169
 [#170]: https://github.com/jerus-org/ci-container/pull/170
 [#174]: https://github.com/jerus-org/ci-container/pull/174
+[#171]: https://github.com/jerus-org/ci-container/pull/171
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.21...HEAD
 [0.1.21]: https://github.com/jerus-org/ci-container/compare/v0.1.20...v0.1.21
 [0.1.20]: https://github.com/jerus-org/ci-container/compare/v0.1.19...v0.1.20
 [0.1.19]: https://github.com/jerus-org/ci-container/compare/v0.1.18...v0.1.19
