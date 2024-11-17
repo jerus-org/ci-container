@@ -1,4 +1,4 @@
-FROM rust:1.82.0-slim as binaries
+FROM rust:1.82.0-slim AS binaries
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
 ENV WASMTIME_VERSION=26.0.1
 # renovate: datasource=crate depName=cargo-release packageName=cargo-release versioning=semver-coerced
@@ -34,7 +34,7 @@ RUN \
     cargo binstall nextsv --version ${NEXTSV_VERSION} --no-confirm; \
     cargo binstall pcu --version ${PCU_VERSION} --no-confirm; 
 
-FROM rust:1.82.0-slim as base
+FROM rust:1.82.0-slim AS base
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
@@ -47,7 +47,7 @@ RUN set -eux; \
 USER circleci
 WORKDIR /home/circleci/project
 
-FROM base as final
+FROM base AS final
 USER root
 RUN set -eux; \
     apt-get update; \
@@ -74,7 +74,7 @@ RUN rustup component add clippy rustfmt llvm-tools; \
 USER circleci
 WORKDIR /home/circleci/project
 
-FROM final as wasi
+FROM final AS wasi
 ARG MIN_RUST_VERSION=1.65
 ARG MIN_RUST_WASI=wasm32-wasi
 USER root
