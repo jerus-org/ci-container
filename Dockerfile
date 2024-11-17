@@ -95,4 +95,5 @@ COPY test.sh test.sh
 RUN chmod a+x test.sh
 ARG MIN_RUST_VERSION=1.56
 ENV MIN_RUST=$MIN_RUST_VERSION
+USER circleci
 ENTRYPOINT [ "/project/test.sh" ]
