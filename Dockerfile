@@ -44,6 +44,7 @@ RUN set -eux; \
     unzip \
     ; \
     rm -rf /var/lib/apt/lists/*;
+RUN adduser circleci
 USER circleci
 WORKDIR /home/circleci/project
 
