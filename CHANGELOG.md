@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - Dependencies: update dependency cargo-release to v0.25.13(pr [#171])
 - Dependencies: update dependency pcu to v0.4.16(pr [#172])
+- Dependencies: update dependency nextsv to v0.13.0(pr [#173])
 
 ## [0.1.21] - 2024-11-17
 
@@ -390,6 +391,7 @@ All notable changes to this project will be documented in this file.
 [#174]: https://github.com/jerus-org/ci-container/pull/174
 [#171]: https://github.com/jerus-org/ci-container/pull/171
 [#172]: https://github.com/jerus-org/ci-container/pull/172
+[#173]: https://github.com/jerus-org/ci-container/pull/173
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.21...HEAD
 [0.1.21]: https://github.com/jerus-org/ci-container/compare/v0.1.20...v0.1.21
 [0.1.20]: https://github.com/jerus-org/ci-container/compare/v0.1.19...v0.1.20
