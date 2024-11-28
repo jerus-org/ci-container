@@ -32,7 +32,10 @@ RUN \
     cargo binstall cargo-audit --version ${CARGO_AUDIT_VERSION} --no-confirm; \
     cargo binstall cargo-llvm-cov --version ${CARGO_LLVM_COV_VERSION} --no-confirm; \
     cargo binstall nextsv --version ${NEXTSV_VERSION} --no-confirm; \
-    cargo binstall pcu --version ${PCU_VERSION} --no-confirm; 
+    cargo binstall pcu --version ${PCU_VERSION} --no-confirm; \
+    cargo binstall cargo-nextest --no-confirm; \ 
+    cargo binstall --locked --version 1.0.95 cargo-expand --no-confirm; \
+    cargo binstall circleci-junit-fix --locked --version 0.2.0 --no-confirm;
 
 FROM rust:1.82.0-slim AS base
 RUN set -eux; \
@@ -61,11 +64,14 @@ RUN set -eux; \
     openssh-client \
     ; \
     rm -rf /var/lib/apt/lists/*;
-COPY --from=binaries $CARGO_HOME/bin/cargo-release $CARGO_HOME/bin/
-COPY --from=binaries $CARGO_HOME/bin/cargo-audit $CARGO_HOME/bin/
-COPY --from=binaries $CARGO_HOME/bin/cargo-llvm-cov $CARGO_HOME/bin/
-COPY --from=binaries $CARGO_HOME/bin/nextsv $CARGO_HOME/bin/
-COPY --from=binaries $CARGO_HOME/bin/pcu $CARGO_HOME/bin/
+COPY --from=binaries $CARGO_HOME/bin/cargo-release \
+    $CARGO_HOME/bin/cargo-audit \
+    $CARGO_HOME/bin/cargo-llvm-cov \
+    $CARGO_HOME/bin/nextsv \
+    $CARGO_HOME/bin/pcu \
+    $CARGO_HOME/bin/cargo-nextest \
+    $CARGO_HOME/bin/cargo-expand \
+    $CARGO_HOME/bin/circleci-junit-fix $CARGO_HOME/bin/
 ARG MIN_RUST_VERSION=1.65
 RUN rustup component add clippy rustfmt llvm-tools; \
     rustup toolchain install stable --component clippy rustfmt; \
