@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Security
 
 - Dependencies: update cimg/base docker tag to v2024.12(pr [#180])
+- Dependencies: update dependency pcu to v0.4.18(pr [#179])
 
 ## [0.1.24] - 2024-12-03
 
@@ -417,6 +418,7 @@ All notable changes to this project will be documented in this file.
 [#177]: https://github.com/jerus-org/ci-container/pull/177
 [#178]: https://github.com/jerus-org/ci-container/pull/178
 [#180]: https://github.com/jerus-org/ci-container/pull/180
+[#179]: https://github.com/jerus-org/ci-container/pull/179
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.24...HEAD
 [0.1.24]: https://github.com/jerus-org/ci-container/compare/v0.1.23...v0.1.24
 [0.1.23]: https://github.com/jerus-org/ci-container/compare/v0.1.22...v0.1.23
