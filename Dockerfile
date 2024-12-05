@@ -1,6 +1,8 @@
 FROM rust:1.82.0-slim AS binaries
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
 ENV WASMTIME_VERSION=27.0.0
+# renovate: datasource=crate depName=wasmpack packageName=wasmpack versioning=semver-coerced
+ENV WASMPACK_VERSION=0.13.1
 # renovate: datasource=crate depName=cargo-release packageName=cargo-release versioning=semver-coerced
 ENV CARGO_RELEASE_VERSION=0.25.13
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
@@ -28,6 +30,7 @@ RUN \
     -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 RUN \
     cargo binstall wasmtime-cli --version ${WASMTIME_VERSION} --no-confirm; \
+    cargo binstall wasm-pack --version ${WASMPACK_VERSION} --no-confirm; \
     cargo binstall cargo-release --version ${CARGO_RELEASE_VERSION} --no-confirm; \
     cargo binstall cargo-audit --version ${CARGO_AUDIT_VERSION} --no-confirm; \
     cargo binstall cargo-llvm-cov --version ${CARGO_LLVM_COV_VERSION} --no-confirm; \
@@ -84,8 +87,8 @@ WORKDIR /home/circleci/project
 FROM final AS wasi
 ARG MIN_RUST_VERSION=1.65
 ARG MIN_RUST_WASI=wasm32-wasi
-USER root
 COPY --from=binaries $CARGO_HOME/bin/wasmtime $CARGO_HOME/bin/
+COPY --from=binaries $CARGO_HOME/bin/wasmpack $CARGO_HOME/bin/
 RUN \
     rustup target add wasm32-wasip1; \
     rustup target add wasm32-wasip1 --toolchain stable; \
