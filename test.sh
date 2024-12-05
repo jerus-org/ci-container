@@ -12,10 +12,13 @@ cargo release --version
 cargo audit --version
 cargo llvm-cov --version
 cargo nextest --version
+echo "cargo-expand version:"was
 cargo expand --version
 nextsv --version
 pcu --version
 circleci-junit-fix --version
+wasm-pack --version
+wasmtime --version
 echo "-----------------------------------------"
 ls -l /usr/local/cargo/bin/*
 echo "-----------------------------------------"
