@@ -30,7 +30,7 @@ RUN \
     -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 RUN \
     cargo binstall wasmtime-cli --version ${WASMTIME_VERSION} --no-confirm; \
-    cargo binstall wasm-pack --version ${WASMPACK_VERSION} --no-confirm; \
+    cargo install wasm-pack --version ${WASMPACK_VERSION} --no-confirm; \
     cargo binstall cargo-release --version ${CARGO_RELEASE_VERSION} --no-confirm; \
     cargo binstall cargo-audit --version ${CARGO_AUDIT_VERSION} --no-confirm; \
     cargo binstall cargo-llvm-cov --version ${CARGO_LLVM_COV_VERSION} --no-confirm; \
@@ -87,8 +87,8 @@ WORKDIR /home/circleci/project
 FROM final AS wasi
 ARG MIN_RUST_VERSION=1.65
 ARG MIN_RUST_WASI=wasm32-wasi
-COPY --from=binaries $CARGO_HOME/bin/wasmtime $CARGO_HOME/bin/
-COPY --from=binaries $CARGO_HOME/bin/wasmpack $CARGO_HOME/bin/
+COPY --from=binaries $CARGO_HOME/bin/wasmtime \
+    $CARGO_HOME/bin/wasmpack $CARGO_HOME/bin/
 RUN \
     rustup target add wasm32-wasip1; \
     rustup target add wasm32-wasip1 --toolchain stable; \
@@ -98,7 +98,7 @@ RUN \
 USER circleci
 WORKDIR /home/circleci/project
 
-FROM final AS test
+FROM wasi AS test
 USER root
 WORKDIR /project
 COPY test.sh test.sh
