@@ -46,8 +46,8 @@ commands:
           command: |
             REPO=jerusdp/ci-rust
             TAG=<<parameters.rust-min-version>>
-            docker build --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>>-wasi -t ${REPO}/test:${TAG} --target test .
-            docker run --rm ${REPO}/test:${TAG}
+            docker build --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> -t ${REPO}/test:${TAG}-wasi --target test .
+            docker run --rm ${REPO}/test:${TAG}-wasi
 
   publish_rust_env:
     parameters:
