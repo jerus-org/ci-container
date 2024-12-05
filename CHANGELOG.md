@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- add wasm-pack installation and environment variable(pr [#182])
+
 ### Security
 
 - Dependencies: update cimg/base docker tag to v2024.12(pr [#180])
@@ -421,6 +425,7 @@ All notable changes to this project will be documented in this file.
 [#180]: https://github.com/jerus-org/ci-container/pull/180
 [#179]: https://github.com/jerus-org/ci-container/pull/179
 [#181]: https://github.com/jerus-org/ci-container/pull/181
+[#182]: https://github.com/jerus-org/ci-container/pull/182
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.24...HEAD
 [0.1.24]: https://github.com/jerus-org/ci-container/compare/v0.1.23...v0.1.24
 [0.1.23]: https://github.com/jerus-org/ci-container/compare/v0.1.22...v0.1.23
