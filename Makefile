@@ -45,5 +45,5 @@ build-test:
 
 test: build-test
 	$(DOCKER) run --rm \
-		$(REPO)/test:$(TAG)
+		$(REPO)/test:${TAG}-${WASI_TAG}
 		
