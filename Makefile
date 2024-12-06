@@ -41,9 +41,9 @@ debug-binaries : build-binaries
 		$(REPO):$(TAG)
 
 build-test: 
-	$(DOCKER) build --build-arg MIN_RUST_VERSION=$(MIN_RUST_VERSION) -t $(REPO)/test:${TAG} --target test .
+	$(DOCKER) build --build-arg MIN_RUST_VERSION=$(MIN_RUST_VERSION) -t $(REPO)/test:${TAG}-${WASI_TAG} --target test .
 
 test: build-test
 	$(DOCKER) run --rm \
-		$(REPO)/test:$(TAG)
+		$(REPO)/test:${TAG}-${WASI_TAG}
 		
