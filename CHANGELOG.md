@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Security
+
+- Dependencies: update dependency pcu to v0.4.19(pr [#183])
+
 ## [0.1.25] - 2024-12-06
 
 ### Added
@@ -426,6 +432,8 @@ All notable changes to this project will be documented in this file.
 [#179]: https://github.com/jerus-org/ci-container/pull/179
 [#181]: https://github.com/jerus-org/ci-container/pull/181
 [#182]: https://github.com/jerus-org/ci-container/pull/182
+[#183]: https://github.com/jerus-org/ci-container/pull/183
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.25...HEAD
 [0.1.25]: https://github.com/jerus-org/ci-container/compare/v0.1.24...v0.1.25
 [0.1.24]: https://github.com/jerus-org/ci-container/compare/v0.1.23...v0.1.24
 [0.1.23]: https://github.com/jerus-org/ci-container/compare/v0.1.22...v0.1.23
