@@ -282,10 +282,9 @@ workflows:
             - bot-check
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min-rust-version >>
-          cargo_release: false
+          when_cargo_release: false
           pcu_update_changelog: true
           pcu_verbosity: "-vvvv"
-          update_pcu: true
       - publish_rustc_version:
           matrix:
             <<: *matrix
