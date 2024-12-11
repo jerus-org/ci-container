@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- ci(circleci)-add job dependencies for make_release in workflows(pr [#190])
+
 ## [0.1.26] - 2024-12-11
 
 ### Changed
@@ -448,6 +454,8 @@ All notable changes to this project will be documented in this file.
 [#187]: https://github.com/jerus-org/ci-container/pull/187
 [#188]: https://github.com/jerus-org/ci-container/pull/188
 [#189]: https://github.com/jerus-org/ci-container/pull/189
+[#190]: https://github.com/jerus-org/ci-container/pull/190
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.26...HEAD
 [0.1.26]: https://github.com/jerus-org/ci-container/compare/v0.1.25...v0.1.26
 [0.1.25]: https://github.com/jerus-org/ci-container/compare/v0.1.24...v0.1.25
 [0.1.24]: https://github.com/jerus-org/ci-container/compare/v0.1.23...v0.1.24
