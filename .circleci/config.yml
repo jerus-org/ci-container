@@ -277,6 +277,10 @@ workflows:
         - not: << pipeline.parameters.validation-flag >>
     jobs:
       - toolkit/make_release:
+          requires:
+            - publish_rustc_version
+            - publish_rustc_wasi_version
+            - publish_base
           context:
             - release
             - bot-check
