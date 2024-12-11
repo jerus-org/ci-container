@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - refactor(circleci)-rename cargo_release to when_cargo_release in config.yml(pr [#187])
+- chore-update NEXTSV_VERSION to 0.17.0 in Dockerfile(pr [#188])
 
 ### Security
 
@@ -444,6 +445,7 @@ All notable changes to this project will be documented in this file.
 [#185]: https://github.com/jerus-org/ci-container/pull/185
 [#186]: https://github.com/jerus-org/ci-container/pull/186
 [#187]: https://github.com/jerus-org/ci-container/pull/187
+[#188]: https://github.com/jerus-org/ci-container/pull/188
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.25...HEAD
 [0.1.25]: https://github.com/jerus-org/ci-container/compare/v0.1.24...v0.1.25
 [0.1.24]: https://github.com/jerus-org/ci-container/compare/v0.1.23...v0.1.24
