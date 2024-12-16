@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 ### Security
 
 - Dependencies: update dependency cargo-release to v0.25.14(pr [#191])
+- Dependencies: update dependency pcu to v0.4.20(pr [#192])
 
 ## [0.1.26] - 2024-12-11
 
@@ -460,6 +461,7 @@ All notable changes to this project will be documented in this file.
 [#189]: https://github.com/jerus-org/ci-container/pull/189
 [#190]: https://github.com/jerus-org/ci-container/pull/190
 [#191]: https://github.com/jerus-org/ci-container/pull/191
+[#192]: https://github.com/jerus-org/ci-container/pull/192
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.26...HEAD
 [0.1.26]: https://github.com/jerus-org/ci-container/compare/v0.1.25...v0.1.26
 [0.1.25]: https://github.com/jerus-org/ci-container/compare/v0.1.24...v0.1.25
