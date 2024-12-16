@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 - ci(circleci)-add job dependencies for make_release in workflows(pr [#190])
 
+### Security
+
+- Dependencies: update dependency cargo-release to v0.25.14(pr [#191])
+
 ## [0.1.26] - 2024-12-11
 
 ### Changed
@@ -455,6 +459,7 @@ All notable changes to this project will be documented in this file.
 [#188]: https://github.com/jerus-org/ci-container/pull/188
 [#189]: https://github.com/jerus-org/ci-container/pull/189
 [#190]: https://github.com/jerus-org/ci-container/pull/190
+[#191]: https://github.com/jerus-org/ci-container/pull/191
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.26...HEAD
 [0.1.26]: https://github.com/jerus-org/ci-container/compare/v0.1.25...v0.1.26
 [0.1.25]: https://github.com/jerus-org/ci-container/compare/v0.1.24...v0.1.25
