@@ -8,7 +8,7 @@ ENV CARGO_RELEASE_VERSION=0.25.14
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.21.0
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
-ENV CARGO_LLVM_COV_VERSION=0.6.14
+ENV CARGO_LLVM_COV_VERSION=0.6.15
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
 ENV NEXTSV_VERSION=0.18.0
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
