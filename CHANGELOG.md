@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 - ci(circleci)-add job dependencies for make_release in workflows(pr [#190])
 
+### Fixed
+
+- circleci: rename cargo_release parameter to when_cargo_release in config file(pr [#199])
+
 ### Security
 
 - Dependencies: update dependency cargo-release to v0.25.14(pr [#191])
@@ -474,6 +478,7 @@ All notable changes to this project will be documented in this file.
 [#196]: https://github.com/jerus-org/ci-container/pull/196
 [#197]: https://github.com/jerus-org/ci-container/pull/197
 [#198]: https://github.com/jerus-org/ci-container/pull/198
+[#199]: https://github.com/jerus-org/ci-container/pull/199
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.26...HEAD
 [0.1.26]: https://github.com/jerus-org/ci-container/compare/v0.1.25...v0.1.26
 [0.1.25]: https://github.com/jerus-org/ci-container/compare/v0.1.24...v0.1.25
