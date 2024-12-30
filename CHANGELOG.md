@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - Dependencies: update dependency nextsv to v0.19.1(pr [#200])
 - Dependencies: update dependency pcu to v0.4.22(pr [#201])
+- Dependencies: update dependency toolkit to v1.23.0(pr [#202])
 
 ## [0.1.27] - 2024-12-24
 
@@ -488,6 +489,7 @@ All notable changes to this project will be documented in this file.
 [#199]: https://github.com/jerus-org/ci-container/pull/199
 [#200]: https://github.com/jerus-org/ci-container/pull/200
 [#201]: https://github.com/jerus-org/ci-container/pull/201
+[#202]: https://github.com/jerus-org/ci-container/pull/202
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.27...HEAD
 [0.1.27]: https://github.com/jerus-org/ci-container/compare/v0.1.26...v0.1.27
 [0.1.26]: https://github.com/jerus-org/ci-container/compare/v0.1.25...v0.1.26
