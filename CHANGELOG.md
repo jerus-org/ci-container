@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Security
 
 - Dependencies: update dependency cargo-release to v0.25.15(pr [#204])
+- Dependencies: update dependency nextsv to v0.19.2(pr [#205])
 
 ## [0.1.28] - 2024-12-31
 
@@ -499,6 +500,7 @@ All notable changes to this project will be documented in this file.
 [#202]: https://github.com/jerus-org/ci-container/pull/202
 [#203]: https://github.com/jerus-org/ci-container/pull/203
 [#204]: https://github.com/jerus-org/ci-container/pull/204
+[#205]: https://github.com/jerus-org/ci-container/pull/205
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.28...HEAD
 [0.1.28]: https://github.com/jerus-org/ci-container/compare/v0.1.27...v0.1.28
 [0.1.27]: https://github.com/jerus-org/ci-container/compare/v0.1.26...v0.1.27
