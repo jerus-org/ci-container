@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- ci-update CircleCI config to include when_use_workspace parameter and remove pcu_verbosity(pr [#212])
+
 ### Security
 
 - Dependencies: update dependency nextsv to v0.19.3(pr [#208])
@@ -518,6 +522,7 @@ All notable changes to this project will be documented in this file.
 [#209]: https://github.com/jerus-org/ci-container/pull/209
 [#210]: https://github.com/jerus-org/ci-container/pull/210
 [#211]: https://github.com/jerus-org/ci-container/pull/211
+[#212]: https://github.com/jerus-org/ci-container/pull/212
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.29...HEAD
 [0.1.29]: https://github.com/jerus-org/ci-container/compare/v0.1.28...v0.1.29
 [0.1.28]: https://github.com/jerus-org/ci-container/compare/v0.1.27...v0.1.28
