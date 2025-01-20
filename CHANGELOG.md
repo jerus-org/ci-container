@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file.
 - Dependencies: update rust docker tag to v1.84.0(pr [#210])
 - Dependencies: update dependency toolkit to v2(pr [#211])
 - Dependencies: update dependency cargo-audit to v0.21.1(pr [#213])
+- Dependencies: update dependency cargo-llvm-cov to v0.6.16(pr [#214])
 
 ## [0.1.29] - 2025-01-07
 
@@ -525,6 +526,7 @@ All notable changes to this project will be documented in this file.
 [#211]: https://github.com/jerus-org/ci-container/pull/211
 [#212]: https://github.com/jerus-org/ci-container/pull/212
 [#213]: https://github.com/jerus-org/ci-container/pull/213
+[#214]: https://github.com/jerus-org/ci-container/pull/214
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.29...HEAD
 [0.1.29]: https://github.com/jerus-org/ci-container/compare/v0.1.28...v0.1.29
 [0.1.28]: https://github.com/jerus-org/ci-container/compare/v0.1.27...v0.1.28
