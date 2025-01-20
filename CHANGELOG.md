@@ -17,6 +17,7 @@ All notable changes to this project will be documented in this file.
 - Dependencies: update dependency cargo-audit to v0.21.1(pr [#213])
 - Dependencies: update dependency cargo-llvm-cov to v0.6.16(pr [#214])
 - Dependencies: update dependency pcu to v0.4.25(pr [#215])
+- Dependencies: update dependency toolkit to v2.0.2(pr [#216])
 
 ## [0.1.29] - 2025-01-07
 
@@ -529,6 +530,7 @@ All notable changes to this project will be documented in this file.
 [#213]: https://github.com/jerus-org/ci-container/pull/213
 [#214]: https://github.com/jerus-org/ci-container/pull/214
 [#215]: https://github.com/jerus-org/ci-container/pull/215
+[#216]: https://github.com/jerus-org/ci-container/pull/216
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.29...HEAD
 [0.1.29]: https://github.com/jerus-org/ci-container/compare/v0.1.28...v0.1.29
 [0.1.28]: https://github.com/jerus-org/ci-container/compare/v0.1.27...v0.1.28
