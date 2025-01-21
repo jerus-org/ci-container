@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 - ci-update CircleCI config to include when_use_workspace parameter and remove pcu_verbosity(pr [#212])
 - ci(circleci)-update toolkit version and improve pipeline workflow(pr [#217])
 - ci(circleci)-add release-flag parameter for pipeline execution(pr [#218])
+- ci(circleci)-refine check_rebase workflow conditions(pr [#219])
 
 ### Security
 
@@ -533,6 +534,7 @@ All notable changes to this project will be documented in this file.
 [#215]: https://github.com/jerus-org/ci-container/pull/215
 [#217]: https://github.com/jerus-org/ci-container/pull/217
 [#218]: https://github.com/jerus-org/ci-container/pull/218
+[#219]: https://github.com/jerus-org/ci-container/pull/219
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.29...HEAD
 [0.1.29]: https://github.com/jerus-org/ci-container/compare/v0.1.28...v0.1.29
 [0.1.28]: https://github.com/jerus-org/ci-container/compare/v0.1.27...v0.1.28
