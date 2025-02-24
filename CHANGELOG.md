@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Security
+
+- Dependencies: update dependency pcu to v0.4.30(pr [#231])
+
 ## [0.1.32] - 2025-02-18
 
 ### Security
@@ -568,6 +574,8 @@ All notable changes to this project will be documented in this file.
 [#227]: https://github.com/jerus-org/ci-container/pull/227
 [#228]: https://github.com/jerus-org/ci-container/pull/228
 [#229]: https://github.com/jerus-org/ci-container/pull/229
+[#231]: https://github.com/jerus-org/ci-container/pull/231
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.32...HEAD
 [0.1.32]: https://github.com/jerus-org/ci-container/compare/v0.1.31...v0.1.32
 [0.1.31]: https://github.com/jerus-org/ci-container/compare/v0.1.30...v0.1.31
 [0.1.30]: https://github.com/jerus-org/ci-container/compare/v0.1.29...v0.1.30
