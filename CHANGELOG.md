@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Security
+
+- Dependencies: update dependency toolkit to v2.0.8(pr [#237])
+
 ## [0.1.33] - 2025-02-25
 
 ### Changed
@@ -590,6 +596,8 @@ All notable changes to this project will be documented in this file.
 [#234]: https://github.com/jerus-org/ci-container/pull/234
 [#235]: https://github.com/jerus-org/ci-container/pull/235
 [#236]: https://github.com/jerus-org/ci-container/pull/236
+[#237]: https://github.com/jerus-org/ci-container/pull/237
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.33...HEAD
 [0.1.33]: https://github.com/jerus-org/ci-container/compare/v0.1.32...v0.1.33
 [0.1.32]: https://github.com/jerus-org/ci-container/compare/v0.1.31...v0.1.32
 [0.1.31]: https://github.com/jerus-org/ci-container/compare/v0.1.30...v0.1.31
