@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- 🔧 chore(Dockerfile)-update nextsv version to 0.19.11(pr [#239])
+
 ## [0.1.34] - 2025-02-25
 
 ### Security
@@ -599,6 +605,8 @@ All notable changes to this project will be documented in this file.
 [#236]: https://github.com/jerus-org/ci-container/pull/236
 [#237]: https://github.com/jerus-org/ci-container/pull/237
 [#238]: https://github.com/jerus-org/ci-container/pull/238
+[#239]: https://github.com/jerus-org/ci-container/pull/239
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.34...HEAD
 [0.1.34]: https://github.com/jerus-org/ci-container/compare/v0.1.33...v0.1.34
 [0.1.33]: https://github.com/jerus-org/ci-container/compare/v0.1.32...v0.1.33
 [0.1.32]: https://github.com/jerus-org/ci-container/compare/v0.1.31...v0.1.32
