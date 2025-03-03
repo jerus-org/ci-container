@@ -27,7 +27,7 @@ orbs:
 executors:
   ubuntu:
     docker:
-      - image: cimg/base:2025.02
+      - image: cimg/base:2025.03
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
