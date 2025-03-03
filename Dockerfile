@@ -6,7 +6,7 @@ ENV WASMPACK_VERSION=0.13.1
 # renovate: datasource=crate depName=cargo-release packageName=cargo-release versioning=semver-coerced
 ENV CARGO_RELEASE_VERSION=0.25.17
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
-ENV CARGO_AUDIT_VERSION=0.21.1
+ENV CARGO_AUDIT_VERSION=0.21.2
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
 ENV CARGO_LLVM_COV_VERSION=0.6.16
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
