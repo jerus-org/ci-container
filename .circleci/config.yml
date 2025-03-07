@@ -48,9 +48,19 @@ commands:
       - run:
           name: make test for minimum version <<parameters.rust-min-version>>
           command: |
+            if [[ "1.85" == *"<<parameters.rust-min-version>>"* ]]; then
+              wasi_name="wasm32-wasip1"
+            else
+              wasi_name="wasm32-wasi"
+            fi
+
             REPO=jerusdp/ci-rust
             TAG=<<parameters.rust-min-version>>
-            docker build --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> -t ${REPO}/test:${TAG}-wasi --target test .
+            docker build \
+                --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> \
+                --build-arg MIN_RUST_WASI=$wasi_name \
+                -t ${REPO}/test:${TAG}-wasi \
+                --target test .
             docker run --rm ${REPO}/test:${TAG}-wasi
 
   publish_rust_env:
@@ -62,10 +72,20 @@ commands:
       - run:
           name: Publish for minimum version <<parameters.rust-min-version>>
           command: |
+            if [[ "1.85" == *"<<parameters.rust-min-version>>"* ]]; then
+              wasi_name="wasm32-wasip1"
+            else
+              wasi_name="wasm32-wasi"
+            fi
+
             REPO=jerusdp/ci-rust
             TAG=<<parameters.rust-min-version>>
             INPUT_RELEASE_VERSION=0.1.0
-            docker build --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> -t ${REPO}:${TAG} --target final .
+            docker build \
+                --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> \
+                --build-arg MIN_RUST_WASI=$wasi_name \
+                -t ${REPO}:${TAG} \
+                --target final .
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push ${REPO}:${TAG}
 
@@ -78,10 +98,20 @@ commands:
       - run:
           name: Publish for minimum version <<parameters.rust-min-version>>
           command: |
+            if [[ "1.85" == *"<<parameters.rust-min-version>>"* ]]; then
+              wasi_name="wasm32-wasip1"
+            else
+              wasi_name="wasm32-wasi"
+            fi
+
             REPO=jerusdp/ci-rust
             TAG=<<parameters.rust-min-version>>
             INPUT_RELEASE_VERSION=0.1.0
-            docker build --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> -t ${REPO}:${TAG}-wasi --target wasi .
+            docker build \
+                --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>>\
+                --build-arg MIN_RUST_WASI=$wasi_name \
+                -t ${REPO}:${TAG}-wasi \
+                --target wasi .
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push ${REPO}:${TAG}-wasi
 
@@ -220,22 +250,7 @@ workflows:
               ignore: main
           matrix: &matrix
             parameters:
-              min-rust-version:
-                [
-                  "1.61",
-                  "1.65",
-                  "1.67",
-                  "1.70",
-                  "1.71",
-                  "1.72",
-                  "1.73",
-                  "1.74",
-                  "1.75",
-                  "1.76",
-                  "1.78",
-                  "1.79",
-                  "1.81",
-                ]
+              min-rust-version: ["1.75", "1.76", "1.78", "1.79", "1.81", "1.85"]
       - security:
           cargo_audit: false
           context:

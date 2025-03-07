@@ -77,10 +77,10 @@ COPY --from=binaries $CARGO_HOME/bin/cargo-release \
     $CARGO_HOME/bin/circleci-junit-fix $CARGO_HOME/bin/
 ARG MIN_RUST_VERSION=1.65
 RUN rustup component add clippy rustfmt llvm-tools; \
-    rustup toolchain install stable --component clippy rustfmt; \
-    rustup toolchain install nightly --component clippy rustfmt; \
-    rustup toolchain install beta --component clippy rustfmt; \
-    rustup toolchain install $MIN_RUST_VERSION --component clippy rustfmt;  
+    rustup toolchain install stable --component clippy --component rustfmt; \
+    rustup toolchain install nightly --component clippy --component rustfmt; \
+    rustup toolchain install beta --component clippy --component rustfmt; \
+    rustup toolchain install $MIN_RUST_VERSION --component clippy --component rustfmt;  
 USER circleci
 WORKDIR /home/circleci/project
 
