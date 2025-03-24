@@ -1,4 +1,4 @@
-FROM rust:1.85.0-slim AS binaries
+FROM rust:1.85.1-slim AS binaries
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
 ENV WASMTIME_VERSION=30.0.2
 # renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
@@ -40,7 +40,7 @@ RUN \
     cargo binstall --locked --version 1.0.95 cargo-expand --no-confirm; \
     cargo binstall circleci-junit-fix --locked --version 0.2.0 --no-confirm;
 
-FROM rust:1.85.0-slim AS base
+FROM rust:1.85.1-slim AS base
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
