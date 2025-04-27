@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 
 - Dependencies: update dependency nextsv to v0.19.20(pr [#267])
 - Dependencies: update dependency pcu to v0.4.41(pr [#268])
+- Dependencies: update dependency wasmtime-cli to v32(pr [#269])
 
 ## [0.1.43] - 2025-04-22
 
@@ -715,6 +716,7 @@ All notable changes to this project will be documented in this file.
 [#266]: https://github.com/jerus-org/ci-container/pull/266
 [#267]: https://github.com/jerus-org/ci-container/pull/267
 [#268]: https://github.com/jerus-org/ci-container/pull/268
+[#269]: https://github.com/jerus-org/ci-container/pull/269
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.43...HEAD
 [0.1.43]: https://github.com/jerus-org/ci-container/compare/v0.1.42...v0.1.43
 [0.1.42]: https://github.com/jerus-org/ci-container/compare/v0.1.41...v0.1.42
