@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- 🔧 chore(config)-remove renovate schedule(pr [#266])
+
 ## [0.1.43] - 2025-04-22
 
 ### Security
@@ -701,6 +707,8 @@ All notable changes to this project will be documented in this file.
 [#263]: https://github.com/jerus-org/ci-container/pull/263
 [#264]: https://github.com/jerus-org/ci-container/pull/264
 [#265]: https://github.com/jerus-org/ci-container/pull/265
+[#266]: https://github.com/jerus-org/ci-container/pull/266
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.43...HEAD
 [0.1.43]: https://github.com/jerus-org/ci-container/compare/v0.1.42...v0.1.43
 [0.1.42]: https://github.com/jerus-org/ci-container/compare/v0.1.41...v0.1.42
 [0.1.41]: https://github.com/jerus-org/ci-container/compare/v0.1.40...v0.1.41
