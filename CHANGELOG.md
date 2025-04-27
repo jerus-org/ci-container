@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 - 🔧 chore(config)-remove renovate schedule(pr [#266])
 
+### Security
+
+- Dependencies: update dependency nextsv to v0.19.20(pr [#267])
+
 ## [0.1.43] - 2025-04-22
 
 ### Security
@@ -708,6 +712,7 @@ All notable changes to this project will be documented in this file.
 [#264]: https://github.com/jerus-org/ci-container/pull/264
 [#265]: https://github.com/jerus-org/ci-container/pull/265
 [#266]: https://github.com/jerus-org/ci-container/pull/266
+[#267]: https://github.com/jerus-org/ci-container/pull/267
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.43...HEAD
 [0.1.43]: https://github.com/jerus-org/ci-container/compare/v0.1.42...v0.1.43
 [0.1.42]: https://github.com/jerus-org/ci-container/compare/v0.1.41...v0.1.42
