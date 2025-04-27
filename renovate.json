@@ -3,9 +3,6 @@
   "dependencyDashboard": true,
   "rangeStrategy": "bump",
   "prHourlyLimit": 0,
-  "schedule": [
-    "before 6am on Monday"
-  ],
   "customManagers": [
     {
       "customType": "regex",
