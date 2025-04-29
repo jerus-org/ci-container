@@ -21,7 +21,7 @@ parameters:
     description: "If true, the release pipeline will be executed."
 
 orbs:
-  toolkit: jerus-org/circleci-toolkit@2.10.3
+  toolkit: jerus-org/circleci-toolkit@2.10.4
   sonarcloud: sonarsource/sonarcloud@2.0.0
 
 executors:
@@ -305,10 +305,16 @@ workflows:
       - publish_rustc_version:
           matrix:
             <<: *matrix
+          requires:
+            - publish_base
       - publish_rustc_wasi_version:
           matrix:
             <<: *matrix
-      - publish_base
+          requires:
+            - publish_rustc_version
+      - publish_base:
+          requires:
+            - toolkit/make_release
 
       - toolkit/make_release:
           context:
