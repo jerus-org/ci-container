@@ -24,6 +24,10 @@ orbs:
   toolkit: jerus-org/circleci-toolkit@2.10.4
   sonarcloud: sonarsource/sonarcloud@2.0.0
 
+filters: &filters
+  tags:
+    only: /.*/
+
 executors:
   ubuntu:
     docker:
@@ -302,20 +306,6 @@ workflows:
         - not: << pipeline.parameters.success-flag >>
         - not: << pipeline.parameters.validation-flag >>
     jobs:
-      - publish_rustc_version:
-          matrix:
-            <<: *matrix
-          requires:
-            - publish_base
-      - publish_rustc_wasi_version:
-          matrix:
-            <<: *matrix
-          requires:
-            - publish_rustc_version
-      - publish_base:
-          requires:
-            - toolkit/make_release
-
       - toolkit/make_release:
           context:
             - release
@@ -325,3 +315,23 @@ workflows:
           when_cargo_release: false
           when_use_workspace: false
           pcu_update_changelog: true
+
+  deploy:
+    when:
+      not:
+        equal: ["", << pipeline.git.tag >>]
+    jobs:
+      - publish_base:
+          filters: *filters
+      - publish_rustc_version:
+          matrix:
+            <<: *matrix
+          requires:
+            - publish_base
+          filters: *filters
+      - publish_rustc_wasi_version:
+          matrix:
+            <<: *matrix
+          requires:
+            - publish_rustc_version
+          filters: *filters
