@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- 👷 ci(circleci)-update toolkit orb and adjust workflow dependencies(pr [#272])
+
 ## [0.1.45] - 2025-04-29
 
 ### Changed
@@ -724,6 +730,8 @@ All notable changes to this project will be documented in this file.
 [#268]: https://github.com/jerus-org/ci-container/pull/268
 [#269]: https://github.com/jerus-org/ci-container/pull/269
 [#271]: https://github.com/jerus-org/ci-container/pull/271
+[#272]: https://github.com/jerus-org/ci-container/pull/272
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.45...HEAD
 [0.1.45]: https://github.com/jerus-org/ci-container/compare/v0.1.44...v0.1.45
 [0.1.44]: https://github.com/jerus-org/ci-container/compare/v0.1.43...v0.1.44
 [0.1.43]: https://github.com/jerus-org/ci-container/compare/v0.1.42...v0.1.43
