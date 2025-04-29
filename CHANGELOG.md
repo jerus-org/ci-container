@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- 👷 ci(circleci)-update toolkit version and simplify workflows(pr [#271])
+
 ## [0.1.44] - 2025-04-27
 
 ### Changed
@@ -717,6 +723,8 @@ All notable changes to this project will be documented in this file.
 [#267]: https://github.com/jerus-org/ci-container/pull/267
 [#268]: https://github.com/jerus-org/ci-container/pull/268
 [#269]: https://github.com/jerus-org/ci-container/pull/269
+[#271]: https://github.com/jerus-org/ci-container/pull/271
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.44...HEAD
 [0.1.44]: https://github.com/jerus-org/ci-container/compare/v0.1.43...v0.1.44
 [0.1.43]: https://github.com/jerus-org/ci-container/compare/v0.1.42...v0.1.43
 [0.1.42]: https://github.com/jerus-org/ci-container/compare/v0.1.41...v0.1.42
