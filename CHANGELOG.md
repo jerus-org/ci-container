@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- 🔧 chore(Dockerfile)-update pcu version to 0.4.42(pr [#277])
+
 ### Security
 
 - Dependencies: update dependency toolkit to v2.10.5(pr [#274])
@@ -744,6 +748,7 @@ All notable changes to this project will be documented in this file.
 [#274]: https://github.com/jerus-org/ci-container/pull/274
 [#275]: https://github.com/jerus-org/ci-container/pull/275
 [#276]: https://github.com/jerus-org/ci-container/pull/276
+[#277]: https://github.com/jerus-org/ci-container/pull/277
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.46...HEAD
 [0.1.46]: https://github.com/jerus-org/ci-container/compare/v0.1.45...v0.1.46
 [0.1.45]: https://github.com/jerus-org/ci-container/compare/v0.1.44...v0.1.45
