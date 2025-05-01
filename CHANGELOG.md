@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - Dependencies: update dependency toolkit to v2.10.5(pr [#274])
 - Dependencies: update dependency toolkit to v2.10.7(pr [#275])
+- Dependencies: update cimg/base docker tag to v2025.05(pr [#276])
 
 ## [0.1.46] - 2025-04-29
 
@@ -742,6 +743,7 @@ All notable changes to this project will be documented in this file.
 [#273]: https://github.com/jerus-org/ci-container/pull/273
 [#274]: https://github.com/jerus-org/ci-container/pull/274
 [#275]: https://github.com/jerus-org/ci-container/pull/275
+[#276]: https://github.com/jerus-org/ci-container/pull/276
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.46...HEAD
 [0.1.46]: https://github.com/jerus-org/ci-container/compare/v0.1.45...v0.1.46
 [0.1.45]: https://github.com/jerus-org/ci-container/compare/v0.1.44...v0.1.45
