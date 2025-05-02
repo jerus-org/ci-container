@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - 🔧 chore(Dockerfile)-update pcu version to 0.4.42(pr [#277])
 - 🔧 chore(ci)-update CircleCI toolkit orb version(pr [#279])
+- 👷 ci(circleci)-update toolkit orb version and add pcu update(pr [#280])
 
 ### Security
 
@@ -751,6 +752,7 @@ All notable changes to this project will be documented in this file.
 [#276]: https://github.com/jerus-org/ci-container/pull/276
 [#277]: https://github.com/jerus-org/ci-container/pull/277
 [#279]: https://github.com/jerus-org/ci-container/pull/279
+[#280]: https://github.com/jerus-org/ci-container/pull/280
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.46...HEAD
 [0.1.46]: https://github.com/jerus-org/ci-container/compare/v0.1.45...v0.1.46
 [0.1.45]: https://github.com/jerus-org/ci-container/compare/v0.1.44...v0.1.45
