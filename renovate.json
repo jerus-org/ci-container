@@ -3,6 +3,9 @@
   "dependencyDashboard": true,
   "rangeStrategy": "bump",
   "prHourlyLimit": 0,
+  "schedule": [
+    "* 0-5 1 * *"
+  ],
   "customManagers": [
     {
       "customType": "regex",
