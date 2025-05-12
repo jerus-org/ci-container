@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - 🔧 chore(config)-update renovate schedule(pr [#282])
 - 🔧 chore(config)-update renovate schedule(pr [#284])
+- 👷 ci(circleci)-fix YAML formatting for matrix parameters(pr [#285])
 
 ### Security
 
@@ -769,6 +770,7 @@ All notable changes to this project will be documented in this file.
 [#282]: https://github.com/jerus-org/ci-container/pull/282
 [#283]: https://github.com/jerus-org/ci-container/pull/283
 [#284]: https://github.com/jerus-org/ci-container/pull/284
+[#285]: https://github.com/jerus-org/ci-container/pull/285
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.47...HEAD
 [0.1.47]: https://github.com/jerus-org/ci-container/compare/v0.1.46...v0.1.47
 [0.1.46]: https://github.com/jerus-org/ci-container/compare/v0.1.45...v0.1.46
