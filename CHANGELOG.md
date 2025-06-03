@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Security
 
 - Dependencies: update dependency pcu to v0.4.44(pr [#287])
+- Dependencies: update dependency nextsv to v0.19.22(pr [#286])
 
 ## [0.1.48] - 2025-05-12
 
@@ -778,6 +779,7 @@ All notable changes to this project will be documented in this file.
 [#284]: https://github.com/jerus-org/ci-container/pull/284
 [#285]: https://github.com/jerus-org/ci-container/pull/285
 [#287]: https://github.com/jerus-org/ci-container/pull/287
+[#286]: https://github.com/jerus-org/ci-container/pull/286
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.48...HEAD
 [0.1.48]: https://github.com/jerus-org/ci-container/compare/v0.1.47...v0.1.48
 [0.1.47]: https://github.com/jerus-org/ci-container/compare/v0.1.46...v0.1.47
