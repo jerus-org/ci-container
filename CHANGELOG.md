@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 - Dependencies: update dependency pcu to v0.4.44(pr [#287])
 - Dependencies: update dependency nextsv to v0.19.22(pr [#286])
 - Dependencies: update rust docker tag to v1.87.0(pr [#288])
+- Dependencies: update dependency wasmtime-cli to v33(pr [#290])
 
 ## [0.1.48] - 2025-05-12
 
@@ -782,6 +783,7 @@ All notable changes to this project will be documented in this file.
 [#287]: https://github.com/jerus-org/ci-container/pull/287
 [#286]: https://github.com/jerus-org/ci-container/pull/286
 [#288]: https://github.com/jerus-org/ci-container/pull/288
+[#290]: https://github.com/jerus-org/ci-container/pull/290
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.48...HEAD
 [0.1.48]: https://github.com/jerus-org/ci-container/compare/v0.1.47...v0.1.48
 [0.1.47]: https://github.com/jerus-org/ci-container/compare/v0.1.46...v0.1.47
