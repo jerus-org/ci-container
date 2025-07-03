@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 - Dependencies: update dependency wasmtime-cli to v33.0.1(pr [#292])
 - Dependencies: update cimg/base docker tag to v2025.07(pr [#293])
 - Dependencies: update rust docker tag to v1.88.0(pr [#294])
+- Dependencies: update dependency wasmtime-cli to v34(pr [#295])
 
 ## [0.1.49] - 2025-06-07
 
@@ -799,6 +800,7 @@ All notable changes to this project will be documented in this file.
 [#292]: https://github.com/jerus-org/ci-container/pull/292
 [#293]: https://github.com/jerus-org/ci-container/pull/293
 [#294]: https://github.com/jerus-org/ci-container/pull/294
+[#295]: https://github.com/jerus-org/ci-container/pull/295
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.49...HEAD
 [0.1.49]: https://github.com/jerus-org/ci-container/compare/v0.1.48...v0.1.49
 [0.1.48]: https://github.com/jerus-org/ci-container/compare/v0.1.47...v0.1.48
