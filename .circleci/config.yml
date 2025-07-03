@@ -31,7 +31,7 @@ filters: &filters
 executors:
   ubuntu:
     docker:
-      - image: cimg/base:2025.05
+      - image: cimg/base:2025.07
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
