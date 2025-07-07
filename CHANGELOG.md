@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- 👷 ci(circleci)-update circleci-toolkit orb version(pr [#296])
+
 ## [0.1.50] - 2025-07-07
 
 ### Security
@@ -801,6 +807,8 @@ All notable changes to this project will be documented in this file.
 [#293]: https://github.com/jerus-org/ci-container/pull/293
 [#294]: https://github.com/jerus-org/ci-container/pull/294
 [#295]: https://github.com/jerus-org/ci-container/pull/295
+[#296]: https://github.com/jerus-org/ci-container/pull/296
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.50...HEAD
 [0.1.50]: https://github.com/jerus-org/ci-container/compare/v0.1.49...v0.1.50
 [0.1.49]: https://github.com/jerus-org/ci-container/compare/v0.1.48...v0.1.49
 [0.1.48]: https://github.com/jerus-org/ci-container/compare/v0.1.47...v0.1.48
