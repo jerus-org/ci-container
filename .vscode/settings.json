@@ -15,5 +15,9 @@
         "ontainer",
         "rustcs"
     ],
-    "makefile.configureOnOpen": false
+    "makefile.configureOnOpen": false,
+    "sonarlint.connectedMode.project": {
+        "connectionId": "jerus-org",
+        "projectKey": "jerus-org_ci-container"
+    }
 }
