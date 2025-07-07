@@ -21,8 +21,8 @@ RUN set -eux; \
     curl \
     libssl-dev \
     pkg-config \
-    ; \
-    rm -rf /var/lib/apt/lists/*;
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 RUN \
     curl -L \
     --proto '=https' \
@@ -48,10 +48,9 @@ RUN set -eux; \
     git \
     jq \
     unzip \
-    ; \
-    rm -rf /var/lib/apt/lists/* \
-    ; \
-    RUN adduser circleci
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && adduser circleci
 USER circleci
 WORKDIR /home/circleci/project
 
