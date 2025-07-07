@@ -12,15 +12,15 @@ ENV CARGO_LLVM_COV_VERSION=0.6.16
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
 ENV NEXTSV_VERSION=0.19.22
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
-ENV PCU_VERSION=0.4.45
+ENV PCU_VERSION=0.4.46
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
-    pkg-config \
-    libssl-dev \
     build-essential \
     curl \
+    libssl-dev \
+    pkg-config \
     ; \
     rm -rf /var/lib/apt/lists/*;
 RUN \
@@ -44,13 +44,14 @@ FROM rust:1.88.0-slim AS base
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
-    git \
     curl \
+    git \
     jq \
     unzip \
     ; \
-    rm -rf /var/lib/apt/lists/*;
-RUN adduser circleci
+    rm -rf /var/lib/apt/lists/* \
+    ; \
+    RUN adduser circleci
 USER circleci
 WORKDIR /home/circleci/project
 
@@ -59,14 +60,14 @@ USER root
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
-    pkg-config \
-    libssl-dev \
     build-essential \
     gpg \
     gpg-agent \
+    libssl-dev \
     openssh-client \
-    ; \
-    rm -rf /var/lib/apt/lists/*;
+    pkg-config \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 COPY --from=binaries $CARGO_HOME/bin/cargo-release \
     $CARGO_HOME/bin/cargo-audit \
     $CARGO_HOME/bin/cargo-llvm-cov \
@@ -80,7 +81,7 @@ RUN rustup component add clippy rustfmt llvm-tools; \
     rustup toolchain install stable --component clippy --component rustfmt; \
     rustup toolchain install nightly --component clippy --component rustfmt; \
     rustup toolchain install beta --component clippy --component rustfmt; \
-    rustup toolchain install $MIN_RUST_VERSION --component clippy --component rustfmt;  
+    rustup toolchain install "$MIN_RUST_VERSION" --component clippy --component rustfmt;  
 USER circleci
 WORKDIR /home/circleci/project
 
@@ -95,7 +96,7 @@ RUN \
     rustup target add wasm32-wasip1 --toolchain stable; \
     rustup target add wasm32-wasip1 --toolchain nightly; \
     rustup target add wasm32-wasip1 --toolchain beta; \
-    rustup target add $MIN_RUST_WASI --toolchain $MIN_RUST_VERSION;
+    rustup target add "$MIN_RUST_WASI" --toolchain "$MIN_RUST_VERSION";
 USER circleci
 WORKDIR /home/circleci/project
 
