@@ -297,7 +297,6 @@ workflows:
           when_cargo_release: false
           when_use_workspace: false
           pcu_update_changelog: true
-          when_update_pcu: true
 
   deploy:
     when:
