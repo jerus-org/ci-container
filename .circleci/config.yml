@@ -21,7 +21,7 @@ parameters:
     description: "If true, the release pipeline will be executed."
 
 orbs:
-  toolkit: jerus-org/circleci-toolkit@2.11.0
+  toolkit: jerus-org/circleci-toolkit@2.12.1
   sonarcloud: sonarsource/sonarcloud@3.0.0
 
 filters: &filters
@@ -67,7 +67,7 @@ commands:
                 --target test .
             docker run --rm ${REPO}/test:${TAG}-wasi
 
-  publish_rust_env:
+  publish_rust_envs:
     parameters:
       rust-min-version:
         default: "1.56"
@@ -92,13 +92,6 @@ commands:
                 --target final .
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push ${REPO}:${TAG}
-
-  publish_rust_wasi_env:
-    parameters:
-      rust-min-version:
-        default: "1.56"
-        type: string
-    steps:
       - run:
           name: Publish for minimum version <<parameters.rust-min-version>>
           command: |
@@ -155,7 +148,7 @@ jobs:
       - make-test:
           rust-min-version: << parameters.min-rust-version >>
 
-  publish_rustc_version:
+  publish_rustc_versions:
     parameters:
       min-rust-version:
         type: string
@@ -164,19 +157,7 @@ jobs:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
-      - publish_rust_env:
-          rust-min-version: << parameters.min-rust-version >>
-
-  publish_rustc_wasi_version:
-    parameters:
-      min-rust-version:
-        type: string
-    executor: ubuntu
-    steps:
-      - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - publish_rust_wasi_env:
+      - publish_rust_envs:
           rust-min-version: << parameters.min-rust-version >>
 
   publish_base:
@@ -325,15 +306,9 @@ workflows:
     jobs:
       - publish_base:
           filters: *filters
-      - publish_rustc_version:
+      - publish_rustc_versions:
           matrix:
             <<: *matrix
           requires:
             - publish_base
-          filters: *filters
-      - publish_rustc_wasi_version:
-          matrix:
-            <<: *matrix
-          requires:
-            - publish_rustc_version
           filters: *filters
