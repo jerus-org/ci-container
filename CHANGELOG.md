@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - 👷 ci(circleci)-update circleci-toolkit orb version(pr [#296])
+- 🔧 chore(Dockerfile)-update PCU_VERSION to 0.4.47(pr [#297])
 
 ## [0.1.50] - 2025-07-07
 
@@ -808,6 +809,7 @@ All notable changes to this project will be documented in this file.
 [#294]: https://github.com/jerus-org/ci-container/pull/294
 [#295]: https://github.com/jerus-org/ci-container/pull/295
 [#296]: https://github.com/jerus-org/ci-container/pull/296
+[#297]: https://github.com/jerus-org/ci-container/pull/297
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.50...HEAD
 [0.1.50]: https://github.com/jerus-org/ci-container/compare/v0.1.49...v0.1.50
 [0.1.49]: https://github.com/jerus-org/ci-container/compare/v0.1.48...v0.1.49
