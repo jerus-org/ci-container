@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - 👷 ci(circleci)-update toolkit version and streamline jobs(pr [#298])
+- 🔧 chore(Dockerfile)-update pcu version to 0.4.48(pr [#299])
 
 ## [0.1.51] - 2025-07-08
 
@@ -817,6 +818,7 @@ All notable changes to this project will be documented in this file.
 [#296]: https://github.com/jerus-org/ci-container/pull/296
 [#297]: https://github.com/jerus-org/ci-container/pull/297
 [#298]: https://github.com/jerus-org/ci-container/pull/298
+[#299]: https://github.com/jerus-org/ci-container/pull/299
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.51...HEAD
 [0.1.51]: https://github.com/jerus-org/ci-container/compare/v0.1.50...v0.1.51
 [0.1.50]: https://github.com/jerus-org/ci-container/compare/v0.1.49...v0.1.50
