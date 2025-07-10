@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - 👷 ci(circleci)-remove unnecessary pcu update flag(pr [#300])
+- 💄 style(Dockerfile)-remove redundant curl flag(pr [#301])
 
 ## [0.1.52] - 2025-07-08
 
@@ -826,6 +827,7 @@ All notable changes to this project will be documented in this file.
 [#298]: https://github.com/jerus-org/ci-container/pull/298
 [#299]: https://github.com/jerus-org/ci-container/pull/299
 [#300]: https://github.com/jerus-org/ci-container/pull/300
+[#301]: https://github.com/jerus-org/ci-container/pull/301
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.52...HEAD
 [0.1.52]: https://github.com/jerus-org/ci-container/compare/v0.1.51...v0.1.52
 [0.1.51]: https://github.com/jerus-org/ci-container/compare/v0.1.50...v0.1.51
