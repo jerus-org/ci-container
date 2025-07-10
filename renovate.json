@@ -21,7 +21,7 @@
   ],
   "packageRules": [
     {
-      "sourceUrl": "https://github.com/jerus-org/circleci-toolkit",
+      "sourceUrl": "https://circleci.com/developer/orbs/orb/jerus-org/circleci-toolkit",
       "enabled": true,
       "matchPackageNames": [
         "/jerus-org/circleci-toolkit/"
