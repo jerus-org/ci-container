@@ -10,6 +10,10 @@ All notable changes to this project will be documented in this file.
 - 💄 style(Dockerfile)-remove redundant curl flag(pr [#301])
 - 🔧 chore(config)-update source URL for CircleCI toolkit(pr [#303])
 
+### Security
+
+- Dependencies: update dependency pcu to v0.4.49(pr [#302])
+
 ## [0.1.52] - 2025-07-08
 
 ### Changed
@@ -830,6 +834,7 @@ All notable changes to this project will be documented in this file.
 [#300]: https://github.com/jerus-org/ci-container/pull/300
 [#301]: https://github.com/jerus-org/ci-container/pull/301
 [#303]: https://github.com/jerus-org/ci-container/pull/303
+[#302]: https://github.com/jerus-org/ci-container/pull/302
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.52...HEAD
 [0.1.52]: https://github.com/jerus-org/ci-container/compare/v0.1.51...v0.1.52
 [0.1.51]: https://github.com/jerus-org/ci-container/compare/v0.1.50...v0.1.51
