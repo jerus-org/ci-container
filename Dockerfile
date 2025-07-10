@@ -24,7 +24,7 @@ RUN set -eux; \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 RUN \
-    curl -L \
+    curl \
     --proto '=https' \
     --tlsv1.2 \
     -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
