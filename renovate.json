@@ -3,70 +3,13 @@
   "dependencyDashboard": true,
   "rangeStrategy": "bump",
   "prHourlyLimit": 0,
+  "semanticCommits": "enabled",
+  "semanticCommitType": "fix",
+  "versioning": "cargo",
   "schedule": [
     "* 0-5 3 * *"
   ],
-  "customManagers": [
-    {
-      "customType": "regex",
-      "description": "Update _VERSION variables in Dockerfiles",
-      "fileMatch": [
-        "(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$",
-        "(^|/)([Dd]ocker|[Cc]ontainer)file[^/]*$"
-      ],
-      "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s(?:ENV|ARG)\\s+[A-Za-z0-9_]+?_VERSION[ =][\"']?(?<currentValue>.+?)[\"']?\\s"
-      ]
-    }
-  ],
-  "packageRules": [
-    {
-      "sourceUrl": "https://circleci.com/developer/orbs/orb/jerus-org/circleci-toolkit",
-      "enabled": true,
-      "matchPackageNames": [
-        "/jerus-org/circleci-toolkit/"
-      ]
-    },
-    {
-      "groupName": "futures packages",
-      "matchPackageNames": [
-        "/^futures[-_]?/"
-      ]
-    },
-    {
-      "groupName": "serde packages",
-      "matchPackageNames": [
-        "/^serde[-_]?/"
-      ]
-    },
-    {
-      "groupName": "tokio packages",
-      "matchPackageNames": [
-        "/^tokio[-_]?/"
-      ]
-    },
-    {
-      "groupName": "tracing packages",
-      "matchPackageNames": [
-        "/^tracing[-_]?/",
-        "!tracing-opentelemetry"
-      ]
-    },
-    {
-      "groupName": "liquid packages",
-      "matchPackageNames": [
-        "/^liquid[-_]?/",
-        "/^kstring$/"
-      ]
-    },
-    {
-      "automerge": true,
-      "matchPackageNames": [
-        "/github/codeql-action/",
-        "/ossf/scorecard-action/",
-        "/actions/upload-artifact/",
-        "/actions/checkout/"
-      ]
-    }
+  "extends": [
+    "github>jerusdp/renovate-config:default.json"
   ]
 }
