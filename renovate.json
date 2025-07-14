@@ -1,11 +1,5 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "dependencyDashboard": true,
-  "rangeStrategy": "bump",
-  "prHourlyLimit": 0,
-  "semanticCommits": "enabled",
-  "semanticCommitType": "fix",
-  "versioning": "cargo",
   "schedule": [
     "* 0-5 3 * *"
   ],
