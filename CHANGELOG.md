@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - 🔧 chore(renovate)-update configuration for semantic commits(pr [#304])
+- 🔧 chore(config)-update renovate configuration(pr [#305])
 
 ## [0.1.53] - 2025-07-10
 
@@ -842,6 +843,7 @@ All notable changes to this project will be documented in this file.
 [#303]: https://github.com/jerus-org/ci-container/pull/303
 [#302]: https://github.com/jerus-org/ci-container/pull/302
 [#304]: https://github.com/jerus-org/ci-container/pull/304
+[#305]: https://github.com/jerus-org/ci-container/pull/305
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.53...HEAD
 [0.1.53]: https://github.com/jerus-org/ci-container/compare/v0.1.52...v0.1.53
 [0.1.52]: https://github.com/jerus-org/ci-container/compare/v0.1.51...v0.1.52
