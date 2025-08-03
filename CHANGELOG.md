@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - 🔧 chore(renovate)-update configuration for semantic commits(pr [#304])
 - 🔧 chore(config)-update renovate configuration(pr [#305])
+- 👷 ci(circleci)-update Rust version matrix(pr [#306])
 
 ## [0.1.53] - 2025-07-10
 
@@ -844,6 +845,7 @@ All notable changes to this project will be documented in this file.
 [#302]: https://github.com/jerus-org/ci-container/pull/302
 [#304]: https://github.com/jerus-org/ci-container/pull/304
 [#305]: https://github.com/jerus-org/ci-container/pull/305
+[#306]: https://github.com/jerus-org/ci-container/pull/306
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.53...HEAD
 [0.1.53]: https://github.com/jerus-org/ci-container/compare/v0.1.52...v0.1.53
 [0.1.52]: https://github.com/jerus-org/ci-container/compare/v0.1.51...v0.1.52
