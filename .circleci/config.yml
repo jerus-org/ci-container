@@ -55,14 +55,14 @@ commands:
 
             if [[ "1.85" == *"<<parameters.rust-min-version>>"* ]]; then
               wasi_name="wasm32-wasip1"
-            if [[ "1.87" == *"<<parameters.rust-min-version>>"* ]]; then
+            else if [[ "1.87" == *"<<parameters.rust-min-version>>"* ]]; then
               wasi_name="wasm32-wasip1"
             else
               wasi_name="wasm32-wasi"
             fi
 
             echo "export WASI_NAME=$wasi_name" >> "$BASH_ENV"
-          name: Set min rust wasi
+
   make-test:
     parameters:
       rust-min-version:
