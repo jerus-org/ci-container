@@ -53,8 +53,8 @@ commands:
           command: |
             set -exo pipefail
 
-            if [[ "1.85" == *"<<parameters.rust-min-version>>"* -o
-                  "1.87" == *"<<parameters.rust-min-version>>"* ]]; then
+            if [ "1.85" = "<<parameters.rust-min-version>>" -o
+                  "1.87" = "<<parameters.rust-min-version>>" ]; then
               wasi_name="wasm32-wasip1"
             else
               wasi_name="wasm32-wasi"
