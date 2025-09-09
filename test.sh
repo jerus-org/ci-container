@@ -21,4 +21,9 @@ wasm-pack --version
 wasmtime --version
 echo "---------binaries------------------------"
 ls -l /usr/local/cargo/bin/*
+echo "---------project directory---------------"
+pwd
+ls -l
+ls -l /home/circleci/
+ls -l /home/circleci/project
 echo "---------end-----------------------------"
