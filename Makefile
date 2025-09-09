@@ -14,16 +14,16 @@ publish-tag: build publish
 	$(DOCKER) push "$(REPO):$(INPUT_RELEASE_VERSION)-min-rust-$(MIN_RUST_VERSION)"
 
 build:
-	$(DOCKER) build --no-cache --build-arg MIN_RUST_VERSION=$(MIN_RUST_VERSION) -t $(REPO):${TAG} --target final .
+	$(DOCKER) build --no-cache --build-arg MIN_RUST_VERSION=$(MIN_RUST_VERSION) -t $(REPO):${TAG} --target final . 2>&1 | tee build.log
 
 build-binaries:
-	$(DOCKER) build --no-cache --build-arg MIN_RUST_VERSION=$(MIN_RUST_VERSION) -t $(REPO):${TAG} --target binaries .
+	$(DOCKER) build --no-cache --build-arg MIN_RUST_VERSION=$(MIN_RUST_VERSION) -t $(REPO):${TAG} --target binaries . 2>&1 | tee build-binaries.log
 
 build-base:
-	$(DOCKER) build --no-cache -t $(REPO):${BASE_TAG} --target base .
+	$(DOCKER) build --no-cache -t $(REPO):${BASE_TAG} --target base . 2>&1 | tee build-base.log
 
 build-wasi:
-	$(DOCKER) build --no-cache --build-arg MIN_RUST_VERSION=$(MIN_RUST_VERSION) -t $(REPO):${TAG}-${WASI_TAG} --target wasi .
+	$(DOCKER) build --no-cache --build-arg MIN_RUST_VERSION=$(MIN_RUST_VERSION) -t $(REPO):${TAG}-${WASI_TAG} --target wasi . 2>&1 | tee build-wasi.log
 
 debug: build
 	$(DOCKER) run --rm -it \
@@ -41,9 +41,13 @@ debug-binaries : build-binaries
 		$(REPO):$(TAG)
 
 build-test: 
-	$(DOCKER) build --build-arg MIN_RUST_VERSION=$(MIN_RUST_VERSION) -t $(REPO)/test:${TAG}-${WASI_TAG} --target test .
+	$(DOCKER) build \
+		--build-arg MIN_RUST_VERSION=$(MIN_RUST_VERSION) \
+		-t $(REPO)/test:${TAG}-${WASI_TAG} \
+		--target test . \
+		2>&1 | tee build.log
 
-test: build-test
+test: build-test ; \
 	$(DOCKER) run --rm \
-		$(REPO)/test:${TAG}-${WASI_TAG}
+		$(REPO)/test:${TAG}-${WASI_TAG} 
 		
