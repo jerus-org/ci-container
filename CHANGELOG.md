@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- 🔧 chore(makefile)-enhance build scripts with logging(pr [#307])
+
 ## [0.1.54] - 2025-08-03
 
 ### Changed
@@ -846,6 +852,8 @@ All notable changes to this project will be documented in this file.
 [#304]: https://github.com/jerus-org/ci-container/pull/304
 [#305]: https://github.com/jerus-org/ci-container/pull/305
 [#306]: https://github.com/jerus-org/ci-container/pull/306
+[#307]: https://github.com/jerus-org/ci-container/pull/307
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.54...HEAD
 [0.1.54]: https://github.com/jerus-org/ci-container/compare/v0.1.53...v0.1.54
 [0.1.53]: https://github.com/jerus-org/ci-container/compare/v0.1.52...v0.1.53
 [0.1.52]: https://github.com/jerus-org/ci-container/compare/v0.1.51...v0.1.52
