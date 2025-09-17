@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 - 📦 build(dockerfile)-update and reorganize cargo dependencies(pr [#309])
 - 👷 ci(circleci)-enhance CircleCI configuration with new jobs(pr [#310])
 - 👷 ci(circleci)-fix parameter references in config(pr [#311])
+- 👷 ci(circleci)-fix syntax error in config.yml(pr [#312])
 
 ## [0.1.54] - 2025-08-03
 
@@ -861,6 +862,7 @@ All notable changes to this project will be documented in this file.
 [#309]: https://github.com/jerus-org/ci-container/pull/309
 [#310]: https://github.com/jerus-org/ci-container/pull/310
 [#311]: https://github.com/jerus-org/ci-container/pull/311
+[#312]: https://github.com/jerus-org/ci-container/pull/312
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.54...HEAD
 [0.1.54]: https://github.com/jerus-org/ci-container/compare/v0.1.53...v0.1.54
 [0.1.53]: https://github.com/jerus-org/ci-container/compare/v0.1.52...v0.1.53
