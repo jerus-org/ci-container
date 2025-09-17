@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 - 👷 ci(circleci)-enhance CircleCI configuration with new jobs(pr [#310])
 - 👷 ci(circleci)-fix parameter references in config(pr [#311])
 - 👷 ci(circleci)-fix syntax error in config.yml(pr [#312])
+- 👷 ci(circleci)-add when_update_pcu parameter to workflows(pr [#315])
 
 ### Fixed
 
@@ -870,6 +871,7 @@ All notable changes to this project will be documented in this file.
 [#312]: https://github.com/jerus-org/ci-container/pull/312
 [#313]: https://github.com/jerus-org/ci-container/pull/313
 [#314]: https://github.com/jerus-org/ci-container/pull/314
+[#315]: https://github.com/jerus-org/ci-container/pull/315
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.54...HEAD
 [0.1.54]: https://github.com/jerus-org/ci-container/compare/v0.1.53...v0.1.54
 [0.1.53]: https://github.com/jerus-org/ci-container/compare/v0.1.52...v0.1.53
