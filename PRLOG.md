@@ -16,6 +16,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - 🐛 ci: add missing semicolon in conditional statement(pr [#313])
+- 🐛 ci: correct changelog generation command(pr [#314])
 
 ## [0.1.54] - 2025-08-03
 
@@ -868,6 +869,7 @@ All notable changes to this project will be documented in this file.
 [#311]: https://github.com/jerus-org/ci-container/pull/311
 [#312]: https://github.com/jerus-org/ci-container/pull/312
 [#313]: https://github.com/jerus-org/ci-container/pull/313
+[#314]: https://github.com/jerus-org/ci-container/pull/314
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.54...HEAD
 [0.1.54]: https://github.com/jerus-org/ci-container/compare/v0.1.53...v0.1.54
 [0.1.53]: https://github.com/jerus-org/ci-container/compare/v0.1.52...v0.1.53

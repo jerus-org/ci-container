@@ -157,7 +157,7 @@ commands:
             if [ "$SEMVER" == "" ]; then
               gen-changelog << parameters.verbosity >> generate --display-summaries 
             else 
-              gen-changelog << parameters.verbosity >> generate --display-summaries -next-version $SEMVER
+              gen-changelog << parameters.verbosity >> generate --display-summaries --next-version $SEMVER
             fi
   install_rust_program:
     description: >
