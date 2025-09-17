@@ -154,7 +154,7 @@ commands:
           command: |
             set -exo pipefail
 
-            if [ "$SEMVER" == "" ]
+            if [ "$SEMVER" == "" ]; then
               gen-changelog << parameters.verbosity >> generate --display-summaries 
             else 
               gen-changelog << parameters.verbosity >> generate --display-summaries -next-version $SEMVER
