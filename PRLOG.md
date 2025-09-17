@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - 🔧 chore(makefile)-enhance build scripts with logging(pr [#307])
+- 📝 docs-rename CHANGELOG.md to PRLOG.md(pr [#308])
 
 ## [0.1.54] - 2025-08-03
 
@@ -853,6 +854,7 @@ All notable changes to this project will be documented in this file.
 [#305]: https://github.com/jerus-org/ci-container/pull/305
 [#306]: https://github.com/jerus-org/ci-container/pull/306
 [#307]: https://github.com/jerus-org/ci-container/pull/307
+[#308]: https://github.com/jerus-org/ci-container/pull/308
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.54...HEAD
 [0.1.54]: https://github.com/jerus-org/ci-container/compare/v0.1.53...v0.1.54
 [0.1.53]: https://github.com/jerus-org/ci-container/compare/v0.1.52...v0.1.53
