@@ -177,12 +177,12 @@ commands:
           command: |
             set -exo pipefail
 
-            if [ "" != "<< path_to_crate >>" ]; then
+            if [ "" != "<< parameters.path_to_crate >>" ]; then
               cargo install --force --path << parameters.path_to_crate >>
             fi
 
-            if [ "" != "<< crate >>"]; then
-              cargo install --force << crate >>
+            if [ "" != "<< parameters.crate >>"]; then
+              cargo install --force << parameters.crate >>
             fi 
 
             cargo install --list
