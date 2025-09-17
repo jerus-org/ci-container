@@ -181,7 +181,7 @@ commands:
               cargo install --force --path << parameters.path_to_crate >>
             fi
 
-            if [ "" != "<< parameters.crate >>"]; then
+            if [ "" != "<< parameters.crate >>" ]; then
               cargo install --force << parameters.crate >>
             fi 
 
