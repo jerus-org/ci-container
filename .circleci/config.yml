@@ -161,7 +161,7 @@ commands:
             fi
   install_rust_program:
     description: >
-      Install a rust progrom from crates.io or a path
+      Install a rust program from crates.io or a path
       continue a setup workflow.
     parameters:
       crate:
@@ -177,12 +177,12 @@ commands:
           command: |
             set -exo pipefail
 
-            if [ "" != "<< path_to_crate >>" ]; then
+            if [ "" != "<< parameters.path_to_crate >>" ]; then
               cargo install --force --path << parameters.path_to_crate >>
             fi
 
-            if [ "" != "<< crate >>"]; then
-              cargo install --force << crate >>
+            if [ "" != "<< parameters.crate >>"]; then
+              cargo install --force << parameters.crate >>
             fi 
 
             cargo install --list
