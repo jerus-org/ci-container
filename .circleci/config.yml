@@ -142,6 +142,52 @@ commands:
           command: |
             cargo audit -D warnings << parameters.ignore_advisories >>
 
+  gen_changelog:
+    parameters:
+      verbosity:
+        type: string
+        default: "-vv"
+        description: "Logging verbosity to request from application"
+    steps:
+      - run:
+          name: Generate changelog
+          command: |
+            set -exo pipefail
+
+            if [ "$SEMVER" == "" ]
+              gen-changelog << parameters.verbosity >> generate --display-summaries 
+            else 
+              gen-changelog << parameters.verbosity >> generate --display-summaries -next-version $SEMVER
+            fi
+  install_rust_program:
+    description: >
+      Install a rust progrom from crates.io or a path
+      continue a setup workflow.
+    parameters:
+      crate:
+        default: ""
+        description: The crate to install from crates.io
+        type: string
+      path_to_crate:
+        default: ""
+        description: The path to the crate to install
+        type: string
+    steps:
+      - run:
+          command: |
+            set -exo pipefail
+
+            if [ "" != "<< path_to_crate >>" ]; then
+              cargo install --force --path << parameters.path_to_crate >>
+            fi
+
+            if [ "" != "<< crate >>"]; then
+              cargo install --force << crate >>
+            fi 
+
+            cargo install --list
+          name: Install crate from current repository
+
 jobs:
   test:
     parameters:
@@ -206,6 +252,255 @@ jobs:
           condition: << parameters.sonarcloud >>
           steps:
             - sonarcloud/scan
+
+  make_release:
+    description: |
+      Assess the level using nextsv and make a release using cargo release
+    executor:
+      name: rust-env
+    parameters:
+      blog_directory:
+        default: content/blog
+        description: The directory to use for the blog
+        type: string
+      bluesky_command:
+        default: draft
+        description: The command to run for bluesky
+        enum:
+          - draft
+          - post
+        type: enum
+      echo:
+        default: false
+        description: If true, the bash environment will be set to echo the commands
+        type: boolean
+      first_release:
+        default: false
+        description: |
+          Request that a first release (v0.1.0) be created
+        type: boolean
+      install_crate:
+        default: false
+        description: |
+          Crate to install from crates.io
+        type: string
+      install_path:
+        default: false
+        description: |
+          Path to install a crate
+        type: string
+      min_rust_version:
+        type: string
+      package:
+        default: ""
+        description: The package to publish
+        type: string
+      pcu_commit_message:
+        default: "chore: test push"
+        description: The commit message to use for the pcu test push
+        type: string
+      pcu_no_push:
+        default: false
+        description: Whether or not prevent final push of commit
+        type: boolean
+      pcu_prefix:
+        default: v
+        description: The verbosity of the pcu command
+        type: string
+      pcu_semver:
+        default: false
+        description: Whether or not set the semver version flag
+        type: boolean
+      pcu_update_changelog:
+        default: false
+        description: To update the changelog when making the github release
+        type: boolean
+      pcu_verbosity:
+        default: "-vv"
+        description: The verbosity of the pcu command
+        type: string
+      pcu_workspace:
+        default: false
+        description: Whether or not to set the workspace flag of the pcu command
+        type: boolean
+      publish:
+        default: true
+        description: |
+          Publish the release
+        type: boolean
+      remove_ssh_key:
+        default: true
+        description: Remove the original SSH key from the agent
+        type: boolean
+      specific_version:
+        default: false
+        description: >
+          Make a specific release, if true version must be set to the specific
+          version number
+        type: boolean
+      ssh_fingerprint:
+        type: string
+      verbosity:
+        default: "-vv"
+        description: Verbosity for cargo release
+        type: string
+      version:
+        default: ""
+        description: |
+          Specific version number to release
+        type: string
+      when_bluesky:
+        default: false
+        description: Whether or not to run the bluesky command
+        type: boolean
+      when_cargo_release:
+        default: true
+        description: |
+          Create a cargo release
+        type: boolean
+      when_gen_changelog:
+        default: false
+        description: Generate a changelog and commit the file
+        type: boolean
+      when_get_version:
+        default: true
+        description: Get the next version number
+        type: boolean
+      when_github_release:
+        default: true
+        description: |
+          Create a github release
+        type: boolean
+      when_install_rust_crate:
+        default: false
+        description: |
+          Install a rust crate from path or crates.io
+        type: boolean
+      when_pcu_push:
+        default: false
+        description: To use the pcu push command
+        type: boolean
+      when_update_pcu:
+        default: false
+        description: |
+          Update pcu to the latest version based on the main branch on Github
+        type: boolean
+      when_use_workspace:
+        default: false
+        description: Get version from the workspace
+        type: boolean
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - << parameters.ssh_fingerprint >>
+      - when:
+          condition: << parameters.remove_ssh_key >>
+          steps:
+            - run:
+                command: |
+                  ssh-add -l
+                  ssh-add -d ~/.ssh/id_rsa.pub
+                  ssh-add -l
+                name: Remove original SSH key from agent
+      - toolkit/gpg_key
+      - toolkit/git_config
+      - when:
+          condition: << parameters.when_use_workspace >>
+          steps:
+            - attach_workspace:
+                at: /tmp/workspace
+            - run:
+                command: |
+                  semver=$(cat /tmp/workspace/next-version)
+                  echo "export SEMVER=$semver" >> "$BASH_ENV"
+                name: Get version and set SEMVER in bash environment
+      - when:
+          condition:
+            and:
+              - not: << parameters.when_use_workspace >>
+              - << parameters.when_get_version >>
+          steps:
+            - toolkit/get_next_version:
+                package: << parameters.package >>
+                verbosity: << parameters.pcu_verbosity >>
+                version: << parameters.version >>
+            - run:
+                command: |
+                  semver=$NEXT_VERSION
+                  echo "export SEMVER=$semver" >> "$BASH_ENV"
+                name: Set SEMVER in bash environment
+      - when:
+          condition: << parameters.when_update_pcu >>
+          steps:
+            - toolkit/install_latest_pcu
+      - when:
+          condition: << parameters.when_install_rust_crate >>
+          steps:
+            - install_rust_program:
+                crate: << parameters.install_crate >>
+                path_to_crate: << parameters.install_path >>
+      - when:
+          condition: << parameters.when_gen_changelog >>
+          steps:
+            - gen_changelog:
+                verbosity: << parameters.verbosity >>
+            - toolkit/commit_cmd:
+                pcu_commit_message: " chore(changelog): Generated an updated changelog"
+                pcu_verbosity: << parameters.verbosity >>
+      - when:
+          condition:
+            and:
+              - << parameters.when_cargo_release >>
+              - not: << parameters.when_pcu_push >>
+          steps:
+            - toolkit/make_cargo_release:
+                echo: << parameters.echo >>
+                first_release: << parameters.first_release >>
+                package: << parameters.package >>
+                publish: << parameters.publish >>
+                specific_version: << parameters.specific_version >>
+                verbosity: << parameters.verbosity >>
+                version: << parameters.version >>
+      - when:
+          condition:
+            and:
+              - << parameters.when_cargo_release >>
+              - << parameters.when_pcu_push >>
+          steps:
+            - toolkit/make_cargo_release:
+                echo: << parameters.echo >>
+                first_release: << parameters.first_release >>
+                no_push: true
+                package: << parameters.package >>
+                publish: << parameters.publish >>
+                specific_version: << parameters.specific_version >>
+                verbosity: << parameters.verbosity >>
+                version: << parameters.version >>
+      - when:
+          condition: << parameters.when_pcu_push >>
+          steps:
+            - toolkit/push_cmd:
+                pcu_no_push: << parameters.pcu_no_push >>
+                pcu_semver: << parameters.pcu_semver >>
+                pcu_verbosity: << parameters.pcu_verbosity >>
+      - when:
+          condition: << parameters.when_bluesky >>
+          steps:
+            - toolkit/bsky:
+                blog_directory: << parameters.blog_directory >>
+                command: << parameters.bluesky_command >>
+                pcu_verbosity: << parameters.pcu_verbosity >>
+      - when:
+          condition: << parameters.when_github_release >>
+          steps:
+            - toolkit/make_github_release:
+                pcu_package: << parameters.package >>
+                pcu_prefix: << parameters.pcu_prefix >>
+                pcu_update_changelog: << parameters.pcu_update_changelog >>
+                pcu_verbosity: << parameters.pcu_verbosity >>
+                pcu_workspace: << parameters.pcu_workspace >>
+
 workflows:
   check_last_commit:
     when:
@@ -300,7 +595,7 @@ workflows:
         - not: << pipeline.parameters.success-flag >>
         - not: << pipeline.parameters.validation-flag >>
     jobs:
-      - toolkit/make_release:
+      - make_release:
           context:
             - release
             - bot-check
@@ -309,6 +604,9 @@ workflows:
           when_cargo_release: false
           when_use_workspace: false
           pcu_update_changelog: true
+          when_gen_changelog: true
+          when_install_rust_crate: true
+          install_crate: gen-changelog
 
   deploy:
     when:
