@@ -186,7 +186,7 @@ commands:
             fi 
 
             cargo install --list
-          name: Install crate from current repository
+          name: Install crate << parameters.path_to_crate >><< parameters.crate >>
 
 jobs:
   test:
