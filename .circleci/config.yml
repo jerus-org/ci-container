@@ -280,12 +280,12 @@ jobs:
           Request that a first release (v0.1.0) be created
         type: boolean
       install_crate:
-        default: false
+        default: ""
         description: |
           Crate to install from crates.io
         type: string
       install_path:
-        default: false
+        default: ""
         description: |
           Path to install a crate
         type: string
