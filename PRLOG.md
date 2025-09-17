@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [0.1.55] - 2025-09-17
 
 ### Changed
 
@@ -872,7 +872,7 @@ All notable changes to this project will be documented in this file.
 [#313]: https://github.com/jerus-org/ci-container/pull/313
 [#314]: https://github.com/jerus-org/ci-container/pull/314
 [#315]: https://github.com/jerus-org/ci-container/pull/315
-[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.54...HEAD
+[0.1.55]: https://github.com/jerus-org/ci-container/compare/v0.1.54...v0.1.55
 [0.1.54]: https://github.com/jerus-org/ci-container/compare/v0.1.53...v0.1.54
 [0.1.53]: https://github.com/jerus-org/ci-container/compare/v0.1.52...v0.1.53
 [0.1.52]: https://github.com/jerus-org/ci-container/compare/v0.1.51...v0.1.52
