@@ -9,6 +9,10 @@ ENV CARGO_RELEASE_VERSION=0.25.18
 ENV CARGO_AUDIT_VERSION=0.21.2
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
 ENV CARGO_LLVM_COV_VERSION=0.6.16
+# renovate: datasource=crate depName=circleci_junit_fix packageName=circleci_junit_fix versioning=semver-coerced
+ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.0
+# renovate: datasource=crate depName=gen-changelog packageName=gen-changelog versioning=semver-coerced
+ENV GEN_CHANGELOG_VERSION=0.0.0
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
 ENV NEXTSV_VERSION=0.19.22
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
@@ -29,16 +33,17 @@ RUN \
     --tlsv1.2 \
     -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 RUN \
-    cargo binstall wasmtime-cli --version ${WASMTIME_VERSION} --no-confirm; \
-    cargo binstall wasm-pack --version ${WASMPACK_VERSION} --no-confirm; \
-    cargo binstall cargo-release --version ${CARGO_RELEASE_VERSION} --no-confirm; \
     cargo binstall cargo-audit --version ${CARGO_AUDIT_VERSION} --no-confirm; \
+    cargo binstall --locked --version 1.0.95 cargo-expand --no-confirm; \
     cargo binstall cargo-llvm-cov --version ${CARGO_LLVM_COV_VERSION} --no-confirm; \
+    cargo binstall cargo-nextest --no-confirm; \ 
+    cargo binstall cargo-release --version ${CARGO_RELEASE_VERSION} --no-confirm; \
+    cargo binstall circleci-junit-fix --locked --version ${CIRCLECI_JUNIT_FIX_VERSION} --no-confirm; \
+    cargo binstall gen-changelog --version ${GEN_CHANGELOG_VERSION} --no-confirm; \
     cargo binstall nextsv --version ${NEXTSV_VERSION} --no-confirm; \
     cargo binstall pcu --version ${PCU_VERSION} --no-confirm; \
-    cargo binstall cargo-nextest --no-confirm; \ 
-    cargo binstall --locked --version 1.0.95 cargo-expand --no-confirm; \
-    cargo binstall circleci-junit-fix --locked --version 0.2.0 --no-confirm;
+    cargo binstall wasm-pack --version ${WASMPACK_VERSION} --no-confirm; \
+    cargo binstall wasmtime-cli --version ${WASMTIME_VERSION} --no-confirm; 
 
 FROM rust:1.88.0-slim AS base
 RUN set -eux; \
@@ -69,11 +74,12 @@ RUN set -eux; \
     && rm -rf /var/lib/apt/lists/*
 COPY --from=binaries $CARGO_HOME/bin/cargo-release \
     $CARGO_HOME/bin/cargo-audit \
+    $CARGO_HOME/bin/cargo-expand \
     $CARGO_HOME/bin/cargo-llvm-cov \
+    $CARGO_HOME/bin/cargo-nextest \
+    $CARGO_HOME/bin/gen-changelog \
     $CARGO_HOME/bin/nextsv \
     $CARGO_HOME/bin/pcu \
-    $CARGO_HOME/bin/cargo-nextest \
-    $CARGO_HOME/bin/cargo-expand \
     $CARGO_HOME/bin/circleci-junit-fix $CARGO_HOME/bin/
 ARG MIN_RUST_VERSION=1.65
 RUN rustup component add clippy rustfmt llvm-tools; \
