@@ -187,6 +187,79 @@ commands:
 
             cargo install --list
           name: Install crate << parameters.path_to_crate >><< parameters.crate >>
+  make_github_release:
+    description: >
+      This command creates a github release using the pcu utility. With the
+      --package option the version number is taken from the Cargo.toml file of the
+      package. With the --workspace option the version number for each package is
+      taken from the Cargo.toml file for that package. Otherwise the SEMVER
+      environment variable must be set to the version number to be released. SEMVER
+      can be set using the `set_env_var_semver` command.
+    parameters:
+      pcu_package:
+        default: ""
+        description: Package to release and/or publish
+        type: string
+      pcu_prefix:
+        default: v
+        description: The verbosity of the pcu command
+        type: string
+      pcu_update_prlog:
+        default: false
+        description: The verbosity of the pcu command
+        type: boolean
+      pcu_verbosity:
+        default: "-vv"
+        description: The verbosity of the pcu command
+        type: string
+      pcu_workspace:
+        default: false
+        description: Whether or not to set the workspace flag of the pcu command
+        type: boolean
+    steps:
+      - run:
+          command: |
+            set -exo pipefail
+
+            if [ "<< parameters.pcu_package >>" != "" ] ; then
+                package="--package << parameters.pcu_package >>"
+            else
+                package=""
+            fi
+
+            if [ <<parameters.pcu_workspace>> == true ] ; then
+                pcu <<parameters.pcu_verbosity>> \
+                  release \
+                  workspace \
+                  $update_prlog \
+                  --prefix <<parameters.pcu_prefix>> \
+                exit
+            fi
+
+            if [ <<parameters.pcu_update_prlog>> == true ] ; then
+              update_prlog="--update-changelog"
+            else
+              update_prlog=""
+            fi
+
+            if [ "${SEMVER}" == "none" ] ; then
+              echo "No version to release"
+              pcu <<parameters.pcu_verbosity>> \
+                release \
+                --prefix <<parameters.pcu_prefix>> \
+                $update_prlog \
+                current \
+                << parameters.pcu_package >>
+            else
+              echo "Releasing version ${SEMVER}"
+              pcu <<parameters.pcu_verbosity>> \
+                release \
+                --prefix <<parameters.pcu_prefix>> \
+                $update_prlog \
+                version \
+                ${SEMVER}
+            fi
+          name: Create Github release
 
 jobs:
   test:
@@ -311,7 +384,7 @@ jobs:
         default: false
         description: Whether or not set the semver version flag
         type: boolean
-      pcu_update_changelog:
+      pcu_update_prlog:
         default: false
         description: To update the changelog when making the github release
         type: boolean
@@ -494,10 +567,10 @@ jobs:
       - when:
           condition: << parameters.when_github_release >>
           steps:
-            - toolkit/make_github_release:
+            - make_github_release:
                 pcu_package: << parameters.package >>
                 pcu_prefix: << parameters.pcu_prefix >>
-                pcu_update_changelog: << parameters.pcu_update_changelog >>
+                pcu_update_prlog: << parameters.pcu_update_prlog >>
                 pcu_verbosity: << parameters.pcu_verbosity >>
                 pcu_workspace: << parameters.pcu_workspace >>
 
@@ -604,7 +677,7 @@ workflows:
           when_cargo_release: false
           when_use_workspace: false
           when_update_pcu: true
-          pcu_update_changelog: true
+          pcu_update_prlog: true
           when_gen_changelog: true
           when_install_rust_crate: true
           install_crate: gen-changelog
