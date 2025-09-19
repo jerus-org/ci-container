@@ -1,6 +1,6 @@
 FROM rust:1.88.0-slim AS binaries
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
-ENV WASMTIME_VERSION=34.0.1
+ENV WASMTIME_VERSION=36.0.2
 # renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
 ENV WASMPACK_VERSION=0.13.1
 # renovate: datasource=crate depName=cargo-release packageName=cargo-release versioning=semver-coerced
@@ -8,15 +8,15 @@ ENV CARGO_RELEASE_VERSION=0.25.18
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.21.2
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
-ENV CARGO_LLVM_COV_VERSION=0.6.16
+ENV CARGO_LLVM_COV_VERSION=0.6.19
 # renovate: datasource=crate depName=circleci_junit_fix packageName=circleci_junit_fix versioning=semver-coerced
-ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.0
+ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 # renovate: datasource=crate depName=gen-changelog packageName=gen-changelog versioning=semver-coerced
-ENV GEN_CHANGELOG_VERSION=0.0.0
+ENV GEN_CHANGELOG_VERSION=0.1.0
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
-ENV NEXTSV_VERSION=0.19.22
+ENV NEXTSV_VERSION=0.19.24
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
-ENV PCU_VERSION=0.4.49
+ENV PCU_VERSION=0.6.0
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN set -eux; \
     apt-get update; \
