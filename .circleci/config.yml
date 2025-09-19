@@ -237,7 +237,7 @@ commands:
             fi
 
             if [ <<parameters.pcu_update_prlog>> == true ] ; then
-              update_prlog="--update-changelog"
+              update_prlog="--update-prlog"
             else
               update_prlog=""
             fi
