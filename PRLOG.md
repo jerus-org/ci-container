@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - 👷 ci(circleci)-update crate installation command name(pr [#316])
+- 📦 build(dockerfile)-update crate versions(pr [#317])
 
 ## [0.1.55] - 2025-09-17
 
@@ -879,6 +880,7 @@ All notable changes to this project will be documented in this file.
 [#314]: https://github.com/jerus-org/ci-container/pull/314
 [#315]: https://github.com/jerus-org/ci-container/pull/315
 [#316]: https://github.com/jerus-org/ci-container/pull/316
+[#317]: https://github.com/jerus-org/ci-container/pull/317
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.55...HEAD
 [0.1.55]: https://github.com/jerus-org/ci-container/compare/v0.1.54...v0.1.55
 [0.1.54]: https://github.com/jerus-org/ci-container/compare/v0.1.53...v0.1.54
