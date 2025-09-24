@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- 👷 ci(config)-update rust versions in CI matrix(pr [#320])
+
 ## [0.1.56] - 2025-09-19
 
 ### Changed
@@ -885,6 +891,8 @@ All notable changes to this project will be documented in this file.
 [#317]: https://github.com/jerus-org/ci-container/pull/317
 [#318]: https://github.com/jerus-org/ci-container/pull/318
 [#319]: https://github.com/jerus-org/ci-container/pull/319
+[#320]: https://github.com/jerus-org/ci-container/pull/320
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.56...HEAD
 [0.1.56]: https://github.com/jerus-org/ci-container/compare/v0.1.55...v0.1.56
 [0.1.55]: https://github.com/jerus-org/ci-container/compare/v0.1.54...v0.1.55
 [0.1.54]: https://github.com/jerus-org/ci-container/compare/v0.1.53...v0.1.54
