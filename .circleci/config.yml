@@ -21,7 +21,7 @@ parameters:
     description: "If true, the release pipeline will be executed."
 
 orbs:
-  toolkit: jerus-org/circleci-toolkit@2.12.1
+  toolkit: jerus-org/circleci-toolkit@2.13.0
   sonarcloud: sonarsource/sonarcloud@3.0.0
 
 filters: &filters
@@ -54,6 +54,7 @@ commands:
             set -exo pipefail
 
             if [[ "1.85" = "<<parameters.rust-min-version>>" || \
+                  "1.88" = "<<parameters.rust-min-version>>" || \
                   "1.87" = "<<parameters.rust-min-version>>" ]]; then
               wasi_name="wasm32-wasip1"
             else
@@ -615,12 +616,22 @@ workflows:
           matrix: &matrix
             parameters:
               min-rust-version:
-                ["1.75", "1.76", "1.78", "1.79", "1.81", "1.82", "1.85", "1.87"]
+                [
+                  "1.75",
+                  "1.76",
+                  "1.78",
+                  "1.79",
+                  "1.81",
+                  "1.82",
+                  "1.85",
+                  "1.87",
+                  "1.88",
+                ]
       - security:
           cargo_audit: false
           context:
             - SonarCloud
-      - toolkit/update_changelog:
+      - toolkit/update_prlog:
           requires:
             - test
             - security
@@ -629,7 +640,6 @@ workflows:
             - bot-check
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min-rust-version >>
-          update_pcu: true
 
   on_success:
     when:
