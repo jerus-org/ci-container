@@ -687,11 +687,8 @@ workflows:
           min_rust_version: << pipeline.parameters.min-rust-version >>
           when_cargo_release: false
           when_use_workspace: false
-          when_update_pcu: true
           pcu_update_prlog: true
           when_gen_changelog: true
-          when_install_rust_crate: true
-          install_crate: gen-changelog
 
   deploy:
     when:
