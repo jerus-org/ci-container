@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - 👷 ci(circleci)-update orb versions(pr [#321])
+- 🔧 chore(Dockerfile)-update gen-changelog version(pr [#322])
 
 ## [0.1.57] - 2025-09-24
 
@@ -899,6 +900,7 @@ All notable changes to this project will be documented in this file.
 [#319]: https://github.com/jerus-org/ci-container/pull/319
 [#320]: https://github.com/jerus-org/ci-container/pull/320
 [#321]: https://github.com/jerus-org/ci-container/pull/321
+[#322]: https://github.com/jerus-org/ci-container/pull/322
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.57...HEAD
 [0.1.57]: https://github.com/jerus-org/ci-container/compare/v0.1.56...v0.1.57
 [0.1.56]: https://github.com/jerus-org/ci-container/compare/v0.1.55...v0.1.56

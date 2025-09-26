@@ -50,6 +50,7 @@ commands:
         type: string
     steps:
       - run:
+          name: set appropriate wasi target
           command: |
             set -exo pipefail
 
