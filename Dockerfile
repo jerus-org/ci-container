@@ -12,7 +12,7 @@ ENV CARGO_LLVM_COV_VERSION=0.6.19
 # renovate: datasource=crate depName=circleci_junit_fix packageName=circleci_junit_fix versioning=semver-coerced
 ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 # renovate: datasource=crate depName=gen-changelog packageName=gen-changelog versioning=semver-coerced
-ENV GEN_CHANGELOG_VERSION=0.1.2
+ENV GEN_CHANGELOG_VERSION=0.1.3
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
 ENV NEXTSV_VERSION=0.19.24
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
