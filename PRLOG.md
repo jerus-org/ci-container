@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- deps: update dependency toolkit to v2.13.4(pr [#326])
+
 ## [0.1.59] - 2025-09-28
 
 ### Changed
@@ -912,6 +918,8 @@ All notable changes to this project will be documented in this file.
 [#323]: https://github.com/jerus-org/ci-container/pull/323
 [#324]: https://github.com/jerus-org/ci-container/pull/324
 [#325]: https://github.com/jerus-org/ci-container/pull/325
+[#326]: https://github.com/jerus-org/ci-container/pull/326
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.59...HEAD
 [0.1.59]: https://github.com/jerus-org/ci-container/compare/v0.1.58...v0.1.59
 [0.1.58]: https://github.com/jerus-org/ci-container/compare/v0.1.57...v0.1.58
 [0.1.57]: https://github.com/jerus-org/ci-container/compare/v0.1.56...v0.1.57
