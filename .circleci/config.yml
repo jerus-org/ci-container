@@ -56,6 +56,7 @@ commands:
 
             if [[ "1.85" = "<<parameters.rust-min-version>>" || \
                   "1.88" = "<<parameters.rust-min-version>>" || \
+                  "1.89" = "<<parameters.rust-min-version>>" || \
                   "1.87" = "<<parameters.rust-min-version>>" ]]; then
               wasi_name="wasm32-wasip1"
             else
