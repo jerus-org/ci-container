@@ -21,7 +21,7 @@ parameters:
     description: "If true, the release pipeline will be executed."
 
 orbs:
-  toolkit: jerus-org/circleci-toolkit@2.13.4
+  toolkit: jerus-org/circleci-toolkit@2.13.5
   sonarcloud: sonarsource/sonarcloud@3.0.1
 
 filters: &filters
@@ -56,6 +56,7 @@ commands:
 
             if [[ "1.85" = "<<parameters.rust-min-version>>" || \
                   "1.88" = "<<parameters.rust-min-version>>" || \
+                  "1.89" = "<<parameters.rust-min-version>>" || \
                   "1.87" = "<<parameters.rust-min-version>>" ]]; then
               wasi_name="wasm32-wasip1"
             else
@@ -627,6 +628,7 @@ workflows:
                   "1.85",
                   "1.87",
                   "1.88",
+                  "1.89",
                 ]
       - security:
           cargo_audit: false
