@@ -11,6 +11,8 @@ ENV CARGO_AUDIT_VERSION=0.21.2
 ENV CARGO_LLVM_COV_VERSION=0.6.19
 # renovate: datasource=crate depName=circleci_junit_fix packageName=circleci_junit_fix versioning=semver-coerced
 ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
+# renovate: datasource=crate depName=cull-gmail packageName=cull-gmail versioning=semver-coerced
+ENV CULL_GMAIL_VERSION=0.0.14
 # renovate: datasource=crate depName=gen-changelog packageName=gen-changelog versioning=semver-coerced
 ENV GEN_CHANGELOG_VERSION=0.1.3
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
@@ -39,6 +41,7 @@ RUN \
     cargo binstall cargo-nextest --no-confirm; \ 
     cargo binstall cargo-release --version ${CARGO_RELEASE_VERSION} --no-confirm; \
     cargo binstall circleci-junit-fix --locked --version ${CIRCLECI_JUNIT_FIX_VERSION} --no-confirm; \
+    cargo binstall cull-gmail --version ${CULL_GMAIL_VERSION} --no-confirm; \
     cargo binstall gen-changelog --version ${GEN_CHANGELOG_VERSION} --no-confirm; \
     cargo binstall nextsv --version ${NEXTSV_VERSION} --no-confirm; \
     cargo binstall pcu --version ${PCU_VERSION} --no-confirm; \
@@ -57,6 +60,7 @@ RUN set -eux; \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && adduser circleci
+COPY --from=binaries $CARGO_HOME/bin/cull-gmail $CARGO_HOME/bin/
 USER circleci
 WORKDIR /home/circleci/project
 
