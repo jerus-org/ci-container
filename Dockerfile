@@ -1,4 +1,4 @@
-FROM rust:1.91.0-slim-trixie AS binaries
+FROM rust:1.91.1-slim-trixie AS binaries
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
 ENV WASMTIME_VERSION=36.0.2
 # renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
@@ -48,7 +48,7 @@ RUN \
     cargo binstall wasm-pack --version ${WASMPACK_VERSION} --no-confirm; \
     cargo binstall wasmtime-cli --version ${WASMTIME_VERSION} --no-confirm; 
 
-FROM rust:1.91.0-slim-trixie AS base
+FROM rust:1.91.1-slim-trixie AS base
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \

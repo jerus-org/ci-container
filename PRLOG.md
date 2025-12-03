@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- deps: update rust docker tag to v1.91.1(pr [#333])
+
 ## [0.1.64] - 2025-11-07
 
 ### Fixed
@@ -949,6 +955,8 @@ All notable changes to this project will be documented in this file.
 [#330]: https://github.com/jerus-org/ci-container/pull/330
 [#331]: https://github.com/jerus-org/ci-container/pull/331
 [#332]: https://github.com/jerus-org/ci-container/pull/332
+[#333]: https://github.com/jerus-org/ci-container/pull/333
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.64...HEAD
 [0.1.64]: https://github.com/jerus-org/ci-container/compare/v0.1.63...v0.1.64
 [0.1.63]: https://github.com/jerus-org/ci-container/compare/v0.1.62...v0.1.63
 [0.1.62]: https://github.com/jerus-org/ci-container/compare/v0.1.61...v0.1.62
