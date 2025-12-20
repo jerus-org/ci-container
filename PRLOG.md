@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - deps: update dependency toolkit to v3(pr [#337])
+- deps: update rust docker tag to v1.92.0(pr [#335])
 
 ## [0.1.65] - 2025-12-07
 
@@ -963,6 +964,7 @@ All notable changes to this project will be documented in this file.
 [#332]: https://github.com/jerus-org/ci-container/pull/332
 [#333]: https://github.com/jerus-org/ci-container/pull/333
 [#337]: https://github.com/jerus-org/ci-container/pull/337
+[#335]: https://github.com/jerus-org/ci-container/pull/335
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.65...HEAD
 [0.1.65]: https://github.com/jerus-org/ci-container/compare/v0.1.64...v0.1.65
 [0.1.64]: https://github.com/jerus-org/ci-container/compare/v0.1.63...v0.1.64
