@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- 🔧 chore(Dockerfile)-downgrade cargo-audit version(pr [#339])
+
 ## [0.1.66] - 2025-12-20
 
 ### Changed
@@ -972,7 +978,9 @@ All notable changes to this project will be documented in this file.
 [#335]: https://github.com/jerus-org/ci-container/pull/335
 [#336]: https://github.com/jerus-org/ci-container/pull/336
 [#338]: https://github.com/jerus-org/ci-container/pull/338
-[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.65...HEAD
+[#339]: https://github.com/jerus-org/ci-container/pull/339
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.66...HEAD
+[0.1.66]: https://github.com/jerus-org/ci-container/compare/v0.1.65...v0.1.66
 [0.1.65]: https://github.com/jerus-org/ci-container/compare/v0.1.64...v0.1.65
 [0.1.64]: https://github.com/jerus-org/ci-container/compare/v0.1.63...v0.1.64
 [0.1.63]: https://github.com/jerus-org/ci-container/compare/v0.1.62...v0.1.63
