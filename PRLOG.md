@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [0.1.66] - 2025-12-20
 
+### Changed
+
+- 📦 build(Dockerfile)-update cargo-audit to version 0.22.0(pr [#338])
+
 ### Fixed
 
 - deps: update dependency toolkit to v3(pr [#337])
@@ -967,7 +971,8 @@ All notable changes to this project will be documented in this file.
 [#337]: https://github.com/jerus-org/ci-container/pull/337
 [#335]: https://github.com/jerus-org/ci-container/pull/335
 [#336]: https://github.com/jerus-org/ci-container/pull/336
-[0.1.66]: https://github.com/jerus-org/ci-container/compare/v0.1.65...v0.1.66
+[#338]: https://github.com/jerus-org/ci-container/pull/338
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.65...HEAD
 [0.1.65]: https://github.com/jerus-org/ci-container/compare/v0.1.64...v0.1.65
 [0.1.64]: https://github.com/jerus-org/ci-container/compare/v0.1.63...v0.1.64
 [0.1.63]: https://github.com/jerus-org/ci-container/compare/v0.1.62...v0.1.63
