@@ -5,9 +5,25 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.67] - 2025-12-21
+
+Summary: Build[2], Chore[4]
+
+### Build
+
+ - 📦 build(docker): cargo-audit  CVSS v4.0 (v0.22.0)
+ - 📦 build(Dockerfile): update cargo-audit to version 0.22.0
+
+### Chore
+
+ - chore: update prlog for pr
+ - chore: update prlog for pr
+ - 🔧 chore(Dockerfile): downgrade cargo-audit version
+ - chore: update prlog for pr
+
 ## [0.1.66] - 2025-12-20
 
-Summary: Chore[3], Fixed[3]
+Summary: Chore[4], Fixed[3]
 
 ### Fixed
 
@@ -17,6 +33,7 @@ Summary: Chore[3], Fixed[3]
 
 ### Chore
 
+ - chore: update prlog for pr
  - chore: update prlog for pr
  - chore: update prlog for pr
  - chore: update prlog for pr
@@ -34,22 +51,7 @@ Summary: Chore[2], Fixed[1]
  - chore: update prlog for pr
  - chore: update prlog for pr
 
-## [0.1.64] - 2025-11-07
-
-Summary: Chore[3], Fixed[2]
-
-### Fixed
-
- - fix(deps): update rust docker tag to v1.91.0
- - fix(deps): update dependency toolkit to v2.16.0
-
-### Chore
-
- - chore: update prlog for pr
- - chore: update prlog for pr
- - chore: update prlog for pr
-
-[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.65...HEAD
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.66...HEAD
+[0.1.66]: https://github.com/jerus-org/ci-container/compare/v0.1.65...v0.1.66
 [0.1.65]: https://github.com/jerus-org/ci-container/compare/v0.1.64...v0.1.65
-[0.1.64]: https://github.com/jerus-org/ci-container/compare/v0.1.63...v0.1.64
 
