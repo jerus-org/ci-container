@@ -19,6 +19,8 @@ ENV GEN_CHANGELOG_VERSION=0.1.3
 ENV NEXTSV_VERSION=0.19.24
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
 ENV PCU_VERSION=0.6.0
+# renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
+ENV CARGO_FUZZ_VERSION=0.12.0
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN set -eux; 
 RUN apt-get update; \
@@ -37,8 +39,9 @@ RUN \
 RUN \
     cargo binstall cargo-audit --version ${CARGO_AUDIT_VERSION} --no-confirm; \
     cargo binstall --locked --version 1.0.95 cargo-expand --no-confirm; \
+    cargo binstall cargo-fuzz --version ${CARGO_FUZZ_VERSION} --no-confirm; \
     cargo binstall cargo-llvm-cov --version ${CARGO_LLVM_COV_VERSION} --no-confirm; \
-    cargo binstall cargo-nextest --no-confirm; \ 
+    cargo binstall cargo-nextest --no-confirm; \
     cargo binstall cargo-release --version ${CARGO_RELEASE_VERSION} --no-confirm; \
     cargo binstall circleci-junit-fix --locked --version ${CIRCLECI_JUNIT_FIX_VERSION} --no-confirm; \
     cargo binstall cull-gmail --version ${CULL_GMAIL_VERSION} --no-confirm; \
@@ -73,6 +76,7 @@ RUN set -eux; \
     gpg \
     gpg-agent \
     libssl-dev \
+    llvm \
     openssh-client \
     pkg-config \
     && apt-get clean \
@@ -80,6 +84,7 @@ RUN set -eux; \
 COPY --from=binaries $CARGO_HOME/bin/cargo-release \
     $CARGO_HOME/bin/cargo-audit \
     $CARGO_HOME/bin/cargo-expand \
+    $CARGO_HOME/bin/cargo-fuzz \
     $CARGO_HOME/bin/cargo-llvm-cov \
     $CARGO_HOME/bin/cargo-nextest \
     $CARGO_HOME/bin/gen-changelog \
@@ -89,7 +94,7 @@ COPY --from=binaries $CARGO_HOME/bin/cargo-release \
 ARG MIN_RUST_VERSION=1.65
 RUN rustup component add clippy rustfmt llvm-tools; \
     rustup toolchain install stable --component clippy --component rustfmt; \
-    rustup toolchain install nightly --component clippy --component rustfmt; \
+    rustup toolchain install nightly --component clippy --component rustfmt --component miri; \
     rustup toolchain install beta --component clippy --component rustfmt; \
     rustup toolchain install "$MIN_RUST_VERSION" --component clippy --component rustfmt;  
 USER circleci
