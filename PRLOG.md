@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Added
+
+- add miri and cargo-fuzz support(pr [#341])
+
 ## [0.1.67] - 2025-12-21
 
 ### Changed
@@ -981,6 +987,8 @@ All notable changes to this project will be documented in this file.
 [#338]: https://github.com/jerus-org/ci-container/pull/338
 [#339]: https://github.com/jerus-org/ci-container/pull/339
 [#340]: https://github.com/jerus-org/ci-container/pull/340
+[#341]: https://github.com/jerus-org/ci-container/pull/341
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.67...HEAD
 [0.1.67]: https://github.com/jerus-org/ci-container/compare/v0.1.66...v0.1.67
 [0.1.66]: https://github.com/jerus-org/ci-container/compare/v0.1.65...v0.1.66
 [0.1.65]: https://github.com/jerus-org/ci-container/compare/v0.1.64...v0.1.65
