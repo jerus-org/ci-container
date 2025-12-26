@@ -5,9 +5,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.68] - 2025-12-26
+
+Summary: Added[1], Chore[1]
+
+### Added
+
+ - feat: add miri and cargo-fuzz support
+
+### Chore
+
+ - chore: update prlog for pr
+
 ## [0.1.67] - 2025-12-21
 
-Summary: Build[2], Chore[4]
+Summary: Build[2], Chore[5]
 
 ### Build
 
@@ -16,6 +28,7 @@ Summary: Build[2], Chore[4]
 
 ### Chore
 
+ - chore: update prlog for pr
  - chore: update prlog for pr
  - chore: update prlog for pr
  - 🔧 chore(Dockerfile): downgrade cargo-audit version
@@ -38,20 +51,7 @@ Summary: Chore[4], Fixed[3]
  - chore: update prlog for pr
  - chore: update prlog for pr
 
-## [0.1.65] - 2025-12-07
-
-Summary: Chore[2], Fixed[1]
-
-### Fixed
-
- - fix(deps): update rust docker tag to v1.91.1
-
-### Chore
-
- - chore: update prlog for pr
- - chore: update prlog for pr
-
-[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.66...HEAD
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.67...HEAD
+[0.1.67]: https://github.com/jerus-org/ci-container/compare/v0.1.66...v0.1.67
 [0.1.66]: https://github.com/jerus-org/ci-container/compare/v0.1.65...v0.1.66
-[0.1.65]: https://github.com/jerus-org/ci-container/compare/v0.1.64...v0.1.65
 
