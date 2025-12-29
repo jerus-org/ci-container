@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- add conditional wasmtime check based on Rust MSRV(pr [#343])
+
 ## [0.1.68] - 2025-12-26
 
 ### Added
@@ -988,6 +994,8 @@ All notable changes to this project will be documented in this file.
 [#339]: https://github.com/jerus-org/ci-container/pull/339
 [#340]: https://github.com/jerus-org/ci-container/pull/340
 [#341]: https://github.com/jerus-org/ci-container/pull/341
+[#343]: https://github.com/jerus-org/ci-container/pull/343
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.68...HEAD
 [0.1.68]: https://github.com/jerus-org/ci-container/compare/v0.1.67...v0.1.68
 [0.1.67]: https://github.com/jerus-org/ci-container/compare/v0.1.66...v0.1.67
 [0.1.66]: https://github.com/jerus-org/ci-container/compare/v0.1.65...v0.1.66
