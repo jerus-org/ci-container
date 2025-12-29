@@ -94,7 +94,7 @@ COPY --from=binaries $CARGO_HOME/bin/cargo-release \
 ARG MIN_RUST_VERSION=1.65
 RUN rustup component add clippy rustfmt llvm-tools; \
     rustup toolchain install stable --component clippy --component rustfmt; \
-    rustup toolchain install nightly --component clippy --component rustfmt --component miri; \
+    rustup toolchain install nightly --component clippy --component rustfmt --component miri --component rust-src; \
     rustup toolchain install beta --component clippy --component rustfmt; \
     rustup toolchain install "$MIN_RUST_VERSION" --component clippy --component rustfmt;  
 USER circleci
