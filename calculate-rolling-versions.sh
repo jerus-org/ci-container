@@ -46,6 +46,7 @@ echo "Versions to install: ${VERSIONS_TO_INSTALL}"
 echo ""
 
 # Install each version
+# shellcheck disable=SC2086
 for version in $VERSIONS_TO_INSTALL; do
     echo "Installing Rust ${version}..."
     if rustup toolchain install "${version}" --component clippy --component rustfmt 2>/dev/null; then

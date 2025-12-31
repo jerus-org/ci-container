@@ -29,6 +29,7 @@ fi
 echo ""
 echo "Installing WASI targets for rolling versions..."
 
+# shellcheck disable=SC2086
 for version in $ROLLING_VERSIONS; do
     # Extract major.minor for comparison
     major=$(echo "$version" | cut -d. -f1)

@@ -28,6 +28,7 @@ echo ""
 echo "Checking rolling versions..."
 if [ -n "$ROLLING_RUST_VERSIONS" ]; then
     echo "Expected versions: $ROLLING_RUST_VERSIONS"
+    # shellcheck disable=SC2086
     for version in $ROLLING_RUST_VERSIONS; do
         if rustup toolchain list | grep -q "^${version}"; then
             echo "  [OK] Rust ${version} installed"
@@ -79,6 +80,7 @@ for version in stable beta nightly; do
 done
 
 if [ -n "$ROLLING_RUST_VERSIONS" ]; then
+    # shellcheck disable=SC2086
     for version in $ROLLING_RUST_VERSIONS; do
         if rustup target list --toolchain "$version" 2>/dev/null | grep -q "wasm32-wasi"; then
             echo "  [OK] $version has WASI target"
