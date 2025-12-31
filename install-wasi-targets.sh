@@ -15,14 +15,14 @@ echo "Installing WASI targets for standard toolchains..."
 for toolchain in stable beta nightly; do
     echo "  ${toolchain}: wasm32-wasip1"
     rustup target add wasm32-wasip1 --toolchain "${toolchain}" 2>/dev/null || \
-        echo "    [WARN] Failed to add wasm32-wasip1 for ${toolchain}"
+        echo "    [WARN] Failed to add wasm32-wasip1 for ${toolchain}" >&2
 done
 
 # Read installed rolling versions
-if [ -f /etc/rolling-rust-versions ]; then
+if [[ -f /etc/rolling-rust-versions ]]; then
     ROLLING_VERSIONS=$(cat /etc/rolling-rust-versions)
 else
-    echo "[WARN] /etc/rolling-rust-versions not found, skipping version-specific WASI targets"
+    echo "[WARN] /etc/rolling-rust-versions not found, skipping version-specific WASI targets" >&2
     exit 0
 fi
 
@@ -37,7 +37,7 @@ for version in $ROLLING_VERSIONS; do
 
     # Determine correct WASI target name
     # wasm32-wasip1 was introduced in Rust 1.78
-    if [ "$major" -gt 1 ] || { [ "$major" -eq 1 ] && [ "$minor" -ge 78 ]; }; then
+    if [[ "$major" -gt 1 ]] || { [[ "$major" -eq 1 ]] && [[ "$minor" -ge 78 ]]; }; then
         target="wasm32-wasip1"
     else
         target="wasm32-wasi"
@@ -45,7 +45,7 @@ for version in $ROLLING_VERSIONS; do
 
     echo "  ${version}: ${target}"
     rustup target add "${target}" --toolchain "${version}" 2>/dev/null || \
-        echo "    [WARN] Failed to add ${target} for ${version}"
+        echo "    [WARN] Failed to add ${target} for ${version}" >&2
 done
 
 echo ""

@@ -10,35 +10,35 @@ echo "========= Rolling Image Validation ========="
 echo ""
 
 # Load rolling versions from file or environment
-if [ -f /etc/rolling-rust-versions ]; then
+if [[ -f /etc/rolling-rust-versions ]]; then
     ROLLING_RUST_VERSIONS=$(cat /etc/rolling-rust-versions)
     export ROLLING_RUST_VERSIONS
-elif [ -z "$ROLLING_RUST_VERSIONS" ]; then
-    echo "WARNING: No rolling versions configured"
+elif [[ -z "$ROLLING_RUST_VERSIONS" ]]; then
+    echo "WARNING: No rolling versions configured" >&2
     ROLLING_RUST_VERSIONS=""
 fi
 
 echo "---------rust versions-------------------"
 echo "Checking standard toolchains..."
-rustup show | grep stable || { echo "ERROR: stable toolchain not found"; exit 1; }
-rustup show | grep beta || { echo "ERROR: beta toolchain not found"; exit 1; }
-rustup show | grep nightly || { echo "ERROR: nightly toolchain not found"; exit 1; }
+rustup show | grep stable || { echo "ERROR: stable toolchain not found" >&2; exit 1; }
+rustup show | grep beta || { echo "ERROR: beta toolchain not found" >&2; exit 1; }
+rustup show | grep nightly || { echo "ERROR: nightly toolchain not found" >&2; exit 1; }
 
 echo ""
 echo "Checking rolling versions..."
-if [ -n "$ROLLING_RUST_VERSIONS" ]; then
+if [[ -n "$ROLLING_RUST_VERSIONS" ]]; then
     echo "Expected versions: $ROLLING_RUST_VERSIONS"
     # shellcheck disable=SC2086
     for version in $ROLLING_RUST_VERSIONS; do
         if rustup toolchain list | grep -q "^${version}"; then
             echo "  [OK] Rust ${version} installed"
         else
-            echo "  [FAIL] Rust ${version} NOT installed"
+            echo "  [FAIL] Rust ${version} NOT installed" >&2
             exit 1
         fi
     done
 else
-    echo "WARNING: ROLLING_RUST_VERSIONS not set, skipping version check"
+    echo "WARNING: ROLLING_RUST_VERSIONS not set, skipping version check" >&2
 fi
 
 echo ""
@@ -79,13 +79,13 @@ for version in stable beta nightly; do
     fi
 done
 
-if [ -n "$ROLLING_RUST_VERSIONS" ]; then
+if [[ -n "$ROLLING_RUST_VERSIONS" ]]; then
     # shellcheck disable=SC2086
     for version in $ROLLING_RUST_VERSIONS; do
         if rustup target list --toolchain "$version" 2>/dev/null | grep -q "wasm32-wasi"; then
             echo "  [OK] $version has WASI target"
         else
-            echo "  [WARN] $version may not have WASI target"
+            echo "  [WARN] $version may not have WASI target" >&2
         fi
     done
 fi
@@ -105,11 +105,12 @@ echo ""
 echo "---------version fallback test-----------"
 # Test that we can switch between versions
 echo "Testing version switching..."
-for version in stable $ROLLING_RUST_VERSIONS; do  # shellcheck disable=SC2086
+# shellcheck disable=SC2086
+for version in stable $ROLLING_RUST_VERSIONS; do
     if cargo "+${version}" --version >/dev/null 2>&1; then
         echo "  [OK] cargo +${version} works"
     else
-        echo "  [FAIL] cargo +${version} failed"
+        echo "  [FAIL] cargo +${version} failed" >&2
         exit 1
     fi
 done

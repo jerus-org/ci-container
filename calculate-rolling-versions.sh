@@ -26,7 +26,7 @@ OLDEST_MINOR=$((CURRENT_MINOR - RELEASES_IN_WINDOW))
 
 # Ensure we don't go below a reasonable minimum (1.70 is a safe floor)
 MIN_SUPPORTED_MINOR=70
-if [ "$OLDEST_MINOR" -lt "$MIN_SUPPORTED_MINOR" ]; then
+if [[ "$OLDEST_MINOR" -lt "$MIN_SUPPORTED_MINOR" ]]; then
     OLDEST_MINOR=$MIN_SUPPORTED_MINOR
 fi
 
