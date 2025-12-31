@@ -43,6 +43,55 @@ executors:
       - image: jerusdp/ci-rust:base
 
 commands:
+  test-rolling:
+    description: >
+      Build and test rolling 6-month multi-version image.
+      Versions are calculated automatically based on the current stable
+      Rust version in the base image (current - 4 releases).
+    steps:
+      - run:
+          name: Build and test rolling image
+          command: |
+            set -exo pipefail
+
+            REPO=jerusdp/ci-rust
+            docker build \
+                -f Dockerfile.rolling \
+                -t ${REPO}:rolling-6mo-test \
+                --target test .
+            docker run --rm ${REPO}:rolling-6mo-test
+
+  publish-rolling:
+    description: >
+      Build and publish rolling 6-month images (final and wasi variants).
+      Versions are calculated automatically based on the current stable
+      Rust version in the base image (current - 4 releases).
+    steps:
+      - run:
+          name: Publish rolling-6mo image
+          command: |
+            set -exo pipefail
+
+            REPO=jerusdp/ci-rust
+            docker build \
+                -f Dockerfile.rolling \
+                -t ${REPO}:rolling-6mo \
+                --target final .
+            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+            docker push ${REPO}:rolling-6mo
+      - run:
+          name: Publish rolling-6mo-wasi image
+          command: |
+            set -exo pipefail
+
+            REPO=jerusdp/ci-rust
+            docker build \
+                -f Dockerfile.rolling \
+                -t ${REPO}:rolling-6mo-wasi \
+                --target wasi .
+            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+            docker push ${REPO}:rolling-6mo-wasi
+
   set-min-rust-wasi:
     parameters:
       rust-min-version:
@@ -300,6 +349,28 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - publish_base_cmd
+
+  test_rolling:
+    description: >
+      Test rolling 6-month multi-version image.
+      Versions are calculated automatically from the base Rust image.
+    executor: ubuntu
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - test-rolling
+
+  publish_rolling:
+    description: >
+      Publish rolling 6-month multi-version images.
+      Versions are calculated automatically from the base Rust image.
+    executor: ubuntu
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - publish-rolling
 
   security:
     executor:
@@ -634,10 +705,15 @@ workflows:
           cargo_audit: false
           context:
             - SonarCloud
+      - test_rolling:
+          filters:
+            branches:
+              ignore: main
       - toolkit/update_prlog:
           requires:
             - test
             - security
+            - test_rolling
           context:
             - release
             - bot-check
@@ -702,6 +778,10 @@ workflows:
       - publish_rustc_versions:
           matrix:
             <<: *matrix
+          requires:
+            - publish_base
+          filters: *filters
+      - publish_rolling:
           requires:
             - publish_base
           filters: *filters
