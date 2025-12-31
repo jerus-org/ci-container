@@ -5,6 +5,7 @@ REPO ?= jerusdp/ci-rust
 TAG ?= $(MIN_RUST_VERSION)
 BASE_TAG ?= base
 WASI_TAG ?= wasi
+ROLLING_TAG ?= rolling-6mo
 
 publish: build
 	$(DOCKER) push $(REPO):${TAG} 
@@ -49,5 +50,37 @@ build-test:
 
 test: build-test ; \
 	$(DOCKER) run --rm \
-		$(REPO)/test:${TAG}-${WASI_TAG} 
-		
+		$(REPO)/test:${TAG}-${WASI_TAG}
+
+# Rolling 6-month image targets
+# Versions are calculated automatically based on current stable Rust
+
+build-rolling:
+	$(DOCKER) build --no-cache -f Dockerfile.rolling -t $(REPO):${ROLLING_TAG} --target final . 2>&1 | tee build-rolling.log
+
+build-rolling-wasi:
+	$(DOCKER) build --no-cache -f Dockerfile.rolling -t $(REPO):${ROLLING_TAG}-${WASI_TAG} --target wasi . 2>&1 | tee build-rolling-wasi.log
+
+build-rolling-test:
+	$(DOCKER) build -f Dockerfile.rolling -t $(REPO)/test:${ROLLING_TAG} --target test . 2>&1 | tee build-rolling-test.log
+
+test-rolling: build-rolling-test ; \
+	$(DOCKER) run --rm $(REPO)/test:${ROLLING_TAG}
+
+debug-rolling: build-rolling
+	$(DOCKER) run --rm -it \
+		--entrypoint=/bin/bash \
+		$(REPO):${ROLLING_TAG}
+
+debug-rolling-wasi: build-rolling-wasi
+	$(DOCKER) run --rm -it \
+		--entrypoint=/bin/bash \
+		$(REPO):${ROLLING_TAG}-${WASI_TAG}
+
+publish-rolling: build-rolling
+	$(DOCKER) push $(REPO):${ROLLING_TAG}
+
+publish-rolling-wasi: build-rolling-wasi
+	$(DOCKER) push $(REPO):${ROLLING_TAG}-${WASI_TAG}
+
+publish-rolling-all: publish-rolling publish-rolling-wasi
