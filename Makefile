@@ -1,7 +1,7 @@
 DOCKER ?= docker
 INPUT_RELEASE_VERSION ?= 0.1.0
 MIN_RUST_VERSION ?= 1.65.0
-REPO ?= jerusdp/ci-rust
+REPO ?= docker.io/jerusdp/ci-rust
 TAG ?= $(MIN_RUST_VERSION)
 BASE_TAG ?= base
 WASI_TAG ?= wasi
