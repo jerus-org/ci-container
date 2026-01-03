@@ -1,27 +1,27 @@
 version: 2.1
 
 parameters:
-  min-rust-version:
+  min_rust_version:
     type: string
     default: "1.87"
   fingerprint:
     type: string
     default: SHA256:OkxsH8Z6Iim6WDJBaII9eTT9aaO1f3eDc6IpsgYYPVg
-  validation-flag:
+  validation_flag:
     type: boolean
     default: false
     description: "If true, the validation pipeline will be executed."
-  success-flag:
+  success_flag:
     type: boolean
     default: false
     description: "If true, the success pipeline will be executed."
-  release-flag:
+  release_flag:
     type: boolean
     default: false
     description: "If true, the release pipeline will be executed."
 
 orbs:
-  toolkit: jerus-org/circleci-toolkit@3.1.0
+  toolkit: jerus-org/circleci-toolkit@4.0.0
   sonarcloud: sonarsource/sonarcloud@4.0.0
 
 filters: &filters
@@ -37,7 +37,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   rust-env:
     docker:
-      - image: jerusdp/ci-rust:<<pipeline.parameters.min-rust-version>>
+      - image: jerusdp/ci-rust:<<pipeline.parameters.min_rust_version>>
   base_env:
     docker:
       - image: jerusdp/ci-rust:base
@@ -94,7 +94,7 @@ commands:
 
   set-min-rust-wasi:
     parameters:
-      rust-min-version:
+      rust_min_version:
         default: "1.56"
         type: string
     steps:
@@ -103,10 +103,10 @@ commands:
           command: |
             set -exo pipefail
 
-            if [[ "1.85" = "<<parameters.rust-min-version>>" || \
-                  "1.88" = "<<parameters.rust-min-version>>" || \
-                  "1.89" = "<<parameters.rust-min-version>>" || \
-                  "1.87" = "<<parameters.rust-min-version>>" ]]; then
+            if [[ "1.85" = "<<parameters.rust_min_version>>" || \
+                  "1.88" = "<<parameters.rust_min_version>>" || \
+                  "1.89" = "<<parameters.rust_min_version>>" || \
+                  "1.87" = "<<parameters.rust_min_version>>" ]]; then
               wasi_name="wasm32-wasip1"
             else
               wasi_name="wasm32-wasi"
@@ -116,19 +116,19 @@ commands:
 
   make-test:
     parameters:
-      rust-min-version:
+      rust_min_version:
         default: "1.56"
         type: string
     steps:
       - run:
-          name: make test for minimum version <<parameters.rust-min-version>>
+          name: make test for minimum version <<parameters.rust_min_version>>
           command: |
             set -exo pipefail
 
             REPO=jerusdp/ci-rust
-            TAG=<<parameters.rust-min-version>>
+            TAG=<<parameters.rust_min_version>>
             docker build \
-                --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> \
+                --build-arg MIN_RUST_VERSION=<<parameters.rust_min_version>> \
                 --build-arg MIN_RUST_WASI=$WASI_NAME \
                 -t ${REPO}/test:${TAG}-wasi \
                 --target test .
@@ -136,35 +136,35 @@ commands:
 
   publish_rust_envs:
     parameters:
-      rust-min-version:
+      rust_min_version:
         default: "1.56"
         type: string
     steps:
       - run:
-          name: Publish for minimum version <<parameters.rust-min-version>>
+          name: Publish for minimum version <<parameters.rust_min_version>>
           command: |
             set -exo pipefail
 
             REPO=jerusdp/ci-rust
-            TAG=<<parameters.rust-min-version>>
+            TAG=<<parameters.rust_min_version>>
             INPUT_RELEASE_VERSION=0.1.0
             docker build \
-                --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> \
+                --build-arg MIN_RUST_VERSION=<<parameters.rust_min_version>> \
                 --build-arg MIN_RUST_WASI=$WASI_NAME \
                 -t ${REPO}:${TAG} \
                 --target final .
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push ${REPO}:${TAG}
       - run:
-          name: Publish for minimum version <<parameters.rust-min-version>>
+          name: Publish for minimum version <<parameters.rust_min_version>>
           command: |
             set -exo pipefail
 
             REPO=jerusdp/ci-rust
-            TAG=<<parameters.rust-min-version>>
+            TAG=<<parameters.rust_min_version>>
             INPUT_RELEASE_VERSION=0.1.0
             docker build \
-                --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>>\
+                --build-arg MIN_RUST_VERSION=<<parameters.rust_min_version>>\
                 --build-arg MIN_RUST_WASI=$WASI_NAME \
                 -t ${REPO}:${TAG}-wasi \
                 --target wasi .
@@ -316,7 +316,7 @@ commands:
 jobs:
   test:
     parameters:
-      min-rust-version:
+      min_rust_version:
         type: string
     executor: ubuntu
     steps:
@@ -324,13 +324,13 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - set-min-rust-wasi:
-          rust-min-version: << parameters.min-rust-version >>
+          rust_min_version: << parameters.min_rust_version >>
       - make-test:
-          rust-min-version: << parameters.min-rust-version >>
+          rust_min_version: << parameters.min_rust_version >>
 
   publish_rustc_versions:
     parameters:
-      min-rust-version:
+      min_rust_version:
         type: string
     executor: ubuntu
     steps:
@@ -338,9 +338,9 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - set-min-rust-wasi:
-          rust-min-version: << parameters.min-rust-version >>
+          rust_min_version: << parameters.min_rust_version >>
       - publish_rust_envs:
-          rust-min-version: << parameters.min-rust-version >>
+          rust_min_version: << parameters.min_rust_version >>
 
   publish_base:
     executor: ubuntu
@@ -654,9 +654,9 @@ workflows:
       and:
         - not:
             equal: [scheduled_pipeline, << pipeline.trigger_source >>]
-        - not: << pipeline.parameters.success-flag >>
-        - not: << pipeline.parameters.release-flag >>
-        - not: << pipeline.parameters.validation-flag >>
+        - not: << pipeline.parameters.success_flag >>
+        - not: << pipeline.parameters.release_flag >>
+        - not: << pipeline.parameters.validation_flag >>
 
     jobs:
       - toolkit/choose_pipeline:
@@ -671,12 +671,12 @@ workflows:
       and:
         - not:
             equal: [scheduled_pipeline, << pipeline.trigger_source >>]
-        - not: << pipeline.parameters.success-flag >>
-        - not: << pipeline.parameters.release-flag >>
-        - << pipeline.parameters.validation-flag >>
+        - not: << pipeline.parameters.success_flag >>
+        - not: << pipeline.parameters.release_flag >>
+        - << pipeline.parameters.validation_flag >>
     jobs:
       - toolkit/label:
-          min_rust_version: << pipeline.parameters.min-rust-version >>
+          min_rust_version: << pipeline.parameters.min_rust_version >>
           context: pcu-app
           filters:
             branches:
@@ -688,7 +688,7 @@ workflows:
               ignore: main
           matrix: &matrix
             parameters:
-              min-rust-version:
+              min_rust_version:
                 [
                   "1.75",
                   "1.76",
@@ -718,15 +718,15 @@ workflows:
             - release
             - bot-check
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min-rust-version >>
+          min_rust_version: << pipeline.parameters.min_rust_version >>
 
   on_success:
     when:
       and:
         - not:
             equal: [scheduled_pipeline, << pipeline.trigger_source >>]
-        - << pipeline.parameters.success-flag >>
-        - not: << pipeline.parameters.validation-flag >>
+        - << pipeline.parameters.success_flag >>
+        - not: << pipeline.parameters.validation_flag >>
 
     jobs:
       - toolkit/end_success
@@ -736,13 +736,13 @@ workflows:
       and:
         - not:
             equal: [scheduled_pipeline, << pipeline.trigger_source >>]
-        - not: << pipeline.parameters.release-flag >>
+        - not: << pipeline.parameters.release_flag >>
     jobs:
       - toolkit/label:
           filters:
             branches:
               only: main
-          min_rust_version: << pipeline.parameters.min-rust-version >>
+          min_rust_version: << pipeline.parameters.min_rust_version >>
           context:
             - bot-check
 
@@ -753,16 +753,16 @@ workflows:
             - and:
                 - equal: [scheduled_pipeline, << pipeline.trigger_source >>]
                 - equal: ["release check", << pipeline.schedule.name >>]
-            - << pipeline.parameters.release-flag >>
-        - not: << pipeline.parameters.success-flag >>
-        - not: << pipeline.parameters.validation-flag >>
+            - << pipeline.parameters.release_flag >>
+        - not: << pipeline.parameters.success_flag >>
+        - not: << pipeline.parameters.validation_flag >>
     jobs:
       - make_release:
           context:
             - release
             - bot-check
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min-rust-version >>
+          min_rust_version: << pipeline.parameters.min_rust_version >>
           when_cargo_release: false
           when_use_workspace: false
           pcu_update_prlog: true
