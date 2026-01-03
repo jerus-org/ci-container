@@ -1,4 +1,4 @@
-FROM docker.io/library/rust:1.92.0-slim-trixie AS binaries
+FROM docker.io/library/rust:1.92.0 AS binaries
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
 ENV WASMTIME_VERSION=36.0.2
 # renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
@@ -51,7 +51,7 @@ RUN \
     cargo binstall wasm-pack --version ${WASMPACK_VERSION} --no-confirm; \
     cargo binstall wasmtime-cli --version ${WASMTIME_VERSION} --no-confirm; 
 
-FROM docker.io/library/rust:1.92.0-slim-trixie AS base
+FROM docker.io/library/rust:1.92.0 AS base
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \

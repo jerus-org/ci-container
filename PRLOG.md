@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 - 🔧 chore(docker)-update Docker image references(pr [#345])
 
+### Fixed
+
+- deps: update docker.io/library/rust docker tag to v1.92.0(pr [#346])
+
 ## [0.1.70] - 2025-12-31
 
 ### Added
@@ -1009,6 +1013,7 @@ All notable changes to this project will be documented in this file.
 [#342]: https://github.com/jerus-org/ci-container/pull/342
 [#344]: https://github.com/jerus-org/ci-container/pull/344
 [#345]: https://github.com/jerus-org/ci-container/pull/345
+[#346]: https://github.com/jerus-org/ci-container/pull/346
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.70...HEAD
 [0.1.70]: https://github.com/jerus-org/ci-container/compare/v0.1.69...v0.1.70
 [0.1.69]: https://github.com/jerus-org/ci-container/compare/v0.1.68...v0.1.69
