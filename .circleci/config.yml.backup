@@ -1,21 +1,21 @@
 version: 2.1
 
 parameters:
-  min_rust_version:
+  min-rust-version:
     type: string
     default: "1.87"
   fingerprint:
     type: string
     default: SHA256:OkxsH8Z6Iim6WDJBaII9eTT9aaO1f3eDc6IpsgYYPVg
-  validation_flag:
+  validation-flag:
     type: boolean
     default: false
     description: "If true, the validation pipeline will be executed."
-  success_flag:
+  success-flag:
     type: boolean
     default: false
     description: "If true, the success pipeline will be executed."
-  release_flag:
+  release-flag:
     type: boolean
     default: false
     description: "If true, the release pipeline will be executed."
@@ -37,7 +37,7 @@ executors:
           password: $DOCKERHUB_PASSWORD
   rust-env:
     docker:
-      - image: jerusdp/ci-rust:<<pipeline.parameters.min_rust_version>>
+      - image: jerusdp/ci-rust:<<pipeline.parameters.min-rust-version>>
   base_env:
     docker:
       - image: jerusdp/ci-rust:base
@@ -654,9 +654,9 @@ workflows:
       and:
         - not:
             equal: [scheduled_pipeline, << pipeline.trigger_source >>]
-        - not: << pipeline.parameters.success_flag >>
-        - not: << pipeline.parameters.release_flag >>
-        - not: << pipeline.parameters.validation_flag >>
+        - not: << pipeline.parameters.success-flag >>
+        - not: << pipeline.parameters.release-flag >>
+        - not: << pipeline.parameters.validation-flag >>
 
     jobs:
       - toolkit/choose_pipeline:
@@ -671,12 +671,12 @@ workflows:
       and:
         - not:
             equal: [scheduled_pipeline, << pipeline.trigger_source >>]
-        - not: << pipeline.parameters.success_flag >>
-        - not: << pipeline.parameters.release_flag >>
-        - << pipeline.parameters.validation_flag >>
+        - not: << pipeline.parameters.success-flag >>
+        - not: << pipeline.parameters.release-flag >>
+        - << pipeline.parameters.validation-flag >>
     jobs:
       - toolkit/label:
-          min_rust_version: << pipeline.parameters.min_rust_version >>
+          min_rust_version: << pipeline.parameters.min-rust-version >>
           context: pcu-app
           filters:
             branches:
@@ -718,15 +718,15 @@ workflows:
             - release
             - bot-check
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min_rust_version >>
+          min_rust_version: << pipeline.parameters.min-rust-version >>
 
   on_success:
     when:
       and:
         - not:
             equal: [scheduled_pipeline, << pipeline.trigger_source >>]
-        - << pipeline.parameters.success_flag >>
-        - not: << pipeline.parameters.validation_flag >>
+        - << pipeline.parameters.success-flag >>
+        - not: << pipeline.parameters.validation-flag >>
 
     jobs:
       - toolkit/end_success
@@ -736,13 +736,13 @@ workflows:
       and:
         - not:
             equal: [scheduled_pipeline, << pipeline.trigger_source >>]
-        - not: << pipeline.parameters.release_flag >>
+        - not: << pipeline.parameters.release-flag >>
     jobs:
       - toolkit/label:
           filters:
             branches:
               only: main
-          min_rust_version: << pipeline.parameters.min_rust_version >>
+          min_rust_version: << pipeline.parameters.min-rust-version >>
           context:
             - bot-check
 
@@ -753,16 +753,16 @@ workflows:
             - and:
                 - equal: [scheduled_pipeline, << pipeline.trigger_source >>]
                 - equal: ["release check", << pipeline.schedule.name >>]
-            - << pipeline.parameters.release_flag >>
-        - not: << pipeline.parameters.success_flag >>
-        - not: << pipeline.parameters.validation_flag >>
+            - << pipeline.parameters.release-flag >>
+        - not: << pipeline.parameters.success-flag >>
+        - not: << pipeline.parameters.validation-flag >>
     jobs:
       - make_release:
           context:
             - release
             - bot-check
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min_rust_version >>
+          min_rust_version: << pipeline.parameters.min-rust-version >>
           when_cargo_release: false
           when_use_workspace: false
           pcu_update_prlog: true
