@@ -1,0 +1,787 @@
+version: 2.1
+
+parameters:
+  min-rust-version:
+    type: string
+    default: "1.87"
+  fingerprint:
+    type: string
+    default: SHA256:OkxsH8Z6Iim6WDJBaII9eTT9aaO1f3eDc6IpsgYYPVg
+  validation-flag:
+    type: boolean
+    default: false
+    description: "If true, the validation pipeline will be executed."
+  success-flag:
+    type: boolean
+    default: false
+    description: "If true, the success pipeline will be executed."
+  release-flag:
+    type: boolean
+    default: false
+    description: "If true, the release pipeline will be executed."
+
+orbs:
+  toolkit: jerus-org/circleci-toolkit@4.0.1
+  sonarcloud: sonarsource/sonarcloud@4.0.0
+
+filters: &filters
+  tags:
+    only: /.*/
+
+executors:
+  ubuntu:
+    docker:
+      - image: cimg/base:2025.07
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
+  rust-env:
+    docker:
+      - image: jerusdp/ci-rust:<<pipeline.parameters.min-rust-version>>
+  base_env:
+    docker:
+      - image: jerusdp/ci-rust:base
+
+commands:
+  test-rolling:
+    description: >
+      Build and test rolling 6-month multi-version image.
+      Versions are calculated automatically based on the current stable
+      Rust version in the base image (current - 4 releases).
+    steps:
+      - run:
+          name: Build and test rolling image
+          command: |
+            set -exo pipefail
+
+            REPO=jerusdp/ci-rust
+            docker build \
+                -f Dockerfile.rolling \
+                -t ${REPO}:rolling-6mo-test \
+                --target test .
+            docker run --rm ${REPO}:rolling-6mo-test
+
+  publish-rolling:
+    description: >
+      Build and publish rolling 6-month images (final and wasi variants).
+      Versions are calculated automatically based on the current stable
+      Rust version in the base image (current - 4 releases).
+    steps:
+      - run:
+          name: Publish rolling-6mo image
+          command: |
+            set -exo pipefail
+
+            REPO=jerusdp/ci-rust
+            docker build \
+                -f Dockerfile.rolling \
+                -t ${REPO}:rolling-6mo \
+                --target final .
+            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+            docker push ${REPO}:rolling-6mo
+      - run:
+          name: Publish rolling-6mo-wasi image
+          command: |
+            set -exo pipefail
+
+            REPO=jerusdp/ci-rust
+            docker build \
+                -f Dockerfile.rolling \
+                -t ${REPO}:rolling-6mo-wasi \
+                --target wasi .
+            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+            docker push ${REPO}:rolling-6mo-wasi
+
+  set-min-rust-wasi:
+    parameters:
+      rust-min-version:
+        default: "1.56"
+        type: string
+    steps:
+      - run:
+          name: set appropriate wasi target
+          command: |
+            set -exo pipefail
+
+            if [[ "1.85" = "<<parameters.rust-min-version>>" || \
+                  "1.88" = "<<parameters.rust-min-version>>" || \
+                  "1.89" = "<<parameters.rust-min-version>>" || \
+                  "1.87" = "<<parameters.rust-min-version>>" ]]; then
+              wasi_name="wasm32-wasip1"
+            else
+              wasi_name="wasm32-wasi"
+            fi
+
+            echo "export WASI_NAME=$wasi_name" >> "$BASH_ENV"
+
+  make-test:
+    parameters:
+      rust-min-version:
+        default: "1.56"
+        type: string
+    steps:
+      - run:
+          name: make test for minimum version <<parameters.rust-min-version>>
+          command: |
+            set -exo pipefail
+
+            REPO=jerusdp/ci-rust
+            TAG=<<parameters.rust-min-version>>
+            docker build \
+                --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> \
+                --build-arg MIN_RUST_WASI=$WASI_NAME \
+                -t ${REPO}/test:${TAG}-wasi \
+                --target test .
+            docker run --rm ${REPO}/test:${TAG}-wasi
+
+  publish_rust_envs:
+    parameters:
+      rust-min-version:
+        default: "1.56"
+        type: string
+    steps:
+      - run:
+          name: Publish for minimum version <<parameters.rust-min-version>>
+          command: |
+            set -exo pipefail
+
+            REPO=jerusdp/ci-rust
+            TAG=<<parameters.rust-min-version>>
+            INPUT_RELEASE_VERSION=0.1.0
+            docker build \
+                --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> \
+                --build-arg MIN_RUST_WASI=$WASI_NAME \
+                -t ${REPO}:${TAG} \
+                --target final .
+            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+            docker push ${REPO}:${TAG}
+      - run:
+          name: Publish for minimum version <<parameters.rust-min-version>>
+          command: |
+            set -exo pipefail
+
+            REPO=jerusdp/ci-rust
+            TAG=<<parameters.rust-min-version>>
+            INPUT_RELEASE_VERSION=0.1.0
+            docker build \
+                --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>>\
+                --build-arg MIN_RUST_WASI=$WASI_NAME \
+                -t ${REPO}:${TAG}-wasi \
+                --target wasi .
+            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+            docker push ${REPO}:${TAG}-wasi
+
+  publish_base_cmd:
+    steps:
+      - run:
+          name: Publish for minimum version base
+          command: |
+            REPO=jerusdp/ci-rust
+            INPUT_RELEASE_VERSION=0.1.0
+            docker build -t ${REPO}:base --target final .
+            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+            docker push ${REPO}:base
+
+  cargo_audit:
+    parameters:
+      ignore_advisories:
+        type: string
+        default: ""
+        description: "Additional parameters to list advisories that should be ignored"
+    steps:
+      - run:
+          name: Security audit against RUSTSEC
+          command: |
+            cargo audit -D warnings << parameters.ignore_advisories >>
+
+  gen_changelog:
+    parameters:
+      verbosity:
+        type: string
+        default: "-vv"
+        description: "Logging verbosity to request from application"
+    steps:
+      - run:
+          name: Generate changelog
+          command: |
+            set -exo pipefail
+
+            if [ "$SEMVER" == "" ]; then
+              gen-changelog << parameters.verbosity >> generate --display-summaries 
+            else 
+              gen-changelog << parameters.verbosity >> generate --display-summaries --next-version $SEMVER
+            fi
+  install_rust_program:
+    description: >
+      Install a rust program from crates.io or a path
+      continue a setup workflow.
+    parameters:
+      crate:
+        default: ""
+        description: The crate to install from crates.io
+        type: string
+      path_to_crate:
+        default: ""
+        description: The path to the crate to install
+        type: string
+    steps:
+      - run:
+          command: |
+            set -exo pipefail
+
+            if [ "" != "<< parameters.path_to_crate >>" ]; then
+              cargo install --force --path << parameters.path_to_crate >>
+            fi
+
+            if [ "" != "<< parameters.crate >>" ]; then
+              cargo install --force << parameters.crate >>
+            fi 
+
+            cargo install --list
+          name: Install crate << parameters.path_to_crate >><< parameters.crate >>
+  make_github_release:
+    description: >
+      This command creates a github release using the pcu utility. With the
+      --package option the version number is taken from the Cargo.toml file of the
+      package. With the --workspace option the version number for each package is
+      taken from the Cargo.toml file for that package. Otherwise the SEMVER
+      environment variable must be set to the version number to be released. SEMVER
+      can be set using the `set_env_var_semver` command.
+    parameters:
+      pcu_package:
+        default: ""
+        description: Package to release and/or publish
+        type: string
+      pcu_prefix:
+        default: v
+        description: The verbosity of the pcu command
+        type: string
+      pcu_update_prlog:
+        default: false
+        description: The verbosity of the pcu command
+        type: boolean
+      pcu_verbosity:
+        default: "-vv"
+        description: The verbosity of the pcu command
+        type: string
+      pcu_workspace:
+        default: false
+        description: Whether or not to set the workspace flag of the pcu command
+        type: boolean
+    steps:
+      - run:
+          command: |
+            set -exo pipefail
+
+            if [ "<< parameters.pcu_package >>" != "" ] ; then
+                package="--package << parameters.pcu_package >>"
+            else
+                package=""
+            fi
+
+            if [ <<parameters.pcu_workspace>> == true ] ; then
+                pcu <<parameters.pcu_verbosity>> \
+                  release \
+                  workspace \
+                  $update_prlog \
+                  --prefix <<parameters.pcu_prefix>> \
+                exit
+            fi
+
+            if [ <<parameters.pcu_update_prlog>> == true ] ; then
+              update_prlog="--update-prlog"
+            else
+              update_prlog=""
+            fi
+
+            if [ "${SEMVER}" == "none" ] ; then
+              echo "No version to release"
+              pcu <<parameters.pcu_verbosity>> \
+                release \
+                --prefix <<parameters.pcu_prefix>> \
+                $update_prlog \
+                current \
+                << parameters.pcu_package >>
+            else
+              echo "Releasing version ${SEMVER}"
+              pcu <<parameters.pcu_verbosity>> \
+                release \
+                --prefix <<parameters.pcu_prefix>> \
+                $update_prlog \
+                version \
+                ${SEMVER}
+            fi
+          name: Create Github release
+
+jobs:
+  test:
+    parameters:
+      min-rust-version:
+        type: string
+    executor: ubuntu
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - set-min-rust-wasi:
+          rust-min-version: << parameters.min-rust-version >>
+      - make-test:
+          rust-min-version: << parameters.min-rust-version >>
+
+  publish_rustc_versions:
+    parameters:
+      min-rust-version:
+        type: string
+    executor: ubuntu
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - set-min-rust-wasi:
+          rust-min-version: << parameters.min-rust-version >>
+      - publish_rust_envs:
+          rust-min-version: << parameters.min-rust-version >>
+
+  publish_base:
+    executor: ubuntu
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - publish_base_cmd
+
+  test_rolling:
+    description: >
+      Test rolling 6-month multi-version image.
+      Versions are calculated automatically from the base Rust image.
+    executor: ubuntu
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - test-rolling
+
+  publish_rolling:
+    description: >
+      Publish rolling 6-month multi-version images.
+      Versions are calculated automatically from the base Rust image.
+    executor: ubuntu
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - publish-rolling
+
+  security:
+    executor:
+      name: base_env
+    parameters:
+      ignore_advisories:
+        default: ""
+        description: List of advisories to ignore each prefixed with "--ignore "
+        type: string
+      cargo_audit:
+        default: true
+        description: Don't run the cargo audit scan
+        type: boolean
+      sonarcloud:
+        default: true
+        description: Don't run the sonarcloud scan
+        type: boolean
+    steps:
+      - checkout
+      - when:
+          condition: << parameters.cargo_audit >>
+          steps:
+            - cargo_audit:
+                ignore_advisories: << parameters.ignore_advisories >>
+      - when:
+          condition: << parameters.sonarcloud >>
+          steps:
+            - sonarcloud/scan
+
+  make_release:
+    description: |
+      Assess the level using nextsv and make a release using cargo release
+    executor:
+      name: rust-env
+    parameters:
+      blog_directory:
+        default: content/blog
+        description: The directory to use for the blog
+        type: string
+      bluesky_command:
+        default: draft
+        description: The command to run for bluesky
+        enum:
+          - draft
+          - post
+        type: enum
+      echo:
+        default: false
+        description: If true, the bash environment will be set to echo the commands
+        type: boolean
+      first_release:
+        default: false
+        description: |
+          Request that a first release (v0.1.0) be created
+        type: boolean
+      install_crate:
+        default: ""
+        description: |
+          Crate to install from crates.io
+        type: string
+      install_path:
+        default: ""
+        description: |
+          Path to install a crate
+        type: string
+      min_rust_version:
+        type: string
+      package:
+        default: ""
+        description: The package to publish
+        type: string
+      pcu_commit_message:
+        default: "chore: test push"
+        description: The commit message to use for the pcu test push
+        type: string
+      pcu_no_push:
+        default: false
+        description: Whether or not prevent final push of commit
+        type: boolean
+      pcu_prefix:
+        default: v
+        description: The verbosity of the pcu command
+        type: string
+      pcu_semver:
+        default: false
+        description: Whether or not set the semver version flag
+        type: boolean
+      pcu_update_prlog:
+        default: false
+        description: To update the changelog when making the github release
+        type: boolean
+      pcu_verbosity:
+        default: "-vv"
+        description: The verbosity of the pcu command
+        type: string
+      pcu_workspace:
+        default: false
+        description: Whether or not to set the workspace flag of the pcu command
+        type: boolean
+      publish:
+        default: true
+        description: |
+          Publish the release
+        type: boolean
+      remove_ssh_key:
+        default: true
+        description: Remove the original SSH key from the agent
+        type: boolean
+      specific_version:
+        default: false
+        description: >
+          Make a specific release, if true version must be set to the specific
+          version number
+        type: boolean
+      ssh_fingerprint:
+        type: string
+      verbosity:
+        default: "-vv"
+        description: Verbosity for cargo release
+        type: string
+      version:
+        default: ""
+        description: |
+          Specific version number to release
+        type: string
+      when_bluesky:
+        default: false
+        description: Whether or not to run the bluesky command
+        type: boolean
+      when_cargo_release:
+        default: true
+        description: |
+          Create a cargo release
+        type: boolean
+      when_gen_changelog:
+        default: false
+        description: Generate a changelog and commit the file
+        type: boolean
+      when_get_version:
+        default: true
+        description: Get the next version number
+        type: boolean
+      when_github_release:
+        default: true
+        description: |
+          Create a github release
+        type: boolean
+      when_install_rust_crate:
+        default: false
+        description: |
+          Install a rust crate from path or crates.io
+        type: boolean
+      when_pcu_push:
+        default: false
+        description: To use the pcu push command
+        type: boolean
+      when_update_pcu:
+        default: false
+        description: |
+          Update pcu to the latest version based on the main branch on Github
+        type: boolean
+      when_use_workspace:
+        default: false
+        description: Get version from the workspace
+        type: boolean
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - << parameters.ssh_fingerprint >>
+      - when:
+          condition: << parameters.remove_ssh_key >>
+          steps:
+            - run:
+                command: |
+                  ssh-add -l
+                  ssh-add -d ~/.ssh/id_rsa.pub
+                  ssh-add -l
+                name: Remove original SSH key from agent
+      - toolkit/gpg_key
+      - toolkit/git_config
+      - when:
+          condition: << parameters.when_use_workspace >>
+          steps:
+            - attach_workspace:
+                at: /tmp/workspace
+            - run:
+                command: |
+                  semver=$(cat /tmp/workspace/next-version)
+                  echo "export SEMVER=$semver" >> "$BASH_ENV"
+                name: Get version and set SEMVER in bash environment
+      - when:
+          condition:
+            and:
+              - not: << parameters.when_use_workspace >>
+              - << parameters.when_get_version >>
+          steps:
+            - toolkit/get_next_version:
+                package: << parameters.package >>
+                verbosity: << parameters.pcu_verbosity >>
+                version: << parameters.version >>
+            - run:
+                command: |
+                  semver=$NEXT_VERSION
+                  echo "export SEMVER=$semver" >> "$BASH_ENV"
+                name: Set SEMVER in bash environment
+      - when:
+          condition: << parameters.when_update_pcu >>
+          steps:
+            - toolkit/install_latest_pcu
+      - when:
+          condition: << parameters.when_install_rust_crate >>
+          steps:
+            - install_rust_program:
+                crate: << parameters.install_crate >>
+                path_to_crate: << parameters.install_path >>
+      - when:
+          condition: << parameters.when_gen_changelog >>
+          steps:
+            - gen_changelog:
+                verbosity: << parameters.verbosity >>
+            - toolkit/commit_cmd:
+                pcu_commit_message: " chore(changelog): Generated an updated changelog"
+                pcu_verbosity: << parameters.verbosity >>
+      - when:
+          condition:
+            and:
+              - << parameters.when_cargo_release >>
+              - not: << parameters.when_pcu_push >>
+          steps:
+            - toolkit/make_cargo_release:
+                echo: << parameters.echo >>
+                first_release: << parameters.first_release >>
+                package: << parameters.package >>
+                publish: << parameters.publish >>
+                specific_version: << parameters.specific_version >>
+                verbosity: << parameters.verbosity >>
+                version: << parameters.version >>
+      - when:
+          condition:
+            and:
+              - << parameters.when_cargo_release >>
+              - << parameters.when_pcu_push >>
+          steps:
+            - toolkit/make_cargo_release:
+                echo: << parameters.echo >>
+                first_release: << parameters.first_release >>
+                no_push: true
+                package: << parameters.package >>
+                publish: << parameters.publish >>
+                specific_version: << parameters.specific_version >>
+                verbosity: << parameters.verbosity >>
+                version: << parameters.version >>
+      - when:
+          condition: << parameters.when_pcu_push >>
+          steps:
+            - toolkit/push_cmd:
+                pcu_no_push: << parameters.pcu_no_push >>
+                pcu_semver: << parameters.pcu_semver >>
+                pcu_verbosity: << parameters.pcu_verbosity >>
+      - when:
+          condition: << parameters.when_bluesky >>
+          steps:
+            - toolkit/bsky:
+                blog_directory: << parameters.blog_directory >>
+                command: << parameters.bluesky_command >>
+                pcu_verbosity: << parameters.pcu_verbosity >>
+      - when:
+          condition: << parameters.when_github_release >>
+          steps:
+            - make_github_release:
+                pcu_package: << parameters.package >>
+                pcu_prefix: << parameters.pcu_prefix >>
+                pcu_update_prlog: << parameters.pcu_update_prlog >>
+                pcu_verbosity: << parameters.pcu_verbosity >>
+                pcu_workspace: << parameters.pcu_workspace >>
+
+workflows:
+  check_last_commit:
+    when:
+      and:
+        - not:
+            equal: [scheduled_pipeline, << pipeline.trigger_source >>]
+        - not: << pipeline.parameters.success-flag >>
+        - not: << pipeline.parameters.release-flag >>
+        - not: << pipeline.parameters.validation-flag >>
+
+    jobs:
+      - toolkit/choose_pipeline:
+          filters:
+            branches:
+              ignore: main
+          name: choose pipeline based on committer
+          context: bot-check
+
+  validation:
+    when:
+      and:
+        - not:
+            equal: [scheduled_pipeline, << pipeline.trigger_source >>]
+        - not: << pipeline.parameters.success-flag >>
+        - not: << pipeline.parameters.release-flag >>
+        - << pipeline.parameters.validation-flag >>
+    jobs:
+      - toolkit/label:
+          min_rust_version: << pipeline.parameters.min-rust-version >>
+          context: pcu-app
+          filters:
+            branches:
+              only:
+                - main
+      - test:
+          filters:
+            branches:
+              ignore: main
+          matrix: &matrix
+            parameters:
+              min-rust-version:
+                [
+                  "1.75",
+                  "1.76",
+                  "1.78",
+                  "1.79",
+                  "1.81",
+                  "1.82",
+                  "1.85",
+                  "1.87",
+                  "1.88",
+                  "1.89",
+                ]
+      - security:
+          cargo_audit: false
+          context:
+            - SonarCloud
+      - test_rolling:
+          filters:
+            branches:
+              ignore: main
+      - toolkit/update_prlog:
+          requires:
+            - test
+            - security
+            - test_rolling
+          context:
+            - release
+            - bot-check
+          ssh_fingerprint: << pipeline.parameters.fingerprint >>
+          min_rust_version: << pipeline.parameters.min-rust-version >>
+
+  on_success:
+    when:
+      and:
+        - not:
+            equal: [scheduled_pipeline, << pipeline.trigger_source >>]
+        - << pipeline.parameters.success-flag >>
+        - not: << pipeline.parameters.validation-flag >>
+
+    jobs:
+      - toolkit/end_success
+
+  check_rebase:
+    when:
+      and:
+        - not:
+            equal: [scheduled_pipeline, << pipeline.trigger_source >>]
+        - not: << pipeline.parameters.release-flag >>
+    jobs:
+      - toolkit/label:
+          filters:
+            branches:
+              only: main
+          min_rust_version: << pipeline.parameters.min-rust-version >>
+          context:
+            - bot-check
+
+  release:
+    when:
+      and:
+        - or:
+            - and:
+                - equal: [scheduled_pipeline, << pipeline.trigger_source >>]
+                - equal: ["release check", << pipeline.schedule.name >>]
+            - << pipeline.parameters.release-flag >>
+        - not: << pipeline.parameters.success-flag >>
+        - not: << pipeline.parameters.validation-flag >>
+    jobs:
+      - make_release:
+          context:
+            - release
+            - bot-check
+          ssh_fingerprint: << pipeline.parameters.fingerprint >>
+          min_rust_version: << pipeline.parameters.min-rust-version >>
+          when_cargo_release: false
+          when_use_workspace: false
+          pcu_update_prlog: true
+          when_gen_changelog: true
+
+  deploy:
+    when:
+      not:
+        equal: ["", << pipeline.git.tag >>]
+    jobs:
+      - publish_base:
+          filters: *filters
+      - publish_rustc_versions:
+          matrix:
+            <<: *matrix
+          requires:
+            - publish_base
+          filters: *filters
+      - publish_rolling:
+          requires:
+            - publish_base
+          filters: *filters
