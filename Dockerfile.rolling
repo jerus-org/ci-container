@@ -30,7 +30,7 @@ ENV CARGO_LLVM_COV_VERSION=0.6.23
 # renovate: datasource=crate depName=circleci-junit-fix packageName=circleci-junit-fix versioning=semver-coerced
 ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 # renovate: datasource=crate depName=cull-gmail packageName=cull-gmail versioning=semver-coerced
-ENV CULL_GMAIL_VERSION=0.0.15
+ENV CULL_GMAIL_VERSION=0.0.16
 # renovate: datasource=crate depName=gen-changelog packageName=gen-changelog versioning=semver-coerced
 ENV GEN_CHANGELOG_VERSION=0.1.4
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
