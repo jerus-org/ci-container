@@ -20,6 +20,7 @@ All notable changes to this project will be documented in this file.
 - deps: update dependency wasmtime-cli to v40(pr [#357])
 - deps: update dependency cargo-fuzz to v0.13.1(pr [#358])
 - deps: update dependency pcu to v0.6.3(pr [#359])
+- deps: update dependency nextsv to v0.19.25(pr [#360])
 
 ## [0.1.70] - 2025-12-31
 
@@ -1032,6 +1033,7 @@ All notable changes to this project will be documented in this file.
 [#357]: https://github.com/jerus-org/ci-container/pull/357
 [#358]: https://github.com/jerus-org/ci-container/pull/358
 [#359]: https://github.com/jerus-org/ci-container/pull/359
+[#360]: https://github.com/jerus-org/ci-container/pull/360
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.70...HEAD
 [0.1.70]: https://github.com/jerus-org/ci-container/compare/v0.1.69...v0.1.70
 [0.1.69]: https://github.com/jerus-org/ci-container/compare/v0.1.68...v0.1.69
