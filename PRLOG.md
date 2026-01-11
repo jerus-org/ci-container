@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - 🔧 chore(docker)-update Docker image references(pr [#345])
 - Add custom manager for updating Dockerfile versioning(pr [#352])
+- Fix fileMatch to managerFilePattern in renovate.json(pr [#354])
 
 ### Fixed
 
@@ -1018,6 +1019,7 @@ All notable changes to this project will be documented in this file.
 [#346]: https://github.com/jerus-org/ci-container/pull/346
 [#350]: https://github.com/jerus-org/ci-container/pull/350
 [#352]: https://github.com/jerus-org/ci-container/pull/352
+[#354]: https://github.com/jerus-org/ci-container/pull/354
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.70...HEAD
 [0.1.70]: https://github.com/jerus-org/ci-container/compare/v0.1.69...v0.1.70
 [0.1.69]: https://github.com/jerus-org/ci-container/compare/v0.1.68...v0.1.69
