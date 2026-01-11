@@ -6,7 +6,7 @@
   "extends": [
     "github>jerusdp/renovate-config:default.json"
   ],
-  customManagers": [
+  "customManagers": [
     {
       "customType": "regex",
       "description": "Update _VERSION variables in Dockerfiles",
