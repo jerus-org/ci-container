@@ -23,6 +23,7 @@ All notable changes to this project will be documented in this file.
 - deps: update dependency nextsv to v0.19.25(pr [#360])
 - deps: update dependency cargo-llvm-cov to v0.6.23(pr [#361])
 - deps: update dependency cargo-release to v0.25.22(pr [#362])
+- deps: update dependency cull-gmail to v0.0.16(pr [#363])
 
 ## [0.1.70] - 2025-12-31
 
@@ -1038,6 +1039,7 @@ All notable changes to this project will be documented in this file.
 [#360]: https://github.com/jerus-org/ci-container/pull/360
 [#361]: https://github.com/jerus-org/ci-container/pull/361
 [#362]: https://github.com/jerus-org/ci-container/pull/362
+[#363]: https://github.com/jerus-org/ci-container/pull/363
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.70...HEAD
 [0.1.70]: https://github.com/jerus-org/ci-container/compare/v0.1.69...v0.1.70
 [0.1.69]: https://github.com/jerus-org/ci-container/compare/v0.1.68...v0.1.69
