@@ -4,6 +4,7 @@
     "* 0-5 3 * *"
   ],
   "extends": [
+    "docker:pinDigests",
     "customManagers:dockerfileVersions",
     "github>jerusdp/renovate-config:default.json"
   ]
