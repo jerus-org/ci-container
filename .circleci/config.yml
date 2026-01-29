@@ -32,9 +32,7 @@ executors:
   ubuntu:
     docker:
       - image: cimg/base:2025.07@sha256:aff996311c7d3ecdf0925f5856d79d5bd2d4773bd2931ef4d65f584e5f0e800c
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD
+
   rust-env:
     docker:
       - image: jerusdp/ci-rust:<<pipeline.parameters.min_rust_version>>
@@ -79,7 +77,7 @@ commands:
                 -f Dockerfile.rolling \
                 -t ${TAG} \
                 --target final .
-            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+            docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
             docker push ${TAG}
       - run:
           name: Publish rolling-6mo-wasi image
@@ -93,7 +91,7 @@ commands:
                 -f Dockerfile.rolling \
                 -t ${TAG} \
                 --target wasi .
-            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+            docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
             docker push ${TAG}
 
   set-min-rust-wasi:
@@ -157,7 +155,7 @@ commands:
                 --build-arg MIN_RUST_WASI=$WASI_NAME \
                 -t ${REPO}:${TAG} \
                 --target final .
-            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+            docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
             docker push ${REPO}:${TAG}
       - run:
           name: Publish for minimum version <<parameters.rust-min-version>>
@@ -172,7 +170,7 @@ commands:
                 --build-arg MIN_RUST_WASI=$WASI_NAME \
                 -t ${REPO}:${TAG}-wasi \
                 --target wasi .
-            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+            docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
             docker push ${REPO}:${TAG}-wasi
 
   publish_base_cmd:
@@ -186,8 +184,8 @@ commands:
 
             INPUT_RELEASE_VERSION=0.1.0
             docker build -t ${TAG} --target final .
-            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
-            docker push ${TAG}:base
+            docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+            docker push ${TAG}
 
   cargo_audit:
     parameters:
