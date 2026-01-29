@@ -16,7 +16,7 @@
 #   docker build -f Dockerfile.rolling -t jerusdp/ci-rust:rolling-6mo --target final .
 #   docker build -f Dockerfile.rolling -t jerusdp/ci-rust:rolling-6mo-wasi --target wasi .
 
-FROM docker.io/library/rust:1.92.0 AS binaries
+FROM docker.io/library/rust:1.93.0@sha256:4c7eb947d7e078f5c076e086c7b75c36ea0ec7c685f2244b3d79306deb7e44b7 AS binaries
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
 ENV WASMTIME_VERSION=41.0.1
 # renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
@@ -69,7 +69,7 @@ RUN \
     cargo binstall wasm-pack --version "${WASMPACK_VERSION}" --no-confirm; \
     cargo binstall wasmtime-cli --version "${WASMTIME_VERSION}" --no-confirm;
 
-FROM docker.io/library/rust:1.92.0 AS base
+FROM docker.io/library/rust:1.93.0@sha256:4c7eb947d7e078f5c076e086c7b75c36ea0ec7c685f2244b3d79306deb7e44b7 AS base
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
