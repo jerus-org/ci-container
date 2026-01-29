@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 - deps: update docker.io/library/rust docker tag to v1.93.0(pr [#365])
 - deps: update dependency wasm-pack to v0.14.0(pr [#366])
 - deps: update dependency cargo-llvm-cov to v0.8.2(pr [#367])
+- deps: pin dependencies(pr [#368])
 
 ## [0.1.71] - 2026-01-12
 
@@ -1053,6 +1054,7 @@ All notable changes to this project will be documented in this file.
 [#365]: https://github.com/jerus-org/ci-container/pull/365
 [#366]: https://github.com/jerus-org/ci-container/pull/366
 [#367]: https://github.com/jerus-org/ci-container/pull/367
+[#368]: https://github.com/jerus-org/ci-container/pull/368
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.71...HEAD
 [0.1.71]: https://github.com/jerus-org/ci-container/compare/v0.1.70...v0.1.71
 [0.1.70]: https://github.com/jerus-org/ci-container/compare/v0.1.69...v0.1.70

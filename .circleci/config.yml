@@ -31,7 +31,7 @@ filters: &filters
 executors:
   ubuntu:
     docker:
-      - image: cimg/base:2025.07
+      - image: cimg/base:2025.07@sha256:aff996311c7d3ecdf0925f5856d79d5bd2d4773bd2931ef4d65f584e5f0e800c
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_PASSWORD
@@ -40,7 +40,7 @@ executors:
       - image: jerusdp/ci-rust:<<pipeline.parameters.min_rust_version>>
   base_env:
     docker:
-      - image: jerusdp/ci-rust:base
+      - image: jerusdp/ci-rust:base@sha256:58b09e7e9e4df32bb5da1e343c21c6fec0615da67f0f24d0f18e460aaf3b2be3
 
 commands:
   test-rolling:
