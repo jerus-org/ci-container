@@ -20,7 +20,7 @@ FROM docker.io/library/rust:1.93.0@sha256:4c7eb947d7e078f5c076e086c7b75c36ea0ec7
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
 ENV WASMTIME_VERSION=41.0.1
 # renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
-ENV WASMPACK_VERSION=0.13.1
+ENV WASMPACK_VERSION=0.14.0
 # renovate: datasource=crate depName=cargo-release packageName=cargo-release versioning=semver-coerced
 ENV CARGO_RELEASE_VERSION=0.25.22
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
