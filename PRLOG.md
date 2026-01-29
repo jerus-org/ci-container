@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- 👷 ci(config)-update command naming convention and tagging strategy(pr [#369])
+
 ### Fixed
 
 - deps: update dependency wasmtime-cli to v41(pr [#364])
@@ -1055,6 +1059,7 @@ All notable changes to this project will be documented in this file.
 [#366]: https://github.com/jerus-org/ci-container/pull/366
 [#367]: https://github.com/jerus-org/ci-container/pull/367
 [#368]: https://github.com/jerus-org/ci-container/pull/368
+[#369]: https://github.com/jerus-org/ci-container/pull/369
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.71...HEAD
 [0.1.71]: https://github.com/jerus-org/ci-container/compare/v0.1.70...v0.1.71
 [0.1.70]: https://github.com/jerus-org/ci-container/compare/v0.1.69...v0.1.70
