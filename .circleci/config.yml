@@ -72,7 +72,7 @@ commands:
 
             REPO=jerusdp/ci-rust
             VERSION=<< pipeline.git.tag >>
-            TAG=${REPO}:rolling-6mo${VERSION}
+            ${REPO}:rolling-6mo-${VERSION}
             docker build \
                 -f Dockerfile.rolling \
                 -t ${TAG} \
@@ -86,7 +86,7 @@ commands:
 
             REPO=jerusdp/ci-rust
             VERSION=<< pipeline.git.tag >>
-            TAG=${REPO}:rolling-6mo-wasi${VERSION}
+            ${REPO}:rolling-6mo-wasi-${VERSION}
             docker build \
                 -f Dockerfile.rolling \
                 -t ${TAG} \
@@ -180,7 +180,7 @@ commands:
           command: |
             REPO=jerusdp/ci-rust
             VERSION=<< pipeline.git.tag >>
-            TAG=${REPO}:base${VERSION}
+            ${REPO}:base-${VERSION}
 
             INPUT_RELEASE_VERSION=0.1.0
             docker build -t ${TAG} --target final .
