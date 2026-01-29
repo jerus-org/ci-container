@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- 🔧 chore(ci)-refactor docker tag assignment in config(pr [#372])
+
 ## [0.1.74] - 2026-01-29
 
 ### Changed
@@ -1074,6 +1080,8 @@ All notable changes to this project will be documented in this file.
 [#369]: https://github.com/jerus-org/ci-container/pull/369
 [#370]: https://github.com/jerus-org/ci-container/pull/370
 [#371]: https://github.com/jerus-org/ci-container/pull/371
+[#372]: https://github.com/jerus-org/ci-container/pull/372
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.74...HEAD
 [0.1.74]: https://github.com/jerus-org/ci-container/compare/v0.1.73...v0.1.74
 [0.1.73]: https://github.com/jerus-org/ci-container/compare/v0.1.72...v0.1.73
 [0.1.72]: https://github.com/jerus-org/ci-container/compare/v0.1.71...v0.1.72
