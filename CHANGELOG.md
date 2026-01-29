@@ -5,9 +5,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.73] - 2026-01-29
+
+Summary: Chore[1], Continuous Integration[1]
+
+### Chore
+
+ - chore: update prlog for pr
+
 ## [0.1.72] - 2026-01-29
 
-Summary: Chore[6], Continuous Integration[1], Fixed[5]
+Summary: Chore[7], Continuous Integration[1], Fixed[5]
 
 ### Fixed
 
@@ -19,6 +27,7 @@ Summary: Chore[6], Continuous Integration[1], Fixed[5]
 
 ### Chore
 
+ - chore: update prlog for pr
  - chore: update prlog for pr
  - chore: update prlog for pr
  - chore: update prlog for pr
@@ -68,25 +77,7 @@ Summary: Build[1], Chore[18], Fixed[10]
  - chore: update prlog for pr
  - 🔧 chore(docker): update Docker image references
 
-## [0.1.70] - 2025-12-31
-
-Summary: Added[1], Chore[2], Fixed[2]
-
-### Added
-
- - feat: add rolling 6-month multi-version image support
-
-### Fixed
-
- - fix: address SonarQube shell script quality issues
- - fix: add proper quoting to shell variables
-
-### Chore
-
- - chore: update prlog for pr
- - chore: update prlog for pr
-
-[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.71...HEAD
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.72...HEAD
+[0.1.72]: https://github.com/jerus-org/ci-container/compare/v0.1.71...v0.1.72
 [0.1.71]: https://github.com/jerus-org/ci-container/compare/v0.1.70...v0.1.71
-[0.1.70]: https://github.com/jerus-org/ci-container/compare/v0.1.69...v0.1.70
 
