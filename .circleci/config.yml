@@ -43,7 +43,7 @@ executors:
       - image: jerusdp/ci-rust:base@sha256:58b09e7e9e4df32bb5da1e343c21c6fec0615da67f0f24d0f18e460aaf3b2be3
 
 commands:
-  test-rolling:
+  test_rolling_cmd:
     description: >
       Build and test rolling 6-month multi-version image.
       Versions are calculated automatically based on the current stable
@@ -61,7 +61,7 @@ commands:
                 --target test .
             docker run --rm ${REPO}:rolling-6mo-test
 
-  publish-rolling:
+  publish_rolling_cmd:
     description: >
       Build and publish rolling 6-month images (final and wasi variants).
       Versions are calculated automatically based on the current stable
@@ -73,24 +73,28 @@ commands:
             set -exo pipefail
 
             REPO=jerusdp/ci-rust
+            VERSION=<< pipeline.git.tag >>
+            TAG=${REPO}:rolling-6mo${VERSION}
             docker build \
                 -f Dockerfile.rolling \
-                -t ${REPO}:rolling-6mo \
+                -t ${TAG} \
                 --target final .
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
-            docker push ${REPO}:rolling-6mo
+            docker push ${TAG}
       - run:
           name: Publish rolling-6mo-wasi image
           command: |
             set -exo pipefail
 
             REPO=jerusdp/ci-rust
+            VERSION=<< pipeline.git.tag >>
+            TAG=${REPO}:rolling-6mo-wasi${VERSION}
             docker build \
                 -f Dockerfile.rolling \
-                -t ${REPO}:rolling-6mo-wasi \
+                -t ${TAG} \
                 --target wasi .
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
-            docker push ${REPO}:rolling-6mo-wasi
+            docker push ${TAG}
 
   set-min-rust-wasi:
     parameters:
@@ -177,10 +181,13 @@ commands:
           name: Publish for minimum version base
           command: |
             REPO=jerusdp/ci-rust
+            VERSION=<< pipeline.git.tag >>
+            TAG=${REPO}:base${VERSION}
+
             INPUT_RELEASE_VERSION=0.1.0
-            docker build -t ${REPO}:base --target final .
+            docker build -t ${TAG} --target final .
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
-            docker push ${REPO}:base
+            docker push ${TAG}:base
 
   cargo_audit:
     parameters:
@@ -359,7 +366,7 @@ jobs:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
-      - test-rolling
+      - test_rolling_cmd
 
   publish_rolling:
     description: >
@@ -370,7 +377,7 @@ jobs:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
-      - publish-rolling
+      - publish_rolling_cmd
 
   security:
     executor:
