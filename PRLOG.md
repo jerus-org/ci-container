@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- deps: update dependency wasmtime-cli to v41(pr [#364])
+
 ## [0.1.71] - 2026-01-12
 
 ### Changed
@@ -1040,6 +1046,8 @@ All notable changes to this project will be documented in this file.
 [#361]: https://github.com/jerus-org/ci-container/pull/361
 [#362]: https://github.com/jerus-org/ci-container/pull/362
 [#363]: https://github.com/jerus-org/ci-container/pull/363
+[#364]: https://github.com/jerus-org/ci-container/pull/364
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.71...HEAD
 [0.1.71]: https://github.com/jerus-org/ci-container/compare/v0.1.70...v0.1.71
 [0.1.70]: https://github.com/jerus-org/ci-container/compare/v0.1.69...v0.1.70
 [0.1.69]: https://github.com/jerus-org/ci-container/compare/v0.1.68...v0.1.69
