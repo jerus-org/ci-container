@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- 🔧 chore(ci)-update docker tag format in CircleCI config(pr [#373])
+
 ## [0.1.75] - 2026-01-30
 
 ### Changed
@@ -1081,6 +1087,8 @@ All notable changes to this project will be documented in this file.
 [#370]: https://github.com/jerus-org/ci-container/pull/370
 [#371]: https://github.com/jerus-org/ci-container/pull/371
 [#372]: https://github.com/jerus-org/ci-container/pull/372
+[#373]: https://github.com/jerus-org/ci-container/pull/373
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.75...HEAD
 [0.1.75]: https://github.com/jerus-org/ci-container/compare/v0.1.74...v0.1.75
 [0.1.74]: https://github.com/jerus-org/ci-container/compare/v0.1.73...v0.1.74
 [0.1.73]: https://github.com/jerus-org/ci-container/compare/v0.1.72...v0.1.73
