@@ -39,20 +39,20 @@ RUN \
     --tlsv1.2 \
     -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 RUN \
-    cargo binstall cargo-audit --version ${CARGO_AUDIT_VERSION} --no-confirm; \
+    cargo binstall cargo-audit --version "${CARGO_AUDIT_VERSION}" --no-confirm; \
     cargo binstall --locked --version 1.0.95 cargo-expand --no-confirm; \
-    cargo binstall cargo-fuzz --version ${CARGO_FUZZ_VERSION} --no-confirm; \
-    cargo binstall cargo-llvm-cov --version ${CARGO_LLVM_COV_VERSION} --no-confirm; \
+    cargo binstall cargo-fuzz --version "${CARGO_FUZZ_VERSION}" --no-confirm; \
+    cargo binstall cargo-llvm-cov --version "${CARGO_LLVM_COV_VERSION}" --no-confirm; \
     cargo binstall cargo-nextest --no-confirm; \
-    cargo binstall cargo-release --version ${CARGO_RELEASE_VERSION} --no-confirm; \
-    cargo binstall circleci-junit-fix --locked --version ${CIRCLECI_JUNIT_FIX_VERSION} --no-confirm; \
-    cargo binstall cull-gmail --version ${CULL_GMAIL_VERSION} --no-confirm; \
-    cargo binstall gen-changelog --version ${GEN_CHANGELOG_VERSION} --no-confirm; \
+    cargo binstall cargo-release --version "${CARGO_RELEASE_VERSION}" --no-confirm; \
+    cargo binstall circleci-junit-fix --locked --version "${CIRCLECI_JUNIT_FIX_VERSION}" --no-confirm; \
+    cargo binstall cull-gmail --version "${CULL_GMAIL_VERSION}" --no-confirm; \
+    cargo binstall gen-changelog --version "${GEN_CHANGELOG_VERSION}" --no-confirm; \
     cargo binstall gen-orb-mcp --version "${GEN_ORB_MCP_VERSION}" --no-confirm; \
-    cargo binstall nextsv --version ${NEXTSV_VERSION} --no-confirm; \
-    cargo binstall pcu --version ${PCU_VERSION} --no-confirm; \
-    cargo binstall wasm-pack --version ${WASMPACK_VERSION} --no-confirm; \
-    cargo binstall wasmtime-cli --version ${WASMTIME_VERSION} --no-confirm; 
+    cargo binstall nextsv --version "${NEXTSV_VERSION}" --no-confirm; \
+    cargo binstall pcu --version "${PCU_VERSION}" --no-confirm; \
+    cargo binstall wasm-pack --version "${WASMPACK_VERSION}" --no-confirm; \
+    cargo binstall wasmtime-cli --version "${WASMTIME_VERSION}" --no-confirm;
 
 FROM docker.io/library/rust:1.93.0@sha256:4c7eb947d7e078f5c076e086c7b75c36ea0ec7c685f2244b3d79306deb7e44b7 AS base
 RUN set -eux; \
