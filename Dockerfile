@@ -48,7 +48,7 @@ RUN \
     cargo binstall circleci-junit-fix --locked --version ${CIRCLECI_JUNIT_FIX_VERSION} --no-confirm; \
     cargo binstall cull-gmail --version ${CULL_GMAIL_VERSION} --no-confirm; \
     cargo binstall gen-changelog --version ${GEN_CHANGELOG_VERSION} --no-confirm; \
-    cargo binstall gen-orb-mcp --version ${GEN_ORB_MCP_VERSION} --no-confirm; \
+    cargo binstall gen-orb-mcp --version "${GEN_ORB_MCP_VERSION}" --no-confirm; \
     cargo binstall nextsv --version ${NEXTSV_VERSION} --no-confirm; \
     cargo binstall pcu --version ${PCU_VERSION} --no-confirm; \
     cargo binstall wasm-pack --version ${WASMPACK_VERSION} --no-confirm; \
