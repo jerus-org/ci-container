@@ -14,6 +14,7 @@ cargo audit --version
 cargo llvm-cov --version
 cargo nextest --version | sed '2,$s/^/  /'
 cargo expand --version
+gen-orb-mcp --version
 nextsv --version
 pcu --version
 circleci-junit-fix --version

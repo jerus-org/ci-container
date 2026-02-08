@@ -19,6 +19,8 @@ ENV GEN_CHANGELOG_VERSION=0.1.4
 ENV NEXTSV_VERSION=0.19.26
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
 ENV PCU_VERSION=0.6.4
+# renovate: datasource=crate depName=gen-orb-mcp packageName=gen-orb-mcp versioning=semver-coerced
+ENV GEN_ORB_MCP_VERSION=0.1.0
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
 ENV CARGO_FUZZ_VERSION=0.13.1
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -37,19 +39,20 @@ RUN \
     --tlsv1.2 \
     -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 RUN \
-    cargo binstall cargo-audit --version ${CARGO_AUDIT_VERSION} --no-confirm; \
+    cargo binstall cargo-audit --version "${CARGO_AUDIT_VERSION}" --no-confirm; \
     cargo binstall --locked --version 1.0.95 cargo-expand --no-confirm; \
-    cargo binstall cargo-fuzz --version ${CARGO_FUZZ_VERSION} --no-confirm; \
-    cargo binstall cargo-llvm-cov --version ${CARGO_LLVM_COV_VERSION} --no-confirm; \
+    cargo binstall cargo-fuzz --version "${CARGO_FUZZ_VERSION}" --no-confirm; \
+    cargo binstall cargo-llvm-cov --version "${CARGO_LLVM_COV_VERSION}" --no-confirm; \
     cargo binstall cargo-nextest --no-confirm; \
-    cargo binstall cargo-release --version ${CARGO_RELEASE_VERSION} --no-confirm; \
-    cargo binstall circleci-junit-fix --locked --version ${CIRCLECI_JUNIT_FIX_VERSION} --no-confirm; \
-    cargo binstall cull-gmail --version ${CULL_GMAIL_VERSION} --no-confirm; \
-    cargo binstall gen-changelog --version ${GEN_CHANGELOG_VERSION} --no-confirm; \
-    cargo binstall nextsv --version ${NEXTSV_VERSION} --no-confirm; \
-    cargo binstall pcu --version ${PCU_VERSION} --no-confirm; \
-    cargo binstall wasm-pack --version ${WASMPACK_VERSION} --no-confirm; \
-    cargo binstall wasmtime-cli --version ${WASMTIME_VERSION} --no-confirm; 
+    cargo binstall cargo-release --version "${CARGO_RELEASE_VERSION}" --no-confirm; \
+    cargo binstall circleci-junit-fix --locked --version "${CIRCLECI_JUNIT_FIX_VERSION}" --no-confirm; \
+    cargo binstall cull-gmail --version "${CULL_GMAIL_VERSION}" --no-confirm; \
+    cargo binstall gen-changelog --version "${GEN_CHANGELOG_VERSION}" --no-confirm; \
+    cargo binstall gen-orb-mcp --version "${GEN_ORB_MCP_VERSION}" --no-confirm; \
+    cargo binstall nextsv --version "${NEXTSV_VERSION}" --no-confirm; \
+    cargo binstall pcu --version "${PCU_VERSION}" --no-confirm; \
+    cargo binstall wasm-pack --version "${WASMPACK_VERSION}" --no-confirm; \
+    cargo binstall wasmtime-cli --version "${WASMTIME_VERSION}" --no-confirm;
 
 FROM docker.io/library/rust:1.93.0@sha256:4c7eb947d7e078f5c076e086c7b75c36ea0ec7c685f2244b3d79306deb7e44b7 AS base
 RUN set -eux; \
@@ -88,6 +91,7 @@ COPY --from=binaries $CARGO_HOME/bin/cargo-release \
     $CARGO_HOME/bin/cargo-llvm-cov \
     $CARGO_HOME/bin/cargo-nextest \
     $CARGO_HOME/bin/gen-changelog \
+    $CARGO_HOME/bin/gen-orb-mcp \
     $CARGO_HOME/bin/nextsv \
     $CARGO_HOME/bin/pcu \
     $CARGO_HOME/bin/circleci-junit-fix $CARGO_HOME/bin/

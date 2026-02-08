@@ -53,6 +53,7 @@ cargo llvm-cov --version
 cargo nextest --version | sed '2,$s/^/  /'
 cargo expand --version
 cargo fuzz --version || echo "cargo-fuzz check skipped"
+gen-orb-mcp --version
 nextsv --version
 pcu --version
 circleci-junit-fix --version

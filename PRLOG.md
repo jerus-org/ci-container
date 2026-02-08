@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Added
+
+- add gen-orb-mcp to CI images(pr [#379])
+
 ## [0.1.78] - 2026-02-01
 
 ### Fixed
@@ -1102,6 +1108,8 @@ All notable changes to this project will be documented in this file.
 [#373]: https://github.com/jerus-org/ci-container/pull/373
 [#374]: https://github.com/jerus-org/ci-container/pull/374
 [#375]: https://github.com/jerus-org/ci-container/pull/375
+[#379]: https://github.com/jerus-org/ci-container/pull/379
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.78...HEAD
 [0.1.78]: https://github.com/jerus-org/ci-container/compare/v0.1.77...v0.1.78
 [0.1.77]: https://github.com/jerus-org/ci-container/compare/v0.1.76...v0.1.77
 [0.1.76]: https://github.com/jerus-org/ci-container/compare/v0.1.75...v0.1.76
