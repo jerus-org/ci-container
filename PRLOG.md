@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 - add gen-orb-mcp to CI images(pr [#379])
 
+### Fixed
+
+- deps: update jerusdp/ci-rust:base docker digest to 129d1a3(pr [#376])
+
 ## [0.1.78] - 2026-02-01
 
 ### Fixed
@@ -1109,6 +1113,7 @@ All notable changes to this project will be documented in this file.
 [#374]: https://github.com/jerus-org/ci-container/pull/374
 [#375]: https://github.com/jerus-org/ci-container/pull/375
 [#379]: https://github.com/jerus-org/ci-container/pull/379
+[#376]: https://github.com/jerus-org/ci-container/pull/376
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.78...HEAD
 [0.1.78]: https://github.com/jerus-org/ci-container/compare/v0.1.77...v0.1.78
 [0.1.77]: https://github.com/jerus-org/ci-container/compare/v0.1.76...v0.1.77
