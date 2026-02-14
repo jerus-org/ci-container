@@ -13,11 +13,13 @@ ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 ENV CULL_GMAIL_VERSION=0.0.16
 # renovate: datasource=crate depName=gen-changelog packageName=gen-changelog versioning=semver-coerced
 ENV GEN_CHANGELOG_VERSION=0.1.4
-# renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
-ENV NEXTSV_VERSION=0.19.26
 # renovate: datasource=crate depName=gen-orb-mcp packageName=gen-orb-mcp versioning=semver-coerced
 ENV GEN_ORB_MCP_VERSION=0.1.0
 # renovate: datasource=crate depName=kdeets packageName=kdeets versioning=semver-coerced
+ENV KDEETS_VERSION=0.6.4
+# renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
+ENV NEXTSV_VERSION=0.19.26
+# renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
 ENV PCU_VERSION=0.6.4
 # renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
 ENV WASMPACK_VERSION=0.14.0
@@ -49,6 +51,7 @@ RUN \
     cargo binstall cull-gmail --version "${CULL_GMAIL_VERSION}" --no-confirm; \
     cargo binstall gen-changelog --version "${GEN_CHANGELOG_VERSION}" --no-confirm; \
     cargo binstall gen-orb-mcp --version "${GEN_ORB_MCP_VERSION}" --no-confirm; \
+    cargo binstall kdeets --version "${KDEETS_VERSION}" --no-confirm; \
     cargo binstall nextsv --version "${NEXTSV_VERSION}" --no-confirm; \
     cargo binstall pcu --version "${PCU_VERSION}" --no-confirm; \
     cargo binstall wasm-pack --version "${WASMPACK_VERSION}" --no-confirm; \
