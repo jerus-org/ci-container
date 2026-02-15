@@ -1,4 +1,4 @@
-FROM docker.io/library/rust:1.93.0@sha256:bbde3ca426faeebab3eb58b8005d3d6da70607817a14bb92a55c94611d4d905f AS binaries
+FROM docker.io/library/rust:1.93.1@sha256:80302520b7199f0504975bca59a914015e9fee088f759875dbbc238ca9509ee1 AS binaries
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.22.1
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
@@ -57,7 +57,7 @@ RUN \
     cargo binstall wasm-pack --version "${WASMPACK_VERSION}" --no-confirm; \
     cargo binstall wasmtime-cli --version "${WASMTIME_VERSION}" --no-confirm;
 
-FROM docker.io/library/rust:1.93.0@sha256:bbde3ca426faeebab3eb58b8005d3d6da70607817a14bb92a55c94611d4d905f AS base
+FROM docker.io/library/rust:1.93.1@sha256:80302520b7199f0504975bca59a914015e9fee088f759875dbbc238ca9509ee1 AS base
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
