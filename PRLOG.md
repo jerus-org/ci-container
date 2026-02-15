@@ -9,6 +9,10 @@ All notable changes to this project will be documented in this file.
 - ♻️ refactor(docker)-reorder environment variables(pr [#380])
 - 📦 build(docker)-update Dockerfile dependencies(pr [#381])
 
+### Fixed
+
+- deps: update dependency cull-gmail to v0.1.4(pr [#387])
+
 ## [0.1.79] - 2026-02-09
 
 ### Added
@@ -1127,6 +1131,7 @@ All notable changes to this project will be documented in this file.
 [#378]: https://github.com/jerus-org/ci-container/pull/378
 [#380]: https://github.com/jerus-org/ci-container/pull/380
 [#381]: https://github.com/jerus-org/ci-container/pull/381
+[#387]: https://github.com/jerus-org/ci-container/pull/387
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.79...HEAD
 [0.1.79]: https://github.com/jerus-org/ci-container/compare/v0.1.78...v0.1.79
 [0.1.78]: https://github.com/jerus-org/ci-container/compare/v0.1.77...v0.1.78
