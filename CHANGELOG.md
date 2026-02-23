@@ -5,9 +5,30 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.81] - 2026-02-23
+
+Summary: Added[1], Chore[4], Fixed[3]
+
+### Added
+
+ - feat: add rsign2 and bump pcu to 0.6.5
+
+### Fixed
+
+ - fix(deps): update dependency toolkit to v4.4.3
+ - fix(deps): update dependency gen-changelog to v0.1.6
+ - fix(deps): update jerusdp/ci-rust:base docker digest to a8cb682
+
+### Chore
+
+ - chore: update prlog for pr
+ - chore: update prlog for pr
+ - chore: update prlog for pr
+ - chore: update prlog for pr
+
 ## [0.1.80] - 2026-02-15
 
-Summary: Build[1], Changed[1], Chore[9], Fixed[7]
+Summary: Build[1], Changed[1], Chore[10], Fixed[7]
 
 ### Fixed
 
@@ -29,6 +50,7 @@ Summary: Build[1], Changed[1], Chore[9], Fixed[7]
 
 ### Chore
 
+ - chore: update prlog for pr
  - chore: update prlog for pr
  - chore: update prlog for pr
  - chore: update prlog for pr
@@ -63,20 +85,7 @@ Summary: Added[1], Chore[5], Fixed[5]
  - chore: update prlog for pr
  - chore: update prlog for pr
 
-## [0.1.78] - 2026-02-01
-
-Summary: Chore[2], Fixed[1]
-
-### Fixed
-
- - fix(deps): update dependency pcu to v0.6.4
-
-### Chore
-
- - chore: update prlog for pr
- - chore: update prlog for pr
-
-[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.79...HEAD
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.80...HEAD
+[0.1.80]: https://github.com/jerus-org/ci-container/compare/v0.1.79...v0.1.80
 [0.1.79]: https://github.com/jerus-org/ci-container/compare/v0.1.78...v0.1.79
-[0.1.78]: https://github.com/jerus-org/ci-container/compare/v0.1.77...v0.1.78
 
