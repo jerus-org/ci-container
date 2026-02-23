@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- add rsign2 and bump pcu to 0.6.5(pr [#393])
+
 ### Fixed
 
 - deps: update jerusdp/ci-rust:base docker digest to a8cb682(pr [#390])
@@ -1155,6 +1159,7 @@ All notable changes to this project will be documented in this file.
 [#390]: https://github.com/jerus-org/ci-container/pull/390
 [#391]: https://github.com/jerus-org/ci-container/pull/391
 [#392]: https://github.com/jerus-org/ci-container/pull/392
+[#393]: https://github.com/jerus-org/ci-container/pull/393
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.80...HEAD
 [0.1.80]: https://github.com/jerus-org/ci-container/compare/v0.1.79...v0.1.80
 [0.1.79]: https://github.com/jerus-org/ci-container/compare/v0.1.78...v0.1.79
