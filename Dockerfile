@@ -20,7 +20,9 @@ ENV KDEETS_VERSION=0.6.4
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
 ENV NEXTSV_VERSION=0.19.26
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
-ENV PCU_VERSION=0.6.4
+ENV PCU_VERSION=0.6.5
+# renovate: datasource=crate depName=rsign2 packageName=rsign2 versioning=semver-coerced
+ENV RSIGN2_VERSION=0.6.5
 # renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
 ENV WASMPACK_VERSION=0.14.0
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
@@ -54,6 +56,7 @@ RUN \
     cargo binstall kdeets --version "${KDEETS_VERSION}" --no-confirm; \
     cargo binstall nextsv --version "${NEXTSV_VERSION}" --no-confirm; \
     cargo binstall pcu --version "${PCU_VERSION}" --no-confirm; \
+    cargo binstall rsign2 --version "${RSIGN2_VERSION}" --no-confirm; \
     cargo binstall wasm-pack --version "${WASMPACK_VERSION}" --no-confirm; \
     cargo binstall wasmtime-cli --version "${WASMTIME_VERSION}" --no-confirm;
 
@@ -97,6 +100,7 @@ COPY --from=binaries $CARGO_HOME/bin/cargo-release \
     $CARGO_HOME/bin/gen-orb-mcp \
     $CARGO_HOME/bin/nextsv \
     $CARGO_HOME/bin/pcu \
+    $CARGO_HOME/bin/rsign \
     $CARGO_HOME/bin/circleci-junit-fix $CARGO_HOME/bin/
 ARG MIN_RUST_VERSION=1.65
 RUN rustup component add clippy rustfmt llvm-tools; \
