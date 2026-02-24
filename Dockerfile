@@ -98,6 +98,7 @@ COPY --from=binaries $CARGO_HOME/bin/cargo-release \
     $CARGO_HOME/bin/cargo-nextest \
     $CARGO_HOME/bin/gen-changelog \
     $CARGO_HOME/bin/gen-orb-mcp \
+    $CARGO_HOME/bin/kdeets \
     $CARGO_HOME/bin/nextsv \
     $CARGO_HOME/bin/pcu \
     $CARGO_HOME/bin/rsign \
