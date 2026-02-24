@@ -5,9 +5,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.82] - 2026-02-24
+
+Summary: Chore[1], Fixed[2]
+
+### Fixed
+
+ - fix: correct KDEETS_VERSION to 0.1.28
+ - fix: add kdeets to final image COPY stage
+
+### Chore
+
+ - chore: update prlog for pr
+
 ## [0.1.81] - 2026-02-23
 
-Summary: Added[1], Chore[4], Fixed[3]
+Summary: Added[1], Chore[5], Fixed[3]
 
 ### Added
 
@@ -21,6 +34,7 @@ Summary: Added[1], Chore[4], Fixed[3]
 
 ### Chore
 
+ - chore: update prlog for pr
  - chore: update prlog for pr
  - chore: update prlog for pr
  - chore: update prlog for pr
@@ -61,31 +75,7 @@ Summary: Build[1], Changed[1], Chore[10], Fixed[7]
  - chore: update prlog for pr
  - chore: update prlog for pr
 
-## [0.1.79] - 2026-02-09
-
-Summary: Added[1], Chore[5], Fixed[5]
-
-### Added
-
- - feat: add gen-orb-mcp to CI images
-
-### Fixed
-
- - fix(deps): update dependency wasmtime-cli to v41.0.3
- - fix(deps): update dependency toolkit to v4.3.0
- - fix(deps): update jerusdp/ci-rust:base docker digest to 129d1a3
- - fix: quote all binstall version variables
- - fix: quote variable to prevent word splitting
-
-### Chore
-
- - chore: update prlog for pr
- - chore: update prlog for pr
- - chore: update prlog for pr
- - chore: update prlog for pr
- - chore: update prlog for pr
-
-[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.80...HEAD
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.81...HEAD
+[0.1.81]: https://github.com/jerus-org/ci-container/compare/v0.1.80...v0.1.81
 [0.1.80]: https://github.com/jerus-org/ci-container/compare/v0.1.79...v0.1.80
-[0.1.79]: https://github.com/jerus-org/ci-container/compare/v0.1.78...v0.1.79
 
