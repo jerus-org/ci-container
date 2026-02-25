@@ -18,7 +18,7 @@ ENV GEN_ORB_MCP_VERSION=0.1.0
 # renovate: datasource=crate depName=kdeets packageName=kdeets versioning=semver-coerced
 ENV KDEETS_VERSION=0.1.28
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
-ENV NEXTSV_VERSION=0.19.26
+ENV NEXTSV_VERSION=0.19.27
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
 ENV PCU_VERSION=0.6.5
 # renovate: datasource=crate depName=rsign2 packageName=rsign2 versioning=semver-coerced
