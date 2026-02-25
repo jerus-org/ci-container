@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 - deps: update docker.io/library/rust:1.93.1 docker digest to 29f15ed(pr [#399])
 - deps: update jerusdp/ci-rust:base docker digest to 7ce09eb(pr [#400])
 - deps: update dependency nextsv to v0.19.27(pr [#401])
+- deps: update dependency toolkit to v4.5.1(pr [#402])
 
 ## [0.1.83] - 2026-02-25
 
@@ -1189,6 +1190,7 @@ All notable changes to this project will be documented in this file.
 [#399]: https://github.com/jerus-org/ci-container/pull/399
 [#400]: https://github.com/jerus-org/ci-container/pull/400
 [#401]: https://github.com/jerus-org/ci-container/pull/401
+[#402]: https://github.com/jerus-org/ci-container/pull/402
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.83...HEAD
 [0.1.83]: https://github.com/jerus-org/ci-container/compare/v0.1.82...v0.1.83
 [0.1.82]: https://github.com/jerus-org/ci-container/compare/v0.1.81...v0.1.82
