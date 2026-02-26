@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - deps: update docker.io/library/rust:1.93.1 docker digest to 51c04d7(pr [#403])
 - deps: update dependency pcu to v0.6.6(pr [#408])
+- deps: update jerusdp/ci-rust:base docker digest to 2d9d40c(pr [#404])
 
 ## [0.1.84] - 2026-02-25
 
@@ -1200,6 +1201,7 @@ All notable changes to this project will be documented in this file.
 [#402]: https://github.com/jerus-org/ci-container/pull/402
 [#403]: https://github.com/jerus-org/ci-container/pull/403
 [#408]: https://github.com/jerus-org/ci-container/pull/408
+[#404]: https://github.com/jerus-org/ci-container/pull/404
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.84...HEAD
 [0.1.84]: https://github.com/jerus-org/ci-container/compare/v0.1.83...v0.1.84
 [0.1.83]: https://github.com/jerus-org/ci-container/compare/v0.1.82...v0.1.83
