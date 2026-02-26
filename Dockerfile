@@ -12,7 +12,7 @@ ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 # renovate: datasource=crate depName=cull-gmail packageName=cull-gmail versioning=semver-coerced
 ENV CULL_GMAIL_VERSION=0.1.4
 # renovate: datasource=crate depName=gen-changelog packageName=gen-changelog versioning=semver-coerced
-ENV GEN_CHANGELOG_VERSION=0.1.6
+ENV GEN_CHANGELOG_VERSION=0.1.7
 # renovate: datasource=crate depName=gen-orb-mcp packageName=gen-orb-mcp versioning=semver-coerced
 ENV GEN_ORB_MCP_VERSION=0.1.0
 # renovate: datasource=crate depName=kdeets packageName=kdeets versioning=semver-coerced
