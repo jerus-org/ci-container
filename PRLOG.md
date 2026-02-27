@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - deps: update jerusdp/ci-rust:base docker digest to 8bfb37f(pr [#409])
+- deps: update dependency toolkit to v4.5.4(pr [#406])
 
 ## [0.1.85] - 2026-02-26
 
@@ -1211,6 +1212,7 @@ All notable changes to this project will be documented in this file.
 [#404]: https://github.com/jerus-org/ci-container/pull/404
 [#405]: https://github.com/jerus-org/ci-container/pull/405
 [#409]: https://github.com/jerus-org/ci-container/pull/409
+[#406]: https://github.com/jerus-org/ci-container/pull/406
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.85...HEAD
 [0.1.85]: https://github.com/jerus-org/ci-container/compare/v0.1.84...v0.1.85
 [0.1.84]: https://github.com/jerus-org/ci-container/compare/v0.1.83...v0.1.84
