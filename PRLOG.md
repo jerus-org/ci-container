@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- deps: update dependency toolkit to v4.7.0(pr [#414])
+
 ## [0.1.87] - 2026-03-03
 
 ### Fixed
@@ -1230,6 +1236,8 @@ All notable changes to this project will be documented in this file.
 [#411]: https://github.com/jerus-org/ci-container/pull/411
 [#412]: https://github.com/jerus-org/ci-container/pull/412
 [#413]: https://github.com/jerus-org/ci-container/pull/413
+[#414]: https://github.com/jerus-org/ci-container/pull/414
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.87...HEAD
 [0.1.87]: https://github.com/jerus-org/ci-container/compare/v0.1.86...v0.1.87
 [0.1.86]: https://github.com/jerus-org/ci-container/compare/v0.1.85...v0.1.86
 [0.1.85]: https://github.com/jerus-org/ci-container/compare/v0.1.84...v0.1.85
