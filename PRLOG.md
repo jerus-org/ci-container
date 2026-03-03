@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- deps: update dependency rsign2 to v0.6.6(pr [#415])
+
 ## [0.1.86] - 2026-02-27
 
 ### Fixed
@@ -1217,6 +1223,8 @@ All notable changes to this project will be documented in this file.
 [#406]: https://github.com/jerus-org/ci-container/pull/406
 [#407]: https://github.com/jerus-org/ci-container/pull/407
 [#410]: https://github.com/jerus-org/ci-container/pull/410
+[#415]: https://github.com/jerus-org/ci-container/pull/415
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.86...HEAD
 [0.1.86]: https://github.com/jerus-org/ci-container/compare/v0.1.85...v0.1.86
 [0.1.85]: https://github.com/jerus-org/ci-container/compare/v0.1.84...v0.1.85
 [0.1.84]: https://github.com/jerus-org/ci-container/compare/v0.1.83...v0.1.84
