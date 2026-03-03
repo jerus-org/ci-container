@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 - deps: update dependency rsign2 to v0.6.6(pr [#415])
 - deps: update jerusdp/ci-rust:base docker digest to 7035b34(pr [#411])
 - deps: update dependency nextsv to v0.19.29(pr [#412])
+- deps: update dependency pcu to v0.6.8(pr [#413])
 
 ## [0.1.86] - 2026-02-27
 
@@ -1228,6 +1229,7 @@ All notable changes to this project will be documented in this file.
 [#415]: https://github.com/jerus-org/ci-container/pull/415
 [#411]: https://github.com/jerus-org/ci-container/pull/411
 [#412]: https://github.com/jerus-org/ci-container/pull/412
+[#413]: https://github.com/jerus-org/ci-container/pull/413
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.86...HEAD
 [0.1.86]: https://github.com/jerus-org/ci-container/compare/v0.1.85...v0.1.86
 [0.1.85]: https://github.com/jerus-org/ci-container/compare/v0.1.84...v0.1.85
