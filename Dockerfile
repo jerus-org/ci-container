@@ -103,6 +103,22 @@ COPY --from=binaries $CARGO_HOME/bin/cargo-release \
     $CARGO_HOME/bin/pcu \
     $CARGO_HOME/bin/rsign \
     $CARGO_HOME/bin/circleci-junit-fix $CARGO_HOME/bin/
+# renovate: datasource=github-releases depName=sigstore/cosign
+ENV COSIGN_VERSION=v2.4.1
+RUN set -eux; \
+    curl -sSfL "https://github.com/sigstore/cosign/releases/download/${COSIGN_VERSION}/cosign-linux-amd64" \
+        -o /usr/local/bin/cosign \
+    && chmod +x /usr/local/bin/cosign \
+    && cosign version
+# renovate: datasource=github-releases depName=cli/cli
+ENV GH_VERSION=v2.65.0
+RUN set -eux; \
+    curl -sSfL "https://github.com/cli/cli/releases/download/${GH_VERSION}/gh_${GH_VERSION#v}_linux_amd64.tar.gz" \
+        -o /tmp/gh.tar.gz \
+    && tar -xz -C /tmp -f /tmp/gh.tar.gz \
+    && install -m 755 "/tmp/gh_${GH_VERSION#v}_linux_amd64/bin/gh" /usr/local/bin/ \
+    && rm -rf "/tmp/gh_${GH_VERSION#v}_linux_amd64" /tmp/gh.tar.gz \
+    && gh --version
 ARG MIN_RUST_VERSION=1.65
 RUN rustup component add clippy rustfmt llvm-tools; \
     rustup toolchain install stable --component clippy --component rustfmt; \
