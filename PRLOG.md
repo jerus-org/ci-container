@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 - deps: update docker.io/library/rust:1.93.1 docker digest to ecbe59a(pr [#417])
 - deps: update dependency kdeets to v0.1.29(pr [#419])
 - deps: update docker.io/library/rust docker tag to v1.94.0(pr [#420])
+- deps: update dependency toolkit to v4.8.0(pr [#421])
 
 ## [0.1.87] - 2026-03-03
 
@@ -1243,6 +1244,7 @@ All notable changes to this project will be documented in this file.
 [#417]: https://github.com/jerus-org/ci-container/pull/417
 [#419]: https://github.com/jerus-org/ci-container/pull/419
 [#420]: https://github.com/jerus-org/ci-container/pull/420
+[#421]: https://github.com/jerus-org/ci-container/pull/421
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.87...HEAD
 [0.1.87]: https://github.com/jerus-org/ci-container/compare/v0.1.86...v0.1.87
 [0.1.86]: https://github.com/jerus-org/ci-container/compare/v0.1.85...v0.1.86
