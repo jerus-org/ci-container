@@ -38,7 +38,7 @@ executors:
       - image: jerusdp/ci-rust:<<pipeline.parameters.min_rust_version>>
   base_env:
     docker:
-      - image: jerusdp/ci-rust:base@sha256:7035b346c507abc1da92ec23f9b89bb5eeaf108b09ef6d17def3fd5f256a6907
+      - image: jerusdp/ci-rust:base@sha256:ea6e355834466f151d2d1182148ff8b62ef9771583775fb77c1cfbe79c597487
 
 commands:
   test_rolling_cmd:
