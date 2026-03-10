@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- deps: update jerusdp/ci-rust:base docker digest to 8826ac7(pr [#423])
+
 ## [0.1.88] - 2026-03-06
 
 ### Fixed
@@ -1247,6 +1253,8 @@ All notable changes to this project will be documented in this file.
 [#420]: https://github.com/jerus-org/ci-container/pull/420
 [#421]: https://github.com/jerus-org/ci-container/pull/421
 [#422]: https://github.com/jerus-org/ci-container/pull/422
+[#423]: https://github.com/jerus-org/ci-container/pull/423
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.88...HEAD
 [0.1.88]: https://github.com/jerus-org/ci-container/compare/v0.1.87...v0.1.88
 [0.1.87]: https://github.com/jerus-org/ci-container/compare/v0.1.86...v0.1.87
 [0.1.86]: https://github.com/jerus-org/ci-container/compare/v0.1.85...v0.1.86
