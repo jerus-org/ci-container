@@ -5,9 +5,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.90] - 2026-03-10
+
+Summary: Chore[2], Continuous Integration[1], Fixed[1]
+
+### Fixed
+
+ - fix(deps): update dependency pcu to v0.6.11
+
+### Chore
+
+ - chore: update prlog for pr
+ - chore: update prlog for pr
+
 ## [0.1.89] - 2026-03-10
 
-Summary: Chore[2], Fixed[2]
+Summary: Chore[3], Fixed[2]
 
 ### Fixed
 
@@ -16,6 +29,7 @@ Summary: Chore[2], Fixed[2]
 
 ### Chore
 
+ - chore: update prlog for pr
  - chore: update prlog for pr
  - chore: update prlog for pr
 
@@ -42,26 +56,7 @@ Summary: Chore[7], Fixed[6]
  - chore: update prlog for pr
  - chore: update prlog for pr
 
-## [0.1.87] - 2026-03-03
-
-Summary: Chore[5], Fixed[4]
-
-### Fixed
-
- - fix(deps): update dependency pcu to v0.6.8
- - fix(deps): update dependency nextsv to v0.19.29
- - fix(deps): update jerusdp/ci-rust:base docker digest to 7035b34
- - fix(deps): update dependency rsign2 to v0.6.6
-
-### Chore
-
- - chore: update prlog for pr
- - chore: update prlog for pr
- - chore: update prlog for pr
- - chore: update prlog for pr
- - chore: update prlog for pr
-
-[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.88...HEAD
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.89...HEAD
+[0.1.89]: https://github.com/jerus-org/ci-container/compare/v0.1.88...v0.1.89
 [0.1.88]: https://github.com/jerus-org/ci-container/compare/v0.1.87...v0.1.88
-[0.1.87]: https://github.com/jerus-org/ci-container/compare/v0.1.86...v0.1.87
 
