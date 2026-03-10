@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 - 👷 ci(circleci)-update executor configurations(pr [#427])
 
+### Fixed
+
+- deps: update dependency pcu to v0.6.11(pr [#426])
+
 ## [0.1.89] - 2026-03-10
 
 ### Fixed
@@ -1263,6 +1267,7 @@ All notable changes to this project will be documented in this file.
 [#423]: https://github.com/jerus-org/ci-container/pull/423
 [#424]: https://github.com/jerus-org/ci-container/pull/424
 [#427]: https://github.com/jerus-org/ci-container/pull/427
+[#426]: https://github.com/jerus-org/ci-container/pull/426
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.89...HEAD
 [0.1.89]: https://github.com/jerus-org/ci-container/compare/v0.1.88...v0.1.89
 [0.1.88]: https://github.com/jerus-org/ci-container/compare/v0.1.87...v0.1.88
