@@ -33,13 +33,6 @@ executors:
     docker:
       - image: cimg/base:2025.07@sha256:aff996311c7d3ecdf0925f5856d79d5bd2d4773bd2931ef4d65f584e5f0e800c
 
-  rust-env:
-    docker:
-      - image: jerusdp/ci-rust:<<pipeline.parameters.min_rust_version>>
-  base_env:
-    docker:
-      - image: jerusdp/ci-rust:base@sha256:8826ac79dd49ef33cdae49aa5325787d5cafe46349e7f90e130132c17e344e3a
-
 commands:
   test_rolling_cmd:
     description: >
@@ -382,7 +375,7 @@ jobs:
 
   security:
     executor:
-      name: base_env
+      name: toolkit/base_env
     parameters:
       ignore_advisories:
         default: ""
@@ -412,7 +405,7 @@ jobs:
     description: |
       Assess the level using nextsv and make a release using cargo release
     executor:
-      name: rust-env
+      name: toolkit/rust_env_rolling
     parameters:
       blog_directory:
         default: content/blog
