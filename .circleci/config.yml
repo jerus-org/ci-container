@@ -599,23 +599,6 @@ jobs:
                 pcu_workspace: << parameters.pcu_workspace >>
 
 workflows:
-  check_last_commit:
-    when:
-      and:
-        - not:
-            equal: [scheduled_pipeline, << pipeline.trigger_source >>]
-        - not: << pipeline.parameters.success_flag >>
-        - not: << pipeline.parameters.release_flag >>
-        - not: << pipeline.parameters.validation_flag >>
-
-    jobs:
-      - toolkit/choose_pipeline:
-          filters:
-            branches:
-              ignore: main
-          name: choose pipeline based on committer
-          context: bot-check
-
   validation:
     when:
       and:
