@@ -77,48 +77,6 @@ commands:
             docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
             docker push ${TAG}
 
-  set-min-rust-wasi:
-    parameters:
-      rust-min-version:
-        default: "1.56"
-        type: string
-    steps:
-      - run:
-          name: set appropriate wasi target
-          command: |
-            set -exo pipefail
-
-            if [[ "1.85" = "<<parameters.rust-min-version>>" || \
-                  "1.88" = "<<parameters.rust-min-version>>" || \
-                  "1.89" = "<<parameters.rust-min-version>>" || \
-                  "1.87" = "<<parameters.rust-min-version>>" ]]; then
-              wasi_name="wasm32-wasip1"
-            else
-              wasi_name="wasm32-wasi"
-            fi
-
-            echo "export WASI_NAME=$wasi_name" >> "$BASH_ENV"
-
-  make-test:
-    parameters:
-      rust-min-version:
-        default: "1.56"
-        type: string
-    steps:
-      - run:
-          name: make test for minimum version <<parameters.rust-min-version>>
-          command: |
-            set -exo pipefail
-
-            REPO=jerusdp/ci-rust
-            TAG=<<parameters.rust-min-version>>
-            docker build \
-                --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> \
-                --build-arg MIN_RUST_WASI=$WASI_NAME \
-                -t ${REPO}/test:${TAG}-wasi \
-                --target test .
-            docker run --rm ${REPO}/test:${TAG}-wasi
-
   publish_base_cmd:
     steps:
       - run:
@@ -147,20 +105,6 @@ commands:
             cargo audit -D warnings << parameters.ignore_advisories >>
 
 jobs:
-  test:
-    parameters:
-      min-rust-version:
-        type: string
-    executor: ubuntu
-    steps:
-      - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - set-min-rust-wasi:
-          rust-min-version: << parameters.min-rust-version >>
-      - make-test:
-          rust-min-version: << parameters.min-rust-version >>
-
   publish_base:
     executor: ubuntu
     steps:
@@ -191,34 +135,6 @@ jobs:
           docker_layer_caching: true
       - publish_rolling_cmd
 
-  security:
-    executor:
-      name: toolkit/base_env
-    parameters:
-      ignore_advisories:
-        default: ""
-        description: List of advisories to ignore each prefixed with "--ignore "
-        type: string
-      cargo_audit:
-        default: true
-        description: Don't run the cargo audit scan
-        type: boolean
-      sonarcloud:
-        default: true
-        description: Don't run the sonarcloud scan
-        type: boolean
-    steps:
-      - checkout
-      - when:
-          condition: << parameters.cargo_audit >>
-          steps:
-            - cargo_audit:
-                ignore_advisories: << parameters.ignore_advisories >>
-      - when:
-          condition: << parameters.sonarcloud >>
-          steps:
-            - sonarcloud/scan
-
 workflows:
   validation:
     when:
@@ -233,26 +149,8 @@ workflows:
             branches:
               only:
                 - main
-      - test:
-          filters:
-            branches:
-              ignore: main
-          matrix: &matrix
-            parameters:
-              min-rust-version:
-                [
-                  "1.75",
-                  "1.76",
-                  "1.78",
-                  "1.79",
-                  "1.81",
-                  "1.82",
-                  "1.85",
-                  "1.87",
-                  "1.88",
-                  "1.89",
-                ]
-      - security:
+      - toolkit/security:
+          name: security
           cargo_audit: false
           context:
             - SonarCloud
@@ -262,7 +160,6 @@ workflows:
               ignore: main
       - toolkit/update_prlog:
           requires:
-            - test
             - security
             - test_rolling
           context:
