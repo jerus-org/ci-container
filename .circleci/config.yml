@@ -131,43 +131,6 @@ commands:
                 --target test .
             docker run --rm ${REPO}/test:${TAG}-wasi
 
-  publish_rust_envs:
-    parameters:
-      rust-min-version:
-        default: "1.56"
-        type: string
-    steps:
-      - run:
-          name: Publish for minimum version <<parameters.rust-min-version>>
-          command: |
-            set -exo pipefail
-
-            REPO=jerusdp/ci-rust
-            TAG=<<parameters.rust-min-version>>
-            INPUT_RELEASE_VERSION=0.1.0
-            docker build \
-                --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>> \
-                --build-arg MIN_RUST_WASI=$WASI_NAME \
-                -t ${REPO}:${TAG} \
-                --target final .
-            docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
-            docker push ${REPO}:${TAG}
-      - run:
-          name: Publish for minimum version <<parameters.rust-min-version>>
-          command: |
-            set -exo pipefail
-
-            REPO=jerusdp/ci-rust
-            TAG=<<parameters.rust-min-version>>
-            INPUT_RELEASE_VERSION=0.1.0
-            docker build \
-                --build-arg MIN_RUST_VERSION=<<parameters.rust-min-version>>\
-                --build-arg MIN_RUST_WASI=$WASI_NAME \
-                -t ${REPO}:${TAG}-wasi \
-                --target wasi .
-            docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
-            docker push ${REPO}:${TAG}-wasi
-
   publish_base_cmd:
     steps:
       - run:
@@ -327,20 +290,6 @@ jobs:
       - set-min-rust-wasi:
           rust-min-version: << parameters.min-rust-version >>
       - make-test:
-          rust-min-version: << parameters.min-rust-version >>
-
-  publish_rustc_versions:
-    parameters:
-      min-rust-version:
-        type: string
-    executor: ubuntu
-    steps:
-      - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - set-min-rust-wasi:
-          rust-min-version: << parameters.min-rust-version >>
-      - publish_rust_envs:
           rust-min-version: << parameters.min-rust-version >>
 
   publish_base:
