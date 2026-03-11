@@ -50,7 +50,7 @@ commands:
                 -f Dockerfile \
                 -t ${TAG} \
                 --target final .
-            docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+            echo "${DOCKERHUB_PASSWORD}" | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push ${TAG}
       - run:
           name: Publish rolling-6mo-wasi image
@@ -65,7 +65,7 @@ commands:
                 -f Dockerfile \
                 -t ${TAG} \
                 --target wasi .
-            docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+            echo "${DOCKERHUB_PASSWORD}" | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push ${TAG}
 
   publish_base_cmd:
@@ -80,7 +80,7 @@ commands:
 
             INPUT_RELEASE_VERSION=0.1.0
             docker build -t ${TAG} --target final .
-            docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+            echo "${DOCKERHUB_PASSWORD}" | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push ${TAG}
 
 jobs:
