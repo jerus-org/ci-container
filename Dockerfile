@@ -39,7 +39,7 @@ ENV KDEETS_VERSION=0.1.29
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
 ENV NEXTSV_VERSION=0.19.29
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
-ENV PCU_VERSION=0.6.11
+ENV PCU_VERSION=0.6.12
 # renovate: datasource=crate depName=rsign2 packageName=rsign2 versioning=semver-coerced
 ENV RSIGN2_VERSION=0.6.6
 # renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
