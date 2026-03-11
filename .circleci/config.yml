@@ -653,21 +653,6 @@ workflows:
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min_rust_version >>
 
-  check_rebase:
-    when:
-      and:
-        - not:
-            equal: [scheduled_pipeline, << pipeline.trigger_source >>]
-        - not: << pipeline.parameters.release_flag >>
-    jobs:
-      - toolkit/label:
-          filters:
-            branches:
-              only: main
-          min_rust_version: << pipeline.parameters.min_rust_version >>
-          context:
-            - bot-check
-
   release:
     when:
       and:
