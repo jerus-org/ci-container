@@ -1,4 +1,23 @@
+# Dockerfile.rolling - Multi-version Rust image for 6-month rolling window
+#
+# This image contains all stable Rust versions from the last 6 months,
+# plus beta and nightly. It enables digest-pinned immutable builds while
+# supporting automatic version fallback for older MSRVs.
+#
+# The 6-month window is calculated automatically based on the current stable
+# Rust version. Rust releases every ~6 weeks, so 6 months = ~4 releases.
+# We include 4 prior versions plus current stable (5 total stable versions).
+#
+# Published as:
+#   jerusdp/ci-rust:rolling-6mo
+#   jerusdp/ci-rust:rolling-6mo-wasi
+#
+# Usage:
+#   docker build -f Dockerfile.rolling -t jerusdp/ci-rust:rolling-6mo --target final .
+#   docker build -f Dockerfile.rolling -t jerusdp/ci-rust:rolling-6mo-wasi --target wasi .
+
 FROM docker.io/library/rust:1.94.0@sha256:0e6da0c8f06f25e9591f21c0f741cd4ff1086e271c3330f29f6e4e95869c7843 AS binaries
+# renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.22.1
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
@@ -28,7 +47,7 @@ ENV WASMPACK_VERSION=0.14.0
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
 ENV WASMTIME_VERSION=42.0.1
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN set -eux; 
+RUN set -eux;
 RUN apt-get update; \
     apt-get install -y --no-install-recommends \
     build-essential \
@@ -103,36 +122,56 @@ COPY --from=binaries $CARGO_HOME/bin/cargo-release \
     $CARGO_HOME/bin/pcu \
     $CARGO_HOME/bin/rsign \
     $CARGO_HOME/bin/circleci-junit-fix $CARGO_HOME/bin/
-ARG MIN_RUST_VERSION=1.65
+
+# Install standard toolchains with all components
 RUN rustup component add clippy rustfmt llvm-tools; \
     rustup toolchain install stable --component clippy --component rustfmt; \
     rustup toolchain install nightly --component clippy --component rustfmt --component miri --component rust-src; \
-    rustup toolchain install beta --component clippy --component rustfmt; \
-    rustup toolchain install "$MIN_RUST_VERSION" --component clippy --component rustfmt;  
+    rustup toolchain install beta --component clippy --component rustfmt
+
+# Calculate and install rolling 6-month Rust versions
+#
+# Strategy:
+#   - Detect current stable version from rustc
+#   - Calculate oldest version in 6-month window (current minor - 4)
+#   - Install all versions from oldest to current
+#
+# Rust releases every ~6 weeks, so 6 months ≈ 4 releases back
+# We install versions: (current - 4) through (current - 1)
+# Current stable is already installed from base image
+#
+# The calculated versions are saved to ROLLING_RUST_VERSIONS env var
+# for runtime detection by the select_rust_version command
+COPY calculate-rolling-versions.sh /tmp/
+RUN chmod +x /tmp/calculate-rolling-versions.sh && \
+    /tmp/calculate-rolling-versions.sh && \
+    rm /tmp/calculate-rolling-versions.sh
+
 USER circleci
 WORKDIR /home/circleci/project
 
 FROM final AS wasi
-ARG MIN_RUST_VERSION=1.65
-ARG MIN_RUST_WASI=wasm32-wasi
 USER root
 COPY --from=binaries $CARGO_HOME/bin/wasmtime \
     $CARGO_HOME/bin/wasm-pack $CARGO_HOME/bin/
-RUN \
-    rustup target add wasm32-wasip1; \
-    rustup target add wasm32-wasip1 --toolchain stable; \
-    rustup target add wasm32-wasip1 --toolchain nightly; \
-    rustup target add wasm32-wasip1 --toolchain beta; \
-    rustup target add "$MIN_RUST_WASI" --toolchain "$MIN_RUST_VERSION";
+
+# Install WASI targets for all toolchains
+# Note: wasm32-wasip1 is the modern target name (Rust 1.78+)
+#       wasm32-wasi is the legacy target name (older Rust versions)
+COPY install-wasi-targets.sh /tmp/
+RUN chmod +x /tmp/install-wasi-targets.sh && \
+    /tmp/install-wasi-targets.sh && \
+    rm /tmp/install-wasi-targets.sh
+
 USER circleci
 WORKDIR /home/circleci/project
 
 FROM wasi AS test
 USER root
 WORKDIR /project
-COPY test.sh test.sh
+COPY test-rolling.sh test.sh
 RUN chmod a+x test.sh
-ARG MIN_RUST_VERSION=1.56
-ENV MIN_RUST=$MIN_RUST_VERSION
+# For rolling image, we validate all versions are installed
+ENV ROLLING_IMAGE=true
 USER circleci
 ENTRYPOINT [ "/project/test.sh" ]
