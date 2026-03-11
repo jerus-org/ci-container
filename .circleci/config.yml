@@ -776,12 +776,6 @@ workflows:
     jobs:
       - publish_base:
           filters: *filters
-      - publish_rustc_versions:
-          matrix:
-            <<: *matrix
-          requires:
-            - publish_base
-          filters: *filters
       - publish_rolling:
           requires:
             - publish_base
