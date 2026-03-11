@@ -26,7 +26,7 @@ commands:
 
             REPO=jerusdp/ci-rust
             docker build \
-                -f Dockerfile.rolling \
+                -f Dockerfile \
                 -t ${REPO}:rolling-6mo-test \
                 --target test .
             docker run --rm ${REPO}:rolling-6mo-test
@@ -47,7 +47,7 @@ commands:
             # TAG=${REPO}:rolling-6mo-${VERSION}
             TAG=${REPO}:rolling-6mo
             docker build \
-                -f Dockerfile.rolling \
+                -f Dockerfile \
                 -t ${TAG} \
                 --target final .
             docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
@@ -62,7 +62,7 @@ commands:
             # TAG=${REPO}:rolling-6mo-wasi-${VERSION}
             TAG=${REPO}:rolling-6mo-wasi
             docker build \
-                -f Dockerfile.rolling \
+                -f Dockerfile \
                 -t ${TAG} \
                 --target wasi .
             docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
