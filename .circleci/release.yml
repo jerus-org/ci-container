@@ -27,6 +27,7 @@ workflows:
       # the workspace and used unchanged by the release jobs after approval.
       - toolkit/calculate_versions:
           name: calculate-versions
+          crate: ""
           workspace_version_override: << pipeline.parameters.workspace_version >>
 
       - approve-release:
