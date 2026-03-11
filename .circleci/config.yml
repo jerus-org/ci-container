@@ -10,7 +10,6 @@ parameters:
 
 orbs:
   toolkit: jerus-org/circleci-toolkit@4.9.4
-  sonarcloud: sonarsource/sonarcloud@4.0.0
 
 filters: &filters
   tags:
@@ -91,18 +90,6 @@ commands:
             docker build -t ${TAG} --target final .
             docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
             docker push ${TAG}
-
-  cargo_audit:
-    parameters:
-      ignore_advisories:
-        type: string
-        default: ""
-        description: "Additional parameters to list advisories that should be ignored"
-    steps:
-      - run:
-          name: Security audit against RUSTSEC
-          command: |
-            cargo audit -D warnings << parameters.ignore_advisories >>
 
 jobs:
   publish_base:
