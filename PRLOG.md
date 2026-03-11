@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 - BREAKING: ci(circleci)-mondernise ci process and adopt rolling config(pr [#428])
 
+### Fixed
+
+- deps: update dependency pcu to v0.6.12(pr [#429])
+
 ## [0.1.90] - 2026-03-10
 
 ### Changed
@@ -1275,6 +1279,7 @@ All notable changes to this project will be documented in this file.
 [#427]: https://github.com/jerus-org/ci-container/pull/427
 [#426]: https://github.com/jerus-org/ci-container/pull/426
 [#428]: https://github.com/jerus-org/ci-container/pull/428
+[#429]: https://github.com/jerus-org/ci-container/pull/429
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.90...HEAD
 [0.1.90]: https://github.com/jerus-org/ci-container/compare/v0.1.89...v0.1.90
 [0.1.89]: https://github.com/jerus-org/ci-container/compare/v0.1.88...v0.1.89
