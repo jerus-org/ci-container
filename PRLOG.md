@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - BREAKING: ci(circleci)-mondernise ci process and adopt rolling config(pr [#428])
+- 👷 ci(circleci)-add crate parameter to calculate_versions job(pr [#430])
 
 ### Fixed
 
@@ -1280,6 +1281,7 @@ All notable changes to this project will be documented in this file.
 [#426]: https://github.com/jerus-org/ci-container/pull/426
 [#428]: https://github.com/jerus-org/ci-container/pull/428
 [#429]: https://github.com/jerus-org/ci-container/pull/429
+[#430]: https://github.com/jerus-org/ci-container/pull/430
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.90...HEAD
 [0.1.90]: https://github.com/jerus-org/ci-container/compare/v0.1.89...v0.1.90
 [0.1.89]: https://github.com/jerus-org/ci-container/compare/v0.1.88...v0.1.89
