@@ -1,13 +1,5 @@
 version: 2.1
 
-parameters:
-  min_rust_version:
-    type: string
-    default: "1.87"
-  fingerprint:
-    type: string
-    default: SHA256:OkxsH8Z6Iim6WDJBaII9eTT9aaO1f3eDc6IpsgYYPVg
-
 orbs:
   toolkit: jerus-org/circleci-toolkit@4.9.4
 
@@ -129,13 +121,6 @@ workflows:
         - not:
             equal: [scheduled_pipeline, << pipeline.trigger_source >>]
     jobs:
-      - toolkit/label:
-          min_rust_version: << pipeline.parameters.min_rust_version >>
-          context: pcu-app
-          filters:
-            branches:
-              only:
-                - main
       - toolkit/security:
           name: security
           cargo_audit: false
@@ -145,15 +130,6 @@ workflows:
           filters:
             branches:
               ignore: main
-      - toolkit/update_prlog:
-          requires:
-            - security
-            - test_rolling
-          context:
-            - release
-            - bot-check
-          ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min_rust_version >>
 
   deploy:
     when:
