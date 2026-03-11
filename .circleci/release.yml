@@ -19,15 +19,164 @@ parameters:
 orbs:
   toolkit: jerus-org/circleci-toolkit@4.9.4
 
+jobs:
+  calculate_versions:
+    description: >
+      Pre-approval version calculation job.
+      Calculates next versions for one or more crates plus the workspace, then
+      persists them to workspace as versions.env. Runs BEFORE the approval gate
+      so the reviewer sees exactly what will be released in one report before
+      approving. Downstream release_crate and release_prlog jobs read from the
+      workspace and never recalculate, guaranteeing the approved versions are
+      used unchanged.
+
+      The crates parameter accepts newline-separated 'crate_name:tag_prefix' pairs,
+      enabling multi-crate workspaces to report all versions in a single job.
+      Each crate version is stored as CRATE_VERSION_<CRATE_UPPERCASED> in
+      versions.env (e.g. CRATE_VERSION_GEN_CHANGELOG for gen-changelog).
+      The workspace release version is stored as WORKSPACE_VERSION.
+
+      Version override parameters accept newline-separated 'crate_name:version'
+      pairs (crate_version_overrides) or a plain version string
+      (workspace_version_override). Use overrides when nextsv calculates an
+      incorrect version (e.g. due to the unanchored prefix regex bug).
+
+    executor:
+      name: toolkit/rust_env_rolling
+
+    parameters:
+      crates:
+        type: string
+        default: ""
+        description: |
+          Newline-separated list of 'crate_name:tag_prefix' pairs to calculate versions for.
+          Example (single crate):  "gen-changelog:gen-changelog-v"
+          Example (multi-crate):
+            "gen-changelog:gen-changelog-v
+            core-lib:core-lib-v"
+      crate_version_overrides:
+        type: string
+        default: ""
+        description: |
+          Newline-separated 'crate_name:version' overrides. Crates not listed use nextsv.
+          Example: "gen-changelog:0.1.7"
+      workspace_version_override:
+        type: string
+        default: ""
+        description: "Override workspace v* version (empty = nextsv auto-detect)"
+
+    steps:
+      - checkout
+      - run:
+          name: Calculate release versions
+          command: |
+            set -eo pipefail
+
+            echo "nextsv version: $(nextsv --version)"
+            echo ""
+
+            mkdir -p /tmp/release-versions
+            VERSIONS_FILE="/tmp/release-versions/versions.env"
+            REPORT_FILE="/tmp/release-versions/report.txt"
+            > "$VERSIONS_FILE"
+            > "$REPORT_FILE"
+
+            # Write parameters to temp files (bash herestrings are not valid in CircleCI YAML)
+            printf '%s\n' "<< parameters.crate_version_overrides >>" > /tmp/rv-overrides.txt
+            printf '%s\n' "<< parameters.crates >>" > /tmp/rv-crates.txt
+
+            # Calculate version for each crate
+            while IFS=: read -r crate prefix; do
+              [ -z "$crate" ] && continue
+
+              # Check for a version override for this crate
+              override=$(grep "^${crate}:" /tmp/rv-overrides.txt 2>/dev/null | head -1 | cut -d: -f2-)
+
+              if [ -n "$override" ]; then
+                version="$override"
+                echo "${crate}: using specified version: ${version}"
+              else
+                echo "${crate}: running: nextsv -bn calculate --package \"${crate}\" --prefix \"${prefix}\""
+                nextsv_exit=0
+                nextsv -bn calculate \
+                  --package "$crate" \
+                  --prefix "$prefix" \
+                  > /tmp/nextsv-stdout.txt \
+                  2> /tmp/nextsv-stderr.txt \
+                  || nextsv_exit=$?
+                if [ -s /tmp/nextsv-stderr.txt ]; then
+                  echo "${crate}: nextsv stderr:"
+                  cat /tmp/nextsv-stderr.txt
+                fi
+                version=$(cat /tmp/nextsv-stdout.txt)
+                [ -z "$version" ] && version="none"
+                echo "${crate}: exit=${nextsv_exit} calculated version: ${version}"
+                if [ "$nextsv_exit" -ne 0 ]; then
+                  echo "ERROR: nextsv failed for crate '${crate}' (exit=${nextsv_exit}) — cannot proceed to approval gate."
+                  exit "$nextsv_exit"
+                fi
+              fi
+
+              # Store as CRATE_VERSION_<CRATE_UPPERCASED> (hyphens -> underscores)
+              var_name="CRATE_VERSION_$(echo "$crate" | tr '[:lower:]-' '[:upper:]_')"
+              echo "${var_name}=${version}" >> "$VERSIONS_FILE"
+
+              # Accumulate report line
+              printf "  %-32s %s\n" "${crate}" "${version}" >> "$REPORT_FILE"
+            done < /tmp/rv-crates.txt
+
+            # Calculate workspace version
+            if [ "<< parameters.workspace_version_override >>" != "" ]; then
+              WORKSPACE_VERSION="<< parameters.workspace_version_override >>"
+              echo "workspace: using specified version: $WORKSPACE_VERSION"
+            else
+              echo "workspace: running: nextsv -bn calculate --prefix v"
+              nextsv_exit=0
+              nextsv -bn calculate --prefix v \
+                > /tmp/nextsv-stdout.txt \
+                2> /tmp/nextsv-stderr.txt \
+                || nextsv_exit=$?
+              if [ -s /tmp/nextsv-stderr.txt ]; then
+                echo "workspace: nextsv stderr:"
+                cat /tmp/nextsv-stderr.txt
+              fi
+              WORKSPACE_VERSION=$(cat /tmp/nextsv-stdout.txt)
+              [ -z "$WORKSPACE_VERSION" ] && WORKSPACE_VERSION="none"
+              echo "workspace: exit=${nextsv_exit} calculated version: $WORKSPACE_VERSION"
+              if [ "$nextsv_exit" -ne 0 ]; then
+                echo "ERROR: nextsv failed for workspace version (exit=${nextsv_exit}) — cannot proceed to approval gate."
+                exit "$nextsv_exit"
+              fi
+            fi
+            echo "WORKSPACE_VERSION=${WORKSPACE_VERSION}" >> "$VERSIONS_FILE"
+            printf "  %-32s %s\n" "workspace (v*)" "${WORKSPACE_VERSION}" >> "$REPORT_FILE"
+
+            # Print report card — visible to the reviewer in the job log before approval
+            echo ""
+            echo "======================================="
+            echo "  Versions pending release approval"
+            echo "======================================="
+            cat "$REPORT_FILE"
+            echo "======================================="
+            echo ""
+            echo "To approve: open the workflow in CircleCI and approve the hold job."
+            echo "Downstream release jobs will use exactly these versions."
+
+            echo "--- versions.env ---"
+            cat "$VERSIONS_FILE"
+      - persist_to_workspace:
+          root: /tmp/release-versions
+          paths:
+            - versions.env
+
 workflows:
   release:
     jobs:
       # Calculate versions BEFORE the approval gate so the reviewer knows
       # exactly what will be released. The approved versions are persisted to
       # the workspace and used unchanged by the release jobs after approval.
-      - toolkit/calculate_versions:
+      - calculate_versions:
           name: calculate-versions
-          crate: ""
           workspace_version_override: << pipeline.parameters.workspace_version >>
 
       - approve-release:
