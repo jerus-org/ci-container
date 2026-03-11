@@ -7,21 +7,9 @@ parameters:
   fingerprint:
     type: string
     default: SHA256:OkxsH8Z6Iim6WDJBaII9eTT9aaO1f3eDc6IpsgYYPVg
-  validation_flag:
-    type: boolean
-    default: false
-    description: "If true, the validation pipeline will be executed."
-  success_flag:
-    type: boolean
-    default: false
-    description: "If true, the success pipeline will be executed."
-  release_flag:
-    type: boolean
-    default: false
-    description: "If true, the release pipeline will be executed."
 
 orbs:
-  toolkit: jerus-org/circleci-toolkit@4.8.0
+  toolkit: jerus-org/circleci-toolkit@4.9.4
   sonarcloud: sonarsource/sonarcloud@4.0.0
 
 filters: &filters
@@ -237,9 +225,6 @@ workflows:
       and:
         - not:
             equal: [scheduled_pipeline, << pipeline.trigger_source >>]
-        - not: << pipeline.parameters.success_flag >>
-        - not: << pipeline.parameters.release_flag >>
-        - << pipeline.parameters.validation_flag >>
     jobs:
       - toolkit/label:
           min_rust_version: << pipeline.parameters.min_rust_version >>
