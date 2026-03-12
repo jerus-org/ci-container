@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- deps: update dependency toolkit to v4.9.5(pr [#432])
+
 ## [0.1.91] - 2026-03-11
 
 ### Changed
@@ -1284,6 +1290,8 @@ All notable changes to this project will be documented in this file.
 [#429]: https://github.com/jerus-org/ci-container/pull/429
 [#430]: https://github.com/jerus-org/ci-container/pull/430
 [#431]: https://github.com/jerus-org/ci-container/pull/431
+[#432]: https://github.com/jerus-org/ci-container/pull/432
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.91...HEAD
 [0.1.91]: https://github.com/jerus-org/ci-container/compare/v0.1.90...v0.1.91
 [0.1.90]: https://github.com/jerus-org/ci-container/compare/v0.1.89...v0.1.90
 [0.1.89]: https://github.com/jerus-org/ci-container/compare/v0.1.88...v0.1.89
