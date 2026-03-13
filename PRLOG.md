@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - deps: update docker.io/library/rust:1.94.0 docker digest to 7e322aa(pr [#434])
+- deps: update dependency cull-gmail to v0.1.6(pr [#435])
 
 ## [0.1.92] - 2026-03-12
 
@@ -1300,6 +1301,7 @@ All notable changes to this project will be documented in this file.
 [#432]: https://github.com/jerus-org/ci-container/pull/432
 [#433]: https://github.com/jerus-org/ci-container/pull/433
 [#434]: https://github.com/jerus-org/ci-container/pull/434
+[#435]: https://github.com/jerus-org/ci-container/pull/435
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.92...HEAD
 [0.1.92]: https://github.com/jerus-org/ci-container/compare/v0.1.91...v0.1.92
 [0.1.91]: https://github.com/jerus-org/ci-container/compare/v0.1.90...v0.1.91
