@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- deps: update dependency cull-gmail to v0.1.7(pr [#437])
+
 ## [0.1.93] - 2026-03-13
 
 ### Fixed
@@ -1304,6 +1310,8 @@ All notable changes to this project will be documented in this file.
 [#434]: https://github.com/jerus-org/ci-container/pull/434
 [#435]: https://github.com/jerus-org/ci-container/pull/435
 [#436]: https://github.com/jerus-org/ci-container/pull/436
+[#437]: https://github.com/jerus-org/ci-container/pull/437
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.93...HEAD
 [0.1.93]: https://github.com/jerus-org/ci-container/compare/v0.1.92...v0.1.93
 [0.1.92]: https://github.com/jerus-org/ci-container/compare/v0.1.91...v0.1.92
 [0.1.91]: https://github.com/jerus-org/ci-container/compare/v0.1.90...v0.1.91
