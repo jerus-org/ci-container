@@ -90,6 +90,41 @@ LABEL org.opencontainers.image.version=${RELEASE_VERSION} \
       org.opencontainers.image.source="https://github.com/jerus-org/ci-container" \
       org.opencontainers.image.revision=${VCS_REF} \
       org.opencontainers.image.created=${BUILD_DATE}
+# Tool versions — duplicated from binaries stage so they are available at
+# runtime in all downstream stages (final, wasi, test). Renovate keeps both
+# sets in sync via the datasource comments.
+# renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
+ENV CARGO_AUDIT_VERSION=0.22.1
+# renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
+ENV CARGO_EXPAND_VERSION=1.0.95
+# renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
+ENV CARGO_FUZZ_VERSION=0.13.1
+# renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
+ENV CARGO_LLVM_COV_VERSION=0.8.4
+# renovate: datasource=crate depName=cargo-nextest packageName=cargo-nextest versioning=semver-coerced
+ENV CARGO_NEXTEST_VERSION=0.9.130
+# renovate: datasource=crate depName=cargo-release packageName=cargo-release versioning=semver-coerced
+ENV CARGO_RELEASE_VERSION=1.1.1
+# renovate: datasource=crate depName=circleci-junit-fix packageName=circleci-junit-fix versioning=semver-coerced
+ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
+# renovate: datasource=crate depName=cull-gmail packageName=cull-gmail versioning=semver-coerced
+ENV CULL_GMAIL_VERSION=0.1.7
+# renovate: datasource=crate depName=gen-changelog packageName=gen-changelog versioning=semver-coerced
+ENV GEN_CHANGELOG_VERSION=0.1.7
+# renovate: datasource=crate depName=gen-orb-mcp packageName=gen-orb-mcp versioning=semver-coerced
+ENV GEN_ORB_MCP_VERSION=0.1.1
+# renovate: datasource=crate depName=kdeets packageName=kdeets versioning=semver-coerced
+ENV KDEETS_VERSION=0.1.29
+# renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
+ENV NEXTSV_VERSION=0.19.29
+# renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
+ENV PCU_VERSION=0.6.13
+# renovate: datasource=crate depName=rsign2 packageName=rsign2 versioning=semver-coerced
+ENV RSIGN2_VERSION=0.6.6
+# renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
+ENV WASMPACK_VERSION=0.14.0
+# renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
+ENV WASMTIME_VERSION=42.0.1
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
