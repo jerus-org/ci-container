@@ -107,6 +107,8 @@ check_version() {
         FAILED=1
         return
     fi
+    # $flag may be multi-word (e.g. "llvm-cov --version") — word splitting is intentional
+    # shellcheck disable=SC2086
     actual=$("$bin" $flag 2>&1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
     if [[ "$actual" = "$expected" ]]; then
         echo "OK    $bin ${actual}"
@@ -119,10 +121,17 @@ check_version() {
 check_version cargo-audit        "${CARGO_AUDIT_VERSION}"
 check_version cargo-expand       "${CARGO_EXPAND_VERSION}"
 check_version cargo-fuzz         "${CARGO_FUZZ_VERSION}"
-check_version cargo-llvm-cov     "${CARGO_LLVM_COV_VERSION}"
+# cargo-llvm-cov and cargo-release are cargo plugins; invoke via the subcommand name
+check_version cargo-llvm-cov     "${CARGO_LLVM_COV_VERSION}" "llvm-cov --version"
 check_version cargo-nextest      "${CARGO_NEXTEST_VERSION}"
-check_version cargo-release      "${CARGO_RELEASE_VERSION}"
-check_version circleci-junit-fix "${CIRCLECI_JUNIT_FIX_VERSION}"
+check_version cargo-release      "${CARGO_RELEASE_VERSION}"  "release --version"
+# circleci-junit-fix has no --version flag (reads stdin); check presence only
+if command -v circleci-junit-fix > /dev/null 2>&1; then
+    echo "OK    circleci-junit-fix (pinned: ${CIRCLECI_JUNIT_FIX_VERSION})"
+else
+    echo "FAIL  circleci-junit-fix: not found in PATH"
+    FAILED=1
+fi
 check_version cull-gmail         "${CULL_GMAIL_VERSION}"
 check_version gen-changelog      "${GEN_CHANGELOG_VERSION}"
 check_version gen-orb-mcp        "${GEN_ORB_MCP_VERSION}"
