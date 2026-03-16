@@ -1,4 +1,4 @@
-# Dockerfile.rolling - Multi-version Rust image for 6-month rolling window
+# Dockerfile - Multi-version Rust image for 6-month rolling window
 #
 # This image contains all stable Rust versions from the last 6 months,
 # plus beta and nightly. It enables digest-pinned immutable builds while
@@ -13,17 +13,20 @@
 #   jerusdp/ci-rust:rolling-6mo-wasi
 #
 # Usage:
-#   docker build -f Dockerfile.rolling -t jerusdp/ci-rust:rolling-6mo --target final .
-#   docker build -f Dockerfile.rolling -t jerusdp/ci-rust:rolling-6mo-wasi --target wasi .
+#   docker build -t jerusdp/ci-rust:rolling-6mo --target final .
+#   docker build -t jerusdp/ci-rust:rolling-6mo-wasi --target wasi .
 
 FROM docker.io/library/rust:1.94.0@sha256:7e322aa1b876cbb977e0df46812af6c4e8be2efbfb2ce3712c28a93ba2968726 AS binaries
-# renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.22.1
+# renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
+ENV CARGO_EXPAND_VERSION=1.0.95
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
 ENV CARGO_FUZZ_VERSION=0.13.1
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
 ENV CARGO_LLVM_COV_VERSION=0.8.4
+# renovate: datasource=crate depName=cargo-nextest packageName=cargo-nextest versioning=semver-coerced
+ENV CARGO_NEXTEST_VERSION=0.9.130
 # renovate: datasource=crate depName=cargo-release packageName=cargo-release versioning=semver-coerced
 ENV CARGO_RELEASE_VERSION=1.1.1
 # renovate: datasource=crate depName=circleci-junit-fix packageName=circleci-junit-fix versioning=semver-coerced
@@ -46,8 +49,7 @@ ENV RSIGN2_VERSION=0.6.6
 ENV WASMPACK_VERSION=0.14.0
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
 ENV WASMTIME_VERSION=42.0.1
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN set -eux;
+SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
 RUN apt-get update; \
     apt-get install -y --no-install-recommends \
     build-essential \
@@ -63,10 +65,10 @@ RUN \
     -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 RUN \
     cargo binstall cargo-audit --version "${CARGO_AUDIT_VERSION}" --no-confirm; \
-    cargo binstall --locked --version 1.0.95 cargo-expand --no-confirm; \
+    cargo binstall --locked cargo-expand --version "${CARGO_EXPAND_VERSION}" --no-confirm; \
     cargo binstall cargo-fuzz --version "${CARGO_FUZZ_VERSION}" --no-confirm; \
     cargo binstall cargo-llvm-cov --version "${CARGO_LLVM_COV_VERSION}" --no-confirm; \
-    cargo binstall cargo-nextest --no-confirm; \
+    cargo binstall cargo-nextest --version "${CARGO_NEXTEST_VERSION}" --no-confirm; \
     cargo binstall cargo-release --version "${CARGO_RELEASE_VERSION}" --no-confirm; \
     cargo binstall circleci-junit-fix --locked --version "${CIRCLECI_JUNIT_FIX_VERSION}" --no-confirm; \
     cargo binstall cull-gmail --version "${CULL_GMAIL_VERSION}" --no-confirm; \
@@ -80,6 +82,14 @@ RUN \
     cargo binstall wasmtime-cli --version "${WASMTIME_VERSION}" --no-confirm;
 
 FROM docker.io/library/rust:1.94.0@sha256:7e322aa1b876cbb977e0df46812af6c4e8be2efbfb2ce3712c28a93ba2968726 AS base
+ARG RELEASE_VERSION="dev"
+ARG VCS_REF="unknown"
+ARG BUILD_DATE="unknown"
+ENV CI_RUST_IMAGE_VERSION=${RELEASE_VERSION}
+LABEL org.opencontainers.image.version=${RELEASE_VERSION} \
+      org.opencontainers.image.source="https://github.com/jerus-org/ci-container" \
+      org.opencontainers.image.revision=${VCS_REF} \
+      org.opencontainers.image.created=${BUILD_DATE}
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
@@ -91,7 +101,8 @@ RUN set -eux; \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && adduser circleci
-COPY --from=binaries $CARGO_HOME/bin/cull-gmail $CARGO_HOME/bin/
+COPY --from=binaries $CARGO_HOME/bin/cull-gmail \
+    $CARGO_HOME/bin/pcu $CARGO_HOME/bin/
 USER circleci
 WORKDIR /home/circleci/project
 
@@ -169,9 +180,7 @@ WORKDIR /home/circleci/project
 FROM wasi AS test
 USER root
 WORKDIR /project
-COPY test-rolling.sh test.sh
+COPY test.sh .
 RUN chmod a+x test.sh
-# For rolling image, we validate all versions are installed
-ENV ROLLING_IMAGE=true
 USER circleci
-ENTRYPOINT [ "/project/test.sh" ]
+ENTRYPOINT ["/project/test.sh"]

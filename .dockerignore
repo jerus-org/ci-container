@@ -1,0 +1,12 @@
+.circleci/
+.github/
+.git/
+*.log
+renovate.json
+.hadolint.yaml
+cliff.toml
+gen-changelog.toml
+sonar-project.properties
+PRLOG.md
+CHANGELOG.md
+README.md
