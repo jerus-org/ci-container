@@ -108,7 +108,7 @@ check_version() {
         return
     fi
     actual=$("$bin" $flag 2>&1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
-    if [ "$actual" = "$expected" ]; then
+    if [[ "$actual" = "$expected" ]]; then
         echo "OK    $bin ${actual}"
     else
         echo "FAIL  $bin: expected ${expected}, got '${actual}'"
@@ -133,13 +133,13 @@ check_version rsign              "${RSIGN2_VERSION}"
 check_version wasm-pack          "${WASMPACK_VERSION}"
 check_version wasmtime           "${WASMTIME_VERSION}"
 
-if [ "${CI_RUST_IMAGE_VERSION:-dev}" = "dev" ]; then
+if [[ "${CI_RUST_IMAGE_VERSION:-dev}" = "dev" ]]; then
     echo "INFO  CI_RUST_IMAGE_VERSION not set (test/local build)"
 else
     echo "OK    CI_RUST_IMAGE_VERSION=${CI_RUST_IMAGE_VERSION}"
 fi
 
-[ "$FAILED" = "0" ] || { echo ""; echo "FAILED: binary version validation"; exit 1; }
+[[ "$FAILED" = "0" ]] || { echo ""; echo "FAILED: binary version validation"; exit 1; }
 echo "=== All binary versions validated ==="
 
 echo ""
