@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- chore-CI alignment and best practices(pr [#440])
+
 ## [0.1.94] - 2026-03-14
 
 ### Fixed
@@ -1311,6 +1317,8 @@ All notable changes to this project will be documented in this file.
 [#435]: https://github.com/jerus-org/ci-container/pull/435
 [#436]: https://github.com/jerus-org/ci-container/pull/436
 [#437]: https://github.com/jerus-org/ci-container/pull/437
+[#440]: https://github.com/jerus-org/ci-container/pull/440
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.94...HEAD
 [0.1.94]: https://github.com/jerus-org/ci-container/compare/v0.1.93...v0.1.94
 [0.1.93]: https://github.com/jerus-org/ci-container/compare/v0.1.92...v0.1.93
 [0.1.92]: https://github.com/jerus-org/ci-container/compare/v0.1.91...v0.1.92
