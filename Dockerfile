@@ -17,6 +17,8 @@
 #   docker build -t jerusdp/ci-rust:rolling-6mo-wasi --target wasi .
 
 FROM docker.io/library/rust:1.94.0@sha256:7e322aa1b876cbb977e0df46812af6c4e8be2efbfb2ce3712c28a93ba2968726 AS binaries
+# renovate: datasource=crate depName=cargo-binstall packageName=cargo-binstall versioning=semver-coerced
+ENV CARGO_BINSTALL_VERSION=1.17.7
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.22.1
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
@@ -53,33 +55,28 @@ SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
 RUN apt-get update; \
     apt-get install -y --no-install-recommends \
     build-essential \
-    curl \
     libssl-dev \
     pkg-config \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+RUN cargo install cargo-binstall --version "${CARGO_BINSTALL_VERSION}" --locked
 RUN \
-    curl \
-    --proto '=https' \
-    --tlsv1.2 \
-    -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
-RUN \
-    cargo binstall cargo-audit --version "${CARGO_AUDIT_VERSION}" --no-confirm; \
+    cargo binstall --locked cargo-audit --version "${CARGO_AUDIT_VERSION}" --no-confirm; \
     cargo binstall --locked cargo-expand --version "${CARGO_EXPAND_VERSION}" --no-confirm; \
-    cargo binstall cargo-fuzz --version "${CARGO_FUZZ_VERSION}" --no-confirm; \
-    cargo binstall cargo-llvm-cov --version "${CARGO_LLVM_COV_VERSION}" --no-confirm; \
-    cargo binstall cargo-nextest --version "${CARGO_NEXTEST_VERSION}" --no-confirm; \
-    cargo binstall cargo-release --version "${CARGO_RELEASE_VERSION}" --no-confirm; \
-    cargo binstall circleci-junit-fix --locked --version "${CIRCLECI_JUNIT_FIX_VERSION}" --no-confirm; \
-    cargo binstall cull-gmail --version "${CULL_GMAIL_VERSION}" --no-confirm; \
-    cargo binstall gen-changelog --version "${GEN_CHANGELOG_VERSION}" --no-confirm; \
-    cargo binstall gen-orb-mcp --version "${GEN_ORB_MCP_VERSION}" --no-confirm; \
-    cargo binstall kdeets --version "${KDEETS_VERSION}" --no-confirm; \
-    cargo binstall nextsv --version "${NEXTSV_VERSION}" --no-confirm; \
-    cargo binstall pcu --version "${PCU_VERSION}" --no-confirm; \
-    cargo binstall rsign2 --version "${RSIGN2_VERSION}" --no-confirm; \
-    cargo binstall wasm-pack --version "${WASMPACK_VERSION}" --no-confirm; \
-    cargo binstall wasmtime-cli --version "${WASMTIME_VERSION}" --no-confirm;
+    cargo binstall --locked cargo-fuzz --version "${CARGO_FUZZ_VERSION}" --no-confirm; \
+    cargo binstall --locked cargo-llvm-cov --version "${CARGO_LLVM_COV_VERSION}" --no-confirm; \
+    cargo binstall --locked cargo-nextest --version "${CARGO_NEXTEST_VERSION}" --no-confirm; \
+    cargo binstall --locked cargo-release --version "${CARGO_RELEASE_VERSION}" --no-confirm; \
+    cargo binstall --locked circleci-junit-fix --version "${CIRCLECI_JUNIT_FIX_VERSION}" --no-confirm; \
+    cargo binstall --locked cull-gmail --version "${CULL_GMAIL_VERSION}" --no-confirm; \
+    cargo binstall --locked gen-changelog --version "${GEN_CHANGELOG_VERSION}" --no-confirm; \
+    cargo binstall --locked gen-orb-mcp --version "${GEN_ORB_MCP_VERSION}" --no-confirm; \
+    cargo binstall --locked kdeets --version "${KDEETS_VERSION}" --no-confirm; \
+    cargo binstall --locked nextsv --version "${NEXTSV_VERSION}" --no-confirm; \
+    cargo binstall --locked pcu --version "${PCU_VERSION}" --no-confirm; \
+    cargo binstall --locked rsign2 --version "${RSIGN2_VERSION}" --no-confirm; \
+    cargo binstall --locked wasm-pack --version "${WASMPACK_VERSION}" --no-confirm; \
+    cargo binstall --locked wasmtime-cli --version "${WASMTIME_VERSION}" --no-confirm;
 
 FROM docker.io/library/rust:1.94.0@sha256:7e322aa1b876cbb977e0df46812af6c4e8be2efbfb2ce3712c28a93ba2968726 AS base
 ARG RELEASE_VERSION="dev"
@@ -93,6 +90,8 @@ LABEL org.opencontainers.image.version=${RELEASE_VERSION} \
 # Tool versions — duplicated from binaries stage so they are available at
 # runtime in all downstream stages (final, wasi, test). Renovate keeps both
 # sets in sync via the datasource comments.
+# renovate: datasource=crate depName=cargo-binstall packageName=cargo-binstall versioning=semver-coerced
+ENV CARGO_BINSTALL_VERSION=1.17.7
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.22.1
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
@@ -129,10 +128,7 @@ RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
     adduser \
-    curl \
     git \
-    jq \
-    unzip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && adduser circleci
