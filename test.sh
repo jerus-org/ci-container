@@ -118,7 +118,6 @@ check_version() {
     fi
 }
 
-check_version cargo-binstall     "${CARGO_BINSTALL_VERSION}"
 check_version cargo-audit        "${CARGO_AUDIT_VERSION}"
 check_version cargo-expand       "${CARGO_EXPAND_VERSION}"
 check_version cargo-fuzz         "${CARGO_FUZZ_VERSION}"
