@@ -16,7 +16,6 @@
 #   docker build -t jerusdp/ci-rust:rolling-6mo --target final .
 #   docker build -t jerusdp/ci-rust:rolling-6mo-wasi --target wasi .
 
-# nosonar(docker:S8431) - tag required for Renovate version tracking; digest provides immutability
 FROM docker.io/library/rust:1.94.0@sha256:7e322aa1b876cbb977e0df46812af6c4e8be2efbfb2ce3712c28a93ba2968726 AS binaries
 # renovate: datasource=crate depName=cargo-binstall packageName=cargo-binstall versioning=semver-coerced
 ENV CARGO_BINSTALL_VERSION=1.17.7
@@ -79,7 +78,6 @@ RUN \
     cargo binstall --locked wasm-pack --version "${WASMPACK_VERSION}" --no-confirm; \
     cargo binstall --locked wasmtime-cli --version "${WASMTIME_VERSION}" --no-confirm;
 
-# nosonar(docker:S8431) - tag required for Renovate version tracking; digest provides immutability
 FROM docker.io/library/rust:1.94.0@sha256:7e322aa1b876cbb977e0df46812af6c4e8be2efbfb2ce3712c28a93ba2968726 AS base
 ARG RELEASE_VERSION="dev"
 ARG VCS_REF="unknown"
