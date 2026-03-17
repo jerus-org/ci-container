@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - pin cargo-binstall, enforce --locked, remove curl/jq from base(pr [#442])
+- deps: update docker.io/library/rust:1.94.0 docker digest to c328b17(pr [#443])
 
 ## [0.1.95] - 2026-03-16
 
@@ -1325,6 +1326,7 @@ All notable changes to this project will be documented in this file.
 [#437]: https://github.com/jerus-org/ci-container/pull/437
 [#440]: https://github.com/jerus-org/ci-container/pull/440
 [#442]: https://github.com/jerus-org/ci-container/pull/442
+[#443]: https://github.com/jerus-org/ci-container/pull/443
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.95...HEAD
 [0.1.95]: https://github.com/jerus-org/ci-container/compare/v0.1.94...v0.1.95
 [0.1.94]: https://github.com/jerus-org/ci-container/compare/v0.1.93...v0.1.94
