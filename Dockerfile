@@ -22,7 +22,7 @@ ENV CARGO_BINSTALL_VERSION=1.17.7
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.22.1
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
-ENV CARGO_EXPAND_VERSION=1.0.95
+ENV CARGO_EXPAND_VERSION=1.0.121
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
 ENV CARGO_FUZZ_VERSION=0.13.1
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
@@ -95,7 +95,7 @@ ENV CARGO_BINSTALL_VERSION=1.17.7
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.22.1
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
-ENV CARGO_EXPAND_VERSION=1.0.95
+ENV CARGO_EXPAND_VERSION=1.0.121
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
 ENV CARGO_FUZZ_VERSION=0.13.1
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
