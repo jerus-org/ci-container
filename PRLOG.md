@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- pin cargo-binstall, enforce --locked, remove curl/jq from base(pr [#442])
+
 ## [0.1.95] - 2026-03-16
 
 ### Changed
@@ -1318,6 +1324,8 @@ All notable changes to this project will be documented in this file.
 [#436]: https://github.com/jerus-org/ci-container/pull/436
 [#437]: https://github.com/jerus-org/ci-container/pull/437
 [#440]: https://github.com/jerus-org/ci-container/pull/440
+[#442]: https://github.com/jerus-org/ci-container/pull/442
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.95...HEAD
 [0.1.95]: https://github.com/jerus-org/ci-container/compare/v0.1.94...v0.1.95
 [0.1.94]: https://github.com/jerus-org/ci-container/compare/v0.1.93...v0.1.94
 [0.1.93]: https://github.com/jerus-org/ci-container/compare/v0.1.92...v0.1.93
