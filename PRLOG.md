@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - deps: update docker.io/library/rust:1.94.0 docker digest to 72724f1(pr [#445])
 - deps: update dependency cargo-nextest to v0.9.131(pr [#446])
+- deps: update dependency gen-orb-mcp to v0.1.2(pr [#447])
 
 ## [0.1.96] - 2026-03-17
 
@@ -1338,6 +1339,7 @@ All notable changes to this project will be documented in this file.
 [#444]: https://github.com/jerus-org/ci-container/pull/444
 [#445]: https://github.com/jerus-org/ci-container/pull/445
 [#446]: https://github.com/jerus-org/ci-container/pull/446
+[#447]: https://github.com/jerus-org/ci-container/pull/447
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.96...HEAD
 [0.1.96]: https://github.com/jerus-org/ci-container/compare/v0.1.95...v0.1.96
 [0.1.95]: https://github.com/jerus-org/ci-container/compare/v0.1.94...v0.1.95
