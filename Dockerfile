@@ -16,7 +16,7 @@
 #   docker build -t jerusdp/ci-rust:rolling-6mo --target final .
 #   docker build -t jerusdp/ci-rust:rolling-6mo-wasi --target wasi .
 
-FROM docker.io/library/rust:1.94.0@sha256:c328b1742cd1ecb6c7cfe4960a75e571ace675dbc65cf4c59be7b9252e9382f4 AS binaries
+FROM docker.io/library/rust:1.94.0@sha256:72724f1a416c449b405a2b7ed6bac56058163e6dfb1b5ccb40839882141dd237 AS binaries
 # renovate: datasource=crate depName=cargo-binstall packageName=cargo-binstall versioning=semver-coerced
 ENV CARGO_BINSTALL_VERSION=1.17.7
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
@@ -78,7 +78,7 @@ RUN \
     cargo binstall --locked wasm-pack --version "${WASMPACK_VERSION}" --no-confirm; \
     cargo binstall --locked wasmtime-cli --version "${WASMTIME_VERSION}" --no-confirm;
 
-FROM docker.io/library/rust:1.94.0@sha256:c328b1742cd1ecb6c7cfe4960a75e571ace675dbc65cf4c59be7b9252e9382f4 AS base
+FROM docker.io/library/rust:1.94.0@sha256:72724f1a416c449b405a2b7ed6bac56058163e6dfb1b5ccb40839882141dd237 AS base
 ARG RELEASE_VERSION="dev"
 ARG VCS_REF="unknown"
 ARG BUILD_DATE="unknown"
