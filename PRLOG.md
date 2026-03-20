@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - deps: update dependency cargo-llvm-cov to v0.8.5(pr [#449])
+- deps: update dependency wasmtime-cli to v43(pr [#450])
 
 ## [0.1.97] - 2026-03-19
 
@@ -1349,6 +1350,7 @@ All notable changes to this project will be documented in this file.
 [#447]: https://github.com/jerus-org/ci-container/pull/447
 [#448]: https://github.com/jerus-org/ci-container/pull/448
 [#449]: https://github.com/jerus-org/ci-container/pull/449
+[#450]: https://github.com/jerus-org/ci-container/pull/450
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.97...HEAD
 [0.1.97]: https://github.com/jerus-org/ci-container/compare/v0.1.96...v0.1.97
 [0.1.96]: https://github.com/jerus-org/ci-container/compare/v0.1.95...v0.1.96
