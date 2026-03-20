@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - deps: update dependency cargo-llvm-cov to v0.8.5(pr [#449])
 - deps: update dependency wasmtime-cli to v43(pr [#450])
+- deps: update dependency gen-orb-mcp to v0.1.3(pr [#451])
 
 ## [0.1.97] - 2026-03-19
 
@@ -1351,6 +1352,7 @@ All notable changes to this project will be documented in this file.
 [#448]: https://github.com/jerus-org/ci-container/pull/448
 [#449]: https://github.com/jerus-org/ci-container/pull/449
 [#450]: https://github.com/jerus-org/ci-container/pull/450
+[#451]: https://github.com/jerus-org/ci-container/pull/451
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.97...HEAD
 [0.1.97]: https://github.com/jerus-org/ci-container/compare/v0.1.96...v0.1.97
 [0.1.96]: https://github.com/jerus-org/ci-container/compare/v0.1.95...v0.1.96
