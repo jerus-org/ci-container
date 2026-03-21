@@ -18,7 +18,7 @@
 
 FROM docker.io/library/rust:1.94.0@sha256:72724f1a416c449b405a2b7ed6bac56058163e6dfb1b5ccb40839882141dd237 AS binaries
 # renovate: datasource=crate depName=cargo-binstall packageName=cargo-binstall versioning=semver-coerced
-ENV CARGO_BINSTALL_VERSION=1.17.7
+ENV CARGO_BINSTALL_VERSION=1.17.8
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.22.1
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
@@ -91,7 +91,7 @@ LABEL org.opencontainers.image.version=${RELEASE_VERSION} \
 # runtime in all downstream stages (final, wasi, test). Renovate keeps both
 # sets in sync via the datasource comments.
 # renovate: datasource=crate depName=cargo-binstall packageName=cargo-binstall versioning=semver-coerced
-ENV CARGO_BINSTALL_VERSION=1.17.7
+ENV CARGO_BINSTALL_VERSION=1.17.8
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.22.1
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
