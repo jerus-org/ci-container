@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- deps: update dependency cargo-nextest to v0.9.132(pr [#452])
+
 ## [0.1.98] - 2026-03-20
 
 ### Fixed
@@ -1353,6 +1359,8 @@ All notable changes to this project will be documented in this file.
 [#449]: https://github.com/jerus-org/ci-container/pull/449
 [#450]: https://github.com/jerus-org/ci-container/pull/450
 [#451]: https://github.com/jerus-org/ci-container/pull/451
+[#452]: https://github.com/jerus-org/ci-container/pull/452
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.98...HEAD
 [0.1.98]: https://github.com/jerus-org/ci-container/compare/v0.1.97...v0.1.98
 [0.1.97]: https://github.com/jerus-org/ci-container/compare/v0.1.96...v0.1.97
 [0.1.96]: https://github.com/jerus-org/ci-container/compare/v0.1.95...v0.1.96
