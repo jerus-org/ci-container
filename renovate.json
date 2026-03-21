@@ -7,5 +7,47 @@
     "docker:pinDigests",
     "customManagers:dockerfileVersions",
     "github>jerusdp/renovate-config:default.json"
+  ],
+  "packageRules": [
+    {
+      "groupName": "ci-cargo-ecosystem",
+      "matchDatasources": ["crate"],
+      "matchPackageNames": [
+        "cargo-audit",
+        "cargo-expand",
+        "cargo-fuzz",
+        "cargo-llvm-cov",
+        "cargo-nextest",
+        "cargo-release",
+        "circleci-junit-fix",
+        "rsign2"
+      ]
+    },
+    {
+      "groupName": "ci-release-pipeline",
+      "matchDatasources": ["crate"],
+      "matchPackageNames": [
+        "gen-changelog",
+        "kdeets",
+        "nextsv",
+        "pcu"
+      ]
+    },
+    {
+      "groupName": "ci-domain-tools",
+      "matchDatasources": ["crate"],
+      "matchPackageNames": [
+        "cull-gmail",
+        "gen-orb-mcp"
+      ]
+    },
+    {
+      "groupName": "ci-wasm-tools",
+      "matchDatasources": ["crate"],
+      "matchPackageNames": [
+        "wasm-pack",
+        "wasmtime-cli"
+      ]
+    }
   ]
 }
