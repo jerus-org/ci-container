@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - deps: update dependency cargo-nextest to v0.9.132(pr [#452])
 - deps: update dependency gen-orb-mcp to v0.1.4(pr [#454])
+- deps: update dependency cargo-binstall to v1.17.8(pr [#453])
 
 ## [0.1.98] - 2026-03-20
 
@@ -1362,6 +1363,7 @@ All notable changes to this project will be documented in this file.
 [#451]: https://github.com/jerus-org/ci-container/pull/451
 [#452]: https://github.com/jerus-org/ci-container/pull/452
 [#454]: https://github.com/jerus-org/ci-container/pull/454
+[#453]: https://github.com/jerus-org/ci-container/pull/453
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v0.1.98...HEAD
 [0.1.98]: https://github.com/jerus-org/ci-container/compare/v0.1.97...v0.1.98
 [0.1.97]: https://github.com/jerus-org/ci-container/compare/v0.1.96...v0.1.97
