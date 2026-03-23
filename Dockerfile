@@ -19,7 +19,7 @@
 # installer — shared base for all builder stages.
 # apt-get runs once here and is inherited by all build-* stages so a
 # Renovate bump to any individual tool only invalidates that one stage.
-FROM docker.io/library/rust:1.94.0@sha256:72724f1a416c449b405a2b7ed6bac56058163e6dfb1b5ccb40839882141dd237 AS installer
+FROM docker.io/library/rust:1.94.0@sha256:f17e723020f87c1b4ac4ff6d73c9dfbb7d5cb978754c76641e47337d65f61e12 AS installer
 # renovate: datasource=crate depName=cargo-binstall packageName=cargo-binstall versioning=semver-coerced
 ENV CARGO_BINSTALL_VERSION=1.17.8
 SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
@@ -97,7 +97,7 @@ RUN \
     cargo binstall --locked wasm-pack --version "${WASMPACK_VERSION}" --no-confirm; \
     cargo binstall --locked wasmtime-cli --version "${WASMTIME_VERSION}" --no-confirm;
 
-FROM docker.io/library/rust:1.94.0@sha256:72724f1a416c449b405a2b7ed6bac56058163e6dfb1b5ccb40839882141dd237 AS base
+FROM docker.io/library/rust:1.94.0@sha256:f17e723020f87c1b4ac4ff6d73c9dfbb7d5cb978754c76641e47337d65f61e12 AS base
 ARG RELEASE_VERSION="dev"
 ARG VCS_REF="unknown"
 ARG BUILD_DATE="unknown"
