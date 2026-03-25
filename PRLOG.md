@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- deps: update dependency cargo-release to v1.1.2(pr [#459])
+
 ## [1.0.2] - 2026-03-24
 
 ### Fixed
@@ -1387,6 +1393,8 @@ All notable changes to this project will be documented in this file.
 [#456]: https://github.com/jerus-org/ci-container/pull/456
 [#457]: https://github.com/jerus-org/ci-container/pull/457
 [#458]: https://github.com/jerus-org/ci-container/pull/458
+[#459]: https://github.com/jerus-org/ci-container/pull/459
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.0.2...HEAD
 [1.0.2]: https://github.com/jerus-org/ci-container/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/jerus-org/ci-container/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/jerus-org/ci-container/compare/v0.1.99...v1.0.0
