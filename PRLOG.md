@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - deps: update dependency cargo-release to v1.1.2(pr [#459])
+- deps: update dependency gen-orb-mcp to v0.1.7(pr [#460])
 
 ## [1.0.2] - 2026-03-24
 
@@ -1394,6 +1395,7 @@ All notable changes to this project will be documented in this file.
 [#457]: https://github.com/jerus-org/ci-container/pull/457
 [#458]: https://github.com/jerus-org/ci-container/pull/458
 [#459]: https://github.com/jerus-org/ci-container/pull/459
+[#460]: https://github.com/jerus-org/ci-container/pull/460
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.0.2...HEAD
 [1.0.2]: https://github.com/jerus-org/ci-container/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/jerus-org/ci-container/compare/v1.0.0...v1.0.1
