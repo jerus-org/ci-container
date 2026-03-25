@@ -45,7 +45,7 @@ ENV CARGO_LLVM_COV_VERSION=0.8.5
 # renovate: datasource=crate depName=cargo-nextest packageName=cargo-nextest versioning=semver-coerced
 ENV CARGO_NEXTEST_VERSION=0.9.132
 # renovate: datasource=crate depName=cargo-release packageName=cargo-release versioning=semver-coerced
-ENV CARGO_RELEASE_VERSION=1.1.1
+ENV CARGO_RELEASE_VERSION=1.1.2
 # renovate: datasource=crate depName=circleci-junit-fix packageName=circleci-junit-fix versioning=semver-coerced
 ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 # renovate: datasource=crate depName=rsign2 packageName=rsign2 versioning=semver-coerced
@@ -121,7 +121,7 @@ ENV CARGO_LLVM_COV_VERSION=0.8.5
 # renovate: datasource=crate depName=cargo-nextest packageName=cargo-nextest versioning=semver-coerced
 ENV CARGO_NEXTEST_VERSION=0.9.132
 # renovate: datasource=crate depName=cargo-release packageName=cargo-release versioning=semver-coerced
-ENV CARGO_RELEASE_VERSION=1.1.1
+ENV CARGO_RELEASE_VERSION=1.1.2
 # renovate: datasource=crate depName=circleci-junit-fix packageName=circleci-junit-fix versioning=semver-coerced
 ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 # renovate: datasource=crate depName=cull-gmail packageName=cull-gmail versioning=semver-coerced
