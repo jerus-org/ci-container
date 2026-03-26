@@ -10,10 +10,17 @@
   ],
   "packageRules": [
     {
-      "groupName": "ci-cargo-ecosystem",
+      "groupName": "ci-security-tools",
       "matchDatasources": ["crate"],
       "matchPackageNames": [
         "cargo-audit",
+        "cargo-deny"
+      ]
+    },
+    {
+      "groupName": "ci-cargo-ecosystem",
+      "matchDatasources": ["crate"],
+      "matchPackageNames": [
         "cargo-expand",
         "cargo-fuzz",
         "cargo-llvm-cov",
