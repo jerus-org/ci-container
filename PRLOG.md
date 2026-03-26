@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Added
+
+- add lightweight audit stage with cargo-audit and cargo-deny(pr [#462])
+
 ## [1.0.3] - 2026-03-25
 
 ### Fixed
@@ -1396,6 +1402,8 @@ All notable changes to this project will be documented in this file.
 [#458]: https://github.com/jerus-org/ci-container/pull/458
 [#459]: https://github.com/jerus-org/ci-container/pull/459
 [#460]: https://github.com/jerus-org/ci-container/pull/460
+[#462]: https://github.com/jerus-org/ci-container/pull/462
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.0.3...HEAD
 [1.0.3]: https://github.com/jerus-org/ci-container/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/jerus-org/ci-container/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/jerus-org/ci-container/compare/v1.0.0...v1.0.1
