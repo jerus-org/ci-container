@@ -9,10 +9,12 @@
 # We include 4 prior versions plus current stable (5 total stable versions).
 #
 # Published as:
+#   jerusdp/ci-rust:audit           — lightweight security scanning (cargo-audit, cargo-deny)
 #   jerusdp/ci-rust:rolling-6mo
 #   jerusdp/ci-rust:rolling-6mo-wasi
 #
 # Usage:
+#   docker build -t jerusdp/ci-rust:audit --target audit .
 #   docker build -t jerusdp/ci-rust:rolling-6mo --target final .
 #   docker build -t jerusdp/ci-rust:rolling-6mo-wasi --target wasi .
 
@@ -32,10 +34,19 @@ RUN apt-get update; \
     && rm -rf /var/lib/apt/lists/*
 RUN cargo install cargo-binstall --version "${CARGO_BINSTALL_VERSION}" --locked
 
-# build-cargo-ecosystem — Cargo testing/coverage/audit toolchain
-FROM installer AS build-cargo-ecosystem
+# build-security-tools — security scanning tools (cargo-audit, cargo-deny)
+# Independent stage so a Renovate bump only rebuilds this stage, not cargo-ecosystem.
+FROM installer AS build-security-tools
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.22.1
+# renovate: datasource=crate depName=cargo-deny packageName=cargo-deny versioning=semver-coerced
+ENV CARGO_DENY_VERSION=0.18.9
+RUN \
+    cargo binstall --locked cargo-audit --version "${CARGO_AUDIT_VERSION}" --no-confirm; \
+    cargo binstall --locked cargo-deny --version "${CARGO_DENY_VERSION}" --no-confirm;
+
+# build-cargo-ecosystem — Cargo testing/coverage toolchain
+FROM installer AS build-cargo-ecosystem
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
 ENV CARGO_EXPAND_VERSION=1.0.121
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
@@ -51,7 +62,6 @@ ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 # renovate: datasource=crate depName=rsign2 packageName=rsign2 versioning=semver-coerced
 ENV RSIGN2_VERSION=0.6.6
 RUN \
-    cargo binstall --locked cargo-audit --version "${CARGO_AUDIT_VERSION}" --no-confirm; \
     cargo binstall --locked cargo-expand --version "${CARGO_EXPAND_VERSION}" --no-confirm; \
     cargo binstall --locked cargo-fuzz --version "${CARGO_FUZZ_VERSION}" --no-confirm; \
     cargo binstall --locked cargo-llvm-cov --version "${CARGO_LLVM_COV_VERSION}" --no-confirm; \
@@ -112,6 +122,8 @@ LABEL org.opencontainers.image.version=${RELEASE_VERSION} \
 ENV CARGO_BINSTALL_VERSION=1.17.8
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.22.1
+# renovate: datasource=crate depName=cargo-deny packageName=cargo-deny versioning=semver-coerced
+ENV CARGO_DENY_VERSION=0.18.9
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
 ENV CARGO_EXPAND_VERSION=1.0.121
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
@@ -155,6 +167,38 @@ COPY --from=build-domain-tools $CARGO_HOME/bin/cull-gmail $CARGO_HOME/bin/
 USER circleci
 WORKDIR /home/circleci/project
 
+# audit — lightweight security scanning image (cargo-audit, cargo-deny only)
+# Use this for the security job executor in circleci-toolkit (audit_env).
+# Much smaller than rolling-6mo: no multi-version Rust, no coverage/fuzz tools.
+FROM docker.io/library/rust:1.94.0@sha256:f17e723020f87c1b4ac4ff6d73c9dfbb7d5cb978754c76641e47337d65f61e12 AS audit
+ARG RELEASE_VERSION="dev"
+ARG VCS_REF="unknown"
+ARG BUILD_DATE="unknown"
+ENV CI_RUST_IMAGE_VERSION=${RELEASE_VERSION}
+LABEL org.opencontainers.image.version=${RELEASE_VERSION} \
+      org.opencontainers.image.source="https://github.com/jerus-org/ci-container" \
+      org.opencontainers.image.revision=${VCS_REF} \
+      org.opencontainers.image.created=${BUILD_DATE}
+# renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
+ENV CARGO_AUDIT_VERSION=0.22.1
+# renovate: datasource=crate depName=cargo-deny packageName=cargo-deny versioning=semver-coerced
+ENV CARGO_DENY_VERSION=0.18.9
+RUN set -eux; \
+    apt-get update; \
+    apt-get install -y --no-install-recommends \
+    adduser \
+    git \
+    libssl-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && adduser circleci
+COPY --from=build-security-tools \
+    $CARGO_HOME/bin/cargo-audit \
+    $CARGO_HOME/bin/cargo-deny \
+    $CARGO_HOME/bin/
+USER circleci
+WORKDIR /home/circleci/project
+
 FROM base AS final
 USER root
 RUN set -eux; \
@@ -169,9 +213,12 @@ RUN set -eux; \
     pkg-config \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+COPY --from=build-security-tools \
+    $CARGO_HOME/bin/cargo-audit \
+    $CARGO_HOME/bin/cargo-deny \
+    $CARGO_HOME/bin/
 COPY --from=build-cargo-ecosystem \
     $CARGO_HOME/bin/cargo-release \
-    $CARGO_HOME/bin/cargo-audit \
     $CARGO_HOME/bin/cargo-expand \
     $CARGO_HOME/bin/cargo-fuzz \
     $CARGO_HOME/bin/cargo-llvm-cov \

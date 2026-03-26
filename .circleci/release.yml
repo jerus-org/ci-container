@@ -9,6 +9,7 @@ version: 2.1
 #                        what will be released; versions are persisted to workspace
 #   approve-release   - manual gate: review calculated versions before approving
 #   toolkit/release_prlog - create workspace v* release and update PRLOG.md
+#   publish_audit     - build and push :audit image (cargo-audit + cargo-deny only)
 #   publish_base      - build and push :base image with OCI labels
 #   publish_rolling   - build and push :rolling-6mo and :rolling-6mo-wasi images
 
@@ -27,6 +28,24 @@ executors:
       - image: cimg/base:2025.07@sha256:aff996311c7d3ecdf0925f5856d79d5bd2d4773bd2931ef4d65f584e5f0e800c
 
 commands:
+  publish_audit_cmd:
+    steps:
+      - run:
+          name: Publish audit image
+          command: |
+            set -eo pipefail
+            REPO=jerusdp/ci-rust
+            docker build \
+                --build-arg RELEASE_VERSION="${WORKSPACE_VERSION}" \
+                --build-arg VCS_REF="${CIRCLE_SHA1}" \
+                --build-arg BUILD_DATE="$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+                -t "${REPO}:audit" \
+                --target audit .
+            set +x
+            echo "${DOCKERHUB_PASSWORD}" | docker login -u "${DOCKERHUB_USERNAME}" --password-stdin
+            set -x
+            docker push "${REPO}:audit"
+
   publish_base_cmd:
     steps:
       - run:
@@ -226,6 +245,21 @@ jobs:
           paths:
             - versions.env
 
+  publish_audit:
+    executor: ubuntu
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp/release-versions
+      - run:
+          name: Load release version
+          command: |
+            source /tmp/release-versions/versions.env
+            echo "export WORKSPACE_VERSION=${WORKSPACE_VERSION}" >> "$BASH_ENV"
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - publish_audit_cmd
+
   publish_base:
     executor: ubuntu
     steps:
@@ -276,6 +310,11 @@ workflows:
             - release
             - bot-check
             - pcu-app
+
+      - publish_audit:
+          requires: [toolkit/release_prlog]
+          context:
+            - docker-hub
 
       - publish_base:
           requires: [toolkit/release_prlog]
