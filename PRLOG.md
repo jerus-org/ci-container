@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 - deps: update docker.io/library/rust docker tag to v1.94.1(pr [#469])
 - deps: update ci-release-pipeline(pr [#466])
 - deps: update dependency cargo-binstall to v1.17.9(pr [#467])
+- deps: update dependency cull-gmail to v0.1.8(pr [#468])
 
 ## [1.1.0] - 2026-03-26
 
@@ -1428,6 +1429,7 @@ All notable changes to this project will be documented in this file.
 [#470]: https://github.com/jerus-org/ci-container/pull/470
 [#466]: https://github.com/jerus-org/ci-container/pull/466
 [#467]: https://github.com/jerus-org/ci-container/pull/467
+[#468]: https://github.com/jerus-org/ci-container/pull/468
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.1.0...HEAD
 [1.1.0]: https://github.com/jerus-org/ci-container/compare/v1.0.3...v1.1.0
 [1.0.3]: https://github.com/jerus-org/ci-container/compare/v1.0.2...v1.0.3
