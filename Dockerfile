@@ -90,7 +90,7 @@ RUN \
 # build-domain-tools — standalone domain tools with no runtime coupling
 FROM installer AS build-domain-tools
 # renovate: datasource=crate depName=cull-gmail packageName=cull-gmail versioning=semver-coerced
-ENV CULL_GMAIL_VERSION=0.1.7
+ENV CULL_GMAIL_VERSION=0.1.8
 # renovate: datasource=crate depName=gen-orb-mcp packageName=gen-orb-mcp versioning=semver-coerced
 ENV GEN_ORB_MCP_VERSION=0.1.9
 RUN \
@@ -137,7 +137,7 @@ ENV CARGO_RELEASE_VERSION=1.1.2
 # renovate: datasource=crate depName=circleci-junit-fix packageName=circleci-junit-fix versioning=semver-coerced
 ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 # renovate: datasource=crate depName=cull-gmail packageName=cull-gmail versioning=semver-coerced
-ENV CULL_GMAIL_VERSION=0.1.7
+ENV CULL_GMAIL_VERSION=0.1.8
 # renovate: datasource=crate depName=gen-changelog packageName=gen-changelog versioning=semver-coerced
 ENV GEN_CHANGELOG_VERSION=0.1.8
 # renovate: datasource=crate depName=gen-orb-mcp packageName=gen-orb-mcp versioning=semver-coerced
