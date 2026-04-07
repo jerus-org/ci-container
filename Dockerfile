@@ -92,7 +92,7 @@ FROM installer AS build-domain-tools
 # renovate: datasource=crate depName=cull-gmail packageName=cull-gmail versioning=semver-coerced
 ENV CULL_GMAIL_VERSION=0.1.8
 # renovate: datasource=crate depName=gen-orb-mcp packageName=gen-orb-mcp versioning=semver-coerced
-ENV GEN_ORB_MCP_VERSION=0.1.9
+ENV GEN_ORB_MCP_VERSION=0.1.10
 RUN \
     cargo binstall --locked cull-gmail --version "${CULL_GMAIL_VERSION}" --no-confirm; \
     cargo binstall --locked gen-orb-mcp --version "${GEN_ORB_MCP_VERSION}" --no-confirm;
@@ -141,7 +141,7 @@ ENV CULL_GMAIL_VERSION=0.1.8
 # renovate: datasource=crate depName=gen-changelog packageName=gen-changelog versioning=semver-coerced
 ENV GEN_CHANGELOG_VERSION=0.1.8
 # renovate: datasource=crate depName=gen-orb-mcp packageName=gen-orb-mcp versioning=semver-coerced
-ENV GEN_ORB_MCP_VERSION=0.1.9
+ENV GEN_ORB_MCP_VERSION=0.1.10
 # renovate: datasource=crate depName=kdeets packageName=kdeets versioning=semver-coerced
 ENV KDEETS_VERSION=0.1.30
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
