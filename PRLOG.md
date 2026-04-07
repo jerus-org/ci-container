@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - deps: update docker.io/library/rust:1.94.1 docker digest to dbc91e2(pr [#472])
+- deps: update dependency gen-orb-mcp to v0.1.10(pr [#473])
 
 ## [1.1.1] - 2026-04-07
 
@@ -1439,6 +1440,7 @@ All notable changes to this project will be documented in this file.
 [#468]: https://github.com/jerus-org/ci-container/pull/468
 [#471]: https://github.com/jerus-org/ci-container/pull/471
 [#472]: https://github.com/jerus-org/ci-container/pull/472
+[#473]: https://github.com/jerus-org/ci-container/pull/473
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.1.1...HEAD
 [1.1.1]: https://github.com/jerus-org/ci-container/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/jerus-org/ci-container/compare/v1.0.3...v1.1.0
