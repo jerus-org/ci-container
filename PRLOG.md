@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- deps: update dependency pcu to v0.6.18(pr [#476])
+
 ## [1.1.2] - 2026-04-08
 
 ### Fixed
@@ -1445,6 +1451,8 @@ All notable changes to this project will be documented in this file.
 [#473]: https://github.com/jerus-org/ci-container/pull/473
 [#474]: https://github.com/jerus-org/ci-container/pull/474
 [#475]: https://github.com/jerus-org/ci-container/pull/475
+[#476]: https://github.com/jerus-org/ci-container/pull/476
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.1.2...HEAD
 [1.1.2]: https://github.com/jerus-org/ci-container/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/jerus-org/ci-container/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/jerus-org/ci-container/compare/v1.0.3...v1.1.0
