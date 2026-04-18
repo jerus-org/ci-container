@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - deps: update dependency cargo-deny to v0.19.4(pr [#478])
+- deps: update dependency toolkit to v6.1.4(pr [#480])
 
 ## [1.1.3] - 2026-04-09
 
@@ -1459,6 +1460,7 @@ All notable changes to this project will be documented in this file.
 [#475]: https://github.com/jerus-org/ci-container/pull/475
 [#476]: https://github.com/jerus-org/ci-container/pull/476
 [#478]: https://github.com/jerus-org/ci-container/pull/478
+[#480]: https://github.com/jerus-org/ci-container/pull/480
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.1.3...HEAD
 [1.1.3]: https://github.com/jerus-org/ci-container/compare/v1.1.2...v1.1.3
 [1.1.2]: https://github.com/jerus-org/ci-container/compare/v1.1.1...v1.1.2
