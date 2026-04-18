@@ -102,7 +102,7 @@ FROM installer AS build-wasm-tools
 # renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
 ENV WASMPACK_VERSION=0.14.0
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
-ENV WASMTIME_VERSION=43.0.0
+ENV WASMTIME_VERSION=43.0.1
 RUN \
     cargo binstall --locked wasm-pack --version "${WASMPACK_VERSION}" --no-confirm; \
     cargo binstall --locked wasmtime-cli --version "${WASMTIME_VERSION}" --no-confirm;
@@ -153,7 +153,7 @@ ENV RSIGN2_VERSION=0.6.6
 # renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
 ENV WASMPACK_VERSION=0.14.0
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
-ENV WASMTIME_VERSION=43.0.0
+ENV WASMTIME_VERSION=43.0.1
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
