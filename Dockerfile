@@ -23,7 +23,7 @@
 # Renovate bump to any individual tool only invalidates that one stage.
 FROM docker.io/library/rust:1.95.0@sha256:4a7e3a0c309c9bab658e469f842711bd595fae484936bc5d605e08ca0c631bf4 AS installer
 # renovate: datasource=crate depName=cargo-binstall packageName=cargo-binstall versioning=semver-coerced
-ENV CARGO_BINSTALL_VERSION=1.18.1
+ENV CARGO_BINSTALL_VERSION=1.19.0
 SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
 RUN apt-get update; \
     apt-get install -y --no-install-recommends \
@@ -119,7 +119,7 @@ LABEL org.opencontainers.image.version=${RELEASE_VERSION} \
 # Tool versions — available at runtime in all downstream stages (final, wasi, test).
 # Renovate keeps these in sync via the datasource comments.
 # renovate: datasource=crate depName=cargo-binstall packageName=cargo-binstall versioning=semver-coerced
-ENV CARGO_BINSTALL_VERSION=1.18.1
+ENV CARGO_BINSTALL_VERSION=1.19.0
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.22.1
 # renovate: datasource=crate depName=cargo-deny packageName=cargo-deny versioning=semver-coerced
