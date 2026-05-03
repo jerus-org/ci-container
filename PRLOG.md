@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- deps: update dependency cargo-binstall to v1.19.0(pr [#489])
+
 ## [1.1.4] - 2026-04-18
 
 ### Fixed
@@ -1463,6 +1469,8 @@ All notable changes to this project will be documented in this file.
 [#478]: https://github.com/jerus-org/ci-container/pull/478
 [#480]: https://github.com/jerus-org/ci-container/pull/480
 [#482]: https://github.com/jerus-org/ci-container/pull/482
+[#489]: https://github.com/jerus-org/ci-container/pull/489
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.1.4...HEAD
 [1.1.4]: https://github.com/jerus-org/ci-container/compare/v1.1.3...v1.1.4
 [1.1.3]: https://github.com/jerus-org/ci-container/compare/v1.1.2...v1.1.3
 [1.1.2]: https://github.com/jerus-org/ci-container/compare/v1.1.1...v1.1.2
