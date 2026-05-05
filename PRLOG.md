@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - deps: update dependency cargo-binstall to v1.19.0(pr [#489])
 - deps: update docker.io/library/rust:1.95.0 docker digest to a9cfb75(pr [#485])
+- deps: update dependency wasmtime-cli to v43.0.2(pr [#486])
 
 ## [1.1.4] - 2026-04-18
 
@@ -1472,6 +1473,7 @@ All notable changes to this project will be documented in this file.
 [#482]: https://github.com/jerus-org/ci-container/pull/482
 [#489]: https://github.com/jerus-org/ci-container/pull/489
 [#485]: https://github.com/jerus-org/ci-container/pull/485
+[#486]: https://github.com/jerus-org/ci-container/pull/486
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.1.4...HEAD
 [1.1.4]: https://github.com/jerus-org/ci-container/compare/v1.1.3...v1.1.4
 [1.1.3]: https://github.com/jerus-org/ci-container/compare/v1.1.2...v1.1.3
