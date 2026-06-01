@@ -17,6 +17,7 @@ All notable changes to this project will be documented in this file.
 - deps: update dependency cargo-deny to v0.19.8(pr [#494])
 - deps: update dependency pcu to v0.6.21(pr [#495])
 - deps: update ci-wasm-tools(pr [#496])
+- deps: update dependency wasmtime-cli to v45(pr [#497])
 
 ## [1.1.4] - 2026-04-18
 
@@ -1490,6 +1491,7 @@ All notable changes to this project will be documented in this file.
 [#494]: https://github.com/jerus-org/ci-container/pull/494
 [#495]: https://github.com/jerus-org/ci-container/pull/495
 [#496]: https://github.com/jerus-org/ci-container/pull/496
+[#497]: https://github.com/jerus-org/ci-container/pull/497
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.1.4...HEAD
 [1.1.4]: https://github.com/jerus-org/ci-container/compare/v1.1.3...v1.1.4
 [1.1.3]: https://github.com/jerus-org/ci-container/compare/v1.1.2...v1.1.3
