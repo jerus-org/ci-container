@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file.
 - deps: update ci-cargo-ecosystem(pr [#492])
 - deps: update dependency cargo-binstall to v1.19.1(pr [#493])
 - deps: update dependency cargo-deny to v0.19.8(pr [#494])
+- deps: update dependency pcu to v0.6.21(pr [#495])
 
 ## [1.1.4] - 2026-04-18
 
@@ -1486,6 +1487,7 @@ All notable changes to this project will be documented in this file.
 [#492]: https://github.com/jerus-org/ci-container/pull/492
 [#493]: https://github.com/jerus-org/ci-container/pull/493
 [#494]: https://github.com/jerus-org/ci-container/pull/494
+[#495]: https://github.com/jerus-org/ci-container/pull/495
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.1.4...HEAD
 [1.1.4]: https://github.com/jerus-org/ci-container/compare/v1.1.3...v1.1.4
 [1.1.3]: https://github.com/jerus-org/ci-container/compare/v1.1.2...v1.1.3
