@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 - deps: update docker.io/library/rust docker tag to v1.96.0(pr [#491])
 - deps: update ci-cargo-ecosystem(pr [#492])
 - deps: update dependency cargo-binstall to v1.19.1(pr [#493])
+- deps: update dependency cargo-deny to v0.19.8(pr [#494])
 
 ## [1.1.4] - 2026-04-18
 
@@ -1484,6 +1485,7 @@ All notable changes to this project will be documented in this file.
 [#491]: https://github.com/jerus-org/ci-container/pull/491
 [#492]: https://github.com/jerus-org/ci-container/pull/492
 [#493]: https://github.com/jerus-org/ci-container/pull/493
+[#494]: https://github.com/jerus-org/ci-container/pull/494
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.1.4...HEAD
 [1.1.4]: https://github.com/jerus-org/ci-container/compare/v1.1.3...v1.1.4
 [1.1.3]: https://github.com/jerus-org/ci-container/compare/v1.1.2...v1.1.3
