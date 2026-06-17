@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 - deps: update ci-cargo-ecosystem(pr [#502])
 - deps: update ci-domain-tools to v0.1.46(pr [#503])
 - deps: update ci-release-pipeline(pr [#504])
+- deps: update dependency toolkit to v6.3.0(pr [#508])
 
 ## [1.1.5] - 2026-06-02
 
@@ -1509,6 +1510,7 @@ All notable changes to this project will be documented in this file.
 [#502]: https://github.com/jerus-org/ci-container/pull/502
 [#503]: https://github.com/jerus-org/ci-container/pull/503
 [#504]: https://github.com/jerus-org/ci-container/pull/504
+[#508]: https://github.com/jerus-org/ci-container/pull/508
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.1.5...HEAD
 [1.1.5]: https://github.com/jerus-org/ci-container/compare/v1.1.4...v1.1.5
 [1.1.4]: https://github.com/jerus-org/ci-container/compare/v1.1.3...v1.1.4
