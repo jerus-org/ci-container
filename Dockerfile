@@ -78,9 +78,9 @@ ENV GEN_CHANGELOG_VERSION=0.1.8
 # renovate: datasource=crate depName=kdeets packageName=kdeets versioning=semver-coerced
 ENV KDEETS_VERSION=0.1.30
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
-ENV NEXTSV_VERSION=0.19.30
+ENV NEXTSV_VERSION=0.19.31
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
-ENV PCU_VERSION=0.6.21
+ENV PCU_VERSION=0.6.22
 RUN \
     cargo binstall --locked gen-changelog --version "${GEN_CHANGELOG_VERSION}" --no-confirm; \
     cargo binstall --locked kdeets --version "${KDEETS_VERSION}" --no-confirm; \
@@ -145,9 +145,9 @@ ENV GEN_ORB_MCP_VERSION=0.1.46
 # renovate: datasource=crate depName=kdeets packageName=kdeets versioning=semver-coerced
 ENV KDEETS_VERSION=0.1.30
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
-ENV NEXTSV_VERSION=0.19.30
+ENV NEXTSV_VERSION=0.19.31
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
-ENV PCU_VERSION=0.6.21
+ENV PCU_VERSION=0.6.22
 # renovate: datasource=crate depName=rsign2 packageName=rsign2 versioning=semver-coerced
 ENV RSIGN2_VERSION=0.6.6
 # renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
