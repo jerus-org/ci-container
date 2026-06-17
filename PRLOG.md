@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file.
 - deps: update dependency toolkit to v6.3.0(pr [#508])
 - deps: update ci-security-tools(pr [#505])
 - deps: update ci-wasm-tools to v45.0.2(pr [#506])
+- deps: update dependency cargo-binstall to v1.20.0(pr [#507])
 
 ## [1.1.5] - 2026-06-02
 
@@ -1515,6 +1516,7 @@ All notable changes to this project will be documented in this file.
 [#508]: https://github.com/jerus-org/ci-container/pull/508
 [#505]: https://github.com/jerus-org/ci-container/pull/505
 [#506]: https://github.com/jerus-org/ci-container/pull/506
+[#507]: https://github.com/jerus-org/ci-container/pull/507
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.1.5...HEAD
 [1.1.5]: https://github.com/jerus-org/ci-container/compare/v1.1.4...v1.1.5
 [1.1.4]: https://github.com/jerus-org/ci-container/compare/v1.1.3...v1.1.4
