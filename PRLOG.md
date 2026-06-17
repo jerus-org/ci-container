@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - deps: update ci-domain-tools to v0.1.34(pr [#498])
 - add clippy/rustfmt to audit image(pr [#500])
+- deps: update docker.io/library/rust:1.96.0 docker digest to 4fd8406(pr [#501])
 
 ## [1.1.5] - 2026-06-02
 
@@ -1501,6 +1502,7 @@ All notable changes to this project will be documented in this file.
 [#497]: https://github.com/jerus-org/ci-container/pull/497
 [#498]: https://github.com/jerus-org/ci-container/pull/498
 [#500]: https://github.com/jerus-org/ci-container/pull/500
+[#501]: https://github.com/jerus-org/ci-container/pull/501
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.1.5...HEAD
 [1.1.5]: https://github.com/jerus-org/ci-container/compare/v1.1.4...v1.1.5
 [1.1.4]: https://github.com/jerus-org/ci-container/compare/v1.1.3...v1.1.4
