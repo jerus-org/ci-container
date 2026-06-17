@@ -196,6 +196,12 @@ COPY --from=build-security-tools \
     $CARGO_HOME/bin/cargo-audit \
     $CARGO_HOME/bin/cargo-deny \
     $CARGO_HOME/bin/
+# SonarCloud's Rust analyzer (Clippy sensor) runs in this image — the security
+# job uses the audit_env executor. The base rust image no longer ships
+# clippy/rustfmt in its default profile, so add them explicitly for the active
+# toolchain; otherwise `cargo clippy` fails and SonarCloud reports no Clippy
+# findings ("'cargo-clippy' is not installed for the toolchain ...").
+RUN rustup component add clippy rustfmt
 USER circleci
 WORKDIR /home/circleci/project
 
