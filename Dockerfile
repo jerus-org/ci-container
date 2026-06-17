@@ -38,9 +38,9 @@ RUN cargo install cargo-binstall --version "${CARGO_BINSTALL_VERSION}" --locked
 # Independent stage so a Renovate bump only rebuilds this stage, not cargo-ecosystem.
 FROM installer AS build-security-tools
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
-ENV CARGO_AUDIT_VERSION=0.22.1
+ENV CARGO_AUDIT_VERSION=0.22.2
 # renovate: datasource=crate depName=cargo-deny packageName=cargo-deny versioning=semver-coerced
-ENV CARGO_DENY_VERSION=0.19.8
+ENV CARGO_DENY_VERSION=0.19.9
 RUN \
     cargo binstall --locked cargo-audit --version "${CARGO_AUDIT_VERSION}" --no-confirm; \
     cargo binstall --locked cargo-deny --version "${CARGO_DENY_VERSION}" --no-confirm;
@@ -121,9 +121,9 @@ LABEL org.opencontainers.image.version=${RELEASE_VERSION} \
 # renovate: datasource=crate depName=cargo-binstall packageName=cargo-binstall versioning=semver-coerced
 ENV CARGO_BINSTALL_VERSION=1.19.1
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
-ENV CARGO_AUDIT_VERSION=0.22.1
+ENV CARGO_AUDIT_VERSION=0.22.2
 # renovate: datasource=crate depName=cargo-deny packageName=cargo-deny versioning=semver-coerced
-ENV CARGO_DENY_VERSION=0.19.8
+ENV CARGO_DENY_VERSION=0.19.9
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
 ENV CARGO_EXPAND_VERSION=1.0.123
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
@@ -180,9 +180,9 @@ LABEL org.opencontainers.image.version=${RELEASE_VERSION} \
       org.opencontainers.image.revision=${VCS_REF} \
       org.opencontainers.image.created=${BUILD_DATE}
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
-ENV CARGO_AUDIT_VERSION=0.22.1
+ENV CARGO_AUDIT_VERSION=0.22.2
 # renovate: datasource=crate depName=cargo-deny packageName=cargo-deny versioning=semver-coerced
-ENV CARGO_DENY_VERSION=0.19.8
+ENV CARGO_DENY_VERSION=0.19.9
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
