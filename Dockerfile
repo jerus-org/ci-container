@@ -21,7 +21,7 @@
 # installer — shared base for all builder stages.
 # apt-get runs once here and is inherited by all build-* stages so a
 # Renovate bump to any individual tool only invalidates that one stage.
-FROM docker.io/library/rust:1.96.0@sha256:fb328f0f58becb23ba1719940a2c94ece8b0b48afa837d05b79ef64bc1e18f6e AS installer
+FROM docker.io/library/rust:1.96.0@sha256:4fd8406017c992f7b8ab55a2f99a1d56aeb1d7ecd255850dfa04239a88601f73 AS installer
 # renovate: datasource=crate depName=cargo-binstall packageName=cargo-binstall versioning=semver-coerced
 ENV CARGO_BINSTALL_VERSION=1.19.1
 SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
@@ -48,9 +48,9 @@ RUN \
 # build-cargo-ecosystem — Cargo testing/coverage toolchain
 FROM installer AS build-cargo-ecosystem
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
-ENV CARGO_EXPAND_VERSION=1.0.122
+ENV CARGO_EXPAND_VERSION=1.0.123
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
-ENV CARGO_FUZZ_VERSION=0.13.1
+ENV CARGO_FUZZ_VERSION=0.13.2
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
 ENV CARGO_LLVM_COV_VERSION=0.8.7
 # renovate: datasource=crate depName=cargo-nextest packageName=cargo-nextest versioning=semver-coerced
@@ -78,9 +78,9 @@ ENV GEN_CHANGELOG_VERSION=0.1.8
 # renovate: datasource=crate depName=kdeets packageName=kdeets versioning=semver-coerced
 ENV KDEETS_VERSION=0.1.30
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
-ENV NEXTSV_VERSION=0.19.30
+ENV NEXTSV_VERSION=0.19.31
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
-ENV PCU_VERSION=0.6.21
+ENV PCU_VERSION=0.6.22
 RUN \
     cargo binstall --locked gen-changelog --version "${GEN_CHANGELOG_VERSION}" --no-confirm; \
     cargo binstall --locked kdeets --version "${KDEETS_VERSION}" --no-confirm; \
@@ -92,7 +92,7 @@ FROM installer AS build-domain-tools
 # renovate: datasource=crate depName=cull-gmail packageName=cull-gmail versioning=semver-coerced
 ENV CULL_GMAIL_VERSION=0.1.8
 # renovate: datasource=crate depName=gen-orb-mcp packageName=gen-orb-mcp versioning=semver-coerced
-ENV GEN_ORB_MCP_VERSION=0.1.34
+ENV GEN_ORB_MCP_VERSION=0.1.46
 RUN \
     cargo binstall --locked cull-gmail --version "${CULL_GMAIL_VERSION}" --no-confirm; \
     cargo binstall --locked gen-orb-mcp --version "${GEN_ORB_MCP_VERSION}" --no-confirm;
@@ -107,7 +107,7 @@ RUN \
     cargo binstall --locked wasm-pack --version "${WASMPACK_VERSION}" --no-confirm; \
     cargo binstall --locked wasmtime-cli --version "${WASMTIME_VERSION}" --no-confirm;
 
-FROM docker.io/library/rust:1.96.0@sha256:fb328f0f58becb23ba1719940a2c94ece8b0b48afa837d05b79ef64bc1e18f6e AS base
+FROM docker.io/library/rust:1.96.0@sha256:4fd8406017c992f7b8ab55a2f99a1d56aeb1d7ecd255850dfa04239a88601f73 AS base
 ARG RELEASE_VERSION="dev"
 ARG VCS_REF="unknown"
 ARG BUILD_DATE="unknown"
@@ -125,9 +125,9 @@ ENV CARGO_AUDIT_VERSION=0.22.1
 # renovate: datasource=crate depName=cargo-deny packageName=cargo-deny versioning=semver-coerced
 ENV CARGO_DENY_VERSION=0.19.8
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
-ENV CARGO_EXPAND_VERSION=1.0.122
+ENV CARGO_EXPAND_VERSION=1.0.123
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
-ENV CARGO_FUZZ_VERSION=0.13.1
+ENV CARGO_FUZZ_VERSION=0.13.2
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
 ENV CARGO_LLVM_COV_VERSION=0.8.7
 # renovate: datasource=crate depName=cargo-nextest packageName=cargo-nextest versioning=semver-coerced
@@ -141,13 +141,13 @@ ENV CULL_GMAIL_VERSION=0.1.8
 # renovate: datasource=crate depName=gen-changelog packageName=gen-changelog versioning=semver-coerced
 ENV GEN_CHANGELOG_VERSION=0.1.8
 # renovate: datasource=crate depName=gen-orb-mcp packageName=gen-orb-mcp versioning=semver-coerced
-ENV GEN_ORB_MCP_VERSION=0.1.34
+ENV GEN_ORB_MCP_VERSION=0.1.46
 # renovate: datasource=crate depName=kdeets packageName=kdeets versioning=semver-coerced
 ENV KDEETS_VERSION=0.1.30
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
-ENV NEXTSV_VERSION=0.19.30
+ENV NEXTSV_VERSION=0.19.31
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
-ENV PCU_VERSION=0.6.21
+ENV PCU_VERSION=0.6.22
 # renovate: datasource=crate depName=rsign2 packageName=rsign2 versioning=semver-coerced
 ENV RSIGN2_VERSION=0.6.6
 # renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
@@ -170,7 +170,7 @@ WORKDIR /home/circleci/project
 # audit — lightweight security scanning image (cargo-audit, cargo-deny only)
 # Use this for the security job executor in circleci-toolkit (audit_env).
 # Much smaller than rolling-6mo: no multi-version Rust, no coverage/fuzz tools.
-FROM docker.io/library/rust:1.96.0@sha256:fb328f0f58becb23ba1719940a2c94ece8b0b48afa837d05b79ef64bc1e18f6e AS audit
+FROM docker.io/library/rust:1.96.0@sha256:4fd8406017c992f7b8ab55a2f99a1d56aeb1d7ecd255850dfa04239a88601f73 AS audit
 ARG RELEASE_VERSION="dev"
 ARG VCS_REF="unknown"
 ARG BUILD_DATE="unknown"
@@ -196,6 +196,12 @@ COPY --from=build-security-tools \
     $CARGO_HOME/bin/cargo-audit \
     $CARGO_HOME/bin/cargo-deny \
     $CARGO_HOME/bin/
+# SonarCloud's Rust analyzer (Clippy sensor) runs in this image — the security
+# job uses the audit_env executor. The base rust image no longer ships
+# clippy/rustfmt in its default profile, so add them explicitly for the active
+# toolchain; otherwise `cargo clippy` fails and SonarCloud reports no Clippy
+# findings ("'cargo-clippy' is not installed for the toolchain ...").
+RUN rustup component add clippy rustfmt
 USER circleci
 WORKDIR /home/circleci/project
 
