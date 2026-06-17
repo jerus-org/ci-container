@@ -48,9 +48,9 @@ RUN \
 # build-cargo-ecosystem — Cargo testing/coverage toolchain
 FROM installer AS build-cargo-ecosystem
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
-ENV CARGO_EXPAND_VERSION=1.0.122
+ENV CARGO_EXPAND_VERSION=1.0.123
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
-ENV CARGO_FUZZ_VERSION=0.13.1
+ENV CARGO_FUZZ_VERSION=0.13.2
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
 ENV CARGO_LLVM_COV_VERSION=0.8.7
 # renovate: datasource=crate depName=cargo-nextest packageName=cargo-nextest versioning=semver-coerced
@@ -125,9 +125,9 @@ ENV CARGO_AUDIT_VERSION=0.22.1
 # renovate: datasource=crate depName=cargo-deny packageName=cargo-deny versioning=semver-coerced
 ENV CARGO_DENY_VERSION=0.19.8
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
-ENV CARGO_EXPAND_VERSION=1.0.122
+ENV CARGO_EXPAND_VERSION=1.0.123
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
-ENV CARGO_FUZZ_VERSION=0.13.1
+ENV CARGO_FUZZ_VERSION=0.13.2
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
 ENV CARGO_LLVM_COV_VERSION=0.8.7
 # renovate: datasource=crate depName=cargo-nextest packageName=cargo-nextest versioning=semver-coerced
