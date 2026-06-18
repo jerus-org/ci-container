@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- deps: update ci-release-pipeline to v0.6.24(pr [#510])
+
 ## [1.1.6] - 2026-06-17
 
 ### Fixed
@@ -1519,6 +1525,8 @@ All notable changes to this project will be documented in this file.
 [#506]: https://github.com/jerus-org/ci-container/pull/506
 [#507]: https://github.com/jerus-org/ci-container/pull/507
 [#509]: https://github.com/jerus-org/ci-container/pull/509
+[#510]: https://github.com/jerus-org/ci-container/pull/510
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.1.6...HEAD
 [1.1.6]: https://github.com/jerus-org/ci-container/compare/v1.1.5...v1.1.6
 [1.1.5]: https://github.com/jerus-org/ci-container/compare/v1.1.4...v1.1.5
 [1.1.4]: https://github.com/jerus-org/ci-container/compare/v1.1.3...v1.1.4
