@@ -21,7 +21,7 @@
 # installer — shared base for all builder stages.
 # apt-get runs once here and is inherited by all build-* stages so a
 # Renovate bump to any individual tool only invalidates that one stage.
-FROM docker.io/library/rust:1.96.0@sha256:4fd8406017c992f7b8ab55a2f99a1d56aeb1d7ecd255850dfa04239a88601f73 AS installer
+FROM docker.io/library/rust:1.96.0@sha256:6df234c1eb92b0545468fab8c18fc5f9adfb994e7d4f67d81d45fe2fcabf5657 AS installer
 # renovate: datasource=crate depName=cargo-binstall packageName=cargo-binstall versioning=semver-coerced
 ENV CARGO_BINSTALL_VERSION=1.20.1
 SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
@@ -47,6 +47,13 @@ RUN \
 
 # build-cargo-ecosystem — Cargo testing/coverage toolchain
 FROM installer AS build-cargo-ecosystem
+# renovate: datasource=crate depName=cargo-docs-rs packageName=cargo-docs-rs versioning=semver-coerced
+ENV CARGO_DOCS_RS_VERSION=1.0.4
+# cargo-msrv: binary only. It downloads the declared rust-version toolchain on
+# demand at job runtime (cached there), so no aging toolchains are baked into
+# the image — this narrowly reverses the prior workstation-only stance.
+# renovate: datasource=crate depName=cargo-msrv packageName=cargo-msrv versioning=semver-coerced
+ENV CARGO_MSRV_VERSION=0.19.3
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
 ENV CARGO_EXPAND_VERSION=1.0.123
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
@@ -62,6 +69,8 @@ ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 # renovate: datasource=crate depName=rsign2 packageName=rsign2 versioning=semver-coerced
 ENV RSIGN2_VERSION=0.6.6
 RUN \
+    cargo binstall --locked cargo-docs-rs --version "${CARGO_DOCS_RS_VERSION}" --no-confirm; \
+    cargo binstall --locked cargo-msrv --version "${CARGO_MSRV_VERSION}" --no-confirm; \
     cargo binstall --locked cargo-expand --version "${CARGO_EXPAND_VERSION}" --no-confirm; \
     cargo binstall --locked cargo-fuzz --version "${CARGO_FUZZ_VERSION}" --no-confirm; \
     cargo binstall --locked cargo-llvm-cov --version "${CARGO_LLVM_COV_VERSION}" --no-confirm; \
@@ -107,7 +116,7 @@ RUN \
     cargo binstall --locked wasm-pack --version "${WASMPACK_VERSION}" --no-confirm; \
     cargo binstall --locked wasmtime-cli --version "${WASMTIME_VERSION}" --no-confirm;
 
-FROM docker.io/library/rust:1.96.0@sha256:4fd8406017c992f7b8ab55a2f99a1d56aeb1d7ecd255850dfa04239a88601f73 AS base
+FROM docker.io/library/rust:1.96.0@sha256:6df234c1eb92b0545468fab8c18fc5f9adfb994e7d4f67d81d45fe2fcabf5657 AS base
 ARG RELEASE_VERSION="dev"
 ARG VCS_REF="unknown"
 ARG BUILD_DATE="unknown"
@@ -124,6 +133,10 @@ ENV CARGO_BINSTALL_VERSION=1.20.1
 ENV CARGO_AUDIT_VERSION=0.22.2
 # renovate: datasource=crate depName=cargo-deny packageName=cargo-deny versioning=semver-coerced
 ENV CARGO_DENY_VERSION=0.19.9
+# renovate: datasource=crate depName=cargo-docs-rs packageName=cargo-docs-rs versioning=semver-coerced
+ENV CARGO_DOCS_RS_VERSION=1.0.4
+# renovate: datasource=crate depName=cargo-msrv packageName=cargo-msrv versioning=semver-coerced
+ENV CARGO_MSRV_VERSION=0.19.3
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
 ENV CARGO_EXPAND_VERSION=1.0.123
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
@@ -170,7 +183,7 @@ WORKDIR /home/circleci/project
 # audit — lightweight security scanning image (cargo-audit, cargo-deny only)
 # Use this for the security job executor in circleci-toolkit (audit_env).
 # Much smaller than rolling-6mo: no multi-version Rust, no coverage/fuzz tools.
-FROM docker.io/library/rust:1.96.0@sha256:4fd8406017c992f7b8ab55a2f99a1d56aeb1d7ecd255850dfa04239a88601f73 AS audit
+FROM docker.io/library/rust:1.96.0@sha256:6df234c1eb92b0545468fab8c18fc5f9adfb994e7d4f67d81d45fe2fcabf5657 AS audit
 ARG RELEASE_VERSION="dev"
 ARG VCS_REF="unknown"
 ARG BUILD_DATE="unknown"
@@ -224,6 +237,8 @@ COPY --from=build-security-tools \
     $CARGO_HOME/bin/cargo-deny \
     $CARGO_HOME/bin/
 COPY --from=build-cargo-ecosystem \
+    $CARGO_HOME/bin/cargo-docs-rs \
+    $CARGO_HOME/bin/cargo-msrv \
     $CARGO_HOME/bin/cargo-release \
     $CARGO_HOME/bin/cargo-expand \
     $CARGO_HOME/bin/cargo-fuzz \
