@@ -47,6 +47,13 @@ RUN \
 
 # build-cargo-ecosystem — Cargo testing/coverage toolchain
 FROM installer AS build-cargo-ecosystem
+# renovate: datasource=crate depName=cargo-docs-rs packageName=cargo-docs-rs versioning=semver-coerced
+ENV CARGO_DOCS_RS_VERSION=1.0.4
+# cargo-msrv: binary only. It downloads the declared rust-version toolchain on
+# demand at job runtime (cached there), so no aging toolchains are baked into
+# the image — this narrowly reverses the prior workstation-only stance.
+# renovate: datasource=crate depName=cargo-msrv packageName=cargo-msrv versioning=semver-coerced
+ENV CARGO_MSRV_VERSION=0.19.3
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
 ENV CARGO_EXPAND_VERSION=1.0.123
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
@@ -62,6 +69,8 @@ ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 # renovate: datasource=crate depName=rsign2 packageName=rsign2 versioning=semver-coerced
 ENV RSIGN2_VERSION=0.6.6
 RUN \
+    cargo binstall --locked cargo-docs-rs --version "${CARGO_DOCS_RS_VERSION}" --no-confirm; \
+    cargo binstall --locked cargo-msrv --version "${CARGO_MSRV_VERSION}" --no-confirm; \
     cargo binstall --locked cargo-expand --version "${CARGO_EXPAND_VERSION}" --no-confirm; \
     cargo binstall --locked cargo-fuzz --version "${CARGO_FUZZ_VERSION}" --no-confirm; \
     cargo binstall --locked cargo-llvm-cov --version "${CARGO_LLVM_COV_VERSION}" --no-confirm; \
@@ -124,6 +133,10 @@ ENV CARGO_BINSTALL_VERSION=1.20.0
 ENV CARGO_AUDIT_VERSION=0.22.2
 # renovate: datasource=crate depName=cargo-deny packageName=cargo-deny versioning=semver-coerced
 ENV CARGO_DENY_VERSION=0.19.9
+# renovate: datasource=crate depName=cargo-docs-rs packageName=cargo-docs-rs versioning=semver-coerced
+ENV CARGO_DOCS_RS_VERSION=1.0.4
+# renovate: datasource=crate depName=cargo-msrv packageName=cargo-msrv versioning=semver-coerced
+ENV CARGO_MSRV_VERSION=0.19.3
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
 ENV CARGO_EXPAND_VERSION=1.0.123
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
@@ -224,6 +237,8 @@ COPY --from=build-security-tools \
     $CARGO_HOME/bin/cargo-deny \
     $CARGO_HOME/bin/
 COPY --from=build-cargo-ecosystem \
+    $CARGO_HOME/bin/cargo-docs-rs \
+    $CARGO_HOME/bin/cargo-msrv \
     $CARGO_HOME/bin/cargo-release \
     $CARGO_HOME/bin/cargo-expand \
     $CARGO_HOME/bin/cargo-fuzz \
