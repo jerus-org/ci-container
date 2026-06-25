@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 - deps: update dependency cargo-binstall to v1.20.1(pr [#515])
 - deps: update dependency cargo-nextest to v0.9.138(pr [#516])
 - deps: update dependency wasmtime-cli to v45.0.3(pr [#517])
+- deps: update dependency toolkit to v6.4.2(pr [#518])
 
 ## [1.1.8] - 2026-06-18
 
@@ -1551,6 +1552,7 @@ All notable changes to this project will be documented in this file.
 [#515]: https://github.com/jerus-org/ci-container/pull/515
 [#516]: https://github.com/jerus-org/ci-container/pull/516
 [#517]: https://github.com/jerus-org/ci-container/pull/517
+[#518]: https://github.com/jerus-org/ci-container/pull/518
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.1.8...HEAD
 [1.1.8]: https://github.com/jerus-org/ci-container/compare/v1.1.7...v1.1.8
 [1.1.7]: https://github.com/jerus-org/ci-container/compare/v1.1.6...v1.1.7
