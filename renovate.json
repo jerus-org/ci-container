@@ -21,6 +21,8 @@
       "groupName": "ci-cargo-ecosystem",
       "matchDatasources": ["crate"],
       "matchPackageNames": [
+        "cargo-docs-rs",
+        "cargo-msrv",
         "cargo-expand",
         "cargo-fuzz",
         "cargo-llvm-cov",
