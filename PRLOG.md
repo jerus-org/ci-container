@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - deps: update dependency toolkit to v6.5.0(pr [#525])
 - deps: update docker.io/library/rust:1.96.0 docker digest to 58fe975(pr [#521])
+- deps: update ci-domain-tools(pr [#522])
 
 ## [1.2.0] - 2026-06-27
 
@@ -1568,6 +1569,7 @@ All notable changes to this project will be documented in this file.
 [#514]: https://github.com/jerus-org/ci-container/pull/514
 [#525]: https://github.com/jerus-org/ci-container/pull/525
 [#521]: https://github.com/jerus-org/ci-container/pull/521
+[#522]: https://github.com/jerus-org/ci-container/pull/522
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.2.0...HEAD
 [1.2.0]: https://github.com/jerus-org/ci-container/compare/v1.1.8...v1.2.0
 [1.1.8]: https://github.com/jerus-org/ci-container/compare/v1.1.7...v1.1.8
