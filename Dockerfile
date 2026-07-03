@@ -25,9 +25,16 @@ FROM docker.io/library/rust:1.96.1@sha256:1f0dbad1df66647807e6952d1db85d0b2bda76
 # renovate: datasource=crate depName=cargo-binstall packageName=cargo-binstall versioning=semver-coerced
 ENV CARGO_BINSTALL_VERSION=1.20.1
 SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
+# Native build deps for the Rust toolchain, sized so builds stay robust as
+# the unpinned `rust` tag follows Debian stable forward (trixie today, its
+# successor after EOL): build-essential (cc/make); clang = libclang for
+# bindgen (openssl-sys on modern OpenSSL, aws-lc-sys); cmake (aws-lc-sys/
+# BoringSSL); libssl-dev + pkg-config (system OpenSSL).
 RUN apt-get update; \
     apt-get install -y --no-install-recommends \
     build-essential \
+    clang \
+    cmake \
     libssl-dev \
     pkg-config \
     && apt-get clean \
@@ -200,8 +207,12 @@ RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
     adduser \
+    build-essential \
+    clang \
+    cmake \
     git \
     libssl-dev \
+    pkg-config \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && adduser circleci
@@ -224,6 +235,8 @@ RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
     build-essential \
+    clang \
+    cmake \
     gpg \
     gpg-agent \
     libssl-dev \
