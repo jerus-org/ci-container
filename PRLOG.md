@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- deps: update dependency toolkit to v6.5.0(pr [#525])
+
 ## [1.2.0] - 2026-06-27
 
 ### Added
@@ -1559,6 +1565,8 @@ All notable changes to this project will be documented in this file.
 [#519]: https://github.com/jerus-org/ci-container/pull/519
 [#520]: https://github.com/jerus-org/ci-container/pull/520
 [#514]: https://github.com/jerus-org/ci-container/pull/514
+[#525]: https://github.com/jerus-org/ci-container/pull/525
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.2.0...HEAD
 [1.2.0]: https://github.com/jerus-org/ci-container/compare/v1.1.8...v1.2.0
 [1.1.8]: https://github.com/jerus-org/ci-container/compare/v1.1.7...v1.1.8
 [1.1.7]: https://github.com/jerus-org/ci-container/compare/v1.1.6...v1.1.7
