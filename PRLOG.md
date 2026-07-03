@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- add clang+cmake so the build env is robust on trixie (#526)(pr [#527])
+
 ### Fixed
 
 - deps: update dependency toolkit to v6.5.0(pr [#525])
@@ -1574,6 +1578,7 @@ All notable changes to this project will be documented in this file.
 [#522]: https://github.com/jerus-org/ci-container/pull/522
 [#523]: https://github.com/jerus-org/ci-container/pull/523
 [#524]: https://github.com/jerus-org/ci-container/pull/524
+[#527]: https://github.com/jerus-org/ci-container/pull/527
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.2.0...HEAD
 [1.2.0]: https://github.com/jerus-org/ci-container/compare/v1.1.8...v1.2.0
 [1.1.8]: https://github.com/jerus-org/ci-container/compare/v1.1.7...v1.1.8
