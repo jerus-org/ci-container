@@ -83,9 +83,9 @@ RUN \
 # (pcu calls gen-changelog; nextsv and pcu versioning are coupled — travel together)
 FROM installer AS build-release-pipeline
 # renovate: datasource=crate depName=gen-changelog packageName=gen-changelog versioning=semver-coerced
-ENV GEN_CHANGELOG_VERSION=0.1.8
+ENV GEN_CHANGELOG_VERSION=0.1.9
 # renovate: datasource=crate depName=kdeets packageName=kdeets versioning=semver-coerced
-ENV KDEETS_VERSION=0.1.30
+ENV KDEETS_VERSION=0.1.31
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
 ENV NEXTSV_VERSION=0.19.33
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
@@ -152,11 +152,11 @@ ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 # renovate: datasource=crate depName=cull-gmail packageName=cull-gmail versioning=semver-coerced
 ENV CULL_GMAIL_VERSION=0.1.9
 # renovate: datasource=crate depName=gen-changelog packageName=gen-changelog versioning=semver-coerced
-ENV GEN_CHANGELOG_VERSION=0.1.8
+ENV GEN_CHANGELOG_VERSION=0.1.9
 # renovate: datasource=crate depName=gen-orb-mcp packageName=gen-orb-mcp versioning=semver-coerced
 ENV GEN_ORB_MCP_VERSION=0.1.49
 # renovate: datasource=crate depName=kdeets packageName=kdeets versioning=semver-coerced
-ENV KDEETS_VERSION=0.1.30
+ENV KDEETS_VERSION=0.1.31
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
 ENV NEXTSV_VERSION=0.19.33
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
