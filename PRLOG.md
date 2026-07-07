@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file.
 - deps: update ci-domain-tools(pr [#522])
 - deps: update ci-release-pipeline(pr [#523])
 - deps: update docker.io/library/rust docker tag to v1.96.1(pr [#524])
+- deps: update dependency cargo-nextest to v0.9.140(pr [#528])
 
 ## [1.2.0] - 2026-06-27
 
@@ -1579,6 +1580,7 @@ All notable changes to this project will be documented in this file.
 [#523]: https://github.com/jerus-org/ci-container/pull/523
 [#524]: https://github.com/jerus-org/ci-container/pull/524
 [#527]: https://github.com/jerus-org/ci-container/pull/527
+[#528]: https://github.com/jerus-org/ci-container/pull/528
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.2.0...HEAD
 [1.2.0]: https://github.com/jerus-org/ci-container/compare/v1.1.8...v1.2.0
 [1.1.8]: https://github.com/jerus-org/ci-container/compare/v1.1.7...v1.1.8
