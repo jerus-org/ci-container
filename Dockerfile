@@ -23,7 +23,7 @@
 # Renovate bump to any individual tool only invalidates that one stage.
 FROM docker.io/library/rust:1.96.1@sha256:1f0dbad1df66647807e6952d1db85d0b2bda7606cb2139d82517e4f009967376 AS installer
 # renovate: datasource=crate depName=cargo-binstall packageName=cargo-binstall versioning=semver-coerced
-ENV CARGO_BINSTALL_VERSION=1.20.1
+ENV CARGO_BINSTALL_VERSION=1.21.0
 SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
 # Native build deps for the Rust toolchain, sized so builds stay robust as
 # the unpinned `rust` tag follows Debian stable forward (trixie today, its
@@ -135,7 +135,7 @@ LABEL org.opencontainers.image.version=${RELEASE_VERSION} \
 # Tool versions — available at runtime in all downstream stages (final, wasi, test).
 # Renovate keeps these in sync via the datasource comments.
 # renovate: datasource=crate depName=cargo-binstall packageName=cargo-binstall versioning=semver-coerced
-ENV CARGO_BINSTALL_VERSION=1.20.1
+ENV CARGO_BINSTALL_VERSION=1.21.0
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.22.2
 # renovate: datasource=crate depName=cargo-deny packageName=cargo-deny versioning=semver-coerced
