@@ -47,7 +47,7 @@ FROM installer AS build-security-tools
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.22.2
 # renovate: datasource=crate depName=cargo-deny packageName=cargo-deny versioning=semver-coerced
-ENV CARGO_DENY_VERSION=0.19.9
+ENV CARGO_DENY_VERSION=0.20.2
 RUN \
     cargo binstall --locked cargo-audit --version "${CARGO_AUDIT_VERSION}" --no-confirm; \
     cargo binstall --locked cargo-deny --version "${CARGO_DENY_VERSION}" --no-confirm;
@@ -139,7 +139,7 @@ ENV CARGO_BINSTALL_VERSION=1.21.0
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.22.2
 # renovate: datasource=crate depName=cargo-deny packageName=cargo-deny versioning=semver-coerced
-ENV CARGO_DENY_VERSION=0.19.9
+ENV CARGO_DENY_VERSION=0.20.2
 # renovate: datasource=crate depName=cargo-docs-rs packageName=cargo-docs-rs versioning=semver-coerced
 ENV CARGO_DOCS_RS_VERSION=1.0.4
 # renovate: datasource=crate depName=cargo-msrv packageName=cargo-msrv versioning=semver-coerced
@@ -202,7 +202,7 @@ LABEL org.opencontainers.image.version=${RELEASE_VERSION} \
 # renovate: datasource=crate depName=cargo-audit packageName=cargo-audit versioning=semver-coerced
 ENV CARGO_AUDIT_VERSION=0.22.2
 # renovate: datasource=crate depName=cargo-deny packageName=cargo-deny versioning=semver-coerced
-ENV CARGO_DENY_VERSION=0.19.9
+ENV CARGO_DENY_VERSION=0.20.2
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
