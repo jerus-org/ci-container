@@ -62,7 +62,7 @@ ENV CARGO_DOCS_RS_VERSION=1.0.4
 # renovate: datasource=crate depName=cargo-msrv packageName=cargo-msrv versioning=semver-coerced
 ENV CARGO_MSRV_VERSION=0.19.3
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
-ENV CARGO_EXPAND_VERSION=1.0.123
+ENV CARGO_EXPAND_VERSION=1.0.124
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
 ENV CARGO_FUZZ_VERSION=0.13.2
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
@@ -145,7 +145,7 @@ ENV CARGO_DOCS_RS_VERSION=1.0.4
 # renovate: datasource=crate depName=cargo-msrv packageName=cargo-msrv versioning=semver-coerced
 ENV CARGO_MSRV_VERSION=0.19.3
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
-ENV CARGO_EXPAND_VERSION=1.0.123
+ENV CARGO_EXPAND_VERSION=1.0.124
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
 ENV CARGO_FUZZ_VERSION=0.13.2
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
