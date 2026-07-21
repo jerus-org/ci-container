@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - deps: update dependency toolkit to v6.6.2(pr [#535])
 - deps: update dependency cargo-expand to v1.0.124(pr [#536])
+- deps: update dependency gen-changelog to v0.1.11(pr [#537])
 
 ## [1.3.1] - 2026-07-16
 
@@ -1607,6 +1608,7 @@ All notable changes to this project will be documented in this file.
 [#533]: https://github.com/jerus-org/ci-container/pull/533
 [#535]: https://github.com/jerus-org/ci-container/pull/535
 [#536]: https://github.com/jerus-org/ci-container/pull/536
+[#537]: https://github.com/jerus-org/ci-container/pull/537
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.3.1...HEAD
 [1.3.1]: https://github.com/jerus-org/ci-container/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/jerus-org/ci-container/compare/v1.2.0...v1.3.0
