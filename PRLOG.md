@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file.
 - deps: update dependency gen-changelog to v0.1.11(pr [#537])
 - deps: update docker.io/library/rust docker tag to v1.97.1(pr [#538])
 - deps: update dependency gen-orb-mcp to v0.2.0(pr [#539])
+- deps: update dependency wasmtime-cli to v47(pr [#540])
 
 ## [1.3.1] - 2026-07-16
 
@@ -1618,6 +1619,7 @@ All notable changes to this project will be documented in this file.
 [#538]: https://github.com/jerus-org/ci-container/pull/538
 [#541]: https://github.com/jerus-org/ci-container/pull/541
 [#539]: https://github.com/jerus-org/ci-container/pull/539
+[#540]: https://github.com/jerus-org/ci-container/pull/540
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.3.1...HEAD
 [1.3.1]: https://github.com/jerus-org/ci-container/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/jerus-org/ci-container/compare/v1.2.0...v1.3.0
