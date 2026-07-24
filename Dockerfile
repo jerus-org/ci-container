@@ -109,9 +109,9 @@ RUN \
 # build-domain-tools — standalone domain tools with no runtime coupling
 FROM installer AS build-domain-tools
 # renovate: datasource=crate depName=cull-gmail packageName=cull-gmail versioning=semver-coerced
-ENV CULL_GMAIL_VERSION=0.1.9
+ENV CULL_GMAIL_VERSION=0.1.10
 # renovate: datasource=crate depName=gen-orb-mcp packageName=gen-orb-mcp versioning=semver-coerced
-ENV GEN_ORB_MCP_VERSION=0.2.0
+ENV GEN_ORB_MCP_VERSION=0.2.1
 RUN \
     cargo binstall --locked cull-gmail --version "${CULL_GMAIL_VERSION}" --no-confirm; \
     cargo binstall --locked gen-orb-mcp --version "${GEN_ORB_MCP_VERSION}" --no-confirm;
@@ -162,11 +162,11 @@ ENV CARGO_RELEASE_VERSION=1.1.3
 # renovate: datasource=crate depName=circleci-junit-fix packageName=circleci-junit-fix versioning=semver-coerced
 ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 # renovate: datasource=crate depName=cull-gmail packageName=cull-gmail versioning=semver-coerced
-ENV CULL_GMAIL_VERSION=0.1.9
+ENV CULL_GMAIL_VERSION=0.1.10
 # renovate: datasource=crate depName=gen-changelog packageName=gen-changelog versioning=semver-coerced
 ENV GEN_CHANGELOG_VERSION=0.1.11
 # renovate: datasource=crate depName=gen-orb-mcp packageName=gen-orb-mcp versioning=semver-coerced
-ENV GEN_ORB_MCP_VERSION=0.2.0
+ENV GEN_ORB_MCP_VERSION=0.2.1
 # renovate: datasource=crate depName=kdeets packageName=kdeets versioning=semver-coerced
 ENV KDEETS_VERSION=0.1.31
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
