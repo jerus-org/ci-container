@@ -22,6 +22,7 @@ All notable changes to this project will be documented in this file.
 - deps: update dependency wasmtime-cli to v47(pr [#540])
 - deps: update dependency pcu to v0.6.29(pr [#542])
 - deps: update ci-domain-tools(pr [#544])
+- deps: update ci-release-pipeline(pr [#545])
 
 ## [1.3.1] - 2026-07-16
 
@@ -1629,6 +1630,7 @@ All notable changes to this project will be documented in this file.
 [#542]: https://github.com/jerus-org/ci-container/pull/542
 [#543]: https://github.com/jerus-org/ci-container/pull/543
 [#544]: https://github.com/jerus-org/ci-container/pull/544
+[#545]: https://github.com/jerus-org/ci-container/pull/545
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.3.1...HEAD
 [1.3.1]: https://github.com/jerus-org/ci-container/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/jerus-org/ci-container/compare/v1.2.0...v1.3.0
