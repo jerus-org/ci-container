@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 - add cargo-about for license notices(pr [#541])
 
+### Changed
+
+- docs-refresh update_prlog header comment(pr [#543])
+
 ### Fixed
 
 - deps: update dependency toolkit to v6.6.2(pr [#535])
@@ -1622,6 +1626,7 @@ All notable changes to this project will be documented in this file.
 [#539]: https://github.com/jerus-org/ci-container/pull/539
 [#540]: https://github.com/jerus-org/ci-container/pull/540
 [#542]: https://github.com/jerus-org/ci-container/pull/542
+[#543]: https://github.com/jerus-org/ci-container/pull/543
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.3.1...HEAD
 [1.3.1]: https://github.com/jerus-org/ci-container/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/jerus-org/ci-container/compare/v1.2.0...v1.3.0
