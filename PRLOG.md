@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - deps: update dependency pcu to v0.6.30(pr [#548])
+- deps: update dependency cargo-binstall to v1.21.1(pr [#546])
 
 ## [1.4.0] - 2026-07-24
 
@@ -1638,6 +1639,7 @@ All notable changes to this project will be documented in this file.
 [#544]: https://github.com/jerus-org/ci-container/pull/544
 [#545]: https://github.com/jerus-org/ci-container/pull/545
 [#548]: https://github.com/jerus-org/ci-container/pull/548
+[#546]: https://github.com/jerus-org/ci-container/pull/546
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.4.0...HEAD
 [1.4.0]: https://github.com/jerus-org/ci-container/compare/v1.3.1...v1.4.0
 [1.3.1]: https://github.com/jerus-org/ci-container/compare/v1.3.0...v1.3.1
