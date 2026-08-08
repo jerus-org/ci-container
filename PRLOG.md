@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 - deps: update dependency toolkit to v7(pr [#550])
 - deps: update dependency wasmtime-cli to v47.0.3(pr [#549])
 - deps: update docker.io/library/rust:1.97.1 docker digest to 3382bd2(pr [#551])
+- deps: update ci-cargo-ecosystem(pr [#552])
 
 ## [1.4.0] - 2026-07-24
 
@@ -1648,6 +1649,7 @@ All notable changes to this project will be documented in this file.
 [#550]: https://github.com/jerus-org/ci-container/pull/550
 [#549]: https://github.com/jerus-org/ci-container/pull/549
 [#551]: https://github.com/jerus-org/ci-container/pull/551
+[#552]: https://github.com/jerus-org/ci-container/pull/552
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.4.0...HEAD
 [1.4.0]: https://github.com/jerus-org/ci-container/compare/v1.3.1...v1.4.0
 [1.3.1]: https://github.com/jerus-org/ci-container/compare/v1.3.0...v1.3.1
