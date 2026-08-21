@@ -55,7 +55,7 @@ RUN \
 # build-cargo-ecosystem — Cargo testing/coverage toolchain
 FROM installer AS build-cargo-ecosystem
 # renovate: datasource=crate depName=cargo-about packageName=cargo-about versioning=semver-coerced
-ENV CARGO_ABOUT_VERSION=0.9.1
+ENV CARGO_ABOUT_VERSION=0.9.2
 # renovate: datasource=crate depName=cargo-docs-rs packageName=cargo-docs-rs versioning=semver-coerced
 ENV CARGO_DOCS_RS_VERSION=1.0.4
 # cargo-msrv: binary only. It downloads the declared rust-version toolchain on
@@ -144,7 +144,7 @@ ENV CARGO_AUDIT_VERSION=0.22.2
 # renovate: datasource=crate depName=cargo-deny packageName=cargo-deny versioning=semver-coerced
 ENV CARGO_DENY_VERSION=0.20.2
 # renovate: datasource=crate depName=cargo-about packageName=cargo-about versioning=semver-coerced
-ENV CARGO_ABOUT_VERSION=0.9.1
+ENV CARGO_ABOUT_VERSION=0.9.2
 # renovate: datasource=crate depName=cargo-docs-rs packageName=cargo-docs-rs versioning=semver-coerced
 ENV CARGO_DOCS_RS_VERSION=1.0.4
 # renovate: datasource=crate depName=cargo-msrv packageName=cargo-msrv versioning=semver-coerced
