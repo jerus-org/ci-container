@@ -134,7 +134,6 @@ else
 fi
 check_version cull-gmail         "${CULL_GMAIL_VERSION}"
 check_version gen-changelog      "${GEN_CHANGELOG_VERSION}"
-check_version gen-orb-mcp        "${GEN_ORB_MCP_VERSION}"
 check_version kdeets             "${KDEETS_VERSION}"
 check_version nextsv             "${NEXTSV_VERSION}"
 check_version pcu                "${PCU_VERSION}"

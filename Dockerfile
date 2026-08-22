@@ -110,11 +110,8 @@ RUN \
 FROM installer AS build-domain-tools
 # renovate: datasource=crate depName=cull-gmail packageName=cull-gmail versioning=semver-coerced
 ENV CULL_GMAIL_VERSION=0.1.10
-# renovate: datasource=crate depName=gen-orb-mcp packageName=gen-orb-mcp versioning=semver-coerced
-ENV GEN_ORB_MCP_VERSION=0.2.2
 RUN \
-    cargo binstall --locked cull-gmail --version "${CULL_GMAIL_VERSION}" --no-confirm; \
-    cargo binstall --locked gen-orb-mcp --version "${GEN_ORB_MCP_VERSION}" --no-confirm;
+    cargo binstall --locked cull-gmail --version "${CULL_GMAIL_VERSION}" --no-confirm;
 
 # build-wasm-tools — WASI/wasm tooling (only consumed by the wasi stage)
 FROM installer AS build-wasm-tools
@@ -165,8 +162,6 @@ ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 ENV CULL_GMAIL_VERSION=0.1.10
 # renovate: datasource=crate depName=gen-changelog packageName=gen-changelog versioning=semver-coerced
 ENV GEN_CHANGELOG_VERSION=0.1.12
-# renovate: datasource=crate depName=gen-orb-mcp packageName=gen-orb-mcp versioning=semver-coerced
-ENV GEN_ORB_MCP_VERSION=0.2.2
 # renovate: datasource=crate depName=kdeets packageName=kdeets versioning=semver-coerced
 ENV KDEETS_VERSION=0.1.32
 # renovate: datasource=crate depName=nextsv packageName=nextsv versioning=semver-coerced
@@ -270,9 +265,6 @@ COPY --from=build-release-pipeline \
     $CARGO_HOME/bin/gen-changelog \
     $CARGO_HOME/bin/kdeets \
     $CARGO_HOME/bin/nextsv \
-    $CARGO_HOME/bin/
-COPY --from=build-domain-tools \
-    $CARGO_HOME/bin/gen-orb-mcp \
     $CARGO_HOME/bin/
 
 # Install standard toolchains with all components
