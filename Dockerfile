@@ -21,7 +21,7 @@
 # installer — shared base for all builder stages.
 # apt-get runs once here and is inherited by all build-* stages so a
 # Renovate bump to any individual tool only invalidates that one stage.
-FROM docker.io/library/rust:1.97.1@sha256:b1b3c9c0d921d7fa0a6d1f9ec7e4eab87f8c8ec97644c3d791450f131dec813f AS installer
+FROM docker.io/library/rust:1.98.0@sha256:7f7a53a25a0319dd8284e279d529d45759cb384d59b14cc6806132910f45522e AS installer
 # renovate: datasource=crate depName=cargo-binstall packageName=cargo-binstall versioning=semver-coerced
 ENV CARGO_BINSTALL_VERSION=1.21.1
 SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
@@ -123,7 +123,7 @@ RUN \
     cargo binstall --locked wasm-pack --version "${WASMPACK_VERSION}" --no-confirm; \
     cargo binstall --locked wasmtime-cli --version "${WASMTIME_VERSION}" --no-confirm;
 
-FROM docker.io/library/rust:1.97.1@sha256:b1b3c9c0d921d7fa0a6d1f9ec7e4eab87f8c8ec97644c3d791450f131dec813f AS base
+FROM docker.io/library/rust:1.98.0@sha256:7f7a53a25a0319dd8284e279d529d45759cb384d59b14cc6806132910f45522e AS base
 ARG RELEASE_VERSION="dev"
 ARG VCS_REF="unknown"
 ARG BUILD_DATE="unknown"
@@ -190,7 +190,7 @@ WORKDIR /home/circleci/project
 # audit — lightweight security scanning image (cargo-audit, cargo-deny only)
 # Use this for the security job executor in circleci-toolkit (audit_env).
 # Much smaller than rolling-6mo: no multi-version Rust, no coverage/fuzz tools.
-FROM docker.io/library/rust:1.97.1@sha256:b1b3c9c0d921d7fa0a6d1f9ec7e4eab87f8c8ec97644c3d791450f131dec813f AS audit
+FROM docker.io/library/rust:1.98.0@sha256:7f7a53a25a0319dd8284e279d529d45759cb384d59b14cc6806132910f45522e AS audit
 ARG RELEASE_VERSION="dev"
 ARG VCS_REF="unknown"
 ARG BUILD_DATE="unknown"
