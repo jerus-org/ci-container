@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 - deps: update dependency toolkit to v7.2.0(pr [#561])
 - deps: update dependency cargo-about to v0.9.2(pr [#557])
 - deps: update dependency cargo-expand to v1.0.126(pr [#558])
+- deps: update dependency pcu to v0.6.33(pr [#559])
 
 ## [1.4.2] - 2026-08-17
 
@@ -1674,6 +1675,7 @@ All notable changes to this project will be documented in this file.
 [#561]: https://github.com/jerus-org/ci-container/pull/561
 [#557]: https://github.com/jerus-org/ci-container/pull/557
 [#558]: https://github.com/jerus-org/ci-container/pull/558
+[#559]: https://github.com/jerus-org/ci-container/pull/559
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.4.2...HEAD
 [1.4.2]: https://github.com/jerus-org/ci-container/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/jerus-org/ci-container/compare/v1.4.0...v1.4.1
