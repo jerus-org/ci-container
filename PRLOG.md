@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- refactor-drop unused gen-orb-mcp binary(pr [#564])
+
 ### Fixed
 
 - deps: update dependency toolkit to v7.2.0(pr [#561])
@@ -1676,6 +1680,7 @@ All notable changes to this project will be documented in this file.
 [#557]: https://github.com/jerus-org/ci-container/pull/557
 [#558]: https://github.com/jerus-org/ci-container/pull/558
 [#559]: https://github.com/jerus-org/ci-container/pull/559
+[#564]: https://github.com/jerus-org/ci-container/pull/564
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.4.2...HEAD
 [1.4.2]: https://github.com/jerus-org/ci-container/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/jerus-org/ci-container/compare/v1.4.0...v1.4.1
