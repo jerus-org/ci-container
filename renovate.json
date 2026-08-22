@@ -46,8 +46,7 @@
       "groupName": "ci-domain-tools",
       "matchDatasources": ["crate"],
       "matchPackageNames": [
-        "cull-gmail",
-        "gen-orb-mcp"
+        "cull-gmail"
       ]
     },
     {
