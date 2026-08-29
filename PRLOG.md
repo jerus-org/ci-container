@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 - deps: update dependency cull-gmail to v0.1.11(pr [#567])
 - deps: update dependency wasmtime-cli to v48.0.1(pr [#568])
 - deps: update dependency cargo-binstall to v1.22.0(pr [#569])
+- deps: update dependency toolkit to v7.3.0(pr [#570])
 
 ## [1.4.3] - 2026-08-22
 
@@ -1702,6 +1703,7 @@ All notable changes to this project will be documented in this file.
 [#567]: https://github.com/jerus-org/ci-container/pull/567
 [#568]: https://github.com/jerus-org/ci-container/pull/568
 [#569]: https://github.com/jerus-org/ci-container/pull/569
+[#570]: https://github.com/jerus-org/ci-container/pull/570
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.4.3...HEAD
 [1.4.3]: https://github.com/jerus-org/ci-container/compare/v1.4.2...v1.4.3
 [1.4.2]: https://github.com/jerus-org/ci-container/compare/v1.4.1...v1.4.2
