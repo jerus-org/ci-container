@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Fixed
+
+- deps: update docker.io/library/rust:1.98.0 docker digest to 271849e(pr [#565])
+
 ## [1.4.3] - 2026-08-22
 
 ### Changed
@@ -1687,6 +1693,8 @@ All notable changes to this project will be documented in this file.
 [#560]: https://github.com/jerus-org/ci-container/pull/560
 [#562]: https://github.com/jerus-org/ci-container/pull/562
 [#563]: https://github.com/jerus-org/ci-container/pull/563
+[#565]: https://github.com/jerus-org/ci-container/pull/565
+[Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.4.3...HEAD
 [1.4.3]: https://github.com/jerus-org/ci-container/compare/v1.4.2...v1.4.3
 [1.4.2]: https://github.com/jerus-org/ci-container/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/jerus-org/ci-container/compare/v1.4.0...v1.4.1
