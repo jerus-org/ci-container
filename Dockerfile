@@ -109,7 +109,7 @@ RUN \
 # build-domain-tools — standalone domain tools with no runtime coupling
 FROM installer AS build-domain-tools
 # renovate: datasource=crate depName=cull-gmail packageName=cull-gmail versioning=semver-coerced
-ENV CULL_GMAIL_VERSION=0.1.10
+ENV CULL_GMAIL_VERSION=0.1.11
 RUN \
     cargo binstall --locked cull-gmail --version "${CULL_GMAIL_VERSION}" --no-confirm;
 
@@ -159,7 +159,7 @@ ENV CARGO_RELEASE_VERSION=1.1.5
 # renovate: datasource=crate depName=circleci-junit-fix packageName=circleci-junit-fix versioning=semver-coerced
 ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 # renovate: datasource=crate depName=cull-gmail packageName=cull-gmail versioning=semver-coerced
-ENV CULL_GMAIL_VERSION=0.1.10
+ENV CULL_GMAIL_VERSION=0.1.11
 # renovate: datasource=crate depName=gen-changelog packageName=gen-changelog versioning=semver-coerced
 ENV GEN_CHANGELOG_VERSION=0.1.12
 # renovate: datasource=crate depName=kdeets packageName=kdeets versioning=semver-coerced
