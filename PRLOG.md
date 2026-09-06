@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - deps: update dependency toolkit to v7.4.0(pr [#572])
 - deps: update docker.io/library/rust:1.98.0 docker digest to 620dbcd(pr [#571])
+- deps: update dependency cargo-binstall to v1.23.0(pr [#573])
 
 ## [1.4.4] - 2026-08-29
 
@@ -1713,6 +1714,7 @@ All notable changes to this project will be documented in this file.
 [#570]: https://github.com/jerus-org/ci-container/pull/570
 [#572]: https://github.com/jerus-org/ci-container/pull/572
 [#571]: https://github.com/jerus-org/ci-container/pull/571
+[#573]: https://github.com/jerus-org/ci-container/pull/573
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.4.4...HEAD
 [1.4.4]: https://github.com/jerus-org/ci-container/compare/v1.4.3...v1.4.4
 [1.4.3]: https://github.com/jerus-org/ci-container/compare/v1.4.2...v1.4.3
