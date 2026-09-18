@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- add sccache to build-cargo-ecosystem stage(pr [#575])
+
 ### Fixed
 
 - deps: update dependency toolkit to v7.4.0(pr [#572])
@@ -1715,6 +1719,7 @@ All notable changes to this project will be documented in this file.
 [#572]: https://github.com/jerus-org/ci-container/pull/572
 [#571]: https://github.com/jerus-org/ci-container/pull/571
 [#573]: https://github.com/jerus-org/ci-container/pull/573
+[#575]: https://github.com/jerus-org/ci-container/pull/575
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.4.4...HEAD
 [1.4.4]: https://github.com/jerus-org/ci-container/compare/v1.4.3...v1.4.4
 [1.4.3]: https://github.com/jerus-org/ci-container/compare/v1.4.2...v1.4.3
