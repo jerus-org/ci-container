@@ -77,6 +77,8 @@ ENV CARGO_RELEASE_VERSION=1.1.5
 ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 # renovate: datasource=crate depName=rsign2 packageName=rsign2 versioning=semver-coerced
 ENV RSIGN2_VERSION=0.6.6
+# renovate: datasource=crate depName=sccache packageName=sccache versioning=semver-coerced
+ENV SCCACHE_VERSION=0.18.0
 RUN \
     cargo binstall --locked cargo-about --version "${CARGO_ABOUT_VERSION}" --no-confirm; \
     cargo binstall --locked cargo-docs-rs --version "${CARGO_DOCS_RS_VERSION}" --no-confirm; \
@@ -87,7 +89,8 @@ RUN \
     cargo binstall --locked cargo-nextest --version "${CARGO_NEXTEST_VERSION}" --no-confirm; \
     cargo binstall --locked cargo-release --version "${CARGO_RELEASE_VERSION}" --no-confirm; \
     cargo binstall --locked circleci-junit-fix --version "${CIRCLECI_JUNIT_FIX_VERSION}" --no-confirm; \
-    cargo binstall --locked rsign2 --version "${RSIGN2_VERSION}" --no-confirm;
+    cargo binstall --locked rsign2 --version "${RSIGN2_VERSION}" --no-confirm; \
+    cargo binstall --locked sccache --version "${SCCACHE_VERSION}" --no-confirm;
 
 # build-release-pipeline — version/changelog/release automation tools
 # (pcu calls gen-changelog; nextsv and pcu versioning are coupled — travel together)
@@ -170,6 +173,8 @@ ENV NEXTSV_VERSION=0.19.36
 ENV PCU_VERSION=0.6.34
 # renovate: datasource=crate depName=rsign2 packageName=rsign2 versioning=semver-coerced
 ENV RSIGN2_VERSION=0.6.6
+# renovate: datasource=crate depName=sccache packageName=sccache versioning=semver-coerced
+ENV SCCACHE_VERSION=0.18.0
 # renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
 ENV WASMPACK_VERSION=0.15.0
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
@@ -260,6 +265,7 @@ COPY --from=build-cargo-ecosystem \
     $CARGO_HOME/bin/cargo-nextest \
     $CARGO_HOME/bin/circleci-junit-fix \
     $CARGO_HOME/bin/rsign \
+    $CARGO_HOME/bin/sccache \
     $CARGO_HOME/bin/
 COPY --from=build-release-pipeline \
     $CARGO_HOME/bin/gen-changelog \

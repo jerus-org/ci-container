@@ -29,7 +29,8 @@
         "cargo-nextest",
         "cargo-release",
         "circleci-junit-fix",
-        "rsign2"
+        "rsign2",
+        "sccache"
       ]
     },
     {

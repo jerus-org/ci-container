@@ -138,6 +138,7 @@ check_version kdeets             "${KDEETS_VERSION}"
 check_version nextsv             "${NEXTSV_VERSION}"
 check_version pcu                "${PCU_VERSION}"
 check_version rsign              "${RSIGN2_VERSION}"
+check_version sccache            "${SCCACHE_VERSION}"
 check_version wasm-pack          "${WASMPACK_VERSION}"
 check_version wasmtime           "${WASMTIME_VERSION}"
 
