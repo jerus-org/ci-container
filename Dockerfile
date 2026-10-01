@@ -70,13 +70,13 @@ ENV CARGO_FUZZ_VERSION=0.13.2
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
 ENV CARGO_LLVM_COV_VERSION=0.9.1
 # renovate: datasource=crate depName=cargo-nextest packageName=cargo-nextest versioning=semver-coerced
-ENV CARGO_NEXTEST_VERSION=0.9.145
+ENV CARGO_NEXTEST_VERSION=0.9.146
 # renovate: datasource=crate depName=cargo-release packageName=cargo-release versioning=semver-coerced
 ENV CARGO_RELEASE_VERSION=1.1.6
 # renovate: datasource=crate depName=circleci-junit-fix packageName=circleci-junit-fix versioning=semver-coerced
 ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 # renovate: datasource=crate depName=rsign2 packageName=rsign2 versioning=semver-coerced
-ENV RSIGN2_VERSION=0.6.6
+ENV RSIGN2_VERSION=0.6.7
 # renovate: datasource=crate depName=sccache packageName=sccache versioning=semver-coerced
 ENV SCCACHE_VERSION=0.18.0
 RUN \
@@ -156,7 +156,7 @@ ENV CARGO_FUZZ_VERSION=0.13.2
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
 ENV CARGO_LLVM_COV_VERSION=0.9.1
 # renovate: datasource=crate depName=cargo-nextest packageName=cargo-nextest versioning=semver-coerced
-ENV CARGO_NEXTEST_VERSION=0.9.145
+ENV CARGO_NEXTEST_VERSION=0.9.146
 # renovate: datasource=crate depName=cargo-release packageName=cargo-release versioning=semver-coerced
 ENV CARGO_RELEASE_VERSION=1.1.6
 # renovate: datasource=crate depName=circleci-junit-fix packageName=circleci-junit-fix versioning=semver-coerced
@@ -172,7 +172,7 @@ ENV NEXTSV_VERSION=0.19.36
 # renovate: datasource=crate depName=pcu packageName=pcu versioning=semver-coerced
 ENV PCU_VERSION=0.6.34
 # renovate: datasource=crate depName=rsign2 packageName=rsign2 versioning=semver-coerced
-ENV RSIGN2_VERSION=0.6.6
+ENV RSIGN2_VERSION=0.6.7
 # renovate: datasource=crate depName=sccache packageName=sccache versioning=semver-coerced
 ENV SCCACHE_VERSION=0.18.0
 # renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
