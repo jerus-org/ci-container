@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - deps: update dependency toolkit to v8(pr [#584])
+- deps: update docker.io/library/rust:1.98.1 docker digest to a8a5f0a(pr [#579])
 
 ## [1.5.0] - 2026-09-18
 
@@ -1733,6 +1734,7 @@ All notable changes to this project will be documented in this file.
 [#576]: https://github.com/jerus-org/ci-container/pull/576
 [#577]: https://github.com/jerus-org/ci-container/pull/577
 [#584]: https://github.com/jerus-org/ci-container/pull/584
+[#579]: https://github.com/jerus-org/ci-container/pull/579
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.5.0...HEAD
 [1.5.0]: https://github.com/jerus-org/ci-container/compare/v1.4.4...v1.5.0
 [1.4.4]: https://github.com/jerus-org/ci-container/compare/v1.4.3...v1.4.4
