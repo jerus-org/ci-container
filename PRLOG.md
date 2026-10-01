@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 - deps: update ci-release-pipeline(pr [#581])
 - deps: update dependency wasmtime-cli to v48.0.3(pr [#582])
 - deps: update dependency cargo-binstall to v1.24.0(pr [#583])
+- deps: update dependency wasmtime-cli to v49(pr [#585])
 
 ## [1.5.0] - 2026-09-18
 
@@ -1743,6 +1744,7 @@ All notable changes to this project will be documented in this file.
 [#581]: https://github.com/jerus-org/ci-container/pull/581
 [#582]: https://github.com/jerus-org/ci-container/pull/582
 [#583]: https://github.com/jerus-org/ci-container/pull/583
+[#585]: https://github.com/jerus-org/ci-container/pull/585
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.5.0...HEAD
 [1.5.0]: https://github.com/jerus-org/ci-container/compare/v1.4.4...v1.5.0
 [1.4.4]: https://github.com/jerus-org/ci-container/compare/v1.4.3...v1.4.4
