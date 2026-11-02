@@ -70,7 +70,7 @@ ENV CARGO_FUZZ_VERSION=0.13.2
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
 ENV CARGO_LLVM_COV_VERSION=0.9.1
 # renovate: datasource=crate depName=cargo-nextest packageName=cargo-nextest versioning=semver-coerced
-ENV CARGO_NEXTEST_VERSION=0.9.146
+ENV CARGO_NEXTEST_VERSION=0.9.150
 # renovate: datasource=crate depName=cargo-release packageName=cargo-release versioning=semver-coerced
 ENV CARGO_RELEASE_VERSION=1.1.6
 # renovate: datasource=crate depName=circleci-junit-fix packageName=circleci-junit-fix versioning=semver-coerced
@@ -156,7 +156,7 @@ ENV CARGO_FUZZ_VERSION=0.13.2
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
 ENV CARGO_LLVM_COV_VERSION=0.9.1
 # renovate: datasource=crate depName=cargo-nextest packageName=cargo-nextest versioning=semver-coerced
-ENV CARGO_NEXTEST_VERSION=0.9.146
+ENV CARGO_NEXTEST_VERSION=0.9.150
 # renovate: datasource=crate depName=cargo-release packageName=cargo-release versioning=semver-coerced
 ENV CARGO_RELEASE_VERSION=1.1.6
 # renovate: datasource=crate depName=circleci-junit-fix packageName=circleci-junit-fix versioning=semver-coerced
