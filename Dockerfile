@@ -119,9 +119,9 @@ RUN \
 # build-wasm-tools — WASI/wasm tooling (only consumed by the wasi stage)
 FROM installer AS build-wasm-tools
 # renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
-ENV WASMPACK_VERSION=0.15.0
+ENV WASMPACK_VERSION=0.15.1
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
-ENV WASMTIME_VERSION=49.0.2
+ENV WASMTIME_VERSION=49.0.5
 RUN \
     cargo binstall --locked wasm-pack --version "${WASMPACK_VERSION}" --no-confirm; \
     cargo binstall --locked wasmtime-cli --version "${WASMTIME_VERSION}" --no-confirm;
@@ -176,9 +176,9 @@ ENV RSIGN2_VERSION=0.6.7
 # renovate: datasource=crate depName=sccache packageName=sccache versioning=semver-coerced
 ENV SCCACHE_VERSION=0.19.0
 # renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
-ENV WASMPACK_VERSION=0.15.0
+ENV WASMPACK_VERSION=0.15.1
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
-ENV WASMTIME_VERSION=49.0.2
+ENV WASMTIME_VERSION=49.0.5
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
