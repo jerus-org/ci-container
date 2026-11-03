@@ -62,23 +62,23 @@ ENV CARGO_DOCS_RS_VERSION=1.0.4
 # demand at job runtime (cached there), so no aging toolchains are baked into
 # the image — this narrowly reverses the prior workstation-only stance.
 # renovate: datasource=crate depName=cargo-msrv packageName=cargo-msrv versioning=semver-coerced
-ENV CARGO_MSRV_VERSION=0.19.3
+ENV CARGO_MSRV_VERSION=0.19.6
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
-ENV CARGO_EXPAND_VERSION=1.0.126
+ENV CARGO_EXPAND_VERSION=1.0.127
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
 ENV CARGO_FUZZ_VERSION=0.13.2
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
 ENV CARGO_LLVM_COV_VERSION=0.9.1
 # renovate: datasource=crate depName=cargo-nextest packageName=cargo-nextest versioning=semver-coerced
-ENV CARGO_NEXTEST_VERSION=0.9.150
+ENV CARGO_NEXTEST_VERSION=0.9.151
 # renovate: datasource=crate depName=cargo-release packageName=cargo-release versioning=semver-coerced
-ENV CARGO_RELEASE_VERSION=1.1.6
+ENV CARGO_RELEASE_VERSION=1.1.7
 # renovate: datasource=crate depName=circleci-junit-fix packageName=circleci-junit-fix versioning=semver-coerced
 ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 # renovate: datasource=crate depName=rsign2 packageName=rsign2 versioning=semver-coerced
 ENV RSIGN2_VERSION=0.6.7
 # renovate: datasource=crate depName=sccache packageName=sccache versioning=semver-coerced
-ENV SCCACHE_VERSION=0.18.0
+ENV SCCACHE_VERSION=0.19.0
 RUN \
     cargo binstall --locked cargo-about --version "${CARGO_ABOUT_VERSION}" --no-confirm; \
     cargo binstall --locked cargo-docs-rs --version "${CARGO_DOCS_RS_VERSION}" --no-confirm; \
@@ -148,17 +148,17 @@ ENV CARGO_ABOUT_VERSION=0.9.2
 # renovate: datasource=crate depName=cargo-docs-rs packageName=cargo-docs-rs versioning=semver-coerced
 ENV CARGO_DOCS_RS_VERSION=1.0.4
 # renovate: datasource=crate depName=cargo-msrv packageName=cargo-msrv versioning=semver-coerced
-ENV CARGO_MSRV_VERSION=0.19.3
+ENV CARGO_MSRV_VERSION=0.19.6
 # renovate: datasource=crate depName=cargo-expand packageName=cargo-expand versioning=semver-coerced
-ENV CARGO_EXPAND_VERSION=1.0.126
+ENV CARGO_EXPAND_VERSION=1.0.127
 # renovate: datasource=crate depName=cargo-fuzz packageName=cargo-fuzz versioning=semver-coerced
 ENV CARGO_FUZZ_VERSION=0.13.2
 # renovate: datasource=crate depName=cargo-llvm-cov packageName=cargo-llvm-cov versioning=semver-coerced
 ENV CARGO_LLVM_COV_VERSION=0.9.1
 # renovate: datasource=crate depName=cargo-nextest packageName=cargo-nextest versioning=semver-coerced
-ENV CARGO_NEXTEST_VERSION=0.9.150
+ENV CARGO_NEXTEST_VERSION=0.9.151
 # renovate: datasource=crate depName=cargo-release packageName=cargo-release versioning=semver-coerced
-ENV CARGO_RELEASE_VERSION=1.1.6
+ENV CARGO_RELEASE_VERSION=1.1.7
 # renovate: datasource=crate depName=circleci-junit-fix packageName=circleci-junit-fix versioning=semver-coerced
 ENV CIRCLECI_JUNIT_FIX_VERSION=0.2.3
 # renovate: datasource=crate depName=cull-gmail packageName=cull-gmail versioning=semver-coerced
@@ -174,7 +174,7 @@ ENV PCU_VERSION=0.6.38
 # renovate: datasource=crate depName=rsign2 packageName=rsign2 versioning=semver-coerced
 ENV RSIGN2_VERSION=0.6.7
 # renovate: datasource=crate depName=sccache packageName=sccache versioning=semver-coerced
-ENV SCCACHE_VERSION=0.18.0
+ENV SCCACHE_VERSION=0.19.0
 # renovate: datasource=crate depName=wasm-pack packageName=wasm-pack versioning=semver-coerced
 ENV WASMPACK_VERSION=0.15.0
 # renovate: datasource=crate depName=wasmtime-cli packageName=wasmtime-cli versioning=semver-coerced
