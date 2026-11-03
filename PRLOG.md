@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file.
 - deps: update ci-wasm-tools(pr [#594])
 - deps: update dependency cargo-about to v0.9.3(pr [#595])
 - deps: update dependency cargo-binstall to v1.26.2(pr [#599])
+- deps: update dependency wasmtime-cli to v50(pr [#600])
 
 ## [1.5.2] - 2026-10-03
 
@@ -1781,6 +1782,7 @@ All notable changes to this project will be documented in this file.
 [#594]: https://github.com/jerus-org/ci-container/pull/594
 [#595]: https://github.com/jerus-org/ci-container/pull/595
 [#599]: https://github.com/jerus-org/ci-container/pull/599
+[#600]: https://github.com/jerus-org/ci-container/pull/600
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.5.2...HEAD
 [1.5.2]: https://github.com/jerus-org/ci-container/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/jerus-org/ci-container/compare/v1.5.0...v1.5.1
