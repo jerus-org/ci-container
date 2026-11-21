@@ -18,6 +18,7 @@ All notable changes to this project will be documented in this file.
 - deps: update dependency wasmtime-cli to v50(pr [#600])
 - deps: update docker.io/library/rust:1.99.1 docker digest to 8a4e90c(pr [#601])
 - deps: update ci-cargo-ecosystem(pr [#602])
+- deps: update dependency pcu to v0.6.41(pr [#603])
 
 ## [1.5.2] - 2026-10-03
 
@@ -1787,6 +1788,7 @@ All notable changes to this project will be documented in this file.
 [#600]: https://github.com/jerus-org/ci-container/pull/600
 [#601]: https://github.com/jerus-org/ci-container/pull/601
 [#602]: https://github.com/jerus-org/ci-container/pull/602
+[#603]: https://github.com/jerus-org/ci-container/pull/603
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.5.2...HEAD
 [1.5.2]: https://github.com/jerus-org/ci-container/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/jerus-org/ci-container/compare/v1.5.0...v1.5.1
