@@ -21,6 +21,7 @@ All notable changes to this project will be documented in this file.
 - deps: update dependency pcu to v0.6.41(pr [#603])
 - deps: update dependency wasmtime-cli to v50.0.3(pr [#604])
 - deps: update ci-security-tools(pr [#605])
+- deps: update docker.io/library/rust docker tag to v1.100.0(pr [#607])
 
 ## [1.5.2] - 2026-10-03
 
@@ -1793,6 +1794,7 @@ All notable changes to this project will be documented in this file.
 [#603]: https://github.com/jerus-org/ci-container/pull/603
 [#604]: https://github.com/jerus-org/ci-container/pull/604
 [#605]: https://github.com/jerus-org/ci-container/pull/605
+[#607]: https://github.com/jerus-org/ci-container/pull/607
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.5.2...HEAD
 [1.5.2]: https://github.com/jerus-org/ci-container/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/jerus-org/ci-container/compare/v1.5.0...v1.5.1
