@@ -23,6 +23,7 @@ All notable changes to this project will be documented in this file.
 - deps: update ci-security-tools(pr [#605])
 - deps: update docker.io/library/rust docker tag to v1.100.0(pr [#607])
 - deps: update dependency cargo-binstall to v1.28.0(pr [#606])
+- deps: update dependency wasmtime-cli to v51(pr [#608])
 
 ## [1.5.2] - 2026-10-03
 
@@ -1797,6 +1798,7 @@ All notable changes to this project will be documented in this file.
 [#605]: https://github.com/jerus-org/ci-container/pull/605
 [#607]: https://github.com/jerus-org/ci-container/pull/607
 [#606]: https://github.com/jerus-org/ci-container/pull/606
+[#608]: https://github.com/jerus-org/ci-container/pull/608
 [Unreleased]: https://github.com/jerus-org/ci-container/compare/v1.5.2...HEAD
 [1.5.2]: https://github.com/jerus-org/ci-container/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/jerus-org/ci-container/compare/v1.5.0...v1.5.1
